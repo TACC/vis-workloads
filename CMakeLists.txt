@@ -49,3 +49,5 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.txt
   "GLuRay_PATH "${GLuRay_PATH}\n
   "SWR_LIB "${SWR_LIB}\n
   )
+
+
