@@ -1,0 +1,36 @@
+Wed Aug 27 16:50:39 CDT 2014
+TACC: Starting up job 3990653
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ windowsize: [1920, 1080]
+disabling immediate mode
+immmediate mode set correctly
+number of streamlines: 4000
+#
+warmup...
+#
+rendering warmup frame
+warmup frame Render: 28.7846050262
+rendering warmup frame
+warmup frame Render: 1.00844812393
+rendering warmup frame
+warmup frame Render: 1.00727987289
+rendering warmup frame
+warmup frame Render: 1.00882816315
+rendering warmup frame
+warmup frame Render: 1.00832700729
+rendering warmup frame
+warmup frame Render: 1.0085709095
+rendering warmup frame
+warmup frame Render: 1.00697302818
+rendering warmup frame
+warmup frame Render: 1.00839686394
+rendering warmup frame
+warmup frame Render: 1.00809597969
+rendering warmup frame
+warmup frame Render: 1.00839304924
+rendering warmup frame
+warmup frame Render: 1.00806593895
+#
+running...
+#

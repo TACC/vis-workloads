@@ -1,0 +1,35 @@
++ date
+Mon Aug  4 13:45:23 CDT 2014
++ LD_PRELOAD=/scratch/01336/carson/intelTACC/libGL.so.1.mpi_fix
++ tacc_xrun ibrun -n 1 -o 0 tacc_xrun pvbatch /scratch/01336/carson/intelTACC/fiu.py -w 1920x1080 --numStreamlines 4000 --numruns 40
+TACC: Starting up job 3830492
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ windowsize: [1920, 1080]
+disabling immediate mode
+immmediate mode set correctly
+number of streamlines: 4000
+#
+warmup...
+#
+rendering warmup frame
+warmup frame Render: 37.8557918072
+rendering warmup frame
+warmup frame Render: 0.593659162521
+rendering warmup frame
+warmup frame Render: 0.522900104523
+rendering warmup frame
+warmup frame Render: 0.454210996628
+rendering warmup frame
+warmup frame Render: 0.447301864624
+#
+running...
+#
+#
+parsing...
+#
+fps: 2.38672043967
+ 
+TACC: Shutdown complete. Exiting.
++ date
+Mon Aug  4 13:47:15 CDT 2014

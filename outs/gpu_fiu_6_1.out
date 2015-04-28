@@ -1,0 +1,126 @@
++ date
+Mon Sep  8 09:16:10 CDT 2014
++ LD_PRELOAD=
++ tacc_xrun ibrun -n 1 -o 0 pvbatch /scratch/01336/carson/intelTACC/benchmarks/pv_bench.py -w 1920x1080 --geoLevel 6 --numruns 100
+TACC: Starting up job 4066724
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ windowsize: [1920, 1080]
+disabling immediate mode
+immmediate mode set correctly
+number of streamlines: 4000
+#
+warmup...
+#
+rendering warmup frame
+warmup frame Render: 41.5710179806
+rendering warmup frame
+warmup frame Render: 0.824854135513
+rendering warmup frame
+warmup frame Render: 0.608438968658
+rendering warmup frame
+warmup frame Render: 0.927935123444
+rendering warmup frame
+warmup frame Render: 0.927877902985
+rendering warmup frame
+warmup frame Render: 0.927886009216
+rendering warmup frame
+warmup frame Render: 0.927897930145
+rendering warmup frame
+warmup frame Render: 0.927714109421
+rendering warmup frame
+warmup frame Render: 0.927715778351
+rendering warmup frame
+warmup frame Render: 0.927724123001
+rendering warmup frame
+warmup frame Render: 0.927800893784
+#
+running...
+#
+#
+parsing...
+#
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+render , OpenGL Dev , 7.3e-05 , 7.3e-05
+#Frame  1
+still , Still , 1.08164 , 0.810035
+render , OpenGL Dev , 0.271538 , 0.271538
+render , OpenGL Dev , 6.7e-05 , 6.7e-05
+#Frame  2
+still , Still , 1.0816 , 0.809676
+render , OpenGL Dev , 0.271856 , 0.271856
+render , OpenGL Dev , 6.8e-05 , 6.8e-05
+#Frame  3
+still , Still , 1.08182 , 0.810189
+render , OpenGL Dev , 0.271565 , 0.271565
+render , OpenGL Dev , 6.6e-05 , 6.6e-05
+#Frame  4
+still , Still , 1.08163 , 0.809573
+render , OpenGL Dev , 0.271982 , 0.271982
+render , OpenGL Dev , 7.5e-05 , 7.5e-05
+#Frame  5
+still , Still , 1.08166 , 0.810076
+render , OpenGL Dev , 0.271515 , 0.271515
+render , OpenGL Dev , 6.9e-05 , 6.9e-05
+#Frame  6
+still , Still , 1.08164 , 0.80977
+render , OpenGL Dev , 0.271802 , 0.271802
+render , OpenGL Dev , 6.8e-05 , 6.8e-05
+#Frame  7
+still , Still , 1.08165 , 0.809989
+render , OpenGL Dev , 0.271594 , 0.271594
+render , OpenGL Dev , 6.7e-05 , 6.7e-05
+#Frame  8
+still , Still , 1.08172 , 0.809761
+render , OpenGL Dev , 0.271891 , 0.271891
+render , OpenGL Dev , 6.8e-05 , 6.8e-05
+#Frame  9
+still , Still , 1.08166 , 0.810067
+render , OpenGL Dev , 0.271525 , 0.271525
+render , OpenGL Dev , 6.8e-05 , 6.8e-05
+#Frame  10
+still , Still , 1.0816 , 0.810757
+render , OpenGL Dev , 0.270773 , 0.270773
+render , OpenGL Dev , 7e-05 , 7e-05
+#Frame  11
+still , Still , 1.08176 , 0.810536
+render , OpenGL Dev , 0.271155 , 0.271155
+render , OpenGL Dev , 6.9e-05 , 6.9e-05
+#Frame  12
+still , Still , 1.0816 , 0.810137
+render , OpenGL Dev , 0.271394 , 0.271394
+render , OpenGL Dev , 6.9e-05 , 6.9e-05
+#Frame  13
+still , Still , 1.08164 , 0.810363
+render , OpenGL Dev , 0.271203 , 0.271203
+render , OpenGL Dev , 7.4e-05 , 7.4e-05
+#Frame  14
+still , Still , 1.08166 , 0.809674
+render , OpenGL Dev , 0.271917 , 0.271917
+render , OpenGL Dev , 6.9e-05 , 6.9e-05
+#Frame  15
+still , Still , 1.08165 , 0.809974
+render , OpenGL Dev , 0.271608 , 0.271608
+render , OpenGL Dev , 6.8e-05 , 6.8e-05
+#Frame  16
+still , Still , 1.08163 , 0.809771
+render , OpenGL Dev , 0.271789 , 0.271789
+render , OpenGL Dev , 7e-05 , 7e-05
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+still , Still , 16 , 17.30656 , 12.960348
+render , OpenGL Dev , 33 , 4.346285 , 4.346285
+
+overall avg fps: 0.815618989779 avg: 1.22606267452 dev: 0.519318780641
+still zoomed out results avg fps: 1.07835744231 avg: 0.927336299419 dev: 0.261279161025
+rotate zoomed out results avg fps: 1.12676982588 avg: 0.887492704391 dev: 0.0275629511789
+zoom results avg fps: 0.568246821158 avg: 1.75979866982 dev: 0.787407129739
+rotate zoomed in results avg fps: 0.678551495919 avg: 1.47372750044 dev: 0.297621105296
+still zoomed in results avg fps: 0.924250124767 avg: 1.08195819855 dev: 5.06658497622e-05
+ 
+TACC: Shutdown complete. Exiting.
++ date
+Mon Sep  8 09:20:02 CDT 2014

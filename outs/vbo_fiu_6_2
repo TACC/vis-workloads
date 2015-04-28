@@ -1,0 +1,44 @@
+Wed Aug 27 16:49:07 CDT 2014
+TACC: Starting up job 3990653
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ windowsize: [1920, 1080]
+disabling immediate mode
+immmediate mode set correctly
+ospPolyDataMapper::Draw
+ospPolyDataMapper::Draw
+creating vbo
+vbo num points 125000 normals: 125000 indices: 747000
+creating vbo
+vbo num points 125000 normals: 125000 indices: 747000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 64000
+VBOPart::VBOPart numtriangles: 57000
+VBOPart::VBOPart numtriangles: 57000
+done creating vbo
+vtkVBOActor adding parts 4
+rendering vbos
+num vbos: 4
+done creating vbo
+vtkVBOActor adding parts 4
+render time: 3.999000ms
+rendering vbos end
+rendering vbos
+num vbos: 4
+render time: 3.702000ms
+rendering vbos end
+number of streamlines: 4000
+#
+warmup...
+#
+rendering warmup frame
+ospPolyDataMapper::Draw
+NEED TO IMPLEMENT COLORCOORDINATES
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+Wed Aug 27 16:50:08 CDT 2014

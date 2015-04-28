@@ -1,0 +1,7 @@
+SVB_DIR /work/01336/carson/intelTACC/svb
+output_DIR /work/01336/carson/intelTACC/svb/benchmarks
+ParaView_DIR /opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/bin
+pvOSPRay_DIR /opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/bin/../lib
+pvVBO_DIR /opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/bin/../lib
+GLuRay_PATH GLURAY_FIND-NOTFOUND
+SWR_LIB libGL.so.1
