@@ -5,6 +5,10 @@ except: from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
 # WHIPple ITeration script 
+
+print "HELLLLLOWHIPPLE"
+
+
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -24,6 +28,13 @@ whipple_data_dir =  path_vars["WHIPPLEDATA_DIR"]
 print "whipple_data_dir:%s" %  whipple_data_dir
 
 
+
+
+
+
+
+
+
 AnimationScene1 = GetAnimationScene()
 timesteps = []
 def svbSetup(geometryLevel=1,stage=0):
@@ -37,8 +48,8 @@ def svbSetup(geometryLevel=1,stage=0):
 	 that corresponds to the particular stage/timestep and render
 	"""
 	print "CALL svbSETUP"
-	datasetpath = whipple_data_dir+'/Whipple_Shield.exo.300.000'
-        print "datasetpate:%s" % datasetpath
+	datasetpath = whipple_data_dir+"/Whipple_Shield.exo.300.000"
+        print "datasetpath: " + datasetpath
 	if os.path.exists(datasetpath):
 		if os.access(datasetpath,os.R_OK):
 			Whipple_Shield_exo_300_010 = ExodusIIReader(FileName=[datasetpath])
@@ -53,12 +64,13 @@ def svbSetup(geometryLevel=1,stage=0):
 	global timesteps
 	if stage == 0: #pipeline setup
 		timesteps = Whipple_Shield_exo_300_010.TimestepValues
+		print "total timesteps: %s" % len(timesteps)
 		AnimationScene1.EndTime = timesteps[len(timesteps)-1]
 		AnimationScene1.PlayMode = 'Snap To TimeSteps'
 
 		Whipple_Shield_exo_300_010.FileRange = [0, 299]
 		Whipple_Shield_exo_300_010.XMLFileName = 'Invalid result'
-		Whipple_Shield_exo_300_010.FilePrefix = datasetpath+'.'
+		Whipple_Shield_exo_300_010.FilePrefix = whipple_data_dir+'Whipple_Shield.exo.300.'
 		Whipple_Shield_exo_300_010.ModeShape = 20
 		Whipple_Shield_exo_300_010.FilePattern = '%s%03i'
 
@@ -127,7 +139,9 @@ def svbSetup(geometryLevel=1,stage=0):
 		DataRepresentation4.SelectionPointFieldDataArrayName = 'DENSITY'
 		DataRepresentation4.SelectionCellFieldDataArrayName = 'DENSITY'
 #		DataRepresentation2.Visibility = 0
+		print "stage %d\n" % stage
 
+	print "stage %d\n" % stage
 	AnimationScene1.AnimationTime = timesteps[stage]
 	RenderView1 = GetRenderView()
 	RenderView1.CenterOfRotation = [0.0, 0.0, 0.018435800448060036]
@@ -144,8 +158,9 @@ def svbSetup(geometryLevel=1,stage=0):
 # what timestep to render. 
 def svbGetStagesSize():
 	global timesteps
-	return 2
+	return 40
 	#uncomment next line to do the whole time series
+	#print "total timesteps: %s" % len(timesteps)
 	#return len(timesteps);
 
 #def svbSetup(geometryLevel=1, stage=0):

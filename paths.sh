@@ -1,6 +1,6 @@
 #!/bin/bash
-SVB_DIR=/work/01891/adb/test_svb2/svb
-output_DIR=/work/01891/adb/test_svb2/svb/benchmarks
+SVB_DIR=/work/01891/adb/maverick/svb_adb
+output_DIR=/work/01891/adb/svb_adb/benchmarks
 ParaView_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
 pvOSPRay_DIR=/../lib
 pvVBO_DIR=/../lib
@@ -30,4 +30,4 @@ USE_GEO=OFF
 USE_WHIPPLE_TIME=ON
 USE_WHIPPLE=OFF
 GENERATE_IMAGES=ON
-ROOT_IMAGE_DIR=/work/01891/adb/test_svb2/svb/benchmarks
+ROOT_IMAGE_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
