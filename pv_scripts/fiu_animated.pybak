@@ -92,8 +92,7 @@ def createStreamlines(source, source2, time):
   DataRepresentation6.ScaleFactor = 300.0
   DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
   DataRepresentation6.LookupTable = a3_ImageFile_PVLookupTable
-  #ADB: Bizarre Suddenly May 21 at 3:00 stopped working because it couldn't find ImageFIle
-  #DataRepresentation6.ColorArrayName = 'ImageFile'
+  DataRepresentation6.ColorArrayName = 'ImageFile'
   SetActiveSource(source2)
   originz = -800.0+(430.92--800.0)*time
 

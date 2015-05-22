@@ -1,5 +1,30 @@
 try: paraview.simple
 except: from paraview.simple import *
+import os
+import sys
+
+
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+path_vars = dict()
+
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+fiu_data_dir =  path_vars["FIUDATA_DIR"]
+print "fiu_data_dir:%s" %  fiu_data_dir
+
+
+
+
 
 def svbGetStagesSize():
   return 1;
@@ -52,7 +77,7 @@ def svbSetup(geometryLevel=1, stage=0):
   numPolys = 0 
   numPoints = 0
 
-  u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/u_380x380x828_frame0010_subs00.nhdr' )
+  u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
 
   #RenderView1 = GetRenderView()
   #DataRepresentation1 = Show()
@@ -64,7 +89,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   #RenderView1.CenterOfRotation = [189.5, 189.5, 413.5]
 
-  rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
+  rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr" )
 
   #RenderView1.CameraPosition = [189.5, 189.5, 2317.3405387189805]
   #RenderView1.CameraFocalPoint = [189.5, 189.5, 413.5]

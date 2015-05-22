@@ -1,25 +1,30 @@
-import sys
-#rauseContour = options.use_contour
-#sys.path = sys.path+['', '/opt/apps/intel13/mvapich2_1_9/visit/current/linux-x86_64/lib/site-packages/visit', '/opt/apps/intel13/mvapich2_1_9/
-#araview/4.1.0/python2.7/lib/python2.7/site-packages', '/opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/python2.7/lib/python2.7', '/opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/lib/paraview-4.1/site-packages', '/scratch/01336/carson/ParaView-v4.1.0/build', '/opt/apps/python/epd/7.3.2/modules/lib/python', '/opt/apps/python/epd/7.3.2/lib', '/opt/apps/python/epd/7.3.2/lib/python27.zip', '/opt/apps/python/epd/7.3.2/lib/python2.7', '/opt/apps/python/epd/7.3.2/lib/python2.7/plat-linux2', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-tk', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-old', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-dynload', '/opt/apps/python/epd/7.3.2/lib/python2.7/site-packages', '/opt/apps/python/epd/7.3.2/lib/python2.7/site-packages/PIL']
-#sys.path=sys.path+['', '/opt/apps/intel13/mvapich2_1_9/visit/current/linux-x86_64/lib/site-packages/visit', '/opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/python2.7/lib/python2.7/site-packages', '/opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/python2.7/lib/python2.7', '/opt/apps/intel13/mvapich2_1_9/paraview/4.1.0/lib/paraview-4.1/site-packages', '/scratch/01336/carson/logs/glurayOSPRay', '/opt/apps/python/epd/7.3.2/modules/lib/python', '/opt/apps/python/epd/7.3.2/lib', '/opt/apps/python/epd/7.3.2/lib/python27.zip', '/opt/apps/python/epd/7.3.2/lib/python2.7', '/opt/apps/python/epd/7.3.2/lib/python2.7/plat-linux2', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-tk', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-old', '/opt/apps/python/epd/7.3.2/lib/python2.7/lib-dynload', '/opt/apps/python/epd/7.3.2/lib/python2.7/site-packages', '/opt/apps/python/epd/7.3.2/lib/python2.7/site-packages/PIL']
 try: paraview.simple
 except: from paraview.simple import *
-#import paraview.benchmark
-sys.path.append("/work/01336/carson/intelTACC/svb/pv_scripts")
-import benchmark
 from optparse import OptionParser
-#import log_parser
 import time
 import os
 import math
-#try:
-  #import Numeric
-#except:
-  #import numpy
 import sys
 paraview.simple._DisableFirstRenderCameraReset()
-#manta_plugin =       "/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libMantaView.so"
+
+path_vars = dict()
+dir = os.path.dirname(__file__)
+filename = os.path.join(dir, 'paths.sh')
+
+
+#read in paths from the environment variables bash script generate by cmake
+with open(filename) as f:
+    next(f)
+    for line in f:
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+pv_script_path = "%s/pv_scripts" % path_vars["SVB_DIR"]
+print "pv_scscript_path:%s" % pv_script_path
+sys.path.append("%s/pv_scripts" % path_vars["SVB_DIR"])
+import benchmark
 benchmark.maximize_logs()
 
 
@@ -65,6 +70,12 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
                   #action="store_false", dest="use_contour", default=True,
                   #help="render with contour")
 
+
+
+
+parser.add_option("--nocamera", action="store_true", dest="nocamera",
+                  default=False, help="Do not animate camera path")
+
 (options, args) = parser.parse_args()
 
 #pm = servermanager.vtkProcessModule.GetProcessModule()
@@ -89,6 +100,10 @@ use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
 
+num_runs = options.numruns
+no_camera = options.nocamera
+
+
 
 if (plugin_vbo):
     #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
@@ -98,6 +113,7 @@ if (plugin_vbo):
     #view.Threads = options.threads
     view.ViewSize =  windowsize
 
+#Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 
 if (plugin_osp):
     # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
@@ -128,19 +144,17 @@ except:
  print "setting immediate mode failed, using default"
  #v.UseImmediateMode = 0
 
-sys.path.append("pv_scripts")
-sys.path.append("/work/01336/carson/intelTACC/pv_scripts")
-# sys.path.append("/work/01336/carson/git/svb/pv_scripts")
-#import fiu
-# import importlib
 def import_from(module, name):
     module = __import__(module, fromlist=[name])
     return getattr(module, name)
 try:
- # sourceLib = importlib.import_module(source)
+ print "trying to import from source"
  svbSetup = import_from(source, "svbSetup")
+ print "finished svbSetup"
  svbRender = import_from(source, "svbRender")
+ print "finished svbRender"
  svbGetStagesSize = import_from(source, "svbGetStagesSize")
+ print "finished svbGetStageSize"
 except:
  print "ERROR: could not load source module"
  if source != "sphere":
@@ -242,25 +256,31 @@ for stage in range(numStages):
   cam = GetActiveCamera()
   start_time = time.time()
   for i in range(0,num_runs):
-    frac = float(i)/float(num_runs)
-    if (frac < .2):
-      pass
-    elif (frac < .4):
-      cam.Azimuth(-azimuth/(float(num_runs)/5.0))
-    elif (frac < .6):
-      cam.Dolly(1.0 + dolly/(float(num_runs)/5.0))
-    elif (frac < .8):
-      cam.Azimuth(azimuth/(float(num_runs)/5.0))
-    else:
-      pass
+    #move the camera for static datasets
+    if no_camera == True:
+	frac=0.1
+    elif no_camera == False:
+        frac = float(i)/float(num_runs)
+        if (frac < .2):
+          pass
+        elif (frac < .4):
+          cam.Azimuth(-azimuth/(float(num_runs)/5.0))
+        elif (frac < .6):
+          cam.Dolly(1.0 + dolly/(float(num_runs)/5.0))
+        elif (frac < .8):
+          cam.Azimuth(azimuth/(float(num_runs)/5.0))
+        else:
+          pass
 
-  #  cam.Azimuth(3)
-  #  cam.Dolly(5)
-    st = time.time()
-    svbRender()
-    et = time.time()
-    tt = (et-st)
-    times.append(tt)
+        #start time
+        st = time.time()
+        svbRender()
+	#end time
+        et = time.time()
+        tt = (et-st)
+        times.append(tt)
+
+    #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
     if (frac < .2):
       still_out_times.append(tt)
     elif (frac < .4):
@@ -275,10 +295,11 @@ for stage in range(numStages):
 
     #print "frame Render: " + str(tt)
     if save_images != "":
-       file = save_images + '%d.jpg' % framecnt
+       file = save_images + '%s_%05d.jpg' % (source, framecnt)
        WriteImage(file)
        print "saved image: " + file
        framecnt += 1
+
   end_time = time.time()
   print "#"
   print "parsing..."

@@ -1,13 +1,25 @@
 #!/bin/bash
-#tris=( 1 100 1000 2000 4000 8000 )
-#DIR=/scratch/01336/carson/intelTACC/benchmarks
-DIR=/work/01336/carson/intelTACC/benchmarks/maverick
-SVB_DIR=/work/01336/carson/intelTACC/svb
+#
+# Read the config file to set paths.
+#
+. ./paths.sh
+DIR=$output_DIR
+IMAGE_DIR=$ROOT_IMAGE_DIR
+
 NUM_RUNS=10
 mkdir $DIR
 mkdir $DIR/outs
 mkdir $DIR/submits
 mkdir $DIR/interactive
+
+
+if [ ${GENERATE_IMAGES} == "ON" ]; then
+    mkdir  $IMAGE_DIR/images
+fi
+
+
+
+
 rm $DIR/submits/*
 rm $DIR/interactive/*
 PND="#"
@@ -17,6 +29,7 @@ function processBench {
     node=$2
     renderer=$3
     dataSource=$4
+    account=$5
     NAME=d${dataSource}_r${renderer}_t${tri}_n${node}
     FILE=${DIR}/submits/submit_${NAME}.sh
     echo "${PND}!/bin/bash " >${FILE}
@@ -36,15 +49,29 @@ function processBench {
     fi
     fi
     DL_FLAG=""
-    if [ "$dataSource" == "dns" ]; then
-      if [ "$renderer" == "gpu" ]; then
+
         DL_FLAG="--immediatemode"
-      fi
+
+    CAM_FLAG=""
+    if [ "$dataSource" == "fiu_animated" ]; then
+       CAM_FLAG="--nocamera"
     fi
 
+     if [ "$dataSource" == "whipit" ]; then
+       CAM_FLAG="--nocamera"
+    fi
+
+    IMG_FLAG=""
+     
+
+    if [ ${GENERATE_IMAGES} == "ON" ]; then
+          IMG_FLAG="--save_images -i ${IMAGE_DIR}/images/"
+    fi
+
+    
+
     echo "#SBATCH -p $queue " >> ${FILE}
-    echo "#SBATCH -A Vis-Workload-Charact" >> ${FILE}
-    #echo "#SBATCH -A OSPRay" >> ${FILE}
+    echo "#SBATCH -A $account " >> ${FILE}
     OUTFILE="${DIR}/outs/${NAME}.out"
     echo "#SBATCH -o ${OUTFILE}" >> ${FILE}
     echo "#SBATCH -t 00:40:00"  >> ${FILE}
@@ -53,9 +80,11 @@ function processBench {
     SWR_CMD=""
     if [ $renderer == "swr" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2417/Centos/libGL.so.1
-      SWR_CMD=LD_PRELOAD=/work/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
+      # SWR_CMD=LD_PRELOAD=/work/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
+	SWR_CMD=LD_PRELOAD=$SWR_LIB
     elif [ $renderer == "gluray" ]; then
-      GLURAY_CMD=/work/01336/carson/git/GLuRay/buildOptix/gluray
+      #GLURAY_CMD=/work/01336/carson/git/GLuRay/buildOptix/gluray
+      GLURAY_CMD=$GLuRay_PATH
     else
       PRELOAD=""
     fi
@@ -69,18 +98,27 @@ function processBench {
       PRE_CMD="DISPLAY=:0.0"
     fi
     if [ $renderer == "swrvbo" ]; then
-      SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
+      # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
+	SWR_CMD=LD_PRELOAD=$SWR_LIB
       # echo "export LD_PRELOAD=\"/scratch/01336/carson/intelTACC/SWR-OGL1.4-2417/Centos/libGL.so.1\"" >> ${FILE}
       PV_PLUGIN_FLAG="--vbo"
     fi
     echo "date" >> ${FILE}
-    PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
-    PARAVIEW=pvbatch
+    #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
+    #PARAVIEW=pvbatch
+    PARAVIEW=$ParaView_DIR/pvbatch
     echo "module load qt" >> ${FILE}
     echo "module load paraview/4.1.0" >> ${FILE}
-    echo "$PRE_CMD ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
-    #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} /work/01336/carson/intelTACC/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  --geoLevel $tri --numruns 100 --source ${dataSource} ${DL_FLAG} " >> ${FILE}
-    # echo "export LD_PRELOAD=\"\"" >> ${FILE}
+    #need to determing how to handle this, for general benchmarking, carson has two pvospray modules, one looks better and one is faster...
+    #echo "module use /work/01336/carson/opt/maverick/modulefiles" >> ${FILE}
+    #if [ $renderer == "ospray" ]; then
+    #    echo "module load pvosprayFast" >> ${FILE}
+    #fi
+    #if [ $renderer == "swr" ]; then
+    #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
+    #fi
+
+     echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
     IFILE=${DIR}/interactive/inter_${NAME}.sh
@@ -94,8 +132,74 @@ PRELOAD=""
 #
 tris=( 4 6 9 )
 nodes=( 1 2 4 8 16 32 )
-renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
-dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
+#renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
+renderers=()
+COUNT=0
+if [ ${USE_SWR} == "ON" ]; then
+	renderers[$COUNT]="swr"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_GPU == "ON" ]; then
+	renderers[$COUNT]="gpu"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_GLURAY == "ON" ]; then
+	renderers[$COUNT]="gluray"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_VBO == "ON" ]; then
+	renderers[$COUNT]="vbo"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_OSPRAY == "ON" ]; then
+	renderers[$COUNT]="ospray"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_SWRVBO == "ON" ]; then
+	renderers[$COUNT]="swrvbo"
+	COUNT=$((COUNT+1))
+fi
+echo ${renderers[*]}
+#dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
+dataSources=()
+COUNT=0
+if [ ${USE_FIU_ANIMATED} == "ON" ]; then
+	dataSources[$COUNT]="fiu_animated"
+	COUNT=$((COUNT+1))
+fi
+if [ ${USE_FIU} == "ON" ]; then
+	dataSources[$COUNT]="fiu"
+	COUNT=$((COUNT+1))
+fi
+if [ ${USE_RM} == "ON" ]; then
+	dataSources[$COUNT]="rm"
+	COUNT=$((COUNT+1))
+fi
+if [ ${USE_DNS} == "ON" ]; then
+	dataSources[$COUNT]="dns"
+	COUNT=$((COUNT+1))
+fi
+if [ ${USE_MOLECULE} == "ON" ]; then
+	dataSources[$COUNT]="molecule"
+	COUNT=$((COUNT+1))
+fi
+if [ ${USE_GEO} == "ON" ]; then
+	dataSources[$COUNT]="geo"
+	COUNT=$((COUNT+1))
+fi
+
+if [ ${USE_WHIPPLE} == "ON" ]; then
+        dataSources[$COUNT]="moreland"
+        COUNT=$((COUNT+1))
+fi
+
+if [ ${USE_WHIPPLE_TIME} == "ON" ]; then
+        dataSources[$COUNT]="whipit"
+        COUNT=$((COUNT+1))
+fi
+
+
+echo ${dataSources[*]}
 set -x
 
 
@@ -107,7 +211,7 @@ do
     do
       for data in "${dataSources[@]}";
       do
-        processBench $tri $node $renderer $data
+        processBench $tri $node $renderer $data $ACCOUNT
       done
     done
   done
@@ -118,11 +222,10 @@ done
 #
 tris=( 1 2 3 4 5 6 7 8 9)
 nodes=( 1 )
-renderer=swr
-renderers=( "swr" "gpu" "gluray" "vbo" "ospray")
-dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
-set -x
-#for i in "${tris[@]}"; do vglrun /work/01336/carson/git/GLuRay/buildOSPRay/gluray pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 100 |& tee gluray_fiu_$i.out ; done
+#renderer=swr
+#renderers=( "swr" "gpu" "gluray" "vbo" "ospray")
+#dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
+
 #for i in "${tris[@]}"; do tacc_xrun pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 200 |& tee gpu_fiu_$i.out ; done
 PRELOAD=""
 #PRELOAD=""
@@ -136,7 +239,7 @@ do
     do
       for data in "${dataSources[@]}";
       do
-        processBench $tri $node $renderer $data
+        processBench $tri $node $renderer $data $ACCOUNT
       done
     done
   done

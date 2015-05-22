@@ -1,6 +1,7 @@
 #!/bin/bash
 #set -x
-DIR=/scratch/01336/carson/intelTACC/benchmarks
+. ./paths.sh
+DIR=$output_DIR
 mkdir ${DIR}/graphs
 
 #
