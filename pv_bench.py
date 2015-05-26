@@ -271,15 +271,21 @@ for stage in range(numStages):
           cam.Azimuth(azimuth/(float(num_runs)/5.0))
         else:
           pass
+        
 
-        #start time
-        st = time.time()
-        svbRender()
-	#end time
-        et = time.time()
-        tt = (et-st)
-        times.append(tt)
 
+
+
+
+    #start time
+    st = time.time()
+    svbRender()
+    #end time
+    et = time.time()
+    tt = (et-st)
+    times.append(tt)
+
+     
     #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
     if (frac < .2):
       still_out_times.append(tt)
@@ -312,7 +318,11 @@ for stage in range(numStages):
   benchmark.print_logs()
 
   fps = float(num_runs)/(end_time-start_time);
+  print "DEBUG fps: %d" % fps
+  print "times"
+  print times
   results = parseTimings(times)
+  
   if (results['numFrames'] > 0):
     print "overall time avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 

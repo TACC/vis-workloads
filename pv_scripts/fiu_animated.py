@@ -23,8 +23,8 @@ print "fiu_data_dir:%s" %  fiu_data_dir
 
 
 
-u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"u_380x380x828_frame0010_subs00.nhdr" )
-rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"rho_380x380x828_frame0010_subs00.nhdr")
+u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
+rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr")
 
 
 streamlineResults = []
