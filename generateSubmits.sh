@@ -37,17 +37,18 @@ function processBench {
     echo "#SBATCH -N ${node}"  >> ${FILE}
     echo "#SBATCH -n $(( $node * 1 )) " >> ${FILE}
     queue="vis"
-    if [ "$dataSource" != "fiu" ]; then
-    if [ "$dataSource" != "fiu_animated" ]; then
-      if [ "$dataSource" != "molecule" ]; then
-        if [ "$dataSource" != "geo" ]; then
-          if [ "$node" -lt 2 ]; then
-            queue="largemem"
-          fi
-        fi
-      fi
-    fi
-    fi
+
+#    if [ "$dataSource" != "fiu" ]; then
+#    if [ "$dataSource" != "fiu_animated" ]; then
+#      if [ "$dataSource" != "molecule" ]; then
+#        if [ "$dataSource" != "geo" ]; then
+#          if [ "$node" -lt 2 ]; then
+#            queue="largemem"
+#          fi
+#        fi
+#      fi
+#    fi
+#    fi
     DL_FLAG=""
 
         DL_FLAG="--immediatemode"
@@ -117,8 +118,14 @@ function processBench {
     #if [ $renderer == "swr" ]; then
     #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
     #fi
-
-     echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+    if [ $MPI_COMMAND == "ibrun" ]; then
+        MPI_CMD="$MPI_COMMAND -n $[node] -o 0"
+    elif [ $MPI_COMMAND == "mpirun" ]; then
+	PRE_CMD=""
+        MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
+    fi
+     echo "$PRE_CMD ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+     #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
     IFILE=${DIR}/interactive/inter_${NAME}.sh

@@ -149,7 +149,22 @@ endif(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
 get_filename_component(WRFDATAD ${WRFDATA} PATH)
 set(WRFDATA_DIR ${WRFDATAD} CACHE PATH "WRF data directory")
 
+#
+# set how mpi programs are launched. default is ibrun
+# Note: mpirun and ibrun should be in your path or this wont work. 
+#
+if(NOT MPI_COMMAND)
+	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
+endif(NOT MPI_COMMAND)
 
+#
+# if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
+# look in the directory where this file is for the hosts file used with mpi
+#
+if(${MPI_COMMAND} MATCHES "mpirun")
+	find_file(HOSTFILE NAMES hosts PATHS $CMAKE_CURRENT_LIST_DIR )
+	set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
+endif(${MPI_COMMAND} MATCHES "mpirun")
 
 SET(PND \# CACHE INTERNAL STRING )
 FILE(REMOVE ${PROJECT_BINARY_DIR}/paths.sh)
@@ -187,4 +202,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_WHIPPLE=" ${USE_WHIPPLE}\n
   "GENERATE_IMAGES=" ${GENERATE_IMAGES}\n
   "ROOT_IMAGE_DIR=" ${ROOT_IMAGE_DIR}\n
+  "MPI_COMMAND=" ${MPI_COMMAND}\n
+  "HOSTFILE=" ${HOSTFILE}\n
+  "RANKS_PER_HOST=" ${RANKS_PER_HOST}\n
   )
