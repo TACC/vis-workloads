@@ -19,7 +19,6 @@ fi
 
 
 
-
 rm $DIR/submits/*
 rm $DIR/interactive/*
 PND="#"
@@ -133,6 +132,34 @@ function processBench {
     chmod +x $IFILE
 }
 
+function processTachyon {
+    node=$1
+    account=$2
+
+    NAME=dvmd_molecule_rtachyon_t1_n${node}
+    FILE=${DIR}/tachyon/submit_${NAME}.sh
+
+    echo "${PND}!/bin/bash " >${FILE}
+    echo "#SBATCH -J ${NAME} " >> ${FILE}
+    echo "#SBATCH -N ${node}"  >> ${FILE}
+    echo "#SBATCH -n $(( ${node} )) " >> ${FILE}
+    queue="vis"
+    echo "#SBATCH -p $queue " >> ${FILE}
+    echo "#SBATCH -A $account " >> ${FILE}
+    OUTFILE="${DIR}/tachyon/${NAME}.out"
+    echo "#SBATCH -o ${OUTFILE}" >> ${FILE}
+    echo "#SBATCH -t 00:40:00"  >> ${FILE}
+    echo "set -x" >> ${FILE}
+
+
+    echo "ibrun ${TACHYONBIN}  -trans_vmd +V -fullshade -aasamples 12 -rescale_lights 0.3 -add_skylight 1.0 -res 500 500 ${TACHYONDATA} -o ${TACHYONDATA_DIR}/${NAME}.tga" >> ${FILE}
+
+}
+
+
+
+
+
 PRELOAD=""
 #
 # node scaling
@@ -224,6 +251,27 @@ do
   done
 done
 
+
+
+if [ ${USE_TACHYON} == "ON" ]; then
+
+    
+     mkdir  $DIR/tachyon 
+
+    
+      for node in "${nodes[@]}";
+      do
+            processTachyon $node $ACCOUNT
+      done
+
+fi
+
+
+
+
+
+
+
 #
 # single node scaling
 #
@@ -251,3 +299,15 @@ do
     done
   done
 done
+
+
+
+
+
+if [ ${USE_TACHYON} == "ON" ]; then
+
+     
+     mkdir  $DIR/tachyon
+     processTachyon
+
+fi

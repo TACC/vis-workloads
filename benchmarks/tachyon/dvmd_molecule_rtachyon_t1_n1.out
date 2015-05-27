@@ -1,0 +1,26 @@
++ ibrun /home/01891/adb/tachyon/compile/linux-mpi/tachyon -trans_vmd +V -fullshade -aasamples 12 -rescale_lights 0.3 -add_skylight 1.0 -res 500 500 /work/00401/pnav/workloads/vmd_molecule/balls.dat -o /work/00401/pnav/workloads/vmd_molecule/dvmd_molecule_rtachyon_t1_n1.tga
+TACC: Starting up job 339206
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Tachyon Parallel/Multiprocessor Ray Tracer   Version 0.99   
+Copyright 1994-2013,    John E. Stone <john.stone@gmail.com> 
+------------------------------------------------------------ 
+Scene Parsing Time:     0.0165 seconds
+CPU Information:
+  Node    0:  1 CPUs, CPU Speed 1.00, Node Speed   1.00 Name: c221-602.maverick.tacc.utexas.edu
+  Total CPUs: 1
+  Total Speed: 1.000000
+
+Scene contains 7384 objects.
+Global bounds: -0.937166 -0.937166 -0.5 -> 0.950805 0.950805 0.830567
+Creating top level grid: X:30 Y:30 Z:30
+Grid:  X: 30  Y: 30  Z: 30  Cells:    27000  Obj:     7381  Obj/Cell:   0.273
+Scene contains 3 non-gridded objects
+
+Allocating Image Buffer.
+Preprocessing Time:     0.0028 seconds
+Rendering Progress:         0% complete            Rendering Progress:         0% complete            Rendering Progress:         3% complete            Rendering Progress:         6% complete            Rendering Progress:         9% complete            Rendering Progress:        13% complete            Rendering Progress:        16% complete            Rendering Progress:        19% complete            Rendering Progress:        22% complete            Rendering Progress:        25% complete            Rendering Progress:        29% complete            Rendering Progress:        32% complete            Rendering Progress:        35% complete            Rendering Progress:        38% complete            Rendering Progress:        41% complete            Rendering Progress:        45% complete            Rendering Progress:        48% complete            Rendering Progress:        51% complete            Rendering Progress:        54% complete            Rendering Progress:        57% complete            Rendering Progress:        61% complete            Rendering Progress:        64% complete            Rendering Progress:        67% complete            Rendering Progress:        70% complete            Rendering Progress:        73% complete            Rendering Progress:        77% complete            Rendering Progress:        80% complete            Rendering Progress:        83% complete            Rendering Progress:        86% complete            Rendering Progress:        89% complete            Rendering Progress:        93% complete            Rendering Progress:        96% complete            Rendering Progress:        99% complete            Rendering Progress:       100% complete            
+  Ray Tracing Time:   124.5619 seconds
+    Image I/O Time:     0.0225 seconds
+ 
+TACC: Shutdown complete. Exiting.

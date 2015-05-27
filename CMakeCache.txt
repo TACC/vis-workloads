@@ -219,7 +219,7 @@ MPI_COMMAND:STRING=ibrun
 PV_FINDO:FILEPATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch
 
 //root SVB directory
-ParaView_DIR:STRING=
+ParaView_DIR:STRING=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
 
 //Path to a file.
 RMDATA:FILEPATH=RMDATA-NOTFOUND
@@ -451,6 +451,8 @@ GEODATA-MODIFIED:INTERNAL=ON
 GEODATA_DIR-MODIFIED:INTERNAL=ON
 //STRING
 PND:INTERNAL=#
+//MODIFIED property for variable: ParaView_DIR
+ParaView_DIR-MODIFIED:INTERNAL=ON
 //MODIFIED property for variable: ROOT_IMAGE_DIR
 ROOT_IMAGE_DIR-MODIFIED:INTERNAL=ON
 //MODIFIED property for variable: USE_DNS

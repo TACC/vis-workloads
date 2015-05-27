@@ -30,8 +30,7 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMake)
 #
 SET(SVB_DIR ${PROJECT_SOURCE_DIR} CACHE STRING "root SVB directory")
 SET(output_DIR ${PROJECT_SOURCE_DIR}/benchmarks CACHE STRING "output directory")
-#
-# find paraview by looking for pvbatch. pvbatch should be in the " usual "
+
 # place. if not do something like module load paraview to get the paths
 # correctly set. If paraview is not found nothing will run. 
 #
@@ -43,6 +42,24 @@ get_filename_component(PV_FIND ${PV_FINDO} PATH)
 SET(ParaView_DIR ${PV_FIND} CACHE STRING "root SVB directory")
 SET(pvOSPRay_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
 SET(pvVBO_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
+
+
+
+#
+#tachyon (will update this to find the tachyon binary as above)
+#
+
+SET(TACHYONBIN ${TACHYONBIN} CACHE STRING "Tachyon renderer")
+SET(TACHYONDATA ${TACHYONDATA} CACHE STRING "Tachyon datafile")
+SET(TACHYONDATA_DIR ${TACHYONDATAi_DIR} CACHE STRING "Tachyon directorya")
+
+
+
+
+
+
+
+
 #
 # find the gluray stuff. 
 #
@@ -66,12 +83,15 @@ set(USE_GLURAY OFF CACHE BOOL "use gluray renderer")
 set(USE_VBO OFF CACHE BOOL "use vbo renderer")
 set(USE_OSPRAY OFF CACHE BOOL "use ospray renderer")
 set(USE_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
+set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
+
+
 # DATA
 set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
 set(USE_FIU OFF CACHE BOOL "run fiu data")
 set(USE_RM OFF CACHE BOOL "run the rm data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
-set(USE_MOLECULE OFF CACHE BOOL "run the molecule data")
+set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
 set(USE_GEO OFF CACHE BOOL "run the geo data")
 set(USE_WHIPPLE OFF CACHE BOOL "run whipple shield data")
 set(USE_WHIPPLE_TIME OFF CACHE BOOL "run the whipple shield time series data")
@@ -192,6 +212,10 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_VBO=" ${USE_VBO}\n
   "USE_OSPRAY=" ${USE_OSPRAY}\n
   "USE_SWRVBO=" ${USE_SWRVBO}\n
+  "USE_TACHYON=" ${USE_TACHYON}\n
+  "TACHYONBIN=" ${TACHYONBIN}\n
+  "TACHYONDATA=" ${TACHYONDATA}\n
+  "TACHYONDATA_DIR=" ${TACHYONDATA_DIR}\n
   "USE_FIU_ANIMATED=" ${USE_FIU_ANIMATED}\n
   "USE_FIU=" ${USE_FIU}\n
   "USE_RM=" ${USE_RM}\n

@@ -1,7 +1,7 @@
 #!/bin/bash
 SVB_DIR=/work/01891/adb/maverick/svb_adb
 output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
-ParaView_DIR=
+ParaView_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
 pvOSPRay_DIR=/../lib
 pvVBO_DIR=/../lib
 GLuRay_PATH=GLURAY_FIND-NOTFOUND
@@ -21,6 +21,10 @@ USE_GLURAY=OFF
 USE_VBO=OFF
 USE_OSPRAY=ON
 USE_SWRVBO=OFF
+USE_TACHYON=ON
+TACHYONBIN=/home/01891/adb/tachyon/compile/linux-mpi/tachyon
+TACHYONDATA_DIR=/work/00401/pnav/workloads/vmd_molecule
+TACHYONDATA=/work/00401/pnav/workloads/vmd_molecule/balls.dat
 USE_FIU_ANIMATED=ON
 USE_FIU=ON
 USE_RM=OFF
