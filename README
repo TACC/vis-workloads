@@ -1,17 +1,16 @@
- Instructions for Running Benchmarks (Beta, for GregP):
-(this is for static data with an interactive camera)
+ Instructions for Running Benchmarks (Beta, v2):
 
 1) Clone benchmarking scripts and applications:
-bashshell$ git checkout willaddthislater
+bashshell$ git clone -b adb stampede.tacc.utexas.edu:/work/01336/carson/git/svb.git svb
 This will clone the primary benchmarking folder "svb" that contains:
-(GregP for now your directory structure after you unpack the tar I gave you should be):
---->svb (the root rolder in the tar I provided)
+--->svb
 	-->CMakeLists.txt
 	-->pv_scripts(this has all the pv scripts for each datafile as well as core modules in the benchmark.py)
 	-->(benchmarks) this will be generated once you run generateSubmits.sh
 		-->outs
 		-->submits
 		-->interactive
+                -->tachyon
 	-->pv_bench.py:  the primary python script for running the benchmarks
 	-->generateSubmits.sh: suplementary script to generate slurm scripts to launch all of the data-sets with varying geometry scaling using all the renderers
 	-->generateDats.sh:  Parse the logs and put the results into a more easily readable format
@@ -23,16 +22,17 @@ This will clone the primary benchmarking folder "svb" that contains:
 		*-->fiu.py (static fiu data-set with "interactive" camera motion)
 		*-->molecule.py (static molecule data-set with "interactive" camera motion)
 		*-->geo.py (static seismic horizons with "interactive" camerea motion)
-		-->dns.py (todo: need to regenerate the nddr and xm files for this one! static dns data-set with "interactive" camera motion)
+		*-->dns.py (todo: need to regenerate the nddr and xm files for this one! static dns data-set with "interactive" camera motion)
 		-->rm.py (todo: need to regenerate the nddr and xm files for this one! static rm data-set with "interactive" camera motion)
 		-->rm-time.py (todo: time series rm data without camera motion)
-		-->wrf.py (todo: need to get the wrf pv 4.1.0 built for ospray to work! time series climate modeling data without camera motion)
+		*-->wrf.py (todo: need to get the wrf pv 4.1.0 built for ospray to work! time series climate modeling data without camera motion)
 		-->enzo.py (todo: build of paraview with visit_bridge to determine if this is doable in paraview! static astrophysics data with "interactive" camera motion)
 		-->enzo-time.py(todo: build of paraview with visit_bridge to determine if this is doable in paraview! static astrophysics data without camera motion)
-		-->whipit.py (todo:update/test the data collection for time-series data! time series whipple shield data without camera motion)
-		-->moreland.py(todo:update/test the time series/dynamic whipple shield data with "interactive" camera motion)
-		-->fiu_animated(todo: update/test the data collection with dynamic data! fiu dataset with incrementally increasing streamlines)
+		*-->whipit.py (todo:update/test the data collection for time-series data! time series whipple shield data without camera motion)
+		*-->moreland.py(todo:update/test the time series/dynamic whipple shield data with "interactive" camera motion)
+		*-->fiu_animated(todo: update/test the data collection with dynamic data! fiu dataset with incrementally increasing streamlines)
 	-->visit_scripts visit python scripts for creating desirec visualization (under development)
+        -->vmd_scripts python  scripts to generate tachyon files from pdb or dcd files (under development, for now we have the pregenerated tachyon scene files in the data directory)
 2) Set up environment variables using cmake:
 for more info on camke: www.cmake.org/runningcmake 
 bashshell$ ccmake .
@@ -44,8 +44,8 @@ cmake will output the variables to a file path.sh that is used by pv_bench.py, g
 3) Test running the benchmark interactively, the benchmark output will go to stdout:
 to test the benchmarks try:
 bashshell$ module load qt paraview/4.1.0
+bashshell$ (for TACC systems to ensure env is set up properly) module use /work/01336/carson/opt/maverick/modulefiles/
 bashshell$ vglrun pvpython pv_bench.py --source fiu
-
 
 
 4) Generate submit scripts:
@@ -65,5 +65,9 @@ Results are stored in outs. Timings are done over portions of the animation as w
 
 7) Adding new scripts:
 to add a new source script you just need to implement two functions , svbSetup and svbRender, which you can see examples of in pv_scripts/fiu.py. Then just add x from "x.py" that you added to the pv_scripts directory to the list of sources in generateScripts. GeometryLevel is an indication of a script-specific level of geometry. For example, the fiu has 10 geometry levels from 0-9 which it interprets to generate different amounts of streamlines for each of those levels. Whether or not you need to add this depends on the run you want to do.
+
+
+
+
 
 

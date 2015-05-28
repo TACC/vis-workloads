@@ -190,6 +190,9 @@ view.ViewSize=windowsize
 
 
 numStages = svbGetStagesSize()
+
+print "Total Stages: " + str(numStages)
+
 for stage in range(numStages):
   print "#"
   print "Stage " + str(stage) + str("...")
@@ -318,8 +321,6 @@ for stage in range(numStages):
   benchmark.print_logs()
 
   fps = float(num_runs)/(end_time-start_time);
-  print "DEBUG fps: %d" % fps
-  print "times"
   print times
   results = parseTimings(times)
   
