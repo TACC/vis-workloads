@@ -134,7 +134,6 @@ function processBench {
 
 function processTachyon {
     node=$1
-    account=$2
 
     NAME=dvmd_molecule_rtachyon_t1_n${node}
     FILE=${DIR}/tachyon/submit_${NAME}.sh
@@ -152,7 +151,8 @@ function processTachyon {
     echo "set -x" >> ${FILE}
 
 
-    echo "ibrun ${TACHYONBIN}  -trans_vmd +V -fullshade -aasamples 12 -rescale_lights 0.3 -add_skylight 1.0 -res 500 500 ${TACHYONDATA} -o ${TACHYONDATA_DIR}/${NAME}.tga" >> ${FILE}
+    echo "ibrun ${TACHYONBIN}  -trans_vmd +V -fullshade -aasamples 12 -rescale_lights 0.3 -add_skylight 1.0 -res 500 500 ${TACHYONDATA} -o ${DIR}/tachyon/${NAME}.tga" >> ${FILE}
+    chmod +x ${FILE}
 
 }
 
@@ -253,21 +253,6 @@ done
 
 
 
-if [ ${USE_TACHYON} == "ON" ]; then
-
-    
-     mkdir  $DIR/tachyon 
-
-    
-      for node in "${nodes[@]}";
-      do
-            processTachyon $node $ACCOUNT
-      done
-
-fi
-
-
-
 
 
 
@@ -306,8 +291,12 @@ done
 
 if [ ${USE_TACHYON} == "ON" ]; then
 
-     
+     nodes=( 1 2 4 8 16 32)     
      mkdir  $DIR/tachyon
-     processTachyon
+      for node in "${nodes[@]}";
+ 	 do
 
+     		processTachyon $node
+
+          done
 fi

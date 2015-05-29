@@ -35,6 +35,38 @@ function processDat {
   }
 
 
+
+function processStage {
+
+_inp=$1
+_count=$2
+sed -n "/Stage ${_count}/,/Stage $((_count+1))/p" $_inp
+
+}
+
+
+function writeOutDat {
+
+    _datFile=$1
+    _count=$2
+    _name=$3
+    _inp=$4
+
+    echo -n "" $name >> ${_datFile}
+    echo -n "" $count >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "first frame" | awk '{print $5}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "overall frame time" | awk '{print $6}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "overall frame time" | awk '{print $8}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "overall render time" | awk '{print $6}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "overall render time" | awk '{print $8}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "still zoomed out" | awk '{print $8}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "reader time" | awk '{print $3}' ` >> ${_datFile}
+    echo -n ""  `processStage $_inp $_count | grep "filter time" | awk '{print $3}' ` >> ${_datFile}
+    echo "" >> ${_datFile}
+
+
+}
+
 function processDynamicDat {
     tri=$1
     node=$2
@@ -43,21 +75,18 @@ function processDynamicDat {
     datFile=$5
     name=d${dataSource}_r${renderer}_t${tri}_n${node}
     inFile=${DIR}/outs/${name}.out
-    stages=`cat ${inFile} | grep "Total " | awk '{print $2}' `
+    #stages=`cat ${inFile} | grep "Total " | awk '{print $2}' `
+    total=`grep "^Stage " $inFile | wc -l`
+    count=0
     
-    for i in `seq 1 $stages`; do
-    echo "#runName  stage, first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, reader time, filter time" >> ${datFile}
-    echo -n $name >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "rst frame" | awk '{print $5}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "first frame" | awk '{print $5}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall frame time" | awk '{print $6}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall frame time" | awk '{print $8}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall render time" | awk '{print $6}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall render time" | awk '{print $8}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "still zoomed out" | awk '{print $8}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "reader time" | awk '{print $3}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "filter time" | awk '{print $3}' ` >> ${datFile}
-    echo "" >> ${datFile}
+    let "total--"
+    for count in $(seq 0 $total);
+    do
+     writeOutDat $datFile $count $name $inFile
+    done
+
+        
+
   }
 
 
@@ -143,18 +172,17 @@ for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
   do
-    datFile=${DIR}/dats/strongScale_d${data}_t${tri}.dat
-    echo "#datFile strongScale_d${data}_t${tri}.dat" > ${datFile}
-    echo "#runName first frame, overall frame time, dev, overall render time, dev, still zoomed out, dev, rotate zoomed out, dev, zooming, dev, rotate zoomed in, dev, still zoomed in, dev, reader time, filter time" >> ${datFile}
+    datFile=${DIR}/dats/dynamic_d${data}_t${tri}.dat
+    echo "#datFile dynamic_d${data}_t${tri}.dat" > ${datFile}
+    echo "#runName, stage, first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, reader time, filter time" >> ${datFile}
     for renderer in "${renderers[@]}";
     do
       for node in "${nodes[@]}";
       do
         processDynamicDat $tri $node $renderer $data $datFile
-
       done
     done
-    echo "" >> ${datFile}
+    #echo "" >> ${datFile}
   done
 done
 
