@@ -89,10 +89,13 @@ function addPlot
   counter=$6
   scaleType=$7
   file=${graphFile}.${title}.part
+  fileD=/work/01891/adb/maverick/svb_adb/scratch.txt
   echo "#datpart ${file}" > ${file}
   grep ${grepString} ${datFile} | while read -r line; do 
     if [ "${scaleType}" == "strongScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_n" '/1/ {print $2}' | awk '{print $1}'` " " >> ${file}
+    elif [ "${scaleType}" == "dynamicScale" ]; then
+      echo -n `echo -n "$line" |  awk -F "_s" '/1/ {print $2}' | awk -F "_" '{print $1}'` " " >> ${file}
     elif [ "${scaleType}" == "triScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_t" '/1/ {print $2}' | awk -F "_" '{print $1}'` " " >> ${file}
   fi
@@ -112,8 +115,8 @@ done
 tris=( 1 2 3 4 5 6 7 8 9)
 nodes=( 1 )
 renderer=swr
-renderers=( "swr" "gpu" "gluray" "vbo" "ospray" )
-dataSources=("fiu" "rm" "dns" "molecule" "geo")
+renderers=( "swr" "gpu")
+dataSources=("fiu" "dns")
 set -x
 PRELOAD=""
 
@@ -149,7 +152,7 @@ done
 tris=( 6 )
 nodes=( 1 2 4 8 16 32 )
 renderers=( "swr" "gpu" "gluray" "ospray" "vbo" )
-dataSources=("fiu" "rm" "dns" "molecule" "geo")
+dataSources=("fiu" "dns" "molecule" "geo")
 
 for data in "${dataSources[@]}";
 do
@@ -178,3 +181,41 @@ do
   done
 done
 
+
+
+
+
+#
+# dynamic scaling
+#
+tris=( 6 )
+nodes=( 1 )
+renderers=( "swr" "gpu" )
+dataSources=("fiu_animated")
+
+for data in "${dataSources[@]}";
+do
+  for tri in "${tris[@]}";
+  do
+  name="dynamicStrong_d${data}_t${tri}"
+  datFile=${DIR}/dats/${name}.dat
+  graphFile=${DIR}/graphs/${name}.gnuplot
+  graphTitle=${name}
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} nodes seconds strongScale
+  counter=0
+  for renderer in "${renderers[@]}";
+  do
+      # for node in "${nodes[@]}";
+      # do
+        title=$renderer
+        column=5
+        grepString="_r${renderer}_"
+        addPlot $title $datFile $graphFile $grepString $column $counter "dynamicScale"
+        counter=$(( $counter + 1 ))
+      # done
+    done
+    echo "" >> ${graphFile}
+  gnuplot ${graphFile}
+  convert ${DIR}/graphs/${graphTitle}.svg ${DIR}/graphs/${graphTitle}.png
+  done
+done

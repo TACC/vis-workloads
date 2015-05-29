@@ -164,7 +164,7 @@ PRELOAD=""
 #
 # node scaling
 #
-tris=( 4 6 9 )
+tris=( 1 )
 nodes=( 1 2 4 8 16 32 )
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 renderers=()
