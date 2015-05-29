@@ -1,3 +1,4 @@
+Stages: 5
 #datFile dynamic_dfiu_animated_t6.dat
 #runName, first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, reader_time, filter_time
  dfiu_animated_rgpu_t6_n1_s0 0.699126005173 0.000406360626221 3.13164777608e-05 0.000406360626221 3.13164777608e-05 0.000406360626221 3.13164777608e-05 0.000144 0.697142

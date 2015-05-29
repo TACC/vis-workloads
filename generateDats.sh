@@ -77,14 +77,13 @@ function processDynamicDat {
     inFile=${DIR}/outs/${name}.out
     #stages=`cat ${inFile} | grep "Total " | awk '{print $2}' `
     total=`grep "^Stage " $inFile | wc -l`
-    
+    num_stages=${total}
     let "total--"
     for stage in $(seq 0 $total);
     do
      writeOutDat $_datFile $stage $name $inFile
-    done
 
-        
+     done        
 
   }
 
@@ -164,7 +163,7 @@ tris=( 6 )
 nodes=( 1 )
 renderers=("gpu" "swr") 
 dataSources=("fiu_animated")
-
+num_stages=0
 for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
@@ -180,6 +179,7 @@ do
       done
     done
     echo "" >> ${datFile}
+    sed -i "1iStages: ${num_stages}" ${datFile}    
   done
 done
 

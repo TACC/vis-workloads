@@ -15,6 +15,7 @@ function createGraph
   xAxis=$4
   yAxis=$5
   graphType=$6
+  _stages=$7
   GP_FILE=${graphFile}
   echo "#graph ${graphTitle}" > ${graphFile}
   #echo "set terminal postscript eps enhanced" >> ${GP_FILE}
@@ -24,14 +25,17 @@ function createGraph
   echo "set output '${outFile}.svg'" >> ${GP_FILE}
   echo "set size 0.98,1.0" >> ${GP_FILE}
   echo "set datafile missing 'none'" >> ${GP_FILE}
-  if [ "${graphType}" == "triScale" ]; then
+    if [ "${graphType}" == "triScale" ]; then
     echo "set xtics (1,2,3,4,5,6,7,8,9)" >> ${GP_FILE}
     echo "set logscale x" >> ${GP_FILE}
     echo "set logscale y" >> ${GP_FILE}
-  else
+  elif [ "${graphType}" == "strongScale" ]; then
     echo "set logscale x" >> ${GP_FILE}
     echo "set xtics (1,2,4,8,16,32)" >> ${GP_FILE}
-  fi
+  elif [ "${graphType}" == "dynamicScale" ]; then
+    echo "set xtics" >> ${GP_FILE}
+   fi
+   
   echo "set key top left" >> ${GP_FILE}
   #echo "unset key" >> ${GP_FILE} 
   # echo "set ytics 10"  >> ${GP_FILE}
@@ -79,6 +83,15 @@ function createGraph
   echo -n "plot " >> ${GP_FILE}
 } 
 
+
+
+
+
+
+
+
+
+
 function addPlot
 {
   title=$1
@@ -95,7 +108,7 @@ function addPlot
     if [ "${scaleType}" == "strongScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_n" '/1/ {print $2}' | awk '{print $1}'` " " >> ${file}
     elif [ "${scaleType}" == "dynamicScale" ]; then
-      echo -n `echo -n "$line" |  awk -F "_s" '/1/ {print $2}' | awk -F "_" '{print $1}'` " " >> ${file}
+      echo -n `echo -n "$line" |  awk -F "_s" '/1/ {print $2}' | awk '{print $1}'` " " >> ${file}
     elif [ "${scaleType}" == "triScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_t" '/1/ {print $2}' | awk -F "_" '{print $1}'` " " >> ${file}
   fi
@@ -119,7 +132,7 @@ renderers=( "swr" "gpu")
 dataSources=("fiu" "dns")
 set -x
 PRELOAD=""
-
+stages=0
 for data in "${dataSources[@]}";
 do
   for node in "${nodes[@]}";
@@ -127,7 +140,7 @@ do
   datFile=${DIR}/dats/triScale_d${data}_n${nodes}.dat
   graphFile=${DIR}/graphs/triScale_d${data}_n${nodes}.gnuplot
   graphTitle=triScale_d${data}_n${nodes}
-  createGraph $graphFile $graphTitle ${DIR}/graphs/triScale_d${data}_n${nodes} triangles seconds "triScale"
+  createGraph $graphFile $graphTitle ${DIR}/graphs/triScale_d${data}_n${nodes} triangles seconds "triScale" $stages
   counter=0
   for renderer in "${renderers[@]}";
   do
@@ -153,7 +166,7 @@ tris=( 6 )
 nodes=( 1 2 4 8 16 32 )
 renderers=( "swr" "gpu" "gluray" "ospray" "vbo" )
 dataSources=("fiu" "dns" "molecule" "geo")
-
+stages=1
 for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
@@ -171,7 +184,7 @@ do
         title=$renderer
         column=5
         grepString="_r${renderer}_"
-        addPlot $title $datFile $graphFile $grepString $column $counter "strongScale"
+        addPlot $title $datFile $graphFile $grepString $column $counter "strongScale" $stages
         counter=$(( $counter + 1 ))
       # done
     done
@@ -197,22 +210,24 @@ for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
   do
-  name="dynamicStrong_d${data}_t${tri}"
+  name="dynamic_d${data}_t${tri}"
   datFile=${DIR}/dats/${name}.dat
+  stages=`cat ${datFile} | grep "Stages" | awk '{print $2}' `   
   graphFile=${DIR}/graphs/${name}.gnuplot
   graphTitle=${name}
-  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} nodes seconds strongScale
+ 
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} stages seconds dynamicScale
   counter=0
   for renderer in "${renderers[@]}";
   do
-      # for node in "${nodes[@]}";
-      # do
+       #for stage in $(seq 0 $stages); 
+       #do
         title=$renderer
         column=5
         grepString="_r${renderer}_"
-        addPlot $title $datFile $graphFile $grepString $column $counter "dynamicScale"
+        addPlot $title $datFile $graphFile $grepString $column $counter "dynamicScale" $stages
         counter=$(( $counter + 1 ))
-      # done
+       #done
     done
     echo "" >> ${graphFile}
   gnuplot ${graphFile}

@@ -1,0 +1,53 @@
+triangles
+
+STRONG
+1  STRONG
+2  STRONG
+3  STRONG
+4  STRONG
+5  STRONG
+6  STRONG
+7  STRONG
+8  STRONG
+9  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 STRONG
+1  STRONG
+2  STRONG
+3  STRONG
+4  STRONG
+5  STRONG
+6  STRONG
+7  STRONG
+8  STRONG
+9  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 triangles
+
+STRONG
+1  STRONG
+2  STRONG
+3  STRONG
+4  STRONG
+5  STRONG
+6  STRONG
+7  STRONG
+8  STRONG
+9  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_ddns_n1.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_ddns_n1.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 STRONG
+1  STRONG
+2  STRONG
+3  STRONG
+4  STRONG
+5  STRONG
+6  STRONG
+7  STRONG
+8  STRONG
+9  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_ddns_n1.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_ddns_n1.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 stages
+
+DYNAMIC
+0  DYNAMIC
+1  DYNAMIC
+2  DYNAMIC
+3  DYNAMIC
+4  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 DYNAMIC
+0  DYNAMIC
+1  DYNAMIC
+2  DYNAMIC
+3  DYNAMIC
+4  '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 
