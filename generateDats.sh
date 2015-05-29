@@ -92,7 +92,7 @@ function processDynamicDat {
 #
 # node scaling
 #
-tris=( 1  )
+tris=( 1 6 )
 nodes=( 1 2 4 8 16 32 )
 renderers=("gpu" "swr")
 dataSources=("fiu" "dns")
@@ -135,14 +135,12 @@ nodes=( 1 )
 #renderers=( "swr" "gpu" )
 renderers=( "gpu" "swr")
 dataSources=("fiu" "dns")
-set -x
-PRELOAD=""
 
 for data in "${dataSources[@]}";
 do
   for node in "${nodes[@]}";
   do
-  datFile=dats/triScale_d${data}_n${nodes}.dat
+  datFile=${DIR}/dats/triScale_d${data}_n${nodes}.dat
   echo "#datFile triScale_d${data}_t${tri}.dat" > ${datFile}
   echo "#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time" >> ${datFile}
   for renderer in "${renderers[@]}";

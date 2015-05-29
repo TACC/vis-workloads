@@ -1,0 +1,15 @@
+#datFile strongScale_ddns_t6.dat
+#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time
+ddns_rgpu_t6_n1
+ddns_rgpu_t6_n2
+ddns_rgpu_t6_n4
+ddns_rgpu_t6_n8
+ddns_rgpu_t6_n16
+ddns_rgpu_t6_n32
+ddns_rswr_t6_n1 0.82155585289 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000350856781006 6.1818788296e-05 0.000669 0.61784
+ddns_rswr_t6_n2
+ddns_rswr_t6_n4
+ddns_rswr_t6_n8
+ddns_rswr_t6_n16
+ddns_rswr_t6_n32
+
