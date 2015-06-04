@@ -89,11 +89,11 @@ def createStreamlines(source, source2, time):
   a3_ImageFile_PiecewiseFunction.Points = [0.0, 0.0, 0.5, 0.0, 0.01929037946667726, 1.0, 0.5, 0.0]
 
   DataRepresentation6 = Show()
-  DataRepresentation6.ScaleFactor = 300.0
-  DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
+  #DataRepresentation6.ScaleFactor = 300.0
+  #DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
   DataRepresentation6.LookupTable = a3_ImageFile_PVLookupTable
   #ADB: Bizarre Suddenly May 21 at 3:00 stopped working because it couldn't find ImageFIle
-  #DataRepresentation6.ColorArrayName = 'ImageFile'
+  DataRepresentation6.ColorArrayName = 'ImageFile'
   SetActiveSource(source2)
   originz = -800.0+(430.92--800.0)*time
 
@@ -137,7 +137,7 @@ def createStreamlines(source, source2, time):
   DataRepresentation3.DiffuseColor = [0.6823529411764706, 0.4627450980392157, 0.08627450980392157]
   #DataRepresentation3.DiffuseColor = [0.7823529411764706, 0.4627450980392157, 0.08627450980392157]
   #DataRepresentation3.ScalarOpacityUnitDistance = 4.932379654708959
-  DataRepresentation3.ScaleFactor = 82.7
+  #DataRepresentation3.ScaleFactor = 82.7
 
   #DataRepresentation2.Visibility = 0
 
