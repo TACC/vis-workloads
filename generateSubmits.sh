@@ -110,10 +110,10 @@ function processBench {
     echo "module load qt" >> ${FILE}
     echo "module load paraview/4.1.0" >> ${FILE}
     #need to determing how to handle this, for general benchmarking, carson has two pvospray modules, one looks better and one is faster...
-    #echo "module use /work/01336/carson/opt/maverick/modulefiles" >> ${FILE}
-    #if [ $renderer == "ospray" ]; then
-    #    echo "module load pvosprayFast" >> ${FILE}
-    #fi
+    echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
+    if [ $renderer == "ospray" ]; then
+        echo "module load pvospray/1.0.2" >> ${FILE}
+    fi
     #if [ $renderer == "swr" ]; then
     #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
     #fi
