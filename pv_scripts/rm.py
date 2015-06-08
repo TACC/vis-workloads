@@ -1,25 +1,51 @@
 try: paraview.simple
 except: from paraview.simple import *
 
-def svbSetup(geometryLevel=1):
+def svbGetStagesSize():
+  return 1;
+
+def svbSetup(geometryLevel=1, stage=0):
 
   numCells = 0
   numPolys = 0 
   numPoints = 0
-  
-  if geometryLevel < 6:
-    ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
 
+  #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
+  #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
+  reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
+  #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
+
+  
+  Contour1 = Contour( PointMergeMethod="Uniform Binning" )
+
+  Contour1.PointMergeMethod = "Uniform Binning"
+  Contour1.ContourBy = ['POINTS', 'ImageFile']
+  Contour1.Isosurfaces = [27.0]
+  Contour1.ComputeNormals = 1
+
+  DataRepresentation2 = Show()
+  DataRepresentation2.ScaleFactor = 25.5
+  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  
+  """
+  if geometryLevel < 0:
+    #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
+    #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
+    reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
+    #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
+
+    
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'ImageFile']
     Contour1.Isosurfaces = [27.0]
-    Contour1.ComputeNormals = 0
+    Contour1.ComputeNormals = 1
 
     DataRepresentation2 = Show()
     DataRepresentation2.ScaleFactor = 25.5
     DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+    
   else:
     #ppmt273_nrrd = NrrdReader( FileName='/scratch/01336/carson/intelTACC/rm/ppmt273.nrrd' )
     def computeFileName(x):
@@ -101,12 +127,14 @@ def svbSetup(geometryLevel=1):
   #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
   #RenderView1.Background = [1.0,1.0,1.0]
 
+  """
   ResetCamera()
   cam = GetActiveCamera()
   cam.Roll(90)
   cam.Elevation(65)
   cam.Azimuth(-20)
 
+  """ 
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -114,6 +142,7 @@ def svbSetup(geometryLevel=1):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+  """
 
 
   return {'azimuth':90, 'dolly':3.0}
