@@ -26,7 +26,8 @@ def svbSetup(geometryLevel=1, stage=0):
   # toggle the 3D widget visibility.
   active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
 
-  Slice1.SliceType.Origin = [1, 1023.5, 959]
+  val = (float(stage)/float(svbGetStagesSize()))*2046+1
+  Slice1.SliceType.Origin = [val, 1023.5, 959]
   Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
 
   DataRepresentation2 = Show()
