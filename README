@@ -44,7 +44,7 @@ cmake will output the variables to a file path.sh that is used by pv_bench.py, g
 3) Test running the benchmark interactively, the benchmark output will go to stdout:
 to test the benchmarks try:
 bashshell$ module load qt paraview/4.1.0
-bashshell$ (for TACC systems to ensure env is set up properly) module use /work/01336/carson/opt/maverick/modulefiles/
+bashshell$ (for TACC systems to ensure env is set up properly) module use /work/01336/carson/opt/modulefiles/
 bashshell$ vglrun pvpython pv_bench.py --source fiu
 
 

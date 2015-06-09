@@ -1,0 +1,2947 @@
++ date
+Mon Jun  8 10:29:36 CDT 2015
++ module load qt
+++ /opt/apps/lmod/lmod/libexec/lmod bash load qt
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi";' export '_ModuleTable004_;' '_ModuleTable005_="LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable005_;' '_ModuleTable_Sz_="5";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ TACC_QT_DIR=/opt/apps/qt/4.8.4
+++ export TACC_QT_DIR
+++ TACC_QT_INC=/opt/apps/qt/4.8.4/include
+++ export TACC_QT_INC
+++ TACC_QT_LIB=/opt/apps/qt/4.8.4/lib
+++ export TACC_QT_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i
+++ export _ModuleTable001_
+++ _ModuleTable002_=L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs
+++ export _ModuleTable002_
+++ _ModuleTable003_=cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd
+++ export _ModuleTable003_
+++ _ModuleTable004_=PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi
+++ export _ModuleTable004_
+++ _ModuleTable005_=LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=
+++ export _ModuleTable005_
+++ _ModuleTable_Sz_=5
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module load paraview/4.1.0
+++ /opt/apps/lmod/lmod/libexec/lmod bash load paraview/4.1.0
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'PYTHONPATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages";' export 'PYTHONPATH;' 'TACC_PARAVIEW_DIR="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0";' export 'TACC_PARAVIEW_DIR;' 'TACC_PARAVIEW_INC="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include";' export 'TACC_PARAVIEW_INC;' 'TACC_PARAVIEW_LIB="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib";' export 'TACC_PARAVIEW_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i";' export '_ModuleTable004_;' '_ModuleTable005_="XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz";' export '_ModuleTable005_;' '_ModuleTable006_="IixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ PYTHONPATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages
+++ export PYTHONPATH
+++ TACC_PARAVIEW_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0
+++ export TACC_PARAVIEW_DIR
+++ TACC_PARAVIEW_INC=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include
+++ export TACC_PARAVIEW_INC
+++ TACC_PARAVIEW_LIB=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib
+++ export TACC_PARAVIEW_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i
+++ export _ModuleTable001_
+++ _ModuleTable002_=L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs
+++ export _ModuleTable002_
+++ _ModuleTable003_=cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd
+++ export _ModuleTable003_
+++ _ModuleTable004_=PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i
+++ export _ModuleTable004_
+++ _ModuleTable005_=XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz
+++ export _ModuleTable005_
+++ _ModuleTable006_=IixbInZlcnNpb24iXT0yLH0=
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module use /work/01336/carson/opt/modulefiles
+++ /opt/apps/lmod/lmod/libexec/lmod bash use /work/01336/carson/opt/modulefiles
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgi";' export '_ModuleTable001_;' '_ModuleTable002_="LFsic3RhdHVzIl09ImFjdGl2ZSIsfSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsi";' export '_ModuleTable002_;' '_ModuleTable003_="ZnVsbE5hbWUiXT0iY2x1c3RlciIsWyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQs";' export '_ModuleTable003_;' '_ModuleTable004_="cHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJzaG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJh";' export '_ModuleTable004_;' '_ModuleTable005_="dmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN";' export '_ModuleTable005_;' '_ModuleTable006_="UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgi
+++ export _ModuleTable001_
+++ _ModuleTable002_=LFsic3RhdHVzIl09ImFjdGl2ZSIsfSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsi
+++ export _ModuleTable002_
+++ _ModuleTable003_=ZnVsbE5hbWUiXT0iY2x1c3RlciIsWyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQs
+++ export _ModuleTable003_
+++ _ModuleTable004_=cHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJzaG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJh
+++ export _ModuleTable004_
+++ _ModuleTable005_=dmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN
+++ export _ModuleTable005_
+++ _ModuleTable006_=UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ export PATH=/home/01249/gda/pvospray/pv-4.1/bin:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
++ PATH=/home/01249/gda/pvospray/pv-4.1/bin:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
++ export LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export DISPLAY=:1
++ DISPLAY=:1
++ tacc_xrun ibrun -n 1 -o 0 /opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch /work/01891/adb/maverick/svb_adb/pv_bench.py -w 1920x1080 --nocamera --save_images -i /work/01891/adb/maverick/svb_adb/benchmarks/images/ --geoLevel 1 --numruns 10 --source wrf --immediatemode
+TACC: Starting up job 343384
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ pv_scscript_path:/work/01891/adb/maverick/svb_adb/pv_scripts
+setting maxentries
+windowsize: [1920, 1080]
+enabling immediate mode
+immmediate mode set correctly
+trying to import from source
+<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x4299270>
+SVB_DIR=/work/01891/adb/maverick/svb_adb
+
+output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+ParaView_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
+
+pvOSPRay_DIR=/../lib
+
+pvVBO_DIR=/../lib
+
+WRF_PLUGIN_PATH=/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so 
+
+GLuRay_PATH= /work/01336/carson/opt/apps/gluray/1.1.0/bin/gluray
+
+GEODATA_DIR=/work/00401/pnav/workloads/geo
+
+MOLDATA_DIR=/work/01891/adb/molecule_benchmark
+
+WHIPPLEDATA_DIR=/work/01336/carson/intelTACC/data/Whipple300
+
+ENZODATA_DIR=ENZODATA_DIR_NOTFOUND
+
+WRFDATA_DIR=/work/01891/adb/wrf
+
+DNSDATA_DIR= /work/00401/pnav/data/dns_full
+
+FIUDATA_DIR= /work/01336/carson/intelTACC/data/fiu
+
+RMDATA_DIR=RMDATA_DIR-NOTFOUND
+
+ACCOUNT=A-ccvis
+
+SWR_LIB=libGL.so.1
+
+USE_SWR=ON
+
+USE_GPU=ON
+
+USE_GLURAY=ON
+
+USE_VBO=ON
+
+USE_OSPRAY=ON
+
+USE_SWRVBO=OFF
+
+USE_TACHYON=ON
+
+TACHYONBIN=/home/01891/adb/tachyon/compile/linux-mpi/tachyon
+
+TACHYONDATA_DIR=/work/00401/pnav/workloads/vmd_molecule
+
+TACHYONDATA=/work/00401/pnav/workloads/vmd_molecule/stmvestatics/virus.dat
+
+USE_FIU_ANIMATED=ON
+
+USE_FIU=ON
+
+USE_RM=OFF
+
+USE_DNS=ON
+
+USE_MOLECULE=OFF
+
+USE_GEO=OFF
+
+USE_WHIPPLE_TIME=OFF
+
+USE_WHIPPLE=OFF
+
+USE_WRF=ON
+
+GENERATE_IMAGES=ON
+
+ROOT_IMAGE_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+MPI_COMMAND=ibrun
+
+HOSTFILE=
+
+RANKS_PER_HOST=
+
+
+
+wrf_plugin_path:/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so
+Happy
+finished svbSetup
+finished svbRender
+finished svbGetStageSize
+Total Stages: 19
+#
+Stage 0...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 385.36097908
+warmup frame Render: 0.40674996376
+rendering warmup frame
+warmup frame Render: 0.384658098221
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00000.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00001.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00002.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00003.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00004.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00005.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00006.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00007.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00008.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00009.jpg
+#
+parsing...
+#
+Carson parser
+setting log threshold: 0.0
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+line: CellCenters::GatherInformation,  0.000131 seconds
+????: 0 CellCenters::GatherInformation,  0.000131 seconds
+line: DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+????: 0 DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+line: Execute vtkFileSeriesReader id: 321,  75.896 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 321,  75.896 seconds
+line: WRFReader::GatherInformation,  15.7362 seconds
+READER: 0 WRFReader::GatherInformation,  15.7362 seconds
+line: Execute vtkPVContourFilter id: 426,  288.392 seconds
+FILT: 0 Execute vtkPVContourFilter id: 426,  288.392 seconds
+line: Contour::GatherInformation,  0.859581 seconds
+????: 0 Contour::GatherInformation,  0.859581 seconds
+line: Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+FILT: 0 Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+line: Clip::GatherInformation,  0.080213 seconds
+????: 0 Clip::GatherInformation,  0.080213 seconds
+line: Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+line: XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+????: 0 XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+line: RenderView::Update,  0.954952 seconds
+????: 0 RenderView::Update,  0.954952 seconds
+line:     vtkPVView::Update,  0.954497 seconds
+????: 4     vtkPVView::Update,  0.954497 seconds
+line:         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+FILT: 8         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+line:         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+line:         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+line:         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+line: vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+line:     FullRes Data Migration,  0.000659 seconds
+????: 4     FullRes Data Migration,  0.000659 seconds
+line: Still Render,  0.93599 seconds
+STILL: 0 Still Render,  0.93599 seconds
+SOF
+line:     OpenGL Dev Render,  0.466953 seconds
+REND: 4     OpenGL Dev Render,  0.466953 seconds
+line:     OpenGL Dev Render,  4.9e-05 seconds
+REND: 4     OpenGL Dev Render,  4.9e-05 seconds
+line: RenderView::Update,  0.000347 seconds
+????: 0 RenderView::Update,  0.000347 seconds
+line:     vtkPVView::Update,  0.000205 seconds
+????: 4     vtkPVView::Update,  0.000205 seconds
+line: Still Render,  0.405892 seconds
+STILL: 0 Still Render,  0.405892 seconds
+SOF
+line:     OpenGL Dev Render,  0.405575 seconds
+REND: 4     OpenGL Dev Render,  0.405575 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384415 seconds
+STILL: 0 Still Render,  0.384415 seconds
+SOF
+line:     OpenGL Dev Render,  0.384087 seconds
+REND: 4     OpenGL Dev Render,  0.384087 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384358 seconds
+STILL: 0 Still Render,  0.384358 seconds
+SOF
+line:     OpenGL Dev Render,  0.384006 seconds
+REND: 4     OpenGL Dev Render,  0.384006 seconds
+line:     OpenGL Dev Render,  3.4e-05 seconds
+REND: 4     OpenGL Dev Render,  3.4e-05 seconds
+line: Still Render,  0.384345 seconds
+STILL: 0 Still Render,  0.384345 seconds
+SOF
+line:     OpenGL Dev Render,  0.38393 seconds
+REND: 4     OpenGL Dev Render,  0.38393 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384477 seconds
+STILL: 0 Still Render,  0.384477 seconds
+SOF
+line:     OpenGL Dev Render,  0.38415 seconds
+REND: 4     OpenGL Dev Render,  0.38415 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383875 seconds
+STILL: 0 Still Render,  0.383875 seconds
+SOF
+line:     OpenGL Dev Render,  0.383546 seconds
+REND: 4     OpenGL Dev Render,  0.383546 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.391459 seconds
+STILL: 0 Still Render,  0.391459 seconds
+SOF
+line:     OpenGL Dev Render,  0.3911 seconds
+REND: 4     OpenGL Dev Render,  0.3911 seconds
+line:     OpenGL Dev Render,  3.6e-05 seconds
+REND: 4     OpenGL Dev Render,  3.6e-05 seconds
+line: Still Render,  0.439211 seconds
+STILL: 0 Still Render,  0.439211 seconds
+SOF
+line:     OpenGL Dev Render,  0.438866 seconds
+REND: 4     OpenGL Dev Render,  0.438866 seconds
+line:     OpenGL Dev Render,  3.5e-05 seconds
+REND: 4     OpenGL Dev Render,  3.5e-05 seconds
+line: Still Render,  0.383999 seconds
+STILL: 0 Still Render,  0.383999 seconds
+SOF
+line:     OpenGL Dev Render,  0.383661 seconds
+REND: 4     OpenGL Dev Render,  0.383661 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38731 seconds
+STILL: 0 Still Render,  0.38731 seconds
+SOF
+line:     OpenGL Dev Render,  0.38698 seconds
+REND: 4     OpenGL Dev Render,  0.38698 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384366 seconds
+STILL: 0 Still Render,  0.384366 seconds
+SOF
+line:     OpenGL Dev Render,  0.38403 seconds
+REND: 4     OpenGL Dev Render,  0.38403 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383747 seconds
+STILL: 0 Still Render,  0.383747 seconds
+SOF
+line:     OpenGL Dev Render,  0.383419 seconds
+REND: 4     OpenGL Dev Render,  0.383419 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384393 seconds
+STILL: 0 Still Render,  0.384393 seconds
+SOF
+line:     OpenGL Dev Render,  0.384058 seconds
+REND: 4     OpenGL Dev Render,  0.384058 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.386043 seconds
+STILL: 0 Still Render,  0.386043 seconds
+SOF
+line:     OpenGL Dev Render,  0.385721 seconds
+REND: 4     OpenGL Dev Render,  0.385721 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38386 seconds
+STILL: 0 Still Render,  0.38386 seconds
+SOF
+line:     OpenGL Dev Render,  0.383531 seconds
+REND: 4     OpenGL Dev Render,  0.383531 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383893 seconds
+STILL: 0 Still Render,  0.383893 seconds
+SOF
+line:     OpenGL Dev Render,  0.383548 seconds
+REND: 4     OpenGL Dev Render,  0.383548 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.385735 seconds
+STILL: 0 Still Render,  0.385735 seconds
+SOF
+line:     OpenGL Dev Render,  0.385398 seconds
+REND: 4     OpenGL Dev Render,  0.385398 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384267 seconds
+STILL: 0 Still Render,  0.384267 seconds
+SOF
+line:     OpenGL Dev Render,  0.383939 seconds
+REND: 4     OpenGL Dev Render,  0.383939 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384311 seconds
+STILL: 0 Still Render,  0.384311 seconds
+SOF
+line:     OpenGL Dev Render,  0.383981 seconds
+REND: 4     OpenGL Dev Render,  0.383981 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384007 seconds
+STILL: 0 Still Render,  0.384007 seconds
+SOF
+line:     OpenGL Dev Render,  0.383681 seconds
+REND: 4     OpenGL Dev Render,  0.383681 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383616 seconds
+STILL: 0 Still Render,  0.383616 seconds
+SOF
+line:     OpenGL Dev Render,  0.383288 seconds
+REND: 4     OpenGL Dev Render,  0.383288 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384122 seconds
+STILL: 0 Still Render,  0.384122 seconds
+SOF
+line:     OpenGL Dev Render,  0.383784 seconds
+REND: 4     OpenGL Dev Render,  0.383784 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: 
+????: 0 
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+321 , vtkFileSeriesReader , 75.896 , 75.896
+WRFReader , WRFReader , 15.7362 , 15.7362
+426 , vtkPVContourFilter , 288.392 , 288.392
+519 , vtkPVMetaClipDataSet , 1.68393 , 1.68393
+638 , vtkFileSeriesReader , 0.004101 , -0.015522
+35 , vtkOutlineRepresentation , 0.01959 , 0.01959
+322 , vtkPVExtractSelection , 2.3e-05 , 2.3e-05
+520 , vtkPVExtractSelection , 5e-06 , 5e-06
+639 , vtkPVExtractSelection , 5e-06 , 5e-06
+#Frame  1
+still , Still , 0.93599 , 0.468988
+found still record
+render , OpenGL Dev , 0.466953 , 0.466953
+found still record
+render , OpenGL Dev , 4.9e-05 , 4.9e-05
+found still record
+#Frame  2
+still , Still , 0.405892 , 0.000285
+found still record
+render , OpenGL Dev , 0.405575 , 0.405575
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  3
+still , Still , 0.384415 , 0.000296
+found still record
+render , OpenGL Dev , 0.384087 , 0.384087
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  4
+still , Still , 0.384358 , 0.000318
+found still record
+render , OpenGL Dev , 0.384006 , 0.384006
+found still record
+render , OpenGL Dev , 3.4e-05 , 3.4e-05
+found still record
+#Frame  5
+still , Still , 0.384345 , 0.000383
+found still record
+render , OpenGL Dev , 0.38393 , 0.38393
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  6
+still , Still , 0.384477 , 0.000294
+found still record
+render , OpenGL Dev , 0.38415 , 0.38415
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  7
+still , Still , 0.383875 , 0.000296
+found still record
+render , OpenGL Dev , 0.383546 , 0.383546
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  8
+still , Still , 0.391459 , 0.000323
+found still record
+render , OpenGL Dev , 0.3911 , 0.3911
+found still record
+render , OpenGL Dev , 3.6e-05 , 3.6e-05
+found still record
+#Frame  9
+still , Still , 0.439211 , 0.00031
+found still record
+render , OpenGL Dev , 0.438866 , 0.438866
+found still record
+render , OpenGL Dev , 3.5e-05 , 3.5e-05
+found still record
+#Frame  10
+still , Still , 0.383999 , 0.000305
+found still record
+render , OpenGL Dev , 0.383661 , 0.383661
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  11
+still , Still , 0.38731 , 0.000298
+found still record
+render , OpenGL Dev , 0.38698 , 0.38698
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  12
+still , Still , 0.384366 , 0.000303
+found still record
+render , OpenGL Dev , 0.38403 , 0.38403
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  13
+still , Still , 0.383747 , 0.000295
+found still record
+render , OpenGL Dev , 0.383419 , 0.383419
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  14
+still , Still , 0.384393 , 0.000302
+found still record
+render , OpenGL Dev , 0.384058 , 0.384058
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  15
+still , Still , 0.386043 , 0.000289
+found still record
+render , OpenGL Dev , 0.385721 , 0.385721
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  16
+still , Still , 0.38386 , 0.000297
+found still record
+render , OpenGL Dev , 0.383531 , 0.383531
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  17
+still , Still , 0.383893 , 0.000312
+found still record
+render , OpenGL Dev , 0.383548 , 0.383548
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  18
+still , Still , 0.385735 , 0.000304
+found still record
+render , OpenGL Dev , 0.385398 , 0.385398
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  19
+still , Still , 0.384267 , 0.000295
+found still record
+render , OpenGL Dev , 0.383939 , 0.383939
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  20
+still , Still , 0.384311 , 0.000297
+found still record
+render , OpenGL Dev , 0.383981 , 0.383981
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  21
+still , Still , 0.384007 , 0.000294
+found still record
+render , OpenGL Dev , 0.383681 , 0.383681
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  22
+still , Still , 0.383616 , 0.000295
+found still record
+render , OpenGL Dev , 0.383288 , 0.383288
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  23
+still , Still , 0.384122 , 0.000305
+found still record
+render , OpenGL Dev , 0.383784 , 0.383784
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+322 , vtkPVExtractSelection , 1 , 2.3e-05 , 2.3e-05
+could not find reader record in name vtkPVExtractSelection
+render , OpenGL Dev , 46 , 9.002007 , 9.002007
+could not find reader record in name OpenGL Dev
+638 , vtkFileSeriesReader , 1 , 0.004101 , -0.015522
+found reader record
+639 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+35 , vtkOutlineRepresentation , 1 , 0.01959 , 0.01959
+could not find reader record in name vtkOutlineRepresentation
+WRFReader , WRFReader , 1 , 15.7362 , 15.7362
+found reader record
+519 , vtkPVMetaClipDataSet , 1 , 1.68393 , 1.68393
+could not find reader record in name vtkPVMetaClipDataSet
+321 , vtkFileSeriesReader , 1 , 75.896 , 75.896
+found reader record
+520 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+still , Still , 23 , 9.477691 , 0.475684
+could not find reader record in name Still
+426 , vtkPVContourFilter , 1 , 288.392 , 288.392
+could not find reader record in name vtkPVContourFilter
+
+[[{'vtkPVContourFilter': 288.392, 'vtkPVMetaClipDataSet': 1.68393, 'vtkPVExtractSelection': 2.3e-05, 'WRFReader': 15.7362, 'filter': 400.211552, 'vtkFileSeriesReader': 0.004101, 'reader': 91.636301, 'OpenGL Dev': 0.46700200000000003, 'Still': 0.93599, 'vtkOutlineRepresentation': 0.01959}], [{'OpenGL Dev': 0.405607, 'Still': 0.405892}], [{'OpenGL Dev': 0.384119, 'Still': 0.384415}], [{'OpenGL Dev': 0.38404, 'Still': 0.384358}], [{'OpenGL Dev': 0.38396199999999997, 'Still': 0.384345}], [{'OpenGL Dev': 0.384183, 'Still': 0.384477}], [{'OpenGL Dev': 0.383579, 'Still': 0.383875}], [{'OpenGL Dev': 0.391136, 'Still': 0.391459}], [{'OpenGL Dev': 0.438901, 'Still': 0.439211}], [{'OpenGL Dev': 0.383694, 'Still': 0.383999}], [{'OpenGL Dev': 0.38701199999999997, 'Still': 0.38731}], [{'OpenGL Dev': 0.384063, 'Still': 0.384366}], [{'OpenGL Dev': 0.383452, 'Still': 0.383747}], [{'OpenGL Dev': 0.384091, 'Still': 0.384393}], [{'OpenGL Dev': 0.385754, 'Still': 0.386043}], [{'OpenGL Dev': 0.383563, 'Still': 0.38386}], [{'OpenGL Dev': 0.383581, 'Still': 0.383893}], [{'OpenGL Dev': 0.385431, 'Still': 0.385735}], [{'OpenGL Dev': 0.383972, 'Still': 0.384267}], [{'OpenGL Dev': 0.384014, 'Still': 0.384311}], [{'OpenGL Dev': 0.38371299999999997, 'Still': 0.384007}], [{'OpenGL Dev': 0.383321, 'Still': 0.383616}], [{'OpenGL Dev': 0.383817, 'Still': 0.384122}], []]
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+CellCenters::GatherInformation,  0.000131 seconds
+DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+Execute vtkFileSeriesReader id: 321,  75.896 seconds
+WRFReader::GatherInformation,  15.7362 seconds
+Execute vtkPVContourFilter id: 426,  288.392 seconds
+Contour::GatherInformation,  0.859581 seconds
+Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+Clip::GatherInformation,  0.080213 seconds
+Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+RenderView::Update,  0.954952 seconds
+    vtkPVView::Update,  0.954497 seconds
+        Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+        Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+        Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+        Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+    FullRes Data Migration,  0.000659 seconds
+Still Render,  0.93599 seconds
+    OpenGL Dev Render,  0.466953 seconds
+    OpenGL Dev Render,  4.9e-05 seconds
+RenderView::Update,  0.000347 seconds
+    vtkPVView::Update,  0.000205 seconds
+Still Render,  0.405892 seconds
+    OpenGL Dev Render,  0.405575 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384415 seconds
+    OpenGL Dev Render,  0.384087 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384358 seconds
+    OpenGL Dev Render,  0.384006 seconds
+    OpenGL Dev Render,  3.4e-05 seconds
+Still Render,  0.384345 seconds
+    OpenGL Dev Render,  0.38393 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384477 seconds
+    OpenGL Dev Render,  0.38415 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383875 seconds
+    OpenGL Dev Render,  0.383546 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.391459 seconds
+    OpenGL Dev Render,  0.3911 seconds
+    OpenGL Dev Render,  3.6e-05 seconds
+Still Render,  0.439211 seconds
+    OpenGL Dev Render,  0.438866 seconds
+    OpenGL Dev Render,  3.5e-05 seconds
+Still Render,  0.383999 seconds
+    OpenGL Dev Render,  0.383661 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38731 seconds
+    OpenGL Dev Render,  0.38698 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384366 seconds
+    OpenGL Dev Render,  0.38403 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383747 seconds
+    OpenGL Dev Render,  0.383419 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384393 seconds
+    OpenGL Dev Render,  0.384058 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.386043 seconds
+    OpenGL Dev Render,  0.385721 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38386 seconds
+    OpenGL Dev Render,  0.383531 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383893 seconds
+    OpenGL Dev Render,  0.383548 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.385735 seconds
+    OpenGL Dev Render,  0.385398 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384267 seconds
+    OpenGL Dev Render,  0.383939 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384311 seconds
+    OpenGL Dev Render,  0.383981 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384007 seconds
+    OpenGL Dev Render,  0.383681 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383616 seconds
+    OpenGL Dev Render,  0.383288 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384122 seconds
+    OpenGL Dev Render,  0.383784 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+
+[0.38454103469848633, 0.38469505310058594, 0.3917121887207031, 0.3842201232910156, 0.38458919525146484, 0.3846559524536133, 0.38408899307250977, 0.3859579563140869, 0.38454103469848633, 0.3838310241699219]
+overall time avg fps: 2.59549301851 avg: 0.385283255577 dev: 0.00220850371202
+overall frame time results avg: 0.385283255577 dev: 0.00220850371202
+overall render time results avg: 0.385283255577 dev: 0.00220850371202
+still zoomed out results avg: 0.385283255577 dev: 0.00220850371202
+rotate zoomed out results avg: 0.385283255577 dev: 0.00220850371202
+zooming results avg: 0.385283255577 dev: 0.00220850371202
+rotate zoomed in results avg: 0.385283255577 dev: 0.00220850371202
+still zoomed in results avg: 0.385283255577 dev: 0.00220850371202
+reader time 91.636301
+filter time 400.211552
+#
+Stage 1...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 392.047767878
+warmup frame Render: 0.386611938477
+rendering warmup frame
+warmup frame Render: 0.386918067932
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00010.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00011.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00012.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00013.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00014.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00015.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00016.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00017.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00018.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00019.jpg
+#
+parsing...
+#
+Carson parser
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+line: CellCenters::GatherInformation,  0.000131 seconds
+????: 0 CellCenters::GatherInformation,  0.000131 seconds
+line: DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+????: 0 DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+line: Execute vtkFileSeriesReader id: 321,  75.896 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 321,  75.896 seconds
+line: WRFReader::GatherInformation,  15.7362 seconds
+READER: 0 WRFReader::GatherInformation,  15.7362 seconds
+line: Execute vtkPVContourFilter id: 426,  288.392 seconds
+FILT: 0 Execute vtkPVContourFilter id: 426,  288.392 seconds
+line: Contour::GatherInformation,  0.859581 seconds
+????: 0 Contour::GatherInformation,  0.859581 seconds
+line: Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+FILT: 0 Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+line: Clip::GatherInformation,  0.080213 seconds
+????: 0 Clip::GatherInformation,  0.080213 seconds
+line: Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+line: XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+????: 0 XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+line: RenderView::Update,  0.954952 seconds
+????: 0 RenderView::Update,  0.954952 seconds
+line:     vtkPVView::Update,  0.954497 seconds
+????: 4     vtkPVView::Update,  0.954497 seconds
+line:         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+FILT: 8         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+line:         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+line:         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+line:         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+line: vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+line:     FullRes Data Migration,  0.000659 seconds
+????: 4     FullRes Data Migration,  0.000659 seconds
+line: Still Render,  0.93599 seconds
+STILL: 0 Still Render,  0.93599 seconds
+SOF
+line:     OpenGL Dev Render,  0.466953 seconds
+REND: 4     OpenGL Dev Render,  0.466953 seconds
+line:     OpenGL Dev Render,  4.9e-05 seconds
+REND: 4     OpenGL Dev Render,  4.9e-05 seconds
+line: RenderView::Update,  0.000347 seconds
+????: 0 RenderView::Update,  0.000347 seconds
+line:     vtkPVView::Update,  0.000205 seconds
+????: 4     vtkPVView::Update,  0.000205 seconds
+line: Still Render,  0.405892 seconds
+STILL: 0 Still Render,  0.405892 seconds
+SOF
+line:     OpenGL Dev Render,  0.405575 seconds
+REND: 4     OpenGL Dev Render,  0.405575 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384415 seconds
+STILL: 0 Still Render,  0.384415 seconds
+SOF
+line:     OpenGL Dev Render,  0.384087 seconds
+REND: 4     OpenGL Dev Render,  0.384087 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384358 seconds
+STILL: 0 Still Render,  0.384358 seconds
+SOF
+line:     OpenGL Dev Render,  0.384006 seconds
+REND: 4     OpenGL Dev Render,  0.384006 seconds
+line:     OpenGL Dev Render,  3.4e-05 seconds
+REND: 4     OpenGL Dev Render,  3.4e-05 seconds
+line: Still Render,  0.384345 seconds
+STILL: 0 Still Render,  0.384345 seconds
+SOF
+line:     OpenGL Dev Render,  0.38393 seconds
+REND: 4     OpenGL Dev Render,  0.38393 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384477 seconds
+STILL: 0 Still Render,  0.384477 seconds
+SOF
+line:     OpenGL Dev Render,  0.38415 seconds
+REND: 4     OpenGL Dev Render,  0.38415 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383875 seconds
+STILL: 0 Still Render,  0.383875 seconds
+SOF
+line:     OpenGL Dev Render,  0.383546 seconds
+REND: 4     OpenGL Dev Render,  0.383546 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.391459 seconds
+STILL: 0 Still Render,  0.391459 seconds
+SOF
+line:     OpenGL Dev Render,  0.3911 seconds
+REND: 4     OpenGL Dev Render,  0.3911 seconds
+line:     OpenGL Dev Render,  3.6e-05 seconds
+REND: 4     OpenGL Dev Render,  3.6e-05 seconds
+line: Still Render,  0.439211 seconds
+STILL: 0 Still Render,  0.439211 seconds
+SOF
+line:     OpenGL Dev Render,  0.438866 seconds
+REND: 4     OpenGL Dev Render,  0.438866 seconds
+line:     OpenGL Dev Render,  3.5e-05 seconds
+REND: 4     OpenGL Dev Render,  3.5e-05 seconds
+line: Still Render,  0.383999 seconds
+STILL: 0 Still Render,  0.383999 seconds
+SOF
+line:     OpenGL Dev Render,  0.383661 seconds
+REND: 4     OpenGL Dev Render,  0.383661 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38731 seconds
+STILL: 0 Still Render,  0.38731 seconds
+SOF
+line:     OpenGL Dev Render,  0.38698 seconds
+REND: 4     OpenGL Dev Render,  0.38698 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384366 seconds
+STILL: 0 Still Render,  0.384366 seconds
+SOF
+line:     OpenGL Dev Render,  0.38403 seconds
+REND: 4     OpenGL Dev Render,  0.38403 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383747 seconds
+STILL: 0 Still Render,  0.383747 seconds
+SOF
+line:     OpenGL Dev Render,  0.383419 seconds
+REND: 4     OpenGL Dev Render,  0.383419 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384393 seconds
+STILL: 0 Still Render,  0.384393 seconds
+SOF
+line:     OpenGL Dev Render,  0.384058 seconds
+REND: 4     OpenGL Dev Render,  0.384058 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.386043 seconds
+STILL: 0 Still Render,  0.386043 seconds
+SOF
+line:     OpenGL Dev Render,  0.385721 seconds
+REND: 4     OpenGL Dev Render,  0.385721 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38386 seconds
+STILL: 0 Still Render,  0.38386 seconds
+SOF
+line:     OpenGL Dev Render,  0.383531 seconds
+REND: 4     OpenGL Dev Render,  0.383531 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383893 seconds
+STILL: 0 Still Render,  0.383893 seconds
+SOF
+line:     OpenGL Dev Render,  0.383548 seconds
+REND: 4     OpenGL Dev Render,  0.383548 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.385735 seconds
+STILL: 0 Still Render,  0.385735 seconds
+SOF
+line:     OpenGL Dev Render,  0.385398 seconds
+REND: 4     OpenGL Dev Render,  0.385398 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384267 seconds
+STILL: 0 Still Render,  0.384267 seconds
+SOF
+line:     OpenGL Dev Render,  0.383939 seconds
+REND: 4     OpenGL Dev Render,  0.383939 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384311 seconds
+STILL: 0 Still Render,  0.384311 seconds
+SOF
+line:     OpenGL Dev Render,  0.383981 seconds
+REND: 4     OpenGL Dev Render,  0.383981 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384007 seconds
+STILL: 0 Still Render,  0.384007 seconds
+SOF
+line:     OpenGL Dev Render,  0.383681 seconds
+REND: 4     OpenGL Dev Render,  0.383681 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383616 seconds
+STILL: 0 Still Render,  0.383616 seconds
+SOF
+line:     OpenGL Dev Render,  0.383288 seconds
+REND: 4     OpenGL Dev Render,  0.383288 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384122 seconds
+STILL: 0 Still Render,  0.384122 seconds
+SOF
+line:     OpenGL Dev Render,  0.383784 seconds
+REND: 4     OpenGL Dev Render,  0.383784 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: 
+????: 0 
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+321 , vtkFileSeriesReader , 75.896 , 75.896
+WRFReader , WRFReader , 15.7362 , 15.7362
+426 , vtkPVContourFilter , 288.392 , 288.392
+519 , vtkPVMetaClipDataSet , 1.68393 , 1.68393
+638 , vtkFileSeriesReader , 0.004101 , -0.015522
+35 , vtkOutlineRepresentation , 0.01959 , 0.01959
+322 , vtkPVExtractSelection , 2.3e-05 , 2.3e-05
+520 , vtkPVExtractSelection , 5e-06 , 5e-06
+639 , vtkPVExtractSelection , 5e-06 , 5e-06
+#Frame  1
+still , Still , 0.93599 , 0.468988
+found still record
+render , OpenGL Dev , 0.466953 , 0.466953
+found still record
+render , OpenGL Dev , 4.9e-05 , 4.9e-05
+found still record
+#Frame  2
+still , Still , 0.405892 , 0.000285
+found still record
+render , OpenGL Dev , 0.405575 , 0.405575
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  3
+still , Still , 0.384415 , 0.000296
+found still record
+render , OpenGL Dev , 0.384087 , 0.384087
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  4
+still , Still , 0.384358 , 0.000318
+found still record
+render , OpenGL Dev , 0.384006 , 0.384006
+found still record
+render , OpenGL Dev , 3.4e-05 , 3.4e-05
+found still record
+#Frame  5
+still , Still , 0.384345 , 0.000383
+found still record
+render , OpenGL Dev , 0.38393 , 0.38393
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  6
+still , Still , 0.384477 , 0.000294
+found still record
+render , OpenGL Dev , 0.38415 , 0.38415
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  7
+still , Still , 0.383875 , 0.000296
+found still record
+render , OpenGL Dev , 0.383546 , 0.383546
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  8
+still , Still , 0.391459 , 0.000323
+found still record
+render , OpenGL Dev , 0.3911 , 0.3911
+found still record
+render , OpenGL Dev , 3.6e-05 , 3.6e-05
+found still record
+#Frame  9
+still , Still , 0.439211 , 0.00031
+found still record
+render , OpenGL Dev , 0.438866 , 0.438866
+found still record
+render , OpenGL Dev , 3.5e-05 , 3.5e-05
+found still record
+#Frame  10
+still , Still , 0.383999 , 0.000305
+found still record
+render , OpenGL Dev , 0.383661 , 0.383661
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  11
+still , Still , 0.38731 , 0.000298
+found still record
+render , OpenGL Dev , 0.38698 , 0.38698
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  12
+still , Still , 0.384366 , 0.000303
+found still record
+render , OpenGL Dev , 0.38403 , 0.38403
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  13
+still , Still , 0.383747 , 0.000295
+found still record
+render , OpenGL Dev , 0.383419 , 0.383419
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  14
+still , Still , 0.384393 , 0.000302
+found still record
+render , OpenGL Dev , 0.384058 , 0.384058
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  15
+still , Still , 0.386043 , 0.000289
+found still record
+render , OpenGL Dev , 0.385721 , 0.385721
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  16
+still , Still , 0.38386 , 0.000297
+found still record
+render , OpenGL Dev , 0.383531 , 0.383531
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  17
+still , Still , 0.383893 , 0.000312
+found still record
+render , OpenGL Dev , 0.383548 , 0.383548
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  18
+still , Still , 0.385735 , 0.000304
+found still record
+render , OpenGL Dev , 0.385398 , 0.385398
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  19
+still , Still , 0.384267 , 0.000295
+found still record
+render , OpenGL Dev , 0.383939 , 0.383939
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  20
+still , Still , 0.384311 , 0.000297
+found still record
+render , OpenGL Dev , 0.383981 , 0.383981
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  21
+still , Still , 0.384007 , 0.000294
+found still record
+render , OpenGL Dev , 0.383681 , 0.383681
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  22
+still , Still , 0.383616 , 0.000295
+found still record
+render , OpenGL Dev , 0.383288 , 0.383288
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  23
+still , Still , 0.384122 , 0.000305
+found still record
+render , OpenGL Dev , 0.383784 , 0.383784
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+322 , vtkPVExtractSelection , 1 , 2.3e-05 , 2.3e-05
+could not find reader record in name vtkPVExtractSelection
+render , OpenGL Dev , 46 , 9.002007 , 9.002007
+could not find reader record in name OpenGL Dev
+638 , vtkFileSeriesReader , 1 , 0.004101 , -0.015522
+found reader record
+639 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+35 , vtkOutlineRepresentation , 1 , 0.01959 , 0.01959
+could not find reader record in name vtkOutlineRepresentation
+WRFReader , WRFReader , 1 , 15.7362 , 15.7362
+found reader record
+519 , vtkPVMetaClipDataSet , 1 , 1.68393 , 1.68393
+could not find reader record in name vtkPVMetaClipDataSet
+321 , vtkFileSeriesReader , 1 , 75.896 , 75.896
+found reader record
+520 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+still , Still , 23 , 9.477691 , 0.475684
+could not find reader record in name Still
+426 , vtkPVContourFilter , 1 , 288.392 , 288.392
+could not find reader record in name vtkPVContourFilter
+
+[[{'vtkPVContourFilter': 288.392, 'vtkPVMetaClipDataSet': 1.68393, 'vtkPVExtractSelection': 2.3e-05, 'WRFReader': 15.7362, 'filter': 400.211552, 'vtkFileSeriesReader': 0.004101, 'reader': 91.636301, 'OpenGL Dev': 0.46700200000000003, 'Still': 0.93599, 'vtkOutlineRepresentation': 0.01959}], [{'OpenGL Dev': 0.405607, 'Still': 0.405892}], [{'OpenGL Dev': 0.384119, 'Still': 0.384415}], [{'OpenGL Dev': 0.38404, 'Still': 0.384358}], [{'OpenGL Dev': 0.38396199999999997, 'Still': 0.384345}], [{'OpenGL Dev': 0.384183, 'Still': 0.384477}], [{'OpenGL Dev': 0.383579, 'Still': 0.383875}], [{'OpenGL Dev': 0.391136, 'Still': 0.391459}], [{'OpenGL Dev': 0.438901, 'Still': 0.439211}], [{'OpenGL Dev': 0.383694, 'Still': 0.383999}], [{'OpenGL Dev': 0.38701199999999997, 'Still': 0.38731}], [{'OpenGL Dev': 0.384063, 'Still': 0.384366}], [{'OpenGL Dev': 0.383452, 'Still': 0.383747}], [{'OpenGL Dev': 0.384091, 'Still': 0.384393}], [{'OpenGL Dev': 0.385754, 'Still': 0.386043}], [{'OpenGL Dev': 0.383563, 'Still': 0.38386}], [{'OpenGL Dev': 0.383581, 'Still': 0.383893}], [{'OpenGL Dev': 0.385431, 'Still': 0.385735}], [{'OpenGL Dev': 0.383972, 'Still': 0.384267}], [{'OpenGL Dev': 0.384014, 'Still': 0.384311}], [{'OpenGL Dev': 0.38371299999999997, 'Still': 0.384007}], [{'OpenGL Dev': 0.383321, 'Still': 0.383616}], [{'OpenGL Dev': 0.383817, 'Still': 0.384122}], []]
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+CellCenters::GatherInformation,  0.000131 seconds
+DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+Execute vtkFileSeriesReader id: 321,  75.896 seconds
+WRFReader::GatherInformation,  15.7362 seconds
+Execute vtkPVContourFilter id: 426,  288.392 seconds
+Contour::GatherInformation,  0.859581 seconds
+Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+Clip::GatherInformation,  0.080213 seconds
+Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+RenderView::Update,  0.954952 seconds
+    vtkPVView::Update,  0.954497 seconds
+        Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+        Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+        Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+        Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+    FullRes Data Migration,  0.000659 seconds
+Still Render,  0.93599 seconds
+    OpenGL Dev Render,  0.466953 seconds
+    OpenGL Dev Render,  4.9e-05 seconds
+RenderView::Update,  0.000347 seconds
+    vtkPVView::Update,  0.000205 seconds
+Still Render,  0.405892 seconds
+    OpenGL Dev Render,  0.405575 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384415 seconds
+    OpenGL Dev Render,  0.384087 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384358 seconds
+    OpenGL Dev Render,  0.384006 seconds
+    OpenGL Dev Render,  3.4e-05 seconds
+Still Render,  0.384345 seconds
+    OpenGL Dev Render,  0.38393 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384477 seconds
+    OpenGL Dev Render,  0.38415 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383875 seconds
+    OpenGL Dev Render,  0.383546 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.391459 seconds
+    OpenGL Dev Render,  0.3911 seconds
+    OpenGL Dev Render,  3.6e-05 seconds
+Still Render,  0.439211 seconds
+    OpenGL Dev Render,  0.438866 seconds
+    OpenGL Dev Render,  3.5e-05 seconds
+Still Render,  0.383999 seconds
+    OpenGL Dev Render,  0.383661 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38731 seconds
+    OpenGL Dev Render,  0.38698 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384366 seconds
+    OpenGL Dev Render,  0.38403 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383747 seconds
+    OpenGL Dev Render,  0.383419 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384393 seconds
+    OpenGL Dev Render,  0.384058 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.386043 seconds
+    OpenGL Dev Render,  0.385721 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38386 seconds
+    OpenGL Dev Render,  0.383531 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383893 seconds
+    OpenGL Dev Render,  0.383548 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.385735 seconds
+    OpenGL Dev Render,  0.385398 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384267 seconds
+    OpenGL Dev Render,  0.383939 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384311 seconds
+    OpenGL Dev Render,  0.383981 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384007 seconds
+    OpenGL Dev Render,  0.383681 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383616 seconds
+    OpenGL Dev Render,  0.383288 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384122 seconds
+    OpenGL Dev Render,  0.383784 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+
+[0.3858330249786377, 0.39571309089660645, 0.3861358165740967, 0.3861720561981201, 0.3869140148162842, 0.38579797744750977, 0.3866128921508789, 0.38625001907348633, 0.38594985008239746, 0.3867299556732178]
+overall time avg fps: 2.58257212806 avg: 0.387210869789 dev: 0.00285670686735
+overall frame time results avg: 0.387210869789 dev: 0.00285670686735
+overall render time results avg: 0.387210869789 dev: 0.00285670686735
+still zoomed out results avg: 0.387210869789 dev: 0.00285670686735
+rotate zoomed out results avg: 0.387210869789 dev: 0.00285670686735
+zooming results avg: 0.387210869789 dev: 0.00285670686735
+rotate zoomed in results avg: 0.387210869789 dev: 0.00285670686735
+still zoomed in results avg: 0.387210869789 dev: 0.00285670686735
+reader time 91.636301
+filter time 400.211552
+#
+Stage 2...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 389.889257908
+warmup frame Render: 0.387477874756
+rendering warmup frame
+warmup frame Render: 0.387353897095
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00020.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00021.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00022.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00023.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00024.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00025.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00026.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00027.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00028.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00029.jpg
+#
+parsing...
+#
+Carson parser
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+line: CellCenters::GatherInformation,  0.000131 seconds
+????: 0 CellCenters::GatherInformation,  0.000131 seconds
+line: DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+????: 0 DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+line: Execute vtkFileSeriesReader id: 321,  75.896 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 321,  75.896 seconds
+line: WRFReader::GatherInformation,  15.7362 seconds
+READER: 0 WRFReader::GatherInformation,  15.7362 seconds
+line: Execute vtkPVContourFilter id: 426,  288.392 seconds
+FILT: 0 Execute vtkPVContourFilter id: 426,  288.392 seconds
+line: Contour::GatherInformation,  0.859581 seconds
+????: 0 Contour::GatherInformation,  0.859581 seconds
+line: Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+FILT: 0 Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+line: Clip::GatherInformation,  0.080213 seconds
+????: 0 Clip::GatherInformation,  0.080213 seconds
+line: Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+line: XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+????: 0 XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+line: RenderView::Update,  0.954952 seconds
+????: 0 RenderView::Update,  0.954952 seconds
+line:     vtkPVView::Update,  0.954497 seconds
+????: 4     vtkPVView::Update,  0.954497 seconds
+line:         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+FILT: 8         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+line:         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+line:         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+line:         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+line: vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+line:     FullRes Data Migration,  0.000659 seconds
+????: 4     FullRes Data Migration,  0.000659 seconds
+line: Still Render,  0.93599 seconds
+STILL: 0 Still Render,  0.93599 seconds
+SOF
+line:     OpenGL Dev Render,  0.466953 seconds
+REND: 4     OpenGL Dev Render,  0.466953 seconds
+line:     OpenGL Dev Render,  4.9e-05 seconds
+REND: 4     OpenGL Dev Render,  4.9e-05 seconds
+line: RenderView::Update,  0.000347 seconds
+????: 0 RenderView::Update,  0.000347 seconds
+line:     vtkPVView::Update,  0.000205 seconds
+????: 4     vtkPVView::Update,  0.000205 seconds
+line: Still Render,  0.405892 seconds
+STILL: 0 Still Render,  0.405892 seconds
+SOF
+line:     OpenGL Dev Render,  0.405575 seconds
+REND: 4     OpenGL Dev Render,  0.405575 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384415 seconds
+STILL: 0 Still Render,  0.384415 seconds
+SOF
+line:     OpenGL Dev Render,  0.384087 seconds
+REND: 4     OpenGL Dev Render,  0.384087 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384358 seconds
+STILL: 0 Still Render,  0.384358 seconds
+SOF
+line:     OpenGL Dev Render,  0.384006 seconds
+REND: 4     OpenGL Dev Render,  0.384006 seconds
+line:     OpenGL Dev Render,  3.4e-05 seconds
+REND: 4     OpenGL Dev Render,  3.4e-05 seconds
+line: Still Render,  0.384345 seconds
+STILL: 0 Still Render,  0.384345 seconds
+SOF
+line:     OpenGL Dev Render,  0.38393 seconds
+REND: 4     OpenGL Dev Render,  0.38393 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384477 seconds
+STILL: 0 Still Render,  0.384477 seconds
+SOF
+line:     OpenGL Dev Render,  0.38415 seconds
+REND: 4     OpenGL Dev Render,  0.38415 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383875 seconds
+STILL: 0 Still Render,  0.383875 seconds
+SOF
+line:     OpenGL Dev Render,  0.383546 seconds
+REND: 4     OpenGL Dev Render,  0.383546 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.391459 seconds
+STILL: 0 Still Render,  0.391459 seconds
+SOF
+line:     OpenGL Dev Render,  0.3911 seconds
+REND: 4     OpenGL Dev Render,  0.3911 seconds
+line:     OpenGL Dev Render,  3.6e-05 seconds
+REND: 4     OpenGL Dev Render,  3.6e-05 seconds
+line: Still Render,  0.439211 seconds
+STILL: 0 Still Render,  0.439211 seconds
+SOF
+line:     OpenGL Dev Render,  0.438866 seconds
+REND: 4     OpenGL Dev Render,  0.438866 seconds
+line:     OpenGL Dev Render,  3.5e-05 seconds
+REND: 4     OpenGL Dev Render,  3.5e-05 seconds
+line: Still Render,  0.383999 seconds
+STILL: 0 Still Render,  0.383999 seconds
+SOF
+line:     OpenGL Dev Render,  0.383661 seconds
+REND: 4     OpenGL Dev Render,  0.383661 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38731 seconds
+STILL: 0 Still Render,  0.38731 seconds
+SOF
+line:     OpenGL Dev Render,  0.38698 seconds
+REND: 4     OpenGL Dev Render,  0.38698 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384366 seconds
+STILL: 0 Still Render,  0.384366 seconds
+SOF
+line:     OpenGL Dev Render,  0.38403 seconds
+REND: 4     OpenGL Dev Render,  0.38403 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383747 seconds
+STILL: 0 Still Render,  0.383747 seconds
+SOF
+line:     OpenGL Dev Render,  0.383419 seconds
+REND: 4     OpenGL Dev Render,  0.383419 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384393 seconds
+STILL: 0 Still Render,  0.384393 seconds
+SOF
+line:     OpenGL Dev Render,  0.384058 seconds
+REND: 4     OpenGL Dev Render,  0.384058 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.386043 seconds
+STILL: 0 Still Render,  0.386043 seconds
+SOF
+line:     OpenGL Dev Render,  0.385721 seconds
+REND: 4     OpenGL Dev Render,  0.385721 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38386 seconds
+STILL: 0 Still Render,  0.38386 seconds
+SOF
+line:     OpenGL Dev Render,  0.383531 seconds
+REND: 4     OpenGL Dev Render,  0.383531 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383893 seconds
+STILL: 0 Still Render,  0.383893 seconds
+SOF
+line:     OpenGL Dev Render,  0.383548 seconds
+REND: 4     OpenGL Dev Render,  0.383548 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.385735 seconds
+STILL: 0 Still Render,  0.385735 seconds
+SOF
+line:     OpenGL Dev Render,  0.385398 seconds
+REND: 4     OpenGL Dev Render,  0.385398 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384267 seconds
+STILL: 0 Still Render,  0.384267 seconds
+SOF
+line:     OpenGL Dev Render,  0.383939 seconds
+REND: 4     OpenGL Dev Render,  0.383939 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384311 seconds
+STILL: 0 Still Render,  0.384311 seconds
+SOF
+line:     OpenGL Dev Render,  0.383981 seconds
+REND: 4     OpenGL Dev Render,  0.383981 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384007 seconds
+STILL: 0 Still Render,  0.384007 seconds
+SOF
+line:     OpenGL Dev Render,  0.383681 seconds
+REND: 4     OpenGL Dev Render,  0.383681 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383616 seconds
+STILL: 0 Still Render,  0.383616 seconds
+SOF
+line:     OpenGL Dev Render,  0.383288 seconds
+REND: 4     OpenGL Dev Render,  0.383288 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384122 seconds
+STILL: 0 Still Render,  0.384122 seconds
+SOF
+line:     OpenGL Dev Render,  0.383784 seconds
+REND: 4     OpenGL Dev Render,  0.383784 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: 
+????: 0 
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+321 , vtkFileSeriesReader , 75.896 , 75.896
+WRFReader , WRFReader , 15.7362 , 15.7362
+426 , vtkPVContourFilter , 288.392 , 288.392
+519 , vtkPVMetaClipDataSet , 1.68393 , 1.68393
+638 , vtkFileSeriesReader , 0.004101 , -0.015522
+35 , vtkOutlineRepresentation , 0.01959 , 0.01959
+322 , vtkPVExtractSelection , 2.3e-05 , 2.3e-05
+520 , vtkPVExtractSelection , 5e-06 , 5e-06
+639 , vtkPVExtractSelection , 5e-06 , 5e-06
+#Frame  1
+still , Still , 0.93599 , 0.468988
+found still record
+render , OpenGL Dev , 0.466953 , 0.466953
+found still record
+render , OpenGL Dev , 4.9e-05 , 4.9e-05
+found still record
+#Frame  2
+still , Still , 0.405892 , 0.000285
+found still record
+render , OpenGL Dev , 0.405575 , 0.405575
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  3
+still , Still , 0.384415 , 0.000296
+found still record
+render , OpenGL Dev , 0.384087 , 0.384087
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  4
+still , Still , 0.384358 , 0.000318
+found still record
+render , OpenGL Dev , 0.384006 , 0.384006
+found still record
+render , OpenGL Dev , 3.4e-05 , 3.4e-05
+found still record
+#Frame  5
+still , Still , 0.384345 , 0.000383
+found still record
+render , OpenGL Dev , 0.38393 , 0.38393
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  6
+still , Still , 0.384477 , 0.000294
+found still record
+render , OpenGL Dev , 0.38415 , 0.38415
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  7
+still , Still , 0.383875 , 0.000296
+found still record
+render , OpenGL Dev , 0.383546 , 0.383546
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  8
+still , Still , 0.391459 , 0.000323
+found still record
+render , OpenGL Dev , 0.3911 , 0.3911
+found still record
+render , OpenGL Dev , 3.6e-05 , 3.6e-05
+found still record
+#Frame  9
+still , Still , 0.439211 , 0.00031
+found still record
+render , OpenGL Dev , 0.438866 , 0.438866
+found still record
+render , OpenGL Dev , 3.5e-05 , 3.5e-05
+found still record
+#Frame  10
+still , Still , 0.383999 , 0.000305
+found still record
+render , OpenGL Dev , 0.383661 , 0.383661
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  11
+still , Still , 0.38731 , 0.000298
+found still record
+render , OpenGL Dev , 0.38698 , 0.38698
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  12
+still , Still , 0.384366 , 0.000303
+found still record
+render , OpenGL Dev , 0.38403 , 0.38403
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  13
+still , Still , 0.383747 , 0.000295
+found still record
+render , OpenGL Dev , 0.383419 , 0.383419
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  14
+still , Still , 0.384393 , 0.000302
+found still record
+render , OpenGL Dev , 0.384058 , 0.384058
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  15
+still , Still , 0.386043 , 0.000289
+found still record
+render , OpenGL Dev , 0.385721 , 0.385721
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  16
+still , Still , 0.38386 , 0.000297
+found still record
+render , OpenGL Dev , 0.383531 , 0.383531
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  17
+still , Still , 0.383893 , 0.000312
+found still record
+render , OpenGL Dev , 0.383548 , 0.383548
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  18
+still , Still , 0.385735 , 0.000304
+found still record
+render , OpenGL Dev , 0.385398 , 0.385398
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  19
+still , Still , 0.384267 , 0.000295
+found still record
+render , OpenGL Dev , 0.383939 , 0.383939
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  20
+still , Still , 0.384311 , 0.000297
+found still record
+render , OpenGL Dev , 0.383981 , 0.383981
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  21
+still , Still , 0.384007 , 0.000294
+found still record
+render , OpenGL Dev , 0.383681 , 0.383681
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  22
+still , Still , 0.383616 , 0.000295
+found still record
+render , OpenGL Dev , 0.383288 , 0.383288
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  23
+still , Still , 0.384122 , 0.000305
+found still record
+render , OpenGL Dev , 0.383784 , 0.383784
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+322 , vtkPVExtractSelection , 1 , 2.3e-05 , 2.3e-05
+could not find reader record in name vtkPVExtractSelection
+render , OpenGL Dev , 46 , 9.002007 , 9.002007
+could not find reader record in name OpenGL Dev
+638 , vtkFileSeriesReader , 1 , 0.004101 , -0.015522
+found reader record
+639 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+35 , vtkOutlineRepresentation , 1 , 0.01959 , 0.01959
+could not find reader record in name vtkOutlineRepresentation
+WRFReader , WRFReader , 1 , 15.7362 , 15.7362
+found reader record
+519 , vtkPVMetaClipDataSet , 1 , 1.68393 , 1.68393
+could not find reader record in name vtkPVMetaClipDataSet
+321 , vtkFileSeriesReader , 1 , 75.896 , 75.896
+found reader record
+520 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+still , Still , 23 , 9.477691 , 0.475684
+could not find reader record in name Still
+426 , vtkPVContourFilter , 1 , 288.392 , 288.392
+could not find reader record in name vtkPVContourFilter
+
+[[{'vtkPVContourFilter': 288.392, 'vtkPVMetaClipDataSet': 1.68393, 'vtkPVExtractSelection': 2.3e-05, 'WRFReader': 15.7362, 'filter': 400.211552, 'vtkFileSeriesReader': 0.004101, 'reader': 91.636301, 'OpenGL Dev': 0.46700200000000003, 'Still': 0.93599, 'vtkOutlineRepresentation': 0.01959}], [{'OpenGL Dev': 0.405607, 'Still': 0.405892}], [{'OpenGL Dev': 0.384119, 'Still': 0.384415}], [{'OpenGL Dev': 0.38404, 'Still': 0.384358}], [{'OpenGL Dev': 0.38396199999999997, 'Still': 0.384345}], [{'OpenGL Dev': 0.384183, 'Still': 0.384477}], [{'OpenGL Dev': 0.383579, 'Still': 0.383875}], [{'OpenGL Dev': 0.391136, 'Still': 0.391459}], [{'OpenGL Dev': 0.438901, 'Still': 0.439211}], [{'OpenGL Dev': 0.383694, 'Still': 0.383999}], [{'OpenGL Dev': 0.38701199999999997, 'Still': 0.38731}], [{'OpenGL Dev': 0.384063, 'Still': 0.384366}], [{'OpenGL Dev': 0.383452, 'Still': 0.383747}], [{'OpenGL Dev': 0.384091, 'Still': 0.384393}], [{'OpenGL Dev': 0.385754, 'Still': 0.386043}], [{'OpenGL Dev': 0.383563, 'Still': 0.38386}], [{'OpenGL Dev': 0.383581, 'Still': 0.383893}], [{'OpenGL Dev': 0.385431, 'Still': 0.385735}], [{'OpenGL Dev': 0.383972, 'Still': 0.384267}], [{'OpenGL Dev': 0.384014, 'Still': 0.384311}], [{'OpenGL Dev': 0.38371299999999997, 'Still': 0.384007}], [{'OpenGL Dev': 0.383321, 'Still': 0.383616}], [{'OpenGL Dev': 0.383817, 'Still': 0.384122}], []]
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+CellCenters::GatherInformation,  0.000131 seconds
+DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+Execute vtkFileSeriesReader id: 321,  75.896 seconds
+WRFReader::GatherInformation,  15.7362 seconds
+Execute vtkPVContourFilter id: 426,  288.392 seconds
+Contour::GatherInformation,  0.859581 seconds
+Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+Clip::GatherInformation,  0.080213 seconds
+Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+RenderView::Update,  0.954952 seconds
+    vtkPVView::Update,  0.954497 seconds
+        Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+        Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+        Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+        Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+    FullRes Data Migration,  0.000659 seconds
+Still Render,  0.93599 seconds
+    OpenGL Dev Render,  0.466953 seconds
+    OpenGL Dev Render,  4.9e-05 seconds
+RenderView::Update,  0.000347 seconds
+    vtkPVView::Update,  0.000205 seconds
+Still Render,  0.405892 seconds
+    OpenGL Dev Render,  0.405575 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384415 seconds
+    OpenGL Dev Render,  0.384087 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384358 seconds
+    OpenGL Dev Render,  0.384006 seconds
+    OpenGL Dev Render,  3.4e-05 seconds
+Still Render,  0.384345 seconds
+    OpenGL Dev Render,  0.38393 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384477 seconds
+    OpenGL Dev Render,  0.38415 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383875 seconds
+    OpenGL Dev Render,  0.383546 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.391459 seconds
+    OpenGL Dev Render,  0.3911 seconds
+    OpenGL Dev Render,  3.6e-05 seconds
+Still Render,  0.439211 seconds
+    OpenGL Dev Render,  0.438866 seconds
+    OpenGL Dev Render,  3.5e-05 seconds
+Still Render,  0.383999 seconds
+    OpenGL Dev Render,  0.383661 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38731 seconds
+    OpenGL Dev Render,  0.38698 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384366 seconds
+    OpenGL Dev Render,  0.38403 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383747 seconds
+    OpenGL Dev Render,  0.383419 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384393 seconds
+    OpenGL Dev Render,  0.384058 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.386043 seconds
+    OpenGL Dev Render,  0.385721 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38386 seconds
+    OpenGL Dev Render,  0.383531 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383893 seconds
+    OpenGL Dev Render,  0.383548 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.385735 seconds
+    OpenGL Dev Render,  0.385398 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384267 seconds
+    OpenGL Dev Render,  0.383939 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384311 seconds
+    OpenGL Dev Render,  0.383981 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384007 seconds
+    OpenGL Dev Render,  0.383681 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383616 seconds
+    OpenGL Dev Render,  0.383288 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384122 seconds
+    OpenGL Dev Render,  0.383784 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+
+[0.3874659538269043, 0.39093899726867676, 0.38807201385498047, 0.4082331657409668, 0.38831615447998047, 0.38703107833862305, 0.3886229991912842, 0.38709282875061035, 0.38758301734924316, 0.38744115829467773]
+overall time avg fps: 2.56357843254 avg: 0.39007973671 dev: 0.00614647926407
+overall frame time results avg: 0.39007973671 dev: 0.00614647926407
+overall render time results avg: 0.39007973671 dev: 0.00614647926407
+still zoomed out results avg: 0.39007973671 dev: 0.00614647926407
+rotate zoomed out results avg: 0.39007973671 dev: 0.00614647926407
+zooming results avg: 0.39007973671 dev: 0.00614647926407
+rotate zoomed in results avg: 0.39007973671 dev: 0.00614647926407
+still zoomed in results avg: 0.39007973671 dev: 0.00614647926407
+reader time 91.636301
+filter time 400.211552
+#
+Stage 3...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 387.049808025
+warmup frame Render: 0.388846158981
+rendering warmup frame
+warmup frame Render: 0.38825917244
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00030.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00031.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00032.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00033.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00034.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00035.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00036.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00037.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00038.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00039.jpg
+#
+parsing...
+#
+Carson parser
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+line: CellCenters::GatherInformation,  0.000131 seconds
+????: 0 CellCenters::GatherInformation,  0.000131 seconds
+line: DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+????: 0 DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+line: Execute vtkFileSeriesReader id: 321,  75.896 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 321,  75.896 seconds
+line: WRFReader::GatherInformation,  15.7362 seconds
+READER: 0 WRFReader::GatherInformation,  15.7362 seconds
+line: Execute vtkPVContourFilter id: 426,  288.392 seconds
+FILT: 0 Execute vtkPVContourFilter id: 426,  288.392 seconds
+line: Contour::GatherInformation,  0.859581 seconds
+????: 0 Contour::GatherInformation,  0.859581 seconds
+line: Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+FILT: 0 Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+line: Clip::GatherInformation,  0.080213 seconds
+????: 0 Clip::GatherInformation,  0.080213 seconds
+line: Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+line: XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+????: 0 XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+line: RenderView::Update,  0.954952 seconds
+????: 0 RenderView::Update,  0.954952 seconds
+line:     vtkPVView::Update,  0.954497 seconds
+????: 4     vtkPVView::Update,  0.954497 seconds
+line:         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+FILT: 8         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+line:         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+line:         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+line:         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+line: vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+line:     FullRes Data Migration,  0.000659 seconds
+????: 4     FullRes Data Migration,  0.000659 seconds
+line: Still Render,  0.93599 seconds
+STILL: 0 Still Render,  0.93599 seconds
+SOF
+line:     OpenGL Dev Render,  0.466953 seconds
+REND: 4     OpenGL Dev Render,  0.466953 seconds
+line:     OpenGL Dev Render,  4.9e-05 seconds
+REND: 4     OpenGL Dev Render,  4.9e-05 seconds
+line: RenderView::Update,  0.000347 seconds
+????: 0 RenderView::Update,  0.000347 seconds
+line:     vtkPVView::Update,  0.000205 seconds
+????: 4     vtkPVView::Update,  0.000205 seconds
+line: Still Render,  0.405892 seconds
+STILL: 0 Still Render,  0.405892 seconds
+SOF
+line:     OpenGL Dev Render,  0.405575 seconds
+REND: 4     OpenGL Dev Render,  0.405575 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384415 seconds
+STILL: 0 Still Render,  0.384415 seconds
+SOF
+line:     OpenGL Dev Render,  0.384087 seconds
+REND: 4     OpenGL Dev Render,  0.384087 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384358 seconds
+STILL: 0 Still Render,  0.384358 seconds
+SOF
+line:     OpenGL Dev Render,  0.384006 seconds
+REND: 4     OpenGL Dev Render,  0.384006 seconds
+line:     OpenGL Dev Render,  3.4e-05 seconds
+REND: 4     OpenGL Dev Render,  3.4e-05 seconds
+line: Still Render,  0.384345 seconds
+STILL: 0 Still Render,  0.384345 seconds
+SOF
+line:     OpenGL Dev Render,  0.38393 seconds
+REND: 4     OpenGL Dev Render,  0.38393 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384477 seconds
+STILL: 0 Still Render,  0.384477 seconds
+SOF
+line:     OpenGL Dev Render,  0.38415 seconds
+REND: 4     OpenGL Dev Render,  0.38415 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383875 seconds
+STILL: 0 Still Render,  0.383875 seconds
+SOF
+line:     OpenGL Dev Render,  0.383546 seconds
+REND: 4     OpenGL Dev Render,  0.383546 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.391459 seconds
+STILL: 0 Still Render,  0.391459 seconds
+SOF
+line:     OpenGL Dev Render,  0.3911 seconds
+REND: 4     OpenGL Dev Render,  0.3911 seconds
+line:     OpenGL Dev Render,  3.6e-05 seconds
+REND: 4     OpenGL Dev Render,  3.6e-05 seconds
+line: Still Render,  0.439211 seconds
+STILL: 0 Still Render,  0.439211 seconds
+SOF
+line:     OpenGL Dev Render,  0.438866 seconds
+REND: 4     OpenGL Dev Render,  0.438866 seconds
+line:     OpenGL Dev Render,  3.5e-05 seconds
+REND: 4     OpenGL Dev Render,  3.5e-05 seconds
+line: Still Render,  0.383999 seconds
+STILL: 0 Still Render,  0.383999 seconds
+SOF
+line:     OpenGL Dev Render,  0.383661 seconds
+REND: 4     OpenGL Dev Render,  0.383661 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38731 seconds
+STILL: 0 Still Render,  0.38731 seconds
+SOF
+line:     OpenGL Dev Render,  0.38698 seconds
+REND: 4     OpenGL Dev Render,  0.38698 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384366 seconds
+STILL: 0 Still Render,  0.384366 seconds
+SOF
+line:     OpenGL Dev Render,  0.38403 seconds
+REND: 4     OpenGL Dev Render,  0.38403 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383747 seconds
+STILL: 0 Still Render,  0.383747 seconds
+SOF
+line:     OpenGL Dev Render,  0.383419 seconds
+REND: 4     OpenGL Dev Render,  0.383419 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384393 seconds
+STILL: 0 Still Render,  0.384393 seconds
+SOF
+line:     OpenGL Dev Render,  0.384058 seconds
+REND: 4     OpenGL Dev Render,  0.384058 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.386043 seconds
+STILL: 0 Still Render,  0.386043 seconds
+SOF
+line:     OpenGL Dev Render,  0.385721 seconds
+REND: 4     OpenGL Dev Render,  0.385721 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38386 seconds
+STILL: 0 Still Render,  0.38386 seconds
+SOF
+line:     OpenGL Dev Render,  0.383531 seconds
+REND: 4     OpenGL Dev Render,  0.383531 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383893 seconds
+STILL: 0 Still Render,  0.383893 seconds
+SOF
+line:     OpenGL Dev Render,  0.383548 seconds
+REND: 4     OpenGL Dev Render,  0.383548 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.385735 seconds
+STILL: 0 Still Render,  0.385735 seconds
+SOF
+line:     OpenGL Dev Render,  0.385398 seconds
+REND: 4     OpenGL Dev Render,  0.385398 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384267 seconds
+STILL: 0 Still Render,  0.384267 seconds
+SOF
+line:     OpenGL Dev Render,  0.383939 seconds
+REND: 4     OpenGL Dev Render,  0.383939 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384311 seconds
+STILL: 0 Still Render,  0.384311 seconds
+SOF
+line:     OpenGL Dev Render,  0.383981 seconds
+REND: 4     OpenGL Dev Render,  0.383981 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384007 seconds
+STILL: 0 Still Render,  0.384007 seconds
+SOF
+line:     OpenGL Dev Render,  0.383681 seconds
+REND: 4     OpenGL Dev Render,  0.383681 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383616 seconds
+STILL: 0 Still Render,  0.383616 seconds
+SOF
+line:     OpenGL Dev Render,  0.383288 seconds
+REND: 4     OpenGL Dev Render,  0.383288 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384122 seconds
+STILL: 0 Still Render,  0.384122 seconds
+SOF
+line:     OpenGL Dev Render,  0.383784 seconds
+REND: 4     OpenGL Dev Render,  0.383784 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: 
+????: 0 
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+321 , vtkFileSeriesReader , 75.896 , 75.896
+WRFReader , WRFReader , 15.7362 , 15.7362
+426 , vtkPVContourFilter , 288.392 , 288.392
+519 , vtkPVMetaClipDataSet , 1.68393 , 1.68393
+638 , vtkFileSeriesReader , 0.004101 , -0.015522
+35 , vtkOutlineRepresentation , 0.01959 , 0.01959
+322 , vtkPVExtractSelection , 2.3e-05 , 2.3e-05
+520 , vtkPVExtractSelection , 5e-06 , 5e-06
+639 , vtkPVExtractSelection , 5e-06 , 5e-06
+#Frame  1
+still , Still , 0.93599 , 0.468988
+found still record
+render , OpenGL Dev , 0.466953 , 0.466953
+found still record
+render , OpenGL Dev , 4.9e-05 , 4.9e-05
+found still record
+#Frame  2
+still , Still , 0.405892 , 0.000285
+found still record
+render , OpenGL Dev , 0.405575 , 0.405575
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  3
+still , Still , 0.384415 , 0.000296
+found still record
+render , OpenGL Dev , 0.384087 , 0.384087
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  4
+still , Still , 0.384358 , 0.000318
+found still record
+render , OpenGL Dev , 0.384006 , 0.384006
+found still record
+render , OpenGL Dev , 3.4e-05 , 3.4e-05
+found still record
+#Frame  5
+still , Still , 0.384345 , 0.000383
+found still record
+render , OpenGL Dev , 0.38393 , 0.38393
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  6
+still , Still , 0.384477 , 0.000294
+found still record
+render , OpenGL Dev , 0.38415 , 0.38415
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  7
+still , Still , 0.383875 , 0.000296
+found still record
+render , OpenGL Dev , 0.383546 , 0.383546
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  8
+still , Still , 0.391459 , 0.000323
+found still record
+render , OpenGL Dev , 0.3911 , 0.3911
+found still record
+render , OpenGL Dev , 3.6e-05 , 3.6e-05
+found still record
+#Frame  9
+still , Still , 0.439211 , 0.00031
+found still record
+render , OpenGL Dev , 0.438866 , 0.438866
+found still record
+render , OpenGL Dev , 3.5e-05 , 3.5e-05
+found still record
+#Frame  10
+still , Still , 0.383999 , 0.000305
+found still record
+render , OpenGL Dev , 0.383661 , 0.383661
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  11
+still , Still , 0.38731 , 0.000298
+found still record
+render , OpenGL Dev , 0.38698 , 0.38698
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  12
+still , Still , 0.384366 , 0.000303
+found still record
+render , OpenGL Dev , 0.38403 , 0.38403
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  13
+still , Still , 0.383747 , 0.000295
+found still record
+render , OpenGL Dev , 0.383419 , 0.383419
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  14
+still , Still , 0.384393 , 0.000302
+found still record
+render , OpenGL Dev , 0.384058 , 0.384058
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  15
+still , Still , 0.386043 , 0.000289
+found still record
+render , OpenGL Dev , 0.385721 , 0.385721
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  16
+still , Still , 0.38386 , 0.000297
+found still record
+render , OpenGL Dev , 0.383531 , 0.383531
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  17
+still , Still , 0.383893 , 0.000312
+found still record
+render , OpenGL Dev , 0.383548 , 0.383548
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  18
+still , Still , 0.385735 , 0.000304
+found still record
+render , OpenGL Dev , 0.385398 , 0.385398
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  19
+still , Still , 0.384267 , 0.000295
+found still record
+render , OpenGL Dev , 0.383939 , 0.383939
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  20
+still , Still , 0.384311 , 0.000297
+found still record
+render , OpenGL Dev , 0.383981 , 0.383981
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  21
+still , Still , 0.384007 , 0.000294
+found still record
+render , OpenGL Dev , 0.383681 , 0.383681
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  22
+still , Still , 0.383616 , 0.000295
+found still record
+render , OpenGL Dev , 0.383288 , 0.383288
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  23
+still , Still , 0.384122 , 0.000305
+found still record
+render , OpenGL Dev , 0.383784 , 0.383784
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+322 , vtkPVExtractSelection , 1 , 2.3e-05 , 2.3e-05
+could not find reader record in name vtkPVExtractSelection
+render , OpenGL Dev , 46 , 9.002007 , 9.002007
+could not find reader record in name OpenGL Dev
+638 , vtkFileSeriesReader , 1 , 0.004101 , -0.015522
+found reader record
+639 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+35 , vtkOutlineRepresentation , 1 , 0.01959 , 0.01959
+could not find reader record in name vtkOutlineRepresentation
+WRFReader , WRFReader , 1 , 15.7362 , 15.7362
+found reader record
+519 , vtkPVMetaClipDataSet , 1 , 1.68393 , 1.68393
+could not find reader record in name vtkPVMetaClipDataSet
+321 , vtkFileSeriesReader , 1 , 75.896 , 75.896
+found reader record
+520 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+still , Still , 23 , 9.477691 , 0.475684
+could not find reader record in name Still
+426 , vtkPVContourFilter , 1 , 288.392 , 288.392
+could not find reader record in name vtkPVContourFilter
+
+[[{'vtkPVContourFilter': 288.392, 'vtkPVMetaClipDataSet': 1.68393, 'vtkPVExtractSelection': 2.3e-05, 'WRFReader': 15.7362, 'filter': 400.211552, 'vtkFileSeriesReader': 0.004101, 'reader': 91.636301, 'OpenGL Dev': 0.46700200000000003, 'Still': 0.93599, 'vtkOutlineRepresentation': 0.01959}], [{'OpenGL Dev': 0.405607, 'Still': 0.405892}], [{'OpenGL Dev': 0.384119, 'Still': 0.384415}], [{'OpenGL Dev': 0.38404, 'Still': 0.384358}], [{'OpenGL Dev': 0.38396199999999997, 'Still': 0.384345}], [{'OpenGL Dev': 0.384183, 'Still': 0.384477}], [{'OpenGL Dev': 0.383579, 'Still': 0.383875}], [{'OpenGL Dev': 0.391136, 'Still': 0.391459}], [{'OpenGL Dev': 0.438901, 'Still': 0.439211}], [{'OpenGL Dev': 0.383694, 'Still': 0.383999}], [{'OpenGL Dev': 0.38701199999999997, 'Still': 0.38731}], [{'OpenGL Dev': 0.384063, 'Still': 0.384366}], [{'OpenGL Dev': 0.383452, 'Still': 0.383747}], [{'OpenGL Dev': 0.384091, 'Still': 0.384393}], [{'OpenGL Dev': 0.385754, 'Still': 0.386043}], [{'OpenGL Dev': 0.383563, 'Still': 0.38386}], [{'OpenGL Dev': 0.383581, 'Still': 0.383893}], [{'OpenGL Dev': 0.385431, 'Still': 0.385735}], [{'OpenGL Dev': 0.383972, 'Still': 0.384267}], [{'OpenGL Dev': 0.384014, 'Still': 0.384311}], [{'OpenGL Dev': 0.38371299999999997, 'Still': 0.384007}], [{'OpenGL Dev': 0.383321, 'Still': 0.383616}], [{'OpenGL Dev': 0.383817, 'Still': 0.384122}], []]
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+CellCenters::GatherInformation,  0.000131 seconds
+DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+Execute vtkFileSeriesReader id: 321,  75.896 seconds
+WRFReader::GatherInformation,  15.7362 seconds
+Execute vtkPVContourFilter id: 426,  288.392 seconds
+Contour::GatherInformation,  0.859581 seconds
+Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+Clip::GatherInformation,  0.080213 seconds
+Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+RenderView::Update,  0.954952 seconds
+    vtkPVView::Update,  0.954497 seconds
+        Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+        Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+        Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+        Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+    FullRes Data Migration,  0.000659 seconds
+Still Render,  0.93599 seconds
+    OpenGL Dev Render,  0.466953 seconds
+    OpenGL Dev Render,  4.9e-05 seconds
+RenderView::Update,  0.000347 seconds
+    vtkPVView::Update,  0.000205 seconds
+Still Render,  0.405892 seconds
+    OpenGL Dev Render,  0.405575 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384415 seconds
+    OpenGL Dev Render,  0.384087 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384358 seconds
+    OpenGL Dev Render,  0.384006 seconds
+    OpenGL Dev Render,  3.4e-05 seconds
+Still Render,  0.384345 seconds
+    OpenGL Dev Render,  0.38393 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384477 seconds
+    OpenGL Dev Render,  0.38415 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383875 seconds
+    OpenGL Dev Render,  0.383546 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.391459 seconds
+    OpenGL Dev Render,  0.3911 seconds
+    OpenGL Dev Render,  3.6e-05 seconds
+Still Render,  0.439211 seconds
+    OpenGL Dev Render,  0.438866 seconds
+    OpenGL Dev Render,  3.5e-05 seconds
+Still Render,  0.383999 seconds
+    OpenGL Dev Render,  0.383661 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38731 seconds
+    OpenGL Dev Render,  0.38698 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384366 seconds
+    OpenGL Dev Render,  0.38403 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383747 seconds
+    OpenGL Dev Render,  0.383419 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384393 seconds
+    OpenGL Dev Render,  0.384058 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.386043 seconds
+    OpenGL Dev Render,  0.385721 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38386 seconds
+    OpenGL Dev Render,  0.383531 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383893 seconds
+    OpenGL Dev Render,  0.383548 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.385735 seconds
+    OpenGL Dev Render,  0.385398 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384267 seconds
+    OpenGL Dev Render,  0.383939 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384311 seconds
+    OpenGL Dev Render,  0.383981 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384007 seconds
+    OpenGL Dev Render,  0.383681 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383616 seconds
+    OpenGL Dev Render,  0.383288 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384122 seconds
+    OpenGL Dev Render,  0.383784 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+
+[0.3885979652404785, 0.38930511474609375, 0.39971423149108887, 0.3882870674133301, 0.3885838985443115, 0.3886678218841553, 0.3879990577697754, 0.38935303688049316, 0.40224504470825195, 0.3881659507751465]
+overall time avg fps: 2.55694365329 avg: 0.391091918945 dev: 0.00499332913074
+overall frame time results avg: 0.391091918945 dev: 0.00499332913074
+overall render time results avg: 0.391091918945 dev: 0.00499332913074
+still zoomed out results avg: 0.391091918945 dev: 0.00499332913074
+rotate zoomed out results avg: 0.391091918945 dev: 0.00499332913074
+zooming results avg: 0.391091918945 dev: 0.00499332913074
+rotate zoomed in results avg: 0.391091918945 dev: 0.00499332913074
+still zoomed in results avg: 0.391091918945 dev: 0.00499332913074
+reader time 91.636301
+filter time 400.211552
+#
+Stage 4...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 388.088647127
+warmup frame Render: 0.389832019806
+rendering warmup frame
+warmup frame Render: 0.388896942139
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00040.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00041.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00042.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00043.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00044.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00045.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00046.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00047.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00048.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00049.jpg
+#
+parsing...
+#
+Carson parser
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+line: CellCenters::GatherInformation,  0.000131 seconds
+????: 0 CellCenters::GatherInformation,  0.000131 seconds
+line: DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+????: 0 DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+line: Execute vtkFileSeriesReader id: 321,  75.896 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 321,  75.896 seconds
+line: WRFReader::GatherInformation,  15.7362 seconds
+READER: 0 WRFReader::GatherInformation,  15.7362 seconds
+line: Execute vtkPVContourFilter id: 426,  288.392 seconds
+FILT: 0 Execute vtkPVContourFilter id: 426,  288.392 seconds
+line: Contour::GatherInformation,  0.859581 seconds
+????: 0 Contour::GatherInformation,  0.859581 seconds
+line: Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+FILT: 0 Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+line: Clip::GatherInformation,  0.080213 seconds
+????: 0 Clip::GatherInformation,  0.080213 seconds
+line: Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+FILT: 0 Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+line: XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+????: 0 XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+line: RenderView::Update,  0.954952 seconds
+????: 0 RenderView::Update,  0.954952 seconds
+line:     vtkPVView::Update,  0.954497 seconds
+????: 4     vtkPVView::Update,  0.954497 seconds
+line:         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+FILT: 8         Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+line:         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+line:         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+line:         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+????: 8         Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+line:         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+FILT: 8         Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+line: vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+line:     FullRes Data Migration,  0.000659 seconds
+????: 4     FullRes Data Migration,  0.000659 seconds
+line: Still Render,  0.93599 seconds
+STILL: 0 Still Render,  0.93599 seconds
+SOF
+line:     OpenGL Dev Render,  0.466953 seconds
+REND: 4     OpenGL Dev Render,  0.466953 seconds
+line:     OpenGL Dev Render,  4.9e-05 seconds
+REND: 4     OpenGL Dev Render,  4.9e-05 seconds
+line: RenderView::Update,  0.000347 seconds
+????: 0 RenderView::Update,  0.000347 seconds
+line:     vtkPVView::Update,  0.000205 seconds
+????: 4     vtkPVView::Update,  0.000205 seconds
+line: Still Render,  0.405892 seconds
+STILL: 0 Still Render,  0.405892 seconds
+SOF
+line:     OpenGL Dev Render,  0.405575 seconds
+REND: 4     OpenGL Dev Render,  0.405575 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384415 seconds
+STILL: 0 Still Render,  0.384415 seconds
+SOF
+line:     OpenGL Dev Render,  0.384087 seconds
+REND: 4     OpenGL Dev Render,  0.384087 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384358 seconds
+STILL: 0 Still Render,  0.384358 seconds
+SOF
+line:     OpenGL Dev Render,  0.384006 seconds
+REND: 4     OpenGL Dev Render,  0.384006 seconds
+line:     OpenGL Dev Render,  3.4e-05 seconds
+REND: 4     OpenGL Dev Render,  3.4e-05 seconds
+line: Still Render,  0.384345 seconds
+STILL: 0 Still Render,  0.384345 seconds
+SOF
+line:     OpenGL Dev Render,  0.38393 seconds
+REND: 4     OpenGL Dev Render,  0.38393 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384477 seconds
+STILL: 0 Still Render,  0.384477 seconds
+SOF
+line:     OpenGL Dev Render,  0.38415 seconds
+REND: 4     OpenGL Dev Render,  0.38415 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383875 seconds
+STILL: 0 Still Render,  0.383875 seconds
+SOF
+line:     OpenGL Dev Render,  0.383546 seconds
+REND: 4     OpenGL Dev Render,  0.383546 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.391459 seconds
+STILL: 0 Still Render,  0.391459 seconds
+SOF
+line:     OpenGL Dev Render,  0.3911 seconds
+REND: 4     OpenGL Dev Render,  0.3911 seconds
+line:     OpenGL Dev Render,  3.6e-05 seconds
+REND: 4     OpenGL Dev Render,  3.6e-05 seconds
+line: Still Render,  0.439211 seconds
+STILL: 0 Still Render,  0.439211 seconds
+SOF
+line:     OpenGL Dev Render,  0.438866 seconds
+REND: 4     OpenGL Dev Render,  0.438866 seconds
+line:     OpenGL Dev Render,  3.5e-05 seconds
+REND: 4     OpenGL Dev Render,  3.5e-05 seconds
+line: Still Render,  0.383999 seconds
+STILL: 0 Still Render,  0.383999 seconds
+SOF
+line:     OpenGL Dev Render,  0.383661 seconds
+REND: 4     OpenGL Dev Render,  0.383661 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38731 seconds
+STILL: 0 Still Render,  0.38731 seconds
+SOF
+line:     OpenGL Dev Render,  0.38698 seconds
+REND: 4     OpenGL Dev Render,  0.38698 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.384366 seconds
+STILL: 0 Still Render,  0.384366 seconds
+SOF
+line:     OpenGL Dev Render,  0.38403 seconds
+REND: 4     OpenGL Dev Render,  0.38403 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.383747 seconds
+STILL: 0 Still Render,  0.383747 seconds
+SOF
+line:     OpenGL Dev Render,  0.383419 seconds
+REND: 4     OpenGL Dev Render,  0.383419 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384393 seconds
+STILL: 0 Still Render,  0.384393 seconds
+SOF
+line:     OpenGL Dev Render,  0.384058 seconds
+REND: 4     OpenGL Dev Render,  0.384058 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.386043 seconds
+STILL: 0 Still Render,  0.386043 seconds
+SOF
+line:     OpenGL Dev Render,  0.385721 seconds
+REND: 4     OpenGL Dev Render,  0.385721 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.38386 seconds
+STILL: 0 Still Render,  0.38386 seconds
+SOF
+line:     OpenGL Dev Render,  0.383531 seconds
+REND: 4     OpenGL Dev Render,  0.383531 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383893 seconds
+STILL: 0 Still Render,  0.383893 seconds
+SOF
+line:     OpenGL Dev Render,  0.383548 seconds
+REND: 4     OpenGL Dev Render,  0.383548 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.385735 seconds
+STILL: 0 Still Render,  0.385735 seconds
+SOF
+line:     OpenGL Dev Render,  0.385398 seconds
+REND: 4     OpenGL Dev Render,  0.385398 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384267 seconds
+STILL: 0 Still Render,  0.384267 seconds
+SOF
+line:     OpenGL Dev Render,  0.383939 seconds
+REND: 4     OpenGL Dev Render,  0.383939 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384311 seconds
+STILL: 0 Still Render,  0.384311 seconds
+SOF
+line:     OpenGL Dev Render,  0.383981 seconds
+REND: 4     OpenGL Dev Render,  0.383981 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384007 seconds
+STILL: 0 Still Render,  0.384007 seconds
+SOF
+line:     OpenGL Dev Render,  0.383681 seconds
+REND: 4     OpenGL Dev Render,  0.383681 seconds
+line:     OpenGL Dev Render,  3.2e-05 seconds
+REND: 4     OpenGL Dev Render,  3.2e-05 seconds
+line: Still Render,  0.383616 seconds
+STILL: 0 Still Render,  0.383616 seconds
+SOF
+line:     OpenGL Dev Render,  0.383288 seconds
+REND: 4     OpenGL Dev Render,  0.383288 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: Still Render,  0.384122 seconds
+STILL: 0 Still Render,  0.384122 seconds
+SOF
+line:     OpenGL Dev Render,  0.383784 seconds
+REND: 4     OpenGL Dev Render,  0.383784 seconds
+line:     OpenGL Dev Render,  3.3e-05 seconds
+REND: 4     OpenGL Dev Render,  3.3e-05 seconds
+line: 
+????: 0 
+#FRAME TIMINGS
+#filter id, filter type, inclusive duration, local duration
+#Frame  0
+321 , vtkFileSeriesReader , 75.896 , 75.896
+WRFReader , WRFReader , 15.7362 , 15.7362
+426 , vtkPVContourFilter , 288.392 , 288.392
+519 , vtkPVMetaClipDataSet , 1.68393 , 1.68393
+638 , vtkFileSeriesReader , 0.004101 , -0.015522
+35 , vtkOutlineRepresentation , 0.01959 , 0.01959
+322 , vtkPVExtractSelection , 2.3e-05 , 2.3e-05
+520 , vtkPVExtractSelection , 5e-06 , 5e-06
+639 , vtkPVExtractSelection , 5e-06 , 5e-06
+#Frame  1
+still , Still , 0.93599 , 0.468988
+found still record
+render , OpenGL Dev , 0.466953 , 0.466953
+found still record
+render , OpenGL Dev , 4.9e-05 , 4.9e-05
+found still record
+#Frame  2
+still , Still , 0.405892 , 0.000285
+found still record
+render , OpenGL Dev , 0.405575 , 0.405575
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  3
+still , Still , 0.384415 , 0.000296
+found still record
+render , OpenGL Dev , 0.384087 , 0.384087
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  4
+still , Still , 0.384358 , 0.000318
+found still record
+render , OpenGL Dev , 0.384006 , 0.384006
+found still record
+render , OpenGL Dev , 3.4e-05 , 3.4e-05
+found still record
+#Frame  5
+still , Still , 0.384345 , 0.000383
+found still record
+render , OpenGL Dev , 0.38393 , 0.38393
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  6
+still , Still , 0.384477 , 0.000294
+found still record
+render , OpenGL Dev , 0.38415 , 0.38415
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  7
+still , Still , 0.383875 , 0.000296
+found still record
+render , OpenGL Dev , 0.383546 , 0.383546
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  8
+still , Still , 0.391459 , 0.000323
+found still record
+render , OpenGL Dev , 0.3911 , 0.3911
+found still record
+render , OpenGL Dev , 3.6e-05 , 3.6e-05
+found still record
+#Frame  9
+still , Still , 0.439211 , 0.00031
+found still record
+render , OpenGL Dev , 0.438866 , 0.438866
+found still record
+render , OpenGL Dev , 3.5e-05 , 3.5e-05
+found still record
+#Frame  10
+still , Still , 0.383999 , 0.000305
+found still record
+render , OpenGL Dev , 0.383661 , 0.383661
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  11
+still , Still , 0.38731 , 0.000298
+found still record
+render , OpenGL Dev , 0.38698 , 0.38698
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  12
+still , Still , 0.384366 , 0.000303
+found still record
+render , OpenGL Dev , 0.38403 , 0.38403
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  13
+still , Still , 0.383747 , 0.000295
+found still record
+render , OpenGL Dev , 0.383419 , 0.383419
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  14
+still , Still , 0.384393 , 0.000302
+found still record
+render , OpenGL Dev , 0.384058 , 0.384058
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  15
+still , Still , 0.386043 , 0.000289
+found still record
+render , OpenGL Dev , 0.385721 , 0.385721
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  16
+still , Still , 0.38386 , 0.000297
+found still record
+render , OpenGL Dev , 0.383531 , 0.383531
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  17
+still , Still , 0.383893 , 0.000312
+found still record
+render , OpenGL Dev , 0.383548 , 0.383548
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  18
+still , Still , 0.385735 , 0.000304
+found still record
+render , OpenGL Dev , 0.385398 , 0.385398
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  19
+still , Still , 0.384267 , 0.000295
+found still record
+render , OpenGL Dev , 0.383939 , 0.383939
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  20
+still , Still , 0.384311 , 0.000297
+found still record
+render , OpenGL Dev , 0.383981 , 0.383981
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  21
+still , Still , 0.384007 , 0.000294
+found still record
+render , OpenGL Dev , 0.383681 , 0.383681
+found still record
+render , OpenGL Dev , 3.2e-05 , 3.2e-05
+found still record
+#Frame  22
+still , Still , 0.383616 , 0.000295
+found still record
+render , OpenGL Dev , 0.383288 , 0.383288
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#Frame  23
+still , Still , 0.384122 , 0.000305
+found still record
+render , OpenGL Dev , 0.383784 , 0.383784
+found still record
+render , OpenGL Dev , 3.3e-05 , 3.3e-05
+found still record
+#FILTER TIMINGS
+#filter id, filter type, count, sum inclusive duration, sum local duration
+322 , vtkPVExtractSelection , 1 , 2.3e-05 , 2.3e-05
+could not find reader record in name vtkPVExtractSelection
+render , OpenGL Dev , 46 , 9.002007 , 9.002007
+could not find reader record in name OpenGL Dev
+638 , vtkFileSeriesReader , 1 , 0.004101 , -0.015522
+found reader record
+639 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+35 , vtkOutlineRepresentation , 1 , 0.01959 , 0.01959
+could not find reader record in name vtkOutlineRepresentation
+WRFReader , WRFReader , 1 , 15.7362 , 15.7362
+found reader record
+519 , vtkPVMetaClipDataSet , 1 , 1.68393 , 1.68393
+could not find reader record in name vtkPVMetaClipDataSet
+321 , vtkFileSeriesReader , 1 , 75.896 , 75.896
+found reader record
+520 , vtkPVExtractSelection , 1 , 5e-06 , 5e-06
+could not find reader record in name vtkPVExtractSelection
+still , Still , 23 , 9.477691 , 0.475684
+could not find reader record in name Still
+426 , vtkPVContourFilter , 1 , 288.392 , 288.392
+could not find reader record in name vtkPVContourFilter
+
+[[{'vtkPVContourFilter': 288.392, 'vtkPVMetaClipDataSet': 1.68393, 'vtkPVExtractSelection': 2.3e-05, 'WRFReader': 15.7362, 'filter': 400.211552, 'vtkFileSeriesReader': 0.004101, 'reader': 91.636301, 'OpenGL Dev': 0.46700200000000003, 'Still': 0.93599, 'vtkOutlineRepresentation': 0.01959}], [{'OpenGL Dev': 0.405607, 'Still': 0.405892}], [{'OpenGL Dev': 0.384119, 'Still': 0.384415}], [{'OpenGL Dev': 0.38404, 'Still': 0.384358}], [{'OpenGL Dev': 0.38396199999999997, 'Still': 0.384345}], [{'OpenGL Dev': 0.384183, 'Still': 0.384477}], [{'OpenGL Dev': 0.383579, 'Still': 0.383875}], [{'OpenGL Dev': 0.391136, 'Still': 0.391459}], [{'OpenGL Dev': 0.438901, 'Still': 0.439211}], [{'OpenGL Dev': 0.383694, 'Still': 0.383999}], [{'OpenGL Dev': 0.38701199999999997, 'Still': 0.38731}], [{'OpenGL Dev': 0.384063, 'Still': 0.384366}], [{'OpenGL Dev': 0.383452, 'Still': 0.383747}], [{'OpenGL Dev': 0.384091, 'Still': 0.384393}], [{'OpenGL Dev': 0.385754, 'Still': 0.386043}], [{'OpenGL Dev': 0.383563, 'Still': 0.38386}], [{'OpenGL Dev': 0.383581, 'Still': 0.383893}], [{'OpenGL Dev': 0.385431, 'Still': 0.385735}], [{'OpenGL Dev': 0.383972, 'Still': 0.384267}], [{'OpenGL Dev': 0.384014, 'Still': 0.384311}], [{'OpenGL Dev': 0.38371299999999997, 'Still': 0.384007}], [{'OpenGL Dev': 0.383321, 'Still': 0.383616}], [{'OpenGL Dev': 0.383817, 'Still': 0.384122}], []]
+#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
+CellCenters::GatherInformation,  0.000131 seconds
+DataSetSurfaceFilter::GatherInformation,  4.2e-05 seconds
+Execute vtkFileSeriesReader id: 321,  75.896 seconds
+WRFReader::GatherInformation,  15.7362 seconds
+Execute vtkPVContourFilter id: 426,  288.392 seconds
+Contour::GatherInformation,  0.859581 seconds
+Execute vtkPVMetaClipDataSet id: 519,  1.68393 seconds
+Clip::GatherInformation,  0.080213 seconds
+Execute vtkFileSeriesReader id: 638,  0.004101 seconds
+XMLStructuredGridReader::GatherInformat,  0.00042 seconds
+RenderView::Update,  0.954952 seconds
+    vtkPVView::Update,  0.954497 seconds
+        Execute vtkOutlineRepresentation id: 35,  0.01959 seconds
+        Execute vtkPVExtractSelection id: 322,  2.3e-05 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.930174 seconds
+        Execute vtkPVExtractSelection id: 520,  5e-06 seconds
+        Execute vtkGeometryRepresentationWithFa,  0.002558 seconds
+        Execute vtkPVExtractSelection id: 639,  5e-06 seconds
+vtkSMDataDeliveryManager: Deliver Geome,  0.000805 seconds
+    FullRes Data Migration,  0.000659 seconds
+Still Render,  0.93599 seconds
+    OpenGL Dev Render,  0.466953 seconds
+    OpenGL Dev Render,  4.9e-05 seconds
+RenderView::Update,  0.000347 seconds
+    vtkPVView::Update,  0.000205 seconds
+Still Render,  0.405892 seconds
+    OpenGL Dev Render,  0.405575 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384415 seconds
+    OpenGL Dev Render,  0.384087 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384358 seconds
+    OpenGL Dev Render,  0.384006 seconds
+    OpenGL Dev Render,  3.4e-05 seconds
+Still Render,  0.384345 seconds
+    OpenGL Dev Render,  0.38393 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384477 seconds
+    OpenGL Dev Render,  0.38415 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383875 seconds
+    OpenGL Dev Render,  0.383546 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.391459 seconds
+    OpenGL Dev Render,  0.3911 seconds
+    OpenGL Dev Render,  3.6e-05 seconds
+Still Render,  0.439211 seconds
+    OpenGL Dev Render,  0.438866 seconds
+    OpenGL Dev Render,  3.5e-05 seconds
+Still Render,  0.383999 seconds
+    OpenGL Dev Render,  0.383661 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38731 seconds
+    OpenGL Dev Render,  0.38698 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.384366 seconds
+    OpenGL Dev Render,  0.38403 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.383747 seconds
+    OpenGL Dev Render,  0.383419 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384393 seconds
+    OpenGL Dev Render,  0.384058 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.386043 seconds
+    OpenGL Dev Render,  0.385721 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.38386 seconds
+    OpenGL Dev Render,  0.383531 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383893 seconds
+    OpenGL Dev Render,  0.383548 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.385735 seconds
+    OpenGL Dev Render,  0.385398 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384267 seconds
+    OpenGL Dev Render,  0.383939 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384311 seconds
+    OpenGL Dev Render,  0.383981 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384007 seconds
+    OpenGL Dev Render,  0.383681 seconds
+    OpenGL Dev Render,  3.2e-05 seconds
+Still Render,  0.383616 seconds
+    OpenGL Dev Render,  0.383288 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+Still Render,  0.384122 seconds
+    OpenGL Dev Render,  0.383784 seconds
+    OpenGL Dev Render,  3.3e-05 seconds
+
+[0.38994908332824707, 0.38959407806396484, 0.3895449638366699, 0.39035701751708984, 0.3931870460510254, 0.3904380798339844, 0.38967108726501465, 0.39011192321777344, 0.39048099517822266, 0.38937807083129883]
+overall time avg fps: 2.56232053907 avg: 0.390271234512 dev: 0.00104183693805
+overall frame time results avg: 0.390271234512 dev: 0.00104183693805
+overall render time results avg: 0.390271234512 dev: 0.00104183693805
+still zoomed out results avg: 0.390271234512 dev: 0.00104183693805
+rotate zoomed out results avg: 0.390271234512 dev: 0.00104183693805
+zooming results avg: 0.390271234512 dev: 0.00104183693805
+rotate zoomed in results avg: 0.390271234512 dev: 0.00104183693805
+still zoomed in results avg: 0.390271234512 dev: 0.00104183693805
+reader time 91.636301
+filter time 400.211552
+#
+Stage 5...
+#
+#
+Warmup...
+#
+rendering warmup frame
+time to first frame: 387.608803034
+warmup frame Render: 0.392343997955
+rendering warmup frame
+warmup frame Render: 0.39027094841
+#
+Running...
+#
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00050.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00051.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00052.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00053.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00054.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00055.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00056.jpg
+saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/wrf_00057.jpg
+slurmstepd: *** JOB 343384 CANCELLED AT 2015-06-08T11:09:34 DUE TO TIME LIMIT on c222-402 ***
+[c222-402.maverick.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job

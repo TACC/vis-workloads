@@ -56,8 +56,10 @@ SET(TACHYONDATA_DIR ${TACHYONDATAi_DIR} CACHE STRING "Tachyon directorya")
 
 
 
-
-
+#
+#wrf plugin
+#
+SET(WRF_PLUGIN_PATH ${WRF_PLUGIN_PATH} CACHE STRING "WRF PLUGIN")
 
 
 #
@@ -93,6 +95,7 @@ set(USE_RM OFF CACHE BOOL "run the rm data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
 set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
 set(USE_GEO OFF CACHE BOOL "run the geo data")
+set(USE_WRF OFF CACHE BOOL "run the wrf data")
 set(USE_WHIPPLE OFF CACHE BOOL "run whipple shield data")
 set(USE_WHIPPLE_TIME OFF CACHE BOOL "run the whipple shield time series data")
 
@@ -196,6 +199,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "pvOSPRay_DIR=" ${pvOSPRay_DIR}\n
   "pvVBO_DIR=" ${pvVBO_DIR}\n
   "GLuRay_PATH=" ${GLuRay_PATH}\n
+  "WRF_PLUGIN_PATH="${WRF_PLUGIN_PATH}\n
   "GEODATA_DIR=" ${GEODATA_DIR}\n
   "MOLDATA_DIR=" ${MOLDATA_DIR}\n
   "WHIPPLEDATA_DIR=" ${WHIPPLEDATA_DIR}\n
@@ -222,6 +226,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_DNS=" ${USE_DNS}\n
   "USE_MOLECULE=" ${USE_MOLECULE}\n
   "USE_GEO=" ${USE_GEO}\n
+  "USE_WRF=" ${USE_WRF}\n
   "USE_WHIPPLE_TIME=" ${USE_WHIPPLE_TIME}\n
   "USE_WHIPPLE=" ${USE_WHIPPLE}\n
   "GENERATE_IMAGES=" ${GENERATE_IMAGES}\n
@@ -229,4 +234,4 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "MPI_COMMAND=" ${MPI_COMMAND}\n
   "HOSTFILE=" ${HOSTFILE}\n
   "RANKS_PER_HOST=" ${RANKS_PER_HOST}\n
-  )
+  

@@ -48,6 +48,14 @@ function processBench {
 #      fi
 #    fi
 #    fi
+
+
+
+
+
+
+
+
     DL_FLAG=""
 
         DL_FLAG="--immediatemode"
@@ -58,6 +66,11 @@ function processBench {
     fi
 
      if [ "$dataSource" == "whipit" ]; then
+       CAM_FLAG="--nocamera"
+    fi
+
+
+     if [ "$dataSource" == "wrf" ]; then
        CAM_FLAG="--nocamera"
     fi
 
@@ -114,6 +127,16 @@ function processBench {
     if [ $renderer == "ospray" ]; then
         echo "module load pvospray/1.0.2" >> ${FILE}
     fi
+
+    if [ $dataSource == "wrf" ]; then
+         echo 'export PATH=/home/01249/gda/pvospray/pv-4.1/bin:$PATH' >> ${FILE}
+         echo 'export LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:$LD_LIBRARY_PATH' >> ${FILE}
+         echo 'export LD_LIBRARY_PATH=/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:$LD_LIBRARY_PATH' >> ${FILE}
+         echo 'export LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:$LD_LIBRARY_PATH' >> ${FILE}
+         echo 'export LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:$LD_LIBRARY_PATH' >> ${FILE}
+         echo 'export DISPLAY=:1' >> ${FILE}
+     fi      
+    
     #if [ $renderer == "swr" ]; then
     #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
     #fi
@@ -220,6 +243,11 @@ fi
 if [ ${USE_GEO} == "ON" ]; then
 	dataSources[$COUNT]="geo"
 	COUNT=$((COUNT+1))
+fi
+
+if [ ${USE_WRF} == "ON" ]; then
+        dataSources[$COUNT]="wrf"
+        COUNT=$((COUNT+1))
 fi
 
 if [ ${USE_WHIPPLE} == "ON" ]; then

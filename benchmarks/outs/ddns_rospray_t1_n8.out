@@ -1,0 +1,515 @@
++ date
+Mon Jun  8 18:00:40 CDT 2015
++ module load qt
+++ /opt/apps/lmod/lmod/libexec/lmod bash load qt
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/opt/apps/intel14/hdf5/1.8.12/x86_64/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsWyJoZGY1Il09ImhkZjUiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgiLFsic3RhdHVzIl09ImFjdGl2ZSIs";' export '_ModuleTable001_;' '_ModuleTable002_="fSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3RlciIs";' export '_ModuleTable002_;' '_ModuleTable003_="WyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saGRmNT17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9oZGY1LzEuOC4xMi5sdWEiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJoZGY1LzEuOC4xMiIsWyJsb2FkT3JkZXIiXT04LHByb3BUPXthcmNoPXtbIm1pYyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PTEsfSx9LFsic2hvcnQiXT0iaGRmNSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGludGVsPXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjEuMTA2IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4xLjEwNiIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic2hvcnQiXT0iaW50ZWwiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxtdmFwaWNoMj17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9tdmFwaWNoMi8yLjBiIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0ibXZhcGljaDIvMi4wYiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic2hvcnQiXT0ibXZhcGljaDIiLFsic3RhdHVzIl09ImFjdGl2ZSIs";' export '_ModuleTable004_;' '_ModuleTable005_="fSxxdD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvcXQvNC44LjQiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJxdC80LjguNCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icXQiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSx9LG1wYXRoQT17Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQv";' export '_ModuleTable005_;' '_ModuleTable006_="bW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/qt/4.8.4/bin:/opt/apps/intel14/hdf5/1.8.12/x86_64/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ TACC_QT_DIR=/opt/apps/qt/4.8.4
+++ export TACC_QT_DIR
+++ TACC_QT_INC=/opt/apps/qt/4.8.4/include
+++ export TACC_QT_INC
+++ TACC_QT_LIB=/opt/apps/qt/4.8.4/lib
+++ export TACC_QT_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsWyJoZGY1Il09ImhkZjUiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgiLFsic3RhdHVzIl09ImFjdGl2ZSIs
+++ export _ModuleTable001_
+++ _ModuleTable002_=fSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3RlciIs
+++ export _ModuleTable002_
+++ _ModuleTable003_=WyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saGRmNT17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9oZGY1LzEuOC4xMi5sdWEiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJoZGY1LzEuOC4xMiIsWyJsb2FkT3JkZXIiXT04LHByb3BUPXthcmNoPXtbIm1pYyJd
+++ export _ModuleTable003_
+++ _ModuleTable004_=PTEsfSx9LFsic2hvcnQiXT0iaGRmNSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGludGVsPXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjEuMTA2IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4xLjEwNiIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic2hvcnQiXT0iaW50ZWwiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxtdmFwaWNoMj17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9tdmFwaWNoMi8yLjBiIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0ibXZhcGljaDIvMi4wYiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic2hvcnQiXT0ibXZhcGljaDIiLFsic3RhdHVzIl09ImFjdGl2ZSIs
+++ export _ModuleTable004_
+++ _ModuleTable005_=fSxxdD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvcXQvNC44LjQiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJxdC80LjguNCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icXQiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSx9LG1wYXRoQT17Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQv
+++ export _ModuleTable005_
+++ _ModuleTable006_=bW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module load paraview/4.1.0
+++ /opt/apps/lmod/lmod/libexec/lmod bash load paraview/4.1.0
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4:paraview/4.1.0";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/opt/apps/intel14/hdf5/1.8.12/x86_64/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'PYTHONPATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages";' export 'PYTHONPATH;' 'TACC_PARAVIEW_DIR="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0";' export 'TACC_PARAVIEW_DIR;' 'TACC_PARAVIEW_INC="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include";' export 'TACC_PARAVIEW_INC;' 'TACC_PARAVIEW_LIB="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib";' export 'TACC_PARAVIEW_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiaGRmNSJdPSJoZGY1Iix9LGluYWN0aXZlPXt9LG1UPXtMaW51eD17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL0xpbnV4IixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iTGludXgiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInNob3J0Il09IkxpbnV4IixbInN0YXR1cyJdPSJhY3RpdmUi";' export '_ModuleTable001_;' '_ModuleTable002_="LH0sVEFDQz17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJUQUNDLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MtcGF0aHMiLFsibG9hZE9yZGVyIl09MSxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MtcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxjbHVzdGVyPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3RlciIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXIi";' export '_ModuleTable002_;' '_ModuleTable003_="LFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbImNsdXN0ZXItcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXItcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3Rlci1wYXRocyIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3Rlci1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGhkZjU9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvaGRmNS8xLjguMTIubHVhIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaGRmNS8xLjguMTIiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17YXJjaD17WyJtaWMi";' export '_ModuleTable003_;' '_ModuleTable004_="XT0xLH0sfSxbInNob3J0Il09ImhkZjUiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUi";' export '_ModuleTable004_;' '_ModuleTable005_="LH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJhdmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVs";' export '_ModuleTable005_;' '_ModuleTable006_="ZWZpbGVzIiwiL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlczovb3B0L2FwcHMvbW9kdWxlZmlsZXM6L29wdC9tb2R1bGVmaWxlcyIsWyJ2ZXJzaW9uIl09Mix9";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4:paraview/4.1.0
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/opt/apps/intel14/hdf5/1.8.12/x86_64/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ PYTHONPATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages
+++ export PYTHONPATH
+++ TACC_PARAVIEW_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0
+++ export TACC_PARAVIEW_DIR
+++ TACC_PARAVIEW_INC=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include
+++ export TACC_PARAVIEW_INC
+++ TACC_PARAVIEW_LIB=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib
+++ export TACC_PARAVIEW_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiaGRmNSJdPSJoZGY1Iix9LGluYWN0aXZlPXt9LG1UPXtMaW51eD17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL0xpbnV4IixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iTGludXgiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInNob3J0Il09IkxpbnV4IixbInN0YXR1cyJdPSJhY3RpdmUi
+++ export _ModuleTable001_
+++ _ModuleTable002_=LH0sVEFDQz17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJUQUNDLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MtcGF0aHMiLFsibG9hZE9yZGVyIl09MSxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MtcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxjbHVzdGVyPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3RlciIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXIi
+++ export _ModuleTable002_
+++ _ModuleTable003_=LFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbImNsdXN0ZXItcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXItcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3Rlci1wYXRocyIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3Rlci1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGhkZjU9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvaGRmNS8xLjguMTIubHVhIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaGRmNS8xLjguMTIiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17YXJjaD17WyJtaWMi
+++ export _ModuleTable003_
+++ _ModuleTable004_=XT0xLH0sfSxbInNob3J0Il09ImhkZjUiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUi
+++ export _ModuleTable004_
+++ _ModuleTable005_=LH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJhdmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVs
+++ export _ModuleTable005_
+++ _ModuleTable006_=ZWZpbGVzIiwiL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlczovb3B0L2FwcHMvbW9kdWxlZmlsZXM6L29wdC9tb2R1bGVmaWxlcyIsWyJ2ZXJzaW9uIl09Mix9
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module use /work/01336/carson/opt/modulefiles
+++ /opt/apps/lmod/lmod/libexec/lmod bash use /work/01336/carson/opt/modulefiles
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIixbImhkZjUiXT0iaGRmNSIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s";' export '_ModuleTable001_;' '_ModuleTable002_="WyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIi";' export '_ModuleTable002_;' '_ModuleTable003_="LFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxoZGY1PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL2hkZjUvMS44LjEyLmx1YSIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImhkZjUvMS44LjEy";' export '_ModuleTable003_;' '_ModuleTable004_="IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e2FyY2g9e1sibWljIl09MSx9LH0sWyJzaG9ydCJdPSJoZGY1IixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQscHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJz";' export '_ModuleTable004_;' '_ModuleTable005_="aG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic2hvcnQiXT0icGFyYXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxxdD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvcXQvNC44LjQiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJxdC80LjguNCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icXQiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSx9LG1wYXRoQT17";' export '_ModuleTable005_;' '_ModuleTable006_="Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIixbImhkZjUiXT0iaGRmNSIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s
+++ export _ModuleTable001_
+++ _ModuleTable002_=WyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIi
+++ export _ModuleTable002_
+++ _ModuleTable003_=LFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxoZGY1PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL2hkZjUvMS44LjEyLmx1YSIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImhkZjUvMS44LjEy
+++ export _ModuleTable003_
+++ _ModuleTable004_=IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e2FyY2g9e1sibWljIl09MSx9LH0sWyJzaG9ydCJdPSJoZGY1IixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQscHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJz
+++ export _ModuleTable004_
+++ _ModuleTable005_=aG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic2hvcnQiXT0icGFyYXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxxdD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvcXQvNC44LjQiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJxdC80LjguNCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icXQiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSx9LG1wYXRoQT17
+++ export _ModuleTable005_
+++ _ModuleTable006_=Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module load pvospray/1.0.2
+++ /opt/apps/lmod/lmod/libexec/lmod bash load pvospray/1.0.2
++ eval 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4:paraview/4.1.0:pvospray/1.0.2";' export 'LOADEDMODULES;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PV_PLUGIN_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib";' export 'PV_PLUGIN_PATH;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0:/work/01336/carson/opt/modulefiles/pvospray/1.0.2";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTEsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIixbImhkZjUiXT0iaGRmNSIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s";' export '_ModuleTable001_;' '_ModuleTable002_="WyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIi";' export '_ModuleTable002_;' '_ModuleTable003_="LFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxoZGY1PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL2hkZjUvMS44LjEyLmx1YSIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImhkZjUvMS44LjEy";' export '_ModuleTable003_;' '_ModuleTable004_="IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e2FyY2g9e1sibWljIl09MSx9LH0sWyJzaG9ydCJdPSJoZGY1IixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQscHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJz";' export '_ModuleTable004_;' '_ModuleTable005_="aG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic2hvcnQiXT0icGFyYXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwdm9zcHJheT17WyJGTiJdPSIvd29yay8wMTMzNi9jYXJzb24vb3B0L21vZHVsZWZpbGVzL3B2b3NwcmF5LzEuMC4yIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icHZvc3ByYXkvMS4wLjIiLFsibG9hZE9yZGVyIl09MTEscHJvcFQ9e30sWyJzaG9ydCJdPSJwdm9z";' export '_ModuleTable005_;' '_ModuleTable006_="cHJheSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN";' export '_ModuleTable006_;' '_ModuleTable007_="UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable007_;' '_ModuleTable_Sz_="7";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:hdf5/1.8.12:qt/4.8.4:paraview/4.1.0:pvospray/1.0.2
+++ export LOADEDMODULES
+++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PV_PLUGIN_PATH=/work/01336/carson/opt/apps/pvospray/1.0.2/lib
+++ export PV_PLUGIN_PATH
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/intel14/modulefiles/hdf5/1.8.12.lua:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0:/work/01336/carson/opt/modulefiles/pvospray/1.0.2
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTEsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIixbImhkZjUiXT0iaGRmNSIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s
+++ export _ModuleTable001_
+++ _ModuleTable002_=WyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIi
+++ export _ModuleTable002_
+++ _ModuleTable003_=LFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxoZGY1PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL2hkZjUvMS44LjEyLmx1YSIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImhkZjUvMS44LjEy
+++ export _ModuleTable003_
+++ _ModuleTable004_=IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e2FyY2g9e1sibWljIl09MSx9LH0sWyJzaG9ydCJdPSJoZGY1IixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQscHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJz
+++ export _ModuleTable004_
+++ _ModuleTable005_=aG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic2hvcnQiXT0icGFyYXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwdm9zcHJheT17WyJGTiJdPSIvd29yay8wMTMzNi9jYXJzb24vb3B0L21vZHVsZWZpbGVzL3B2b3NwcmF5LzEuMC4yIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icHZvc3ByYXkvMS4wLjIiLFsibG9hZE9yZGVyIl09MTEscHJvcFQ9e30sWyJzaG9ydCJdPSJwdm9z
+++ export _ModuleTable005_
+++ _ModuleTable006_=cHJheSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN
+++ export _ModuleTable006_
+++ _ModuleTable007_=UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==
+++ export _ModuleTable007_
+++ _ModuleTable_Sz_=7
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ tacc_xrun ibrun -n 8 -o 0 /opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch /work/01891/adb/maverick/svb_adb/pv_bench.py --osp -w 1920x1080 --save_images -i /work/01891/adb/maverick/svb_adb/benchmarks/images/ --geoLevel 1 --numruns 10 --source dns --immediatemode
+TACC: Starting up job 343519
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ pv_scscript_path:/work/01891/adb/maverick/svb_adb/pv_scripts
+setting maxentries
+windowsize: [1920, 1080]
+loading ospray plugin
+loaded ospray plugin
+OManager(0x140ca30) CREATE
+OManager(0x12ddcc0) CREATE
+OManager(0x215bad0) CREATE
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+OManager(0x24c5bb0) CREATE
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+OManager(0x11c2bb0) CREATE
+new renderer: 0x140f490, samples: 1
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+OManager(0x27a2a80) CREATE
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+new renderer: 0x215e510, samples: 1
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+new renderer: 0x12e0020, samples: 1
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+OManager(0x198ac40) CREATE
+new renderer: 0x2b3622c01900, samples: 1
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+new renderer: 0x11c55d0, samples: 1
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+new renderer: 0x2b5adec02320, samples: 1
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+new renderer: 0x198d660, samples: 1
+oRenderer = 0x140f490
+oModel = 0x140f0e0
+oCamera = 0x140f280
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+oRenderer = 0x215e510
+oModel = 0x215e160
+oCamera = 0x215e300
+oRenderer = 0x2b3622c01900
+oModel = 0x2b3622c01500
+oCamera = 0x2b3622c016f0
+oRenderer = 0x12e0020
+oModel = 0x12dfc70
+oCamera = 0x12dfe10
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+oRenderer = 0x198d660
+oModel = 0x198d2b0
+oCamera = 0x198d450
+oRenderer = 0x11c55d0
+oModel = 0x11c5220
+oCamera = 0x11c53c0
+oRenderer = 0x2b5adec02320
+oModel = 0x2b5adec01f70
+oCamera = 0x2b5adec02110
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+OManager(0x4a50020) CREATE
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+using obj
+vtkOSPRayRenderer::SetEnableAO 0
+'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
+new renderer: 0x2b7342001a80, samples: 1
+oRenderer = 0x2b7342001a80
+oModel = 0x2b7342001680
+oCamera = 0x2b7342001870
+vtkOSPRayRenderer::SetEnableAO 0
+vtkOSPRayRenderer::SetSamples 1
+enabling immediate mode
+immmediate mode set correctly
+trying to import from source
+<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x4abd420>
+SVB_DIR=/work/01891/adb/maverick/svb_adb
+
+output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+ParaView_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
+
+pvOSPRay_DIR=/../lib
+
+pvVBO_DIR=/../lib
+
+WRF_PLUGIN_PATH=/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so 
+
+GLuRay_PATH= /work/01336/carson/opt/apps/gluray/1.1.0/bin/gluray
+
+GEODATA_DIR=/work/00401/pnav/workloads/geo
+
+MOLDATA_DIR=/work/01891/adb/molecule_benchmark
+
+WHIPPLEDATA_DIR=/work/01336/carson/intelTACC/data/Whipple300
+
+ENZODATA_DIR=ENZODATA_DIR_NOTFOUND
+
+WRFDATA_DIR=/work/01891/adb/wrf
+
+DNSDATA_DIR= /work/00401/pnav/data/dns_full
+
+FIUDATA_DIR= /work/01336/carson/intelTACC/data/fiu
+
+RMDATA_DIR=RMDATA_DIR-NOTFOUND
+
+ACCOUNT=A-ccvis
+
+SWR_LIB=libGL.so.1
+
+USE_SWR=ON
+
+USE_GPU=ON
+
+USE_GLURAY=ON
+
+USE_VBO=ON
+
+USE_OSPRAY=ON
+
+USE_SWRVBO=OFF
+
+USE_TACHYON=ON
+
+TACHYONBIN=/home/01891/adb/tachyon/compile/linux-mpi/tachyon
+
+TACHYONDATA_DIR=/work/00401/pnav/workloads/vmd_molecule
+
+TACHYONDATA=/work/00401/pnav/workloads/vmd_molecule/stmvestatics/virus.dat
+
+USE_FIU_ANIMATED=ON
+
+USE_FIU=ON
+
+USE_RM=OFF
+
+USE_DNS=ON
+
+USE_MOLECULE=OFF
+
+USE_GEO=OFF
+
+USE_WHIPPLE_TIME=OFF
+
+USE_WHIPPLE=OFF
+
+USE_WRF=ON
+
+GENERATE_IMAGES=ON
+
+ROOT_IMAGE_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+MPI_COMMAND=ibrun
+
+HOSTFILE=
+
+RANKS_PER_HOST=
+
+
+
+dns_data_dir:/work/00401/pnav/data/dns_full
+finished svbSetup
+finished svbRender
+finished svbGetStageSize
+Total Stages: 1
+#
+Stage 0...
+#
+name: /work/00401/pnav/data/dns_full/u_yz_128.xmf
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x19bdff0): Algorithm vtkXdmfReader(0x19bb0d0) returned failure for request: vtkInformation (0x19bbc20)
+  Debug: Off
+  Modified Time: 40591
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x143fdd0): Algorithm vtkXdmfReader(0x143cd40) returned failure for request: vtkInformation (0x143cae0)
+  Debug: Off
+  Modified Time: 40591
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x218eed0): Algorithm vtkXdmfReader(0x218bdc0) returned failure for request: vtkInformation (0x218e870)
+  Debug: Off
+  Modified Time: 40653
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2b5adec568b0): Algorithm vtkXdmfReader(0x2b5adec530d0) returned failure for request: vtkInformation (0x2b5adec51930)
+  Debug: Off
+  Modified Time: 40653
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1310bf0): Algorithm vtkXdmfReader(0x130dae0) returned failure for request: vtkInformation (0x1310840)
+  Debug: Off
+  Modified Time: 40591
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x11f5f00): Algorithm vtkXdmfReader(0x11f2fe0) returned failure for request: vtkInformation (0x1157540)
+  Debug: Off
+  Modified Time: 40622
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2b3622c55e40): Algorithm vtkXdmfReader(0x2b3622c527e0) returned failure for request: vtkInformation (0x2b3622c52400)
+  Debug: Off
+  Modified Time: 40591
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:36: parser error : XML declaration allowed only at the start of the document
+<?xml version="1.0" ?>
+     ^
+/work/00401/pnav/data/dns_full/u_yz_128.xmf:37: parser error : Extra content at the end of the document
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+^
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2b734201b080): Algorithm vtkXdmfReader(0x2b73420302b0) returned failure for request: vtkInformation (0x2b734201e170)
+  Debug: Off
+  Modified Time: 147838
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+[c222-404.maverick.tacc.utexas.edu:mpi_rank_0][error_sighandler] Caught error: Segmentation fault (signal 11)
+[c222-404.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c222-404.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c222-404.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 36402) terminated with signal 11 -> abort job
+[c222-404.maverick.tacc.utexas.edu:mpirun_rsh][process_mpispawn_connection] mpispawn_0 from node c222-404 aborted: Error while reading a PMI socket (4)
+[c222-502.maverick.tacc.utexas.edu:mpispawn_2][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-502.maverick.tacc.utexas.edu:mpispawn_2][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-502.maverick.tacc.utexas.edu:mpispawn_2][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-501.maverick.tacc.utexas.edu:mpispawn_1][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-501.maverick.tacc.utexas.edu:mpispawn_1][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-501.maverick.tacc.utexas.edu:mpispawn_1][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-602.maverick.tacc.utexas.edu:mpispawn_6][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-602.maverick.tacc.utexas.edu:mpispawn_6][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-602.maverick.tacc.utexas.edu:mpispawn_6][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-504.maverick.tacc.utexas.edu:mpispawn_4][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-504.maverick.tacc.utexas.edu:mpispawn_4][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-504.maverick.tacc.utexas.edu:mpispawn_4][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-503.maverick.tacc.utexas.edu:mpispawn_3][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-503.maverick.tacc.utexas.edu:mpispawn_3][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-503.maverick.tacc.utexas.edu:mpispawn_3][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-603.maverick.tacc.utexas.edu:mpispawn_7][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-603.maverick.tacc.utexas.edu:mpispawn_7][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-603.maverick.tacc.utexas.edu:mpispawn_7][handle_mt_peer] Error while reading PMI socket. MPI process died?
+[c222-601.maverick.tacc.utexas.edu:mpispawn_5][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-601.maverick.tacc.utexas.edu:mpispawn_5][read_size] Unexpected End-Of-File on file descriptor 6. MPI process died?
+[c222-601.maverick.tacc.utexas.edu:mpispawn_5][handle_mt_peer] Error while reading PMI socket. MPI process died?
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
++ date
+Mon Jun  8 18:01:02 CDT 2015

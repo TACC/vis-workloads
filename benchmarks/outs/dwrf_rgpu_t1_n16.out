@@ -1,0 +1,3592 @@
++ date
+Mon Jun  8 10:29:36 CDT 2015
++ module load qt
+++ /opt/apps/lmod/lmod/libexec/lmod bash load qt
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi";' export '_ModuleTable004_;' '_ModuleTable005_="LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable005_;' '_ModuleTable_Sz_="5";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ TACC_QT_DIR=/opt/apps/qt/4.8.4
+++ export TACC_QT_DIR
+++ TACC_QT_INC=/opt/apps/qt/4.8.4/include
+++ export TACC_QT_INC
+++ TACC_QT_LIB=/opt/apps/qt/4.8.4/lib
+++ export TACC_QT_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i
+++ export _ModuleTable001_
+++ _ModuleTable002_=L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs
+++ export _ModuleTable002_
+++ _ModuleTable003_=cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd
+++ export _ModuleTable003_
+++ _ModuleTable004_=PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi
+++ export _ModuleTable004_
+++ _ModuleTable005_=LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=
+++ export _ModuleTable005_
+++ _ModuleTable_Sz_=5
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module load paraview/4.1.0
+++ /opt/apps/lmod/lmod/libexec/lmod bash load paraview/4.1.0
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'PYTHONPATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages";' export 'PYTHONPATH;' 'TACC_PARAVIEW_DIR="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0";' export 'TACC_PARAVIEW_DIR;' 'TACC_PARAVIEW_INC="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include";' export 'TACC_PARAVIEW_INC;' 'TACC_PARAVIEW_LIB="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib";' export 'TACC_PARAVIEW_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i";' export '_ModuleTable004_;' '_ModuleTable005_="XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz";' export '_ModuleTable005_;' '_ModuleTable006_="IixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LD_LIBRARY_PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ export LD_LIBRARY_PATH
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ LOADEDMODULES=TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0
+++ export LOADEDMODULES
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
+++ export PATH
+++ PYTHONPATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages
+++ export PYTHONPATH
+++ TACC_PARAVIEW_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0
+++ export TACC_PARAVIEW_DIR
+++ TACC_PARAVIEW_INC=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include
+++ export TACC_PARAVIEW_INC
+++ TACC_PARAVIEW_LIB=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib
+++ export TACC_PARAVIEW_LIB
+++ _LMFILES_=/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i
+++ export _ModuleTable001_
+++ _ModuleTable002_=L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs
+++ export _ModuleTable002_
+++ _ModuleTable003_=cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd
+++ export _ModuleTable003_
+++ _ModuleTable004_=PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i
+++ export _ModuleTable004_
+++ _ModuleTable005_=XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz
+++ export _ModuleTable005_
+++ _ModuleTable006_=IixbInZlcnNpb24iXT0yLH0=
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ module use /work/01336/carson/opt/modulefiles
+++ /opt/apps/lmod/lmod/libexec/lmod bash use /work/01336/carson/opt/modulefiles
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgi";' export '_ModuleTable001_;' '_ModuleTable002_="LFsic3RhdHVzIl09ImFjdGl2ZSIsfSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsi";' export '_ModuleTable002_;' '_ModuleTable003_="ZnVsbE5hbWUiXT0iY2x1c3RlciIsWyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQs";' export '_ModuleTable003_;' '_ModuleTable004_="cHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJzaG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJh";' export '_ModuleTable004_;' '_ModuleTable005_="dmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN";' export '_ModuleTable005_;' '_ModuleTable006_="UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
+++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export LMOD_DEFAULT_MODULEPATH
+++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJjX3JlYnVpbGRUaW1lIl09ZmFsc2UsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGZhbWlseT17WyJNUEkiXT0ibXZhcGljaDIiLFsiY29tcGlsZXIiXT0iaW50ZWwiLH0saW5hY3RpdmU9e30sbVQ9e0xpbnV4PXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvTGludXgiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJMaW51eCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic2hvcnQiXT0iTGludXgi
+++ export _ModuleTable001_
+++ _ModuleTable002_=LFsic3RhdHVzIl09ImFjdGl2ZSIsfSxUQUNDPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQyIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbIlRBQ0MtcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MtcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQy1wYXRocyIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQy1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGNsdXN0ZXI9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyIixbImRlZmF1bHQiXT0wLFsi
+++ export _ModuleTable002_
+++ _ModuleTable003_=ZnVsbE5hbWUiXT0iY2x1c3RlciIsWyJsb2FkT3JkZXIiXT02LHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3RlciIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiY2x1c3Rlci1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3Rlci1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyLXBhdGhzIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0saW50ZWw9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL2ludGVsLzE0LjAuMS4xMDYiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNC4wLjEuMTA2IixbImxvYWRPcmRlciJdPTQs
+++ export _ModuleTable003_
+++ _ModuleTable004_=cHJvcFQ9e30sWyJzaG9ydCJdPSJpbnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LG12YXBpY2gyPXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzL212YXBpY2gyLzIuMGIiLFsiZGVmYXVsdCJdPTEsWyJmdWxsTmFtZSJdPSJtdmFwaWNoMi8yLjBiIixbImxvYWRPcmRlciJdPTUscHJvcFQ9e30sWyJzaG9ydCJdPSJtdmFwaWNoMiIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHBhcmF2aWV3PXtbIkZOIl09Ii9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcy9wYXJhdmlldy80LjEuMCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09InBhcmF2aWV3LzQuMS4wIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzaG9ydCJdPSJwYXJh
+++ export _ModuleTable004_
+++ _ModuleTable005_=dmlldyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29uL29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VN
+++ export _ModuleTable005_
+++ _ModuleTable006_=UEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
++ '[' 0 = 0 ']'
+++ : -s sh
++ eval
++ export PATH=/home/01249/gda/pvospray/pv-4.1/bin:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
++ PATH=/home/01249/gda/pvospray/pv-4.1/bin:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64
++ export LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/home/01249/gda/pvospray/pv-4.1/lib/paraview-4.1:/work/01249/gda/maverick/git/ospray/release:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/home/01249/gda/plugins/proj-4.9.1/src/.libs:/home/01249/gda/plugins/gdal/lib:/opt/apps/intel14/netcdf/4.2.1.1/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
++ export DISPLAY=:1
++ DISPLAY=:1
++ tacc_xrun ibrun -n 16 -o 0 /opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch /work/01891/adb/maverick/svb_adb/pv_bench.py -w 1920x1080 --nocamera --save_images -i /work/01891/adb/maverick/svb_adb/benchmarks/images/ --geoLevel 1 --numruns 10 --source wrf --immediatemode
+TACC: Starting up job 343383
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ pv_scscript_path:/work/01891/adb/maverick/svb_adb/pv_scripts
+setting maxentries
+windowsize: [1920, 1080]
+enabling immediate mode
+immmediate mode set correctly
+trying to import from source
+<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x3da4270>
+SVB_DIR=/work/01891/adb/maverick/svb_adb
+
+output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+ParaView_DIR=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin
+
+pvOSPRay_DIR=/../lib
+
+pvVBO_DIR=/../lib
+
+WRF_PLUGIN_PATH=/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so 
+
+GLuRay_PATH= /work/01336/carson/opt/apps/gluray/1.1.0/bin/gluray
+
+GEODATA_DIR=/work/00401/pnav/workloads/geo
+
+MOLDATA_DIR=/work/01891/adb/molecule_benchmark
+
+WHIPPLEDATA_DIR=/work/01336/carson/intelTACC/data/Whipple300
+
+ENZODATA_DIR=ENZODATA_DIR_NOTFOUND
+
+WRFDATA_DIR=/work/01891/adb/wrf
+
+DNSDATA_DIR= /work/00401/pnav/data/dns_full
+
+FIUDATA_DIR= /work/01336/carson/intelTACC/data/fiu
+
+RMDATA_DIR=RMDATA_DIR-NOTFOUND
+
+ACCOUNT=A-ccvis
+
+SWR_LIB=libGL.so.1
+
+USE_SWR=ON
+
+USE_GPU=ON
+
+USE_GLURAY=ON
+
+USE_VBO=ON
+
+USE_OSPRAY=ON
+
+USE_SWRVBO=OFF
+
+USE_TACHYON=ON
+
+TACHYONBIN=/home/01891/adb/tachyon/compile/linux-mpi/tachyon
+
+TACHYONDATA_DIR=/work/00401/pnav/workloads/vmd_molecule
+
+TACHYONDATA=/work/00401/pnav/workloads/vmd_molecule/stmvestatics/virus.dat
+
+USE_FIU_ANIMATED=ON
+
+USE_FIU=ON
+
+USE_RM=OFF
+
+USE_DNS=ON
+
+USE_MOLECULE=OFF
+
+USE_GEO=OFF
+
+USE_WHIPPLE_TIME=OFF
+
+USE_WHIPPLE=OFF
+
+USE_WRF=ON
+
+GENERATE_IMAGES=ON
+
+ROOT_IMAGE_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
+
+MPI_COMMAND=ibrun
+
+HOSTFILE=
+
+RANKS_PER_HOST=
+
+
+
+wrf_plugin_path:/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so
+Happy
+finished svbSetup
+finished svbRender
+finished svbGetStageSize
+Total Stages: 19
+#
+Stage 0...
+#
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1e134f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1a7c530): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1ab54f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x24914f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x16a3500): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1ec54b0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x25a44f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1d404f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x26314f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x241d490): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0xc084f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x13085f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x25b75c0): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x24914f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x25b97d0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x25b97d0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x116d4f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x22ea410): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1feb3d0): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0xfc4500): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1f0f730): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x2757b50): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1bdb570): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x17c9350): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1293120): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x116d4f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x1295780): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x1295780): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1e66b50): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x2519c60): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0xd2e610): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x26cab20): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1419cc0): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x1139ed0): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0xfc4500): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1ab54f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1a7c530): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x22ec330): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x113c500): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x113c500): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x1bdd780): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x1bdd780): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x22ec330): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1fe94f0): No proxy that matches: group=internal_sources and proxy=wrfreader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSISourceProxy (0x210f5c0): Definition not found for xml_group: internal_sources and xml_name: wrfreader
+global_id: 310
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSISourceProxy"
+[paraview_protobuf.ProxyState.xml_group]: "internal_sources"
+[paraview_protobuf.ProxyState.xml_name]: "wrfreader"
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1fe94f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1d404f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x21117d0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x1e68830): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x26314f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x2759830): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x13085f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x141b9a0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x21117d0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x2759830): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1ec54b0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x1fed9e0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x16a3500): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x17cb9d0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x17cb9d0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0xc084f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0xd307c0): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0xd307c0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x1e68830): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x1fed9e0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x241d490): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x251b940): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x1e134f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x1f11940): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x141b9a0): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x251b940): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x1f11940): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxyDefinitionManager.cxx, line 565
+vtkSIProxyDefinitionManager (0x25a44f0): No proxy that matches: group=sources and proxy=WRFReader were found.
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 292
+vtkSIFileSeriesReaderProxy (0x26cc800): Definition not found for xml_group: sources and xml_name: WRFReader
+global_id: 321
+location: 1
+[paraview_protobuf.DefinitionHeader.client_class]: "vtkSMSourceProxy"
+[paraview_protobuf.DefinitionHeader.server_class]: "vtkSIFileSeriesReaderProxy"
+[paraview_protobuf.ProxyState.xml_group]: "sources"
+[paraview_protobuf.ProxyState.xml_name]: "WRFReader"
+[paraview_protobuf.ProxyState.subproxy] {
+  name: "Reader"
+  global_id: 310
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ServerImplementation/Core/vtkSIProxy.cxx, line 267
+vtkSIFileSeriesReaderProxy (0x26cc800): Incorrect message received. Missing xml_group and xml_name information.
+global_id: 321
+location: 1
+[paraview_protobuf.ProxyState.property] {
+  name: "FileNames"
+  value {
+    type: STRING
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf"
+    txt: "/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf"
+  }
+}
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x141e8d0): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x1ff0940): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x275c760): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x1294840): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x17c9880): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x251e870): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0xd2e150): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x1e6b760): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x26cf730): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x210f840): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x22eb400): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x1f13ed0): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x113be90): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x1bdb0f0): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/ParaViewCore/ClientServerCore/Core/vtkPVDataInformation.cxx, line 654
+vtkPVDataInformation (0x25b7840): Could not cast object to a known data set: (null)
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x311d100)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x311d100)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x311d100)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x23f53e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x23f53e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x23f53e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x32a18b0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x32a18b0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x32a18b0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x2e92670)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x2e92670)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x2e92670)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x31c5fe0)
+  Debug: Off
+  Modified Time: 145469
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x31c5fe0)
+  Debug: Off
+  Modified Time: 145469
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x31c5fe0)
+  Debug: Off
+  Modified Time: 145469
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x3a0e170)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x3a0e170)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x3a0e170)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x37d0ae0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x37d0ae0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x37d0ae0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x26d0410)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x26d0410)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x26d0410)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x39822a0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x39822a0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x39822a0)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x2ec99e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x2ec99e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x2ec99e0)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x1fe5390)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x1fe5390)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x1fe5390)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x2a81270)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x2a81270)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x2a81270)
+  Debug: Off
+  Modified Time: 145423
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x23ec010)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x23ec010)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x23ec010)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x33c6290)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x33c6290)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x36ff330)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x36ff330)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x33c6290)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x36ff330)
+  Debug: Off
+  Modified Time: 145515
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x2adbc20)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x2adbc20)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x2adbc20)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x3c8a080)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x3c8a080)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x3c8a080)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x3a740b0)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x3a740b0)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x3a740b0)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x382bc60)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x382bc60)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x382bc60)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x3126620)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x3126620)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x37c3800)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x37c3800)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x37c3800)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x3126620)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x2d76820)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x2d76820)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x2d76820)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x2aab230)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x2aab230)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x2aab230)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x3538680)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x3538680)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x3538680)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x268b5b0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x268b5b0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x268b5b0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x40272d0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x40272d0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x40272d0)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x3e76b50)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x3e76b50)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x3e76b50)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x40b4770)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x40b4770)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x40b4770)
+  Debug: Off
+  Modified Time: 249800
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x374f010)
+  Debug: Off
+  Modified Time: 249861
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x374f010)
+  Debug: Off
+  Modified Time: 249861
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x374f010)
+  Debug: Off
+  Modified Time: 249861
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x356fc00)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x356fc00)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x356fc00)
+  Debug: Off
+  Modified Time: 249922
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26af010): Algorithm vtkPVExtractSelection(0x26a0410) returned failure for request: vtkInformation (0x37e4fe0)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x24be5a0): Algorithm vtkPVGeometryFilter(0x24aa420) returned failure for request: vtkInformation (0x37e6930)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x32807d0): Algorithm vtkPVExtractSelection(0x327bc70) returned failure for request: vtkInformation (0x43f8e60)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3091620): Algorithm vtkPVGeometryFilter(0x307d5a0) returned failure for request: vtkInformation (0x43fa1d0)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ea8ca0): Algorithm vtkPVExtractSelection(0x2e61cd0) returned failure for request: vtkInformation (0x3fdea90)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2cb7450): Algorithm vtkPVGeometryFilter(0x2ca32d0) returned failure for request: vtkInformation (0x3fdecb0)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3962250): Algorithm vtkPVExtractSelection(0x391b3f0) returned failure for request: vtkInformation (0x4a95e20)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x37712d0): Algorithm vtkPVGeometryFilter(0x375d110) returned failure for request: vtkInformation (0x4a97790)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23cb260): Algorithm vtkPVExtractSelection(0x23afa70) returned failure for request: vtkInformation (0x36ab530)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x21c9030): Algorithm vtkPVGeometryFilter(0x21b4fa0) returned failure for request: vtkInformation (0x36aa4e0)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x36ac750)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e715b0): Algorithm vtkPVExtractSelection(0x2955ed0) returned failure for request: vtkInformation (0x3fa6ce0)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2c814b0): Algorithm vtkPVGeometryFilter(0x2c6d330) returned failure for request: vtkInformation (0x3fa8650)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31a4ae0): Algorithm vtkPVExtractSelection(0x31a0140) returned failure for request: vtkInformation (0x42dd890)
+  Debug: Off
+  Modified Time: 460313
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2fb4010): Algorithm vtkPVGeometryFilter(0x2f9ffc0) returned failure for request: vtkInformation (0x42df1e0)
+  Debug: Off
+  Modified Time: 460320
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x42e1470)
+  Debug: Off
+  Modified Time: 460451
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3c79720): Algorithm vtkPVGeometryFilter(0x3db80e0) returned failure for request: vtkInformation (0x42e1f90)
+  Debug: Off
+  Modified Time: 460458
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x37e8bc0)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x31845f0): Algorithm vtkPVGeometryFilter(0x32c3170) returned failure for request: vtkInformation (0x37e9760)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x4a997c0)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x44354c0): Algorithm vtkPVGeometryFilter(0x4574190) returned failure for request: vtkInformation (0x4a99740)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x397e5d0): Algorithm vtkPVContourFilter(0x3976680) returned failure for request: vtkInformation (0x4a9cef0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x42cee50): Algorithm vtkPVGeometryFilter(0x42bad80) returned failure for request: vtkInformation (0x4a9cb50)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  FROM_OUTPUT_PORT: 0
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x31c17e0): Algorithm vtkPVContourFilter(0x31ba2c0) returned failure for request: vtkInformation (0x42e4950)
+  Debug: Off
+  Modified Time: 460505
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3b14510): Algorithm vtkPVGeometryFilter(0x3b00450) returned failure for request: vtkInformation (0x42e45b0)
+  Debug: Off
+  Modified Time: 460512
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fc4030): Algorithm vtkPVExtractSelection(0x1fb5620) returned failure for request: vtkInformation (0x30fa020)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x1dd3580): Algorithm vtkPVGeometryFilter(0x1dbf400) returned failure for request: vtkInformation (0x30fb990)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x30fdc20)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2a996f0): Algorithm vtkPVGeometryFilter(0x2bd82d0) returned failure for request: vtkInformation (0x30fe7c0)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x1fe0a90): Algorithm vtkPVContourFilter(0x1fd8b10) returned failure for request: vtkInformation (0x3101100)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x29330e0): Algorithm vtkPVGeometryFilter(0x291f010) returned failure for request: vtkInformation (0x3100d60)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x43fc470)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3d55d30): Algorithm vtkPVGeometryFilter(0x3e94730) returned failure for request: vtkInformation (0x43fae90)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x329ce60): Algorithm vtkPVContourFilter(0x3280380) returned failure for request: vtkInformation (0x43ff930)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3bf0190): Algorithm vtkPVGeometryFilter(0x3bdc090) returned failure for request: vtkInformation (0x43ff590)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36dda70): Algorithm vtkPVExtractSelection(0x36ceec0) returned failure for request: vtkInformation (0x4858cd0)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x34ed620): Algorithm vtkPVGeometryFilter(0x34d9550) returned failure for request: vtkInformation (0x4857c80)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x485a330)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x41b3760): Algorithm vtkPVGeometryFilter(0x41a4370) returned failure for request: vtkInformation (0x485aaa0)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x30fbd30): Algorithm vtkPVExtractSelection(0x30f7130) returned failure for request: vtkInformation (0x4231f80)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2f0b290): Algorithm vtkPVGeometryFilter(0x2ef7120) returned failure for request: vtkInformation (0x4234410)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x42357c0)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3bd1620): Algorithm vtkPVGeometryFilter(0x3d10230) returned failure for request: vtkInformation (0x4236360)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3118860): Algorithm vtkPVContourFilter(0x30fb830) returned failure for request: vtkInformation (0x4238cb0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3a6aff0): Algorithm vtkPVGeometryFilter(0x3a56f20) returned failure for request: vtkInformation (0x4238930)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x3fe28d0)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x397dd70): Algorithm vtkPVGeometryFilter(0x3abb4f0) returned failure for request: vtkInformation (0x3fe0a00)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2ec59d0): Algorithm vtkPVContourFilter(0x2ebeb60) returned failure for request: vtkInformation (0x3fe5da0)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3817700): Algorithm vtkPVGeometryFilter(0x3803680) returned failure for request: vtkInformation (0x3fe5a00)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a61280): Algorithm vtkPVExtractSelection(0x2a1a420) returned failure for request: vtkInformation (0x3b94ef0)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2870330): Algorithm vtkPVGeometryFilter(0x285c1c0) returned failure for request: vtkInformation (0x3b96860)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x3b98890)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3534550): Algorithm vtkPVGeometryFilter(0x3673e40) returned failure for request: vtkInformation (0x3b98810)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2a7d5a0): Algorithm vtkPVContourFilter(0x2a75b30) returned failure for request: vtkInformation (0x3b9bfc0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x33cde90): Algorithm vtkPVGeometryFilter(0x33b9dc0) returned failure for request: vtkInformation (0x3b9bc20)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x3faa680)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3946580): Algorithm vtkPVGeometryFilter(0x3a83d70) returned failure for request: vtkInformation (0x3faa600)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23d3a90): Algorithm vtkPVExtractSelection(0x23cd210) returned failure for request: vtkInformation (0x351b6b0)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x21e32b0): Algorithm vtkPVGeometryFilter(0x21cf140) returned failure for request: vtkInformation (0x355ce30)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x355f4d0)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2eb70a0): Algorithm vtkPVGeometryFilter(0x2ff5740) returned failure for request: vtkInformation (0x355dbd0)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23f08a0): Algorithm vtkPVContourFilter(0x23e7160) returned failure for request: vtkInformation (0x35625a0)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2d523a0): Algorithm vtkPVGeometryFilter(0x2d3e310) returned failure for request: vtkInformation (0x3562220)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x36fa8f0): Algorithm vtkPVContourFilter(0x36f2940) returned failure for request: vtkInformation (0x485d400)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x404dc40): Algorithm vtkPVGeometryFilter(0x4039b00) returned failure for request: vtkInformation (0x485e1e0)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x26cb950): Algorithm vtkPVContourFilter(0x26c3070) returned failure for request: vtkInformation (0x37ec0a0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x301dfc0): Algorithm vtkPVGeometryFilter(0x3009ef0) returned failure for request: vtkInformation (0x37ebd00)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x2e8dd10): Algorithm vtkPVContourFilter(0x2e71100) returned failure for request: vtkInformation (0x3faddb0)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x37dff20): Algorithm vtkPVGeometryFilter(0x37cbea0) returned failure for request: vtkInformation (0x3fada10)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x39ecb90): Algorithm vtkPVExtractSelection(0x39e76b0) returned failure for request: vtkInformation (0x4b22e10)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x37fc190): Algorithm vtkPVGeometryFilter(0x37e8020) returned failure for request: vtkInformation (0x4b24780)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x4b26a10)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x44c2540): Algorithm vtkPVGeometryFilter(0x4601130) returned failure for request: vtkInformation (0x4b275b0)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x3a09730): Algorithm vtkPVContourFilter(0x3a001b0) returned failure for request: vtkInformation (0x4b29ef0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x435bef0): Algorithm vtkPVGeometryFilter(0x4347e20) returned failure for request: vtkInformation (0x4b29b50)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33a4f50): Algorithm vtkPVExtractSelection(0x3396460) returned failure for request: vtkInformation (0x44e3030)
+  Debug: Off
+  Modified Time: 460420
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x31b4440): Algorithm vtkPVGeometryFilter(0x31a02d0) returned failure for request: vtkInformation (0x44e3270)
+  Debug: Off
+  Modified Time: 460427
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x44e6e70)
+  Debug: Off
+  Modified Time: 460558
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3e82310): Algorithm vtkPVGeometryFilter(0x3fc1b40) returned failure for request: vtkInformation (0x44e4fa0)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37af800): Algorithm vtkPVExtractSelection(0x37a0c00) returned failure for request: vtkInformation (0x48e51c0)
+  Debug: Off
+  Modified Time: 460206
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x35be7d0): Algorithm vtkPVGeometryFilter(0x35aa650) returned failure for request: vtkInformation (0x48e6b30)
+  Debug: Off
+  Modified Time: 460213
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x48e8dc0)
+  Debug: Off
+  Modified Time: 460344
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x4284930): Algorithm vtkPVGeometryFilter(0x43c4110) returned failure for request: vtkInformation (0x48e9960)
+  Debug: Off
+  Modified Time: 460351
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x37cc1f0): Algorithm vtkPVContourFilter(0x37c4180) returned failure for request: vtkInformation (0x48ec2a0)
+  Debug: Off
+  Modified Time: 460398
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x33c1aa0): Algorithm vtkPVContourFilter(0x33ba5d0) returned failure for request: vtkInformation (0x44ea340)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x3d1baf0): Algorithm vtkPVGeometryFilter(0x3d07ac0) returned failure for request: vtkInformation (0x44e9fa0)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x30064e0): Algorithm vtkPVGeometryFilter(0x3143c70) returned failure for request: vtkInformation (0x36ad270)
+  Debug: Off
+  Modified Time: 460565
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x23e76b0): Algorithm vtkPVContourFilter(0x23ded60) returned failure for request: vtkInformation (0x36afc50)
+  Debug: Off
+  Modified Time: 460612
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x2ea04d0): Algorithm vtkPVGeometryFilter(0x2e8c380) returned failure for request: vtkInformation (0x36b0a30)
+  Debug: Off
+  Modified Time: 460619
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkCompositeDataPipeline (0x411e2b0): Algorithm vtkPVGeometryFilter(0x410a1e0) returned failure for request: vtkInformation (0x48ebf00)
+  Debug: Off
+  Modified Time: 460405
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
+  FROM_OUTPUT_PORT: 0
+
+
+
+slurmstepd: *** JOB 343383 CANCELLED AT 2015-06-08T11:09:34 DUE TO TIME LIMIT on c221-704 ***
+[c221-704.maverick.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job
