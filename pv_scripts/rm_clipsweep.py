@@ -18,17 +18,25 @@ def svbSetup(geometryLevel=1, stage=0):
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
-  Slice1 = Slice( SliceType="Plane" )
+  Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
-  Slice1.SliceOffsetValues = [0.0]
-  Slice1.SliceType = "Plane"
-
-  # toggle the 3D widget visibility.
-  active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
+  Contour1.PointMergeMethod = "Uniform Binning"
+  Contour1.ContourBy = ['POINTS', 'ImageFile']
+  val = (float(stage)/float(svbGetStagesSize()))*255.0
+  Contour1.Isosurfaces = [val]
+  Contour1.ComputeNormals = 1
 
   val = (float(stage)/float(svbGetStagesSize()))*2046+1
-  Slice1.SliceType.Origin = [val, 1023.5, 959]
-  Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
+  Clip1 = Clip(ClipType="Plane")
+  Clip1.ClipType.Origin = [val, 1023.5, 959]
+  Clip1.ClipType.Normal = [1,0,0]
+  #Slice1 = Slice( SliceType="Plane" )
+
+  #Slice1.SliceOffsetValues = [0.0]
+  #Slice1.SliceType = "Plane"
+
+  #Slice1.SliceType.Origin = [1, 1023.5, 959]
+  #Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
 
   DataRepresentation2 = Show()
   DataRepresentation2.ScaleFactor = 25.5

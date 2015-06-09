@@ -44,7 +44,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-  return {'azimuth':90, 'dolly':3.0}
+  return {'azimuth':0, 'dolly':0}
 
 def svbRender():
   Render()
