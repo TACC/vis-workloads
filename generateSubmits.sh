@@ -87,7 +87,7 @@ function processBench {
     echo "#SBATCH -A $account " >> ${FILE}
     OUTFILE="${DIR}/outs/${NAME}.out"
     echo "#SBATCH -o ${OUTFILE}" >> ${FILE}
-    echo "#SBATCH -t 00:40:00"  >> ${FILE}
+    echo "#SBATCH -t 04:00:00"  >> ${FILE}
     echo "set -x" >> ${FILE}
     GLURAY_CMD=""
     SWR_CMD=""
@@ -135,6 +135,7 @@ function processBench {
          echo 'export LD_LIBRARY_PATH=/home/01249/gda/plugins/gdal/lib:$LD_LIBRARY_PATH' >> ${FILE}
          echo 'export LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:$LD_LIBRARY_PATH' >> ${FILE}
          echo 'export DISPLAY=:1' >> ${FILE}
+         echo 'module load netcdf' >> ${FILE}
      fi      
     
     #if [ $renderer == "swr" ]; then
@@ -187,10 +188,9 @@ PRELOAD=""
 #
 # node scaling
 #
-tris=( 1 )
+tris=( 1 6 9 )
 nodes=( 1 2 4 8 16 32 )
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
-renderers=()
 COUNT=0
 if [ ${USE_SWR} == "ON" ]; then
 	renderers[$COUNT]="swr"

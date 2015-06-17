@@ -31,10 +31,11 @@ def svbSetup(geometryLevel=1, stage=0):
   numPolys = 0 
   numPoints = 0
   numFiles=geometryLevel
+  #name=dns_data_dir+"u_10000.xdmf"
   name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
   print "name: %s" % name
   dns_xmf = XDMFReader( FileName=name )
-
+  print "happy"
   dns_xmf.Sets = []
   dns_xmf.Grids = ['Grid_2']
   dns_xmf.PointArrays = ['RTData']
@@ -70,7 +71,7 @@ def svbSetup(geometryLevel=1, stage=0):
     Contour1.Isosurfaces = [contourPoints[j]]
 
     cDataRepresentation2 = Show()
-    cDataRepresentation2.ScaleFactor = 968.4097045898438
+    #cDataRepresentation2.ScaleFactor = 968.4097045898438
     #cDataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
     #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
     cDataRepresentation2.DiffuseColor = contourColors[j]

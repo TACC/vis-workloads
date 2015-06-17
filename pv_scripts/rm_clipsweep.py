@@ -25,15 +25,16 @@ def svbSetup(geometryLevel=1, stage=0):
 
   # toggle the 3D widget visibility.
   active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-
   val = (float(stage)/float(svbGetStagesSize()))*2046+1
+  print "val: %f" % val
   Slice1.SliceType.Origin = [val, 1023.5, 959]
   Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
 
+  print "h"
   DataRepresentation2 = Show()
   DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  
+  print "happpy"
   #ResetCamera()
   #cam = GetActiveCamera()
   #cam.Roll(90)
@@ -53,5 +54,3 @@ def svbSetup(geometryLevel=1, stage=0):
 def svbRender():
   Render()
 
-svbSetup()
-svbRender()

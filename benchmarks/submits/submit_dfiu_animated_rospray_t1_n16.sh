@@ -5,7 +5,7 @@
 #SBATCH -p vis 
 #SBATCH -A A-ccvis 
 #SBATCH -o /work/01891/adb/maverick/svb_adb/benchmarks/outs/dfiu_animated_rospray_t1_n16.out
-#SBATCH -t 00:40:00
+#SBATCH -t 04:00:00
 set -x
 date
 module load qt

@@ -22,7 +22,7 @@ with open(pathsfile) as f:
 
 wrf_plugin_path =  path_vars["WRF_PLUGIN_PATH"]
 print "wrf_plugin_path:%s" %  wrf_plugin_path
-LoadPlugin(wrf_plugin_path, False, globals())
+LoadPlugin(wrf_plugin_path, True, globals())
 print "Happy"
 
 AnimationScene1 = GetAnimationScene()
@@ -44,10 +44,6 @@ def svbSetup(geometryLevel=1,stage=0):
                 AnimationScene1.PlayMode = 'Snap To TimeSteps'
 		
                
-
-
-
-
 
 
 

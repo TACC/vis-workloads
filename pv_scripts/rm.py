@@ -1,6 +1,26 @@
 try: paraview.simple
 except: from paraview.simple import *
 
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+path_vars = dict()
+
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+fiu_data_dir =  path_vars["RMDATA_DIR"]
+print "rm_data_dir:%s" %  rm_data_dir
+
+
+
 def svbSetup(geometryLevel=1):
 
   numCells = 0
@@ -8,7 +28,7 @@ def svbSetup(geometryLevel=1):
   numPoints = 0
   
   if geometryLevel < 6:
-    ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
+    ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"rm_0273.nhdr" )
 
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
@@ -24,17 +44,17 @@ def svbSetup(geometryLevel=1):
     #ppmt273_nrrd = NrrdReader( FileName='/scratch/01336/carson/intelTACC/rm/ppmt273.nrrd' )
     def computeFileName(x):
       return {
-      0:'/scratch/01336/carson/intelTACC/rm/rm_yz_256.xmf',
-      1:'/scratch/01336/carson/intelTACC/rm/rm_yz_256.xmf',
-      2:'/scratch/01336/carson/intelTACC/rm/rm_yz_512',
-      3:'/scratch/01336/carson/intelTACC/rm/rm_yz_1024.xmf',
-      4:'/scratch/01336/carson/intelTACC/rm/rm_yz_1280.xmf',
-      5:'/scratch/01336/carson/intelTACC/rm/rm_yz_1792.xmf',
-      6:'/scratch/01336/carson/intelTACC/rm/rm.xmf',
+      0:"rm_yz_128.xmf",
+      1:"rm_yz_256.xmf",
+      2:"rm_yz_512.xmf",
+      3:"rm_yz_1024.xmf",
+      4:"rm_yz_1280.xmf",
+      5:"rm_yz_1792.xmf",
+      6:"rm.xmf",
       }.get(x,6)
     fileName = computeFileName(geometryLevel)
     # name = '/scratch/01336/carson/intelTACC/rm/rm.xmf'
-    rm_xmf = XDMFReader( FileName=fileName )
+    rm_xmf = XDMFReader( FileName=rm_data_dir+fileName )
 
     # rm_xmf.Sets = []
     # rm_xmf.Grids = ['Grid_5']
