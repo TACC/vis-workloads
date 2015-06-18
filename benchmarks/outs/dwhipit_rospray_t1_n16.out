@@ -16969,3 +16969,5 @@ MP(0x2b05f0765730) CREATE
 vtkPVOSPRayOutlineRepresentation::vtkPVOSPRayOutlineRepresentation()
 
 
+slurmstepd: *** JOB 347746 CANCELLED AT 2015-06-18T06:55:13 DUE TO TIME LIMIT on c221-204 ***
+[c221-204.maverick.tacc.utexas.edu:mpirun_rsh][signal_processor] Caught signal 15, killing job

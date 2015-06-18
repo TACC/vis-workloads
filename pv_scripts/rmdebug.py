@@ -27,10 +27,9 @@ def svbSetup(geometryLevel=1, stage=0):
   numCells = 0
   numPolys = 0 
   numPoints = 0
-  print "h"
-  print(rm_data_dir+"/rm_0273.nhdr")
-  if geometryLevel > 6:
-    ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"/rm_0273.nhdr" )
+  print "h" 
+  if geometryLevel < 6:
+    ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"rm_0273.nhdr" )
 
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
     print "ha"
@@ -55,9 +54,8 @@ def svbSetup(geometryLevel=1, stage=0):
       6:"rm_0273.xmf",
       }.get(x,6)
     fileName = computeFileName(geometryLevel)
-    print(fileName)
     # name = '/scratch/01336/carson/intelTACC/rm/rm.xmf'
-    rm_xmf = XDMFReader( FileName=rm_data_dir+"/"+fileName )
+    rm_xmf = XDMFReader( FileName=rm_data_dir+fileName )
     print "happy"
     # rm_xmf.Sets = []
     # rm_xmf.Grids = ['Grid_5']
