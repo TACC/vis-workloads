@@ -1,13 +1,13 @@
 + date
-Thu Jun 11 10:16:05 CDT 2015
+Thu Jun 18 02:10:11 CDT 2015
 + module load qt
 ++ /opt/apps/lmod/lmod/libexec/lmod bash load qt
-+ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi";' export '_ModuleTable004_;' '_ModuleTable005_="LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable005_;' '_ModuleTable_Sz_="5";' export '_ModuleTable_Sz_;'
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi";' export '_ModuleTable004_;' '_ModuleTable005_="LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable005_;' '_ModuleTable_Sz_="5";' export '_ModuleTable_Sz_;'
 ++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
 ++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export MODULEPATH
-++ LD_LIBRARY_PATH=/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ LD_LIBRARY_PATH=/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
 ++ export LD_LIBRARY_PATH
 ++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
@@ -42,12 +42,12 @@ Thu Jun 11 10:16:05 CDT 2015
 + eval
 + module load paraview/4.1.0
 ++ /opt/apps/lmod/lmod/libexec/lmod bash load paraview/4.1.0
-+ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'PYTHONPATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages";' export 'PYTHONPATH;' 'TACC_PARAVIEW_DIR="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0";' export 'TACC_PARAVIEW_DIR;' 'TACC_PARAVIEW_INC="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include";' export 'TACC_PARAVIEW_INC;' 'TACC_PARAVIEW_LIB="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib";' export 'TACC_PARAVIEW_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i";' export '_ModuleTable004_;' '_ModuleTable005_="XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz";' export '_ModuleTable005_;' '_ModuleTable006_="IixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
++ eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin:/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'PYTHONPATH="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/paraview-4.0/site-packages";' export 'PYTHONPATH;' 'TACC_PARAVIEW_DIR="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0";' export 'TACC_PARAVIEW_DIR;' 'TACC_PARAVIEW_INC="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/include";' export 'TACC_PARAVIEW_INC;' 'TACC_PARAVIEW_LIB="/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib";' export 'TACC_PARAVIEW_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OSxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scGFyYXZpZXc9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbXZhcGljaDJfMl8wL21vZHVsZWZpbGVzL3BhcmF2aWV3LzQuMS4wIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icGFyYXZpZXcvNC4xLjAiLFsibG9hZE9yZGVyIl09OSxwcm9wVD17fSxbInNob3J0Il09InBhcmF2aWV3IixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4i";' export '_ModuleTable004_;' '_ModuleTable005_="XT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVz";' export '_ModuleTable005_;' '_ModuleTable006_="IixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
 ++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
 ++ MODULEPATH=/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export MODULEPATH
-++ LD_LIBRARY_PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ LD_LIBRARY_PATH=/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
 ++ export LD_LIBRARY_PATH
 ++ LMOD_DEFAULT_MODULEPATH=/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
@@ -114,12 +114,12 @@ Thu Jun 11 10:16:05 CDT 2015
 + eval
 + module load pvospray/1.0.2
 ++ /opt/apps/lmod/lmod/libexec/lmod bash load pvospray/1.0.2
-+ eval 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0:pvospray/1.0.2";' export 'LOADEDMODULES;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PV_PLUGIN_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib";' export 'PV_PLUGIN_PATH;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0:/work/01336/carson/opt/modulefiles/pvospray/1.0.2";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIix9LGluYWN0aXZlPXt9LG1UPXtMaW51eD17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL0xpbnV4IixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iTGludXgiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInNob3J0Il09IkxpbnV4";' export '_ModuleTable001_;' '_ModuleTable002_="IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sVEFDQz17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJUQUNDLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MtcGF0aHMiLFsibG9hZE9yZGVyIl09MSxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MtcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxjbHVzdGVyPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3RlciIsWyJkZWZhdWx0Il09MCxb";' export '_ModuleTable002_;' '_ModuleTable003_="ImZ1bGxOYW1lIl09ImNsdXN0ZXIiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbImNsdXN0ZXItcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXItcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3Rlci1wYXRocyIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3Rlci1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGludGVsPXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjEuMTA2IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4xLjEwNiIsWyJsb2FkT3JkZXIiXT00";' export '_ModuleTable003_;' '_ModuleTable004_="LHByb3BUPXt9LFsic2hvcnQiXT0iaW50ZWwiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxtdmFwaWNoMj17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9tdmFwaWNoMi8yLjBiIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0ibXZhcGljaDIvMi4wYiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic2hvcnQiXT0ibXZhcGljaDIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwYXJhdmlldz17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMvcGFyYXZpZXcvNC4xLjAiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJwYXJhdmlldy80LjEuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icGFy";' export '_ModuleTable004_;' '_ModuleTable005_="YXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwdm9zcHJheT17WyJGTiJdPSIvd29yay8wMTMzNi9jYXJzb24vb3B0L21vZHVsZWZpbGVzL3B2b3NwcmF5LzEuMC4yIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icHZvc3ByYXkvMS4wLjIiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzaG9ydCJdPSJwdm9zcHJheSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29u";' export '_ModuleTable005_;' '_ModuleTable006_="L29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
++ eval 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4:paraview/4.1.0:pvospray/1.0.2";' export 'LOADEDMODULES;' 'MODULEPATH="/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PV_PLUGIN_PATH="/work/01336/carson/opt/apps/pvospray/1.0.2/lib";' export 'PV_PLUGIN_PATH;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4:/opt/apps/intel14/mvapich2_2_0/modulefiles/paraview/4.1.0:/work/01336/carson/opt/modulefiles/pvospray/1.0.2";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MTAsYmFzZU1wYXRoQT17Ii93b3JrLzAxMzM2L2NhcnNvbi9vcHQvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXMiLCIvb3B0L2FwcHMvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIix9LFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxmYW1pbHk9e1siTVBJIl09Im12YXBpY2gyIixbImNvbXBpbGVyIl09ImludGVsIix9LGluYWN0aXZlPXt9LG1UPXtMaW51eD17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL0xpbnV4IixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iTGludXgiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInNob3J0Il09IkxpbnV4";' export '_ModuleTable001_;' '_ModuleTable002_="IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sVEFDQz17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL1RBQ0MiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJUQUNDLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9UQUNDLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IlRBQ0MtcGF0aHMiLFsibG9hZE9yZGVyIl09MSxwcm9wVD17fSxbInNob3J0Il09IlRBQ0MtcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxjbHVzdGVyPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvY2x1c3RlciIsWyJkZWZhdWx0Il09MCxb";' export '_ModuleTable002_;' '_ModuleTable003_="ImZ1bGxOYW1lIl09ImNsdXN0ZXIiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxbImNsdXN0ZXItcGF0aHMiXT17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXItcGF0aHMubHVhIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iY2x1c3Rlci1wYXRocyIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic2hvcnQiXT0iY2x1c3Rlci1wYXRocyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LGludGVsPXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjEuMTA2IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4xLjEwNiIsWyJsb2FkT3JkZXIiXT00";' export '_ModuleTable003_;' '_ModuleTable004_="LHByb3BUPXt9LFsic2hvcnQiXT0iaW50ZWwiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxtdmFwaWNoMj17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcy9tdmFwaWNoMi8yLjBiIixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0ibXZhcGljaDIvMi4wYiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic2hvcnQiXT0ibXZhcGljaDIiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwYXJhdmlldz17WyJGTiJdPSIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMvcGFyYXZpZXcvNC4xLjAiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJwYXJhdmlldy80LjEuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic2hvcnQiXT0icGFy";' export '_ModuleTable004_;' '_ModuleTable005_="YXZpZXciLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxwdm9zcHJheT17WyJGTiJdPSIvd29yay8wMTMzNi9jYXJzb24vb3B0L21vZHVsZWZpbGVzL3B2b3NwcmF5LzEuMC4yIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0icHZvc3ByYXkvMS4wLjIiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzaG9ydCJdPSJwdm9zcHJheSIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LHF0PXtbIkZOIl09Ii9vcHQvYXBwcy9tb2R1bGVmaWxlcy9xdC80LjguNCIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09InF0LzQuOC40IixbImxvYWRPcmRlciJdPTgscHJvcFQ9e30sWyJzaG9ydCJdPSJxdCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL3dvcmsvMDEzMzYvY2Fyc29u";' export '_ModuleTable005_;' '_ModuleTable006_="L29wdC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L212YXBpY2gyXzJfMC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9pbnRlbDE0L21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvb3B0L2FwcHMveHNlZGUvbW9kdWxlZmlsZXM6L29wdC9hcHBzL21vZHVsZWZpbGVzOi9vcHQvbW9kdWxlZmlsZXMiLFsidmVyc2lvbiJdPTIsfQ==";' export '_ModuleTable006_;' '_ModuleTable_Sz_="6";' export '_ModuleTable_Sz_;'
 ++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
 ++ MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export MODULEPATH
-++ LD_LIBRARY_PATH=/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
+++ LD_LIBRARY_PATH=/work/01336/carson/opt/apps/pvospray/1.0.2/lib:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib/paraview-4.1:/opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/lib:/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64
 ++ export LD_LIBRARY_PATH
 ++ LMOD_DEFAULT_MODULEPATH=/work/01336/carson/opt/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles
 ++ export LMOD_DEFAULT_MODULEPATH
@@ -149,7 +149,7 @@ Thu Jun 11 10:16:05 CDT 2015
 ++ : -s sh
 + eval
 + tacc_xrun ibrun -n 1 -o 0 /opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch /work/01891/adb/maverick/svb_adb/pv_bench.py --osp -w 1920x1080 --save_images -i /work/01891/adb/maverick/svb_adb/benchmarks/images/ --geoLevel 5 --numruns 10 --source dns --immediatemode
-TACC: Starting up job 344245
+TACC: Starting up job 347714
 TACC: Setting up parallel environment for MVAPICH2+mpispawn.
 TACC: Starting parallel tasks...
  pv_scscript_path:/work/01891/adb/maverick/svb_adb/pv_scripts
@@ -157,20 +157,20 @@ setting maxentries
 windowsize: [1920, 1080]
 loading ospray plugin
 loaded ospray plugin
-OManager(0x4588f30) CREATE
+OManager(0x4121bd0) CREATE
 using obj
 vtkOSPRayRenderer::SetEnableAO 0
 'ospSetParam()' has been deprecated. Please use the new naming convention of 'ospSetObject()' instead
-new renderer: 0x458b4a0, samples: 1
-oRenderer = 0x458b4a0
-oModel = 0x458b180
-oCamera = 0x458b290
+new renderer: 0x4124a30, samples: 1
+oRenderer = 0x4124a30
+oModel = 0x4124710
+oCamera = 0x4124820
 vtkOSPRayRenderer::SetEnableAO 0
 vtkOSPRayRenderer::SetSamples 1
 enabling immediate mode
 immmediate mode set correctly
 trying to import from source
-<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x45f3420>
+<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x419f420>
 SVB_DIR=/work/01891/adb/maverick/svb_adb
 
 output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
@@ -189,7 +189,7 @@ GEODATA_DIR=/work/00401/pnav/workloads/geo
 
 MOLDATA_DIR=/work/01891/adb/molecule_benchmark
 
-WHIPPLEDATA_DIR=/work/01336/carson/intelTACC/data/Whipple300
+WHIPPLEDATA_DIR=/work/00401/pnav/workloads/Whipple300
 
 ENZODATA_DIR=ENZODATA_DIR_NOTFOUND
 
@@ -199,7 +199,7 @@ DNSDATA_DIR= /work/00401/pnav/data/dns_full
 
 FIUDATA_DIR= /work/01336/carson/intelTACC/data/fiu
 
-RMDATA_DIR=RMDATA_DIR-NOTFOUND
+RMDATA_DIR=/work/03108/awasim/workloads/rm-unblocked
 
 ACCOUNT=A-ccvis
 
@@ -237,7 +237,7 @@ USE_MOLECULE=OFF
 
 USE_GEO=OFF
 
-USE_WHIPPLE_TIME=OFF
+USE_WHIPPLE_TIME=ON
 
 USE_WHIPPLE=OFF
 
@@ -263,700 +263,29 @@ Total Stages: 1
 #
 Stage 0...
 #
-name: /work/00401/pnav/data/dns_full/u_yz_640.xmf
-adding contour 0.8 color [0.01, 0.17, 0.29]
-MP(0x493fa90) CREATE
-vtkPVOSPRayOutlineRepresentation::vtkPVOSPRayOutlineRepresentation()
-MP(0x4d76ac0) CREATE
-vtkPVOSPRayImageVolumeRepresentation::vtkPVOSPRayImageVolumeRepresentation()
-vtkOSPRayVolumeRayCastMapper::vtkOSPRayVolumeRayCastMapper()
-numPoints: 0.00 million 
-numCells: 0.00 million 
-numPolys: 0.00 million 
-#
-Warmup...
-#
-rendering warmup frame
-time to first frame: 1.13809704781
-warmup frame Render: 0.039078950882
-rendering warmup frame
-warmup frame Render: 0.0397701263428
-#
-Running...
-#
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00000.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00001.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00002.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00003.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00004.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00005.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00006.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00007.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00008.jpg
-saved image: /work/01891/adb/maverick/svb_adb/benchmarks/images/dns_00009.jpg
-#
-parsing...
-#
-Carson parser
-setting log threshold: 0.0
-#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
-line: CellCenters::GatherInformation,  0.000134 seconds
-????: 0 CellCenters::GatherInformation,  0.000134 seconds
-line: DataSetSurfaceFilter::GatherInformation,  4.1e-05 seconds
-????: 0 DataSetSurfaceFilter::GatherInformation,  4.1e-05 seconds
-line: XdmfReader::GatherInformation,  9.8e-05 seconds
-READER: 0 XdmfReader::GatherInformation,  9.8e-05 seconds
-line: Execute vtkXdmfReader id: 310,  0.000452 seconds
-FILT: 0 Execute vtkXdmfReader id: 310,  0.000452 seconds
-line: Execute vtkPVContourFilter id: 322,  5e-05 seconds
-FILT: 0 Execute vtkPVContourFilter id: 322,  5e-05 seconds
-line: XdmfReader::GatherInformation,  5.8e-05 seconds
-READER: 0 XdmfReader::GatherInformation,  5.8e-05 seconds
-line: Contour::GatherInformation,  5.8e-05 seconds
-????: 0 Contour::GatherInformation,  5.8e-05 seconds
-line: RenderView::Update,  0.007176 seconds
-????: 0 RenderView::Update,  0.007176 seconds
-line:     vtkPVView::Update,  0.006976 seconds
-????: 4     vtkPVView::Update,  0.006976 seconds
-line:         Execute vtkPVOSPRayRepresentation id: 3,  0.006546 seconds
-FILT: 8         Execute vtkPVOSPRayRepresentation id: 3,  0.006546 seconds
-line: RenderView::Update,  4.6e-05 seconds
-????: 0 RenderView::Update,  4.6e-05 seconds
-line:     vtkPVView::Update,  2.9e-05 seconds
-????: 4     vtkPVView::Update,  2.9e-05 seconds
-line: vtkSMDataDeliveryManager: Deliver Geome,  0.000275 seconds
-????: 0 vtkSMDataDeliveryManager: Deliver Geome,  0.000275 seconds
-line:     FullRes Data Migration,  0.000187 seconds
-????: 4     FullRes Data Migration,  0.000187 seconds
-line: Still Render,  0.923895 seconds
-STILL: 0 Still Render,  0.923895 seconds
-SOF
-line:     OSPRay Dev Render,  0.117016 seconds
-REND: 4     OSPRay Dev Render,  0.117016 seconds
-line:         Geometry,  0.002253 seconds
-????: 8         Geometry,  0.002253 seconds
-line:         Total LayerRender,  0.114705 seconds
-????: 8         Total LayerRender,  0.114705 seconds
-line:             Image Conversion,  0.010586 seconds
-????: 12             Image Conversion,  0.010586 seconds
-line:     OpenGL Dev Render,  0.000477 seconds
-REND: 4     OpenGL Dev Render,  0.000477 seconds
-line: Still Render,  0.038813 seconds
-STILL: 0 Still Render,  0.038813 seconds
-SOF
-line:     OSPRay Dev Render,  0.038442 seconds
-REND: 4     OSPRay Dev Render,  0.038442 seconds
-line:         Geometry,  0.001085 seconds
-????: 8         Geometry,  0.001085 seconds
-line:         Total LayerRender,  0.037352 seconds
-????: 8         Total LayerRender,  0.037352 seconds
-line:             Image Conversion,  0.003999 seconds
-????: 12             Image Conversion,  0.003999 seconds
-line:     OpenGL Dev Render,  4.2e-05 seconds
-REND: 4     OpenGL Dev Render,  4.2e-05 seconds
-line: Still Render,  0.03952 seconds
-STILL: 0 Still Render,  0.03952 seconds
-SOF
-line:     OSPRay Dev Render,  0.039233 seconds
-REND: 4     OSPRay Dev Render,  0.039233 seconds
-line:         Geometry,  0.00063 seconds
-????: 8         Geometry,  0.00063 seconds
-line:         Total LayerRender,  0.0386 seconds
-????: 8         Total LayerRender,  0.0386 seconds
-line:             Image Conversion,  0.004 seconds
-????: 12             Image Conversion,  0.004 seconds
-line:     OpenGL Dev Render,  4.7e-05 seconds
-REND: 4     OpenGL Dev Render,  4.7e-05 seconds
-line: Still Render,  0.044173 seconds
-STILL: 0 Still Render,  0.044173 seconds
-SOF
-line:     OSPRay Dev Render,  0.043807 seconds
-REND: 4     OSPRay Dev Render,  0.043807 seconds
-line:         Geometry,  0.000621 seconds
-????: 8         Geometry,  0.000621 seconds
-line:         Total LayerRender,  0.043182 seconds
-????: 8         Total LayerRender,  0.043182 seconds
-line:             Image Conversion,  0.008646 seconds
-????: 12             Image Conversion,  0.008646 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.05157 seconds
-STILL: 0 Still Render,  0.05157 seconds
-SOF
-line:     OSPRay Dev Render,  0.051226 seconds
-REND: 4     OSPRay Dev Render,  0.051226 seconds
-line:         Geometry,  0.000953 seconds
-????: 8         Geometry,  0.000953 seconds
-line:         Total LayerRender,  0.050269 seconds
-????: 8         Total LayerRender,  0.050269 seconds
-line:             Image Conversion,  0.007854 seconds
-????: 12             Image Conversion,  0.007854 seconds
-line:     OpenGL Dev Render,  6.5e-05 seconds
-REND: 4     OpenGL Dev Render,  6.5e-05 seconds
-line: Still Render,  0.048144 seconds
-STILL: 0 Still Render,  0.048144 seconds
-SOF
-line:     OSPRay Dev Render,  0.047858 seconds
-REND: 4     OSPRay Dev Render,  0.047858 seconds
-line:         Geometry,  0.000966 seconds
-????: 8         Geometry,  0.000966 seconds
-line:         Total LayerRender,  0.046888 seconds
-????: 8         Total LayerRender,  0.046888 seconds
-line:             Image Conversion,  0.004024 seconds
-????: 12             Image Conversion,  0.004024 seconds
-line:     OpenGL Dev Render,  4.5e-05 seconds
-REND: 4     OpenGL Dev Render,  4.5e-05 seconds
-line: Still Render,  0.060678 seconds
-STILL: 0 Still Render,  0.060678 seconds
-SOF
-line:     OSPRay Dev Render,  0.06034 seconds
-REND: 4     OSPRay Dev Render,  0.06034 seconds
-line:         Geometry,  0.001085 seconds
-????: 8         Geometry,  0.001085 seconds
-line:         Total LayerRender,  0.059252 seconds
-????: 8         Total LayerRender,  0.059252 seconds
-line:             Image Conversion,  0.007743 seconds
-????: 12             Image Conversion,  0.007743 seconds
-line:     OpenGL Dev Render,  6.5e-05 seconds
-REND: 4     OpenGL Dev Render,  6.5e-05 seconds
-line: Still Render,  0.051692 seconds
-STILL: 0 Still Render,  0.051692 seconds
-SOF
-line:     OSPRay Dev Render,  0.051183 seconds
-REND: 4     OSPRay Dev Render,  0.051183 seconds
-line:         Geometry,  0.001183 seconds
-????: 8         Geometry,  0.001183 seconds
-line:         Total LayerRender,  0.049996 seconds
-????: 8         Total LayerRender,  0.049996 seconds
-line:             Image Conversion,  0.007324 seconds
-????: 12             Image Conversion,  0.007324 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.0479 seconds
-STILL: 0 Still Render,  0.0479 seconds
-SOF
-line:     OSPRay Dev Render,  0.047593 seconds
-REND: 4     OSPRay Dev Render,  0.047593 seconds
-line:         Geometry,  0.001087 seconds
-????: 8         Geometry,  0.001087 seconds
-line:         Total LayerRender,  0.046501 seconds
-????: 8         Total LayerRender,  0.046501 seconds
-line:             Image Conversion,  0.004038 seconds
-????: 12             Image Conversion,  0.004038 seconds
-line:     OpenGL Dev Render,  4.5e-05 seconds
-REND: 4     OpenGL Dev Render,  4.5e-05 seconds
-line: Still Render,  0.03998 seconds
-STILL: 0 Still Render,  0.03998 seconds
-SOF
-line:     OSPRay Dev Render,  0.039562 seconds
-REND: 4     OSPRay Dev Render,  0.039562 seconds
-line:         Geometry,  0.000899 seconds
-????: 8         Geometry,  0.000899 seconds
-line:         Total LayerRender,  0.038657 seconds
-????: 8         Total LayerRender,  0.038657 seconds
-line:             Image Conversion,  0.004013 seconds
-????: 12             Image Conversion,  0.004013 seconds
-line:     OpenGL Dev Render,  4.6e-05 seconds
-REND: 4     OpenGL Dev Render,  4.6e-05 seconds
-line: Still Render,  0.043545 seconds
-STILL: 0 Still Render,  0.043545 seconds
-SOF
-line:     OSPRay Dev Render,  0.04323 seconds
-REND: 4     OSPRay Dev Render,  0.04323 seconds
-line:         Geometry,  0.000394 seconds
-????: 8         Geometry,  0.000394 seconds
-line:         Total LayerRender,  0.042832 seconds
-????: 8         Total LayerRender,  0.042832 seconds
-line:             Image Conversion,  0.008654 seconds
-????: 12             Image Conversion,  0.008654 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.052706 seconds
-STILL: 0 Still Render,  0.052706 seconds
-SOF
-line:     OSPRay Dev Render,  0.052263 seconds
-REND: 4     OSPRay Dev Render,  0.052263 seconds
-line:         Geometry,  0.001006 seconds
-????: 8         Geometry,  0.001006 seconds
-line:         Total LayerRender,  0.051253 seconds
-????: 8         Total LayerRender,  0.051253 seconds
-line:             Image Conversion,  0.007885 seconds
-????: 12             Image Conversion,  0.007885 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.051658 seconds
-STILL: 0 Still Render,  0.051658 seconds
-SOF
-line:     OSPRay Dev Render,  0.051314 seconds
-REND: 4     OSPRay Dev Render,  0.051314 seconds
-line:         Geometry,  0.001061 seconds
-????: 8         Geometry,  0.001061 seconds
-line:         Total LayerRender,  0.05025 seconds
-????: 8         Total LayerRender,  0.05025 seconds
-line:             Image Conversion,  0.007472 seconds
-????: 12             Image Conversion,  0.007472 seconds
-line:     OpenGL Dev Render,  6.5e-05 seconds
-REND: 4     OpenGL Dev Render,  6.5e-05 seconds
-line: Still Render,  0.050112 seconds
-STILL: 0 Still Render,  0.050112 seconds
-SOF
-line:     OSPRay Dev Render,  0.049639 seconds
-REND: 4     OSPRay Dev Render,  0.049639 seconds
-line:         Geometry,  0.00113 seconds
-????: 8         Geometry,  0.00113 seconds
-line:         Total LayerRender,  0.048505 seconds
-????: 8         Total LayerRender,  0.048505 seconds
-line:             Image Conversion,  0.004046 seconds
-????: 12             Image Conversion,  0.004046 seconds
-line:     OpenGL Dev Render,  4.7e-05 seconds
-REND: 4     OpenGL Dev Render,  4.7e-05 seconds
-line: Still Render,  0.044127 seconds
-STILL: 0 Still Render,  0.044127 seconds
-SOF
-line:     OSPRay Dev Render,  0.043781 seconds
-REND: 4     OSPRay Dev Render,  0.043781 seconds
-line:         Geometry,  0.000894 seconds
-????: 8         Geometry,  0.000894 seconds
-line:         Total LayerRender,  0.042883 seconds
-????: 8         Total LayerRender,  0.042883 seconds
-line:             Image Conversion,  0.008596 seconds
-????: 12             Image Conversion,  0.008596 seconds
-line:     OpenGL Dev Render,  6.4e-05 seconds
-REND: 4     OpenGL Dev Render,  6.4e-05 seconds
-line: Still Render,  0.054053 seconds
-STILL: 0 Still Render,  0.054053 seconds
-SOF
-line:     OSPRay Dev Render,  0.053576 seconds
-REND: 4     OSPRay Dev Render,  0.053576 seconds
-line:         Geometry,  0.001052 seconds
-????: 8         Geometry,  0.001052 seconds
-line:         Total LayerRender,  0.05252 seconds
-????: 8         Total LayerRender,  0.05252 seconds
-line:             Image Conversion,  0.007999 seconds
-????: 12             Image Conversion,  0.007999 seconds
-line:     OpenGL Dev Render,  7.3e-05 seconds
-REND: 4     OpenGL Dev Render,  7.3e-05 seconds
-line: Still Render,  0.047948 seconds
-STILL: 0 Still Render,  0.047948 seconds
-SOF
-line:     OSPRay Dev Render,  0.047637 seconds
-REND: 4     OSPRay Dev Render,  0.047637 seconds
-line:         Geometry,  0.000903 seconds
-????: 8         Geometry,  0.000903 seconds
-line:         Total LayerRender,  0.04673 seconds
-????: 8         Total LayerRender,  0.04673 seconds
-line:             Image Conversion,  0.004023 seconds
-????: 12             Image Conversion,  0.004023 seconds
-line:     OpenGL Dev Render,  4.5e-05 seconds
-REND: 4     OpenGL Dev Render,  4.5e-05 seconds
-line: Still Render,  0.040339 seconds
-STILL: 0 Still Render,  0.040339 seconds
-SOF
-line:     OSPRay Dev Render,  0.039867 seconds
-REND: 4     OSPRay Dev Render,  0.039867 seconds
-line:         Geometry,  0.001104 seconds
-????: 8         Geometry,  0.001104 seconds
-line:         Total LayerRender,  0.038759 seconds
-????: 8         Total LayerRender,  0.038759 seconds
-line:             Image Conversion,  0.004005 seconds
-????: 12             Image Conversion,  0.004005 seconds
-line:     OpenGL Dev Render,  4.7e-05 seconds
-REND: 4     OpenGL Dev Render,  4.7e-05 seconds
-line: Still Render,  0.043482 seconds
-STILL: 0 Still Render,  0.043482 seconds
-SOF
-line:     OSPRay Dev Render,  0.043145 seconds
-REND: 4     OSPRay Dev Render,  0.043145 seconds
-line:         Geometry,  0.000379 seconds
-????: 8         Geometry,  0.000379 seconds
-line:         Total LayerRender,  0.042762 seconds
-????: 8         Total LayerRender,  0.042762 seconds
-line:             Image Conversion,  0.008651 seconds
-????: 12             Image Conversion,  0.008651 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.051799 seconds
-STILL: 0 Still Render,  0.051799 seconds
-SOF
-line:     OSPRay Dev Render,  0.051468 seconds
-REND: 4     OSPRay Dev Render,  0.051468 seconds
-line:         Geometry,  0.000944 seconds
-????: 8         Geometry,  0.000944 seconds
-line:         Total LayerRender,  0.050522 seconds
-????: 8         Total LayerRender,  0.050522 seconds
-line:             Image Conversion,  0.00773 seconds
-????: 12             Image Conversion,  0.00773 seconds
-line:     OpenGL Dev Render,  6.6e-05 seconds
-REND: 4     OpenGL Dev Render,  6.6e-05 seconds
-line: Still Render,  0.047839 seconds
-STILL: 0 Still Render,  0.047839 seconds
-SOF
-line:     OSPRay Dev Render,  0.047531 seconds
-REND: 4     OSPRay Dev Render,  0.047531 seconds
-line:         Geometry,  0.001096 seconds
-????: 8         Geometry,  0.001096 seconds
-line:         Total LayerRender,  0.046431 seconds
-????: 8         Total LayerRender,  0.046431 seconds
-line:             Image Conversion,  0.00402 seconds
-????: 12             Image Conversion,  0.00402 seconds
-line:     OpenGL Dev Render,  4.5e-05 seconds
-REND: 4     OpenGL Dev Render,  4.5e-05 seconds
-line: Still Render,  0.039903 seconds
-STILL: 0 Still Render,  0.039903 seconds
-SOF
-line:     OSPRay Dev Render,  0.039616 seconds
-REND: 4     OSPRay Dev Render,  0.039616 seconds
-line:         Geometry,  0.001125 seconds
-????: 8         Geometry,  0.001125 seconds
-line:         Total LayerRender,  0.038488 seconds
-????: 8         Total LayerRender,  0.038488 seconds
-line:             Image Conversion,  0.004013 seconds
-????: 12             Image Conversion,  0.004013 seconds
-line:     OpenGL Dev Render,  4.7e-05 seconds
-REND: 4     OpenGL Dev Render,  4.7e-05 seconds
-line: Still Render,  0.039313 seconds
-STILL: 0 Still Render,  0.039313 seconds
-SOF
-line:     OSPRay Dev Render,  0.038985 seconds
-REND: 4     OSPRay Dev Render,  0.038985 seconds
-line:         Geometry,  0.000577 seconds
-????: 8         Geometry,  0.000577 seconds
-line:         Total LayerRender,  0.038405 seconds
-????: 8         Total LayerRender,  0.038405 seconds
-line:             Image Conversion,  0.003991 seconds
-????: 12             Image Conversion,  0.003991 seconds
-line:     OpenGL Dev Render,  4.6e-05 seconds
-REND: 4     OpenGL Dev Render,  4.6e-05 seconds
-line: 
-????: 0 
-#FRAME TIMINGS
-#filter id, filter type, inclusive duration, local duration
-#Frame  0
-XdmfReader , XdmfReader , 9.8e-05 , 9.8e-05
-310 , vtkXdmfReader , 0.000452 , 0.000452
-322 , vtkPVContourFilter , 5e-05 , 5e-05
-XdmfReader , XdmfReader , 5.8e-05 , -0.006488
-3 , vtkPVOSPRayRepresentation , 0.006546 , 0.006546
-#Frame  1
-still , Still , 0.923895 , 0.806402
-found still record
-render , OSPRay Dev , 0.117016 , 0.117016
-render , OpenGL Dev , 0.000477 , 0.000477
-found still record
-#Frame  2
-still , Still , 0.038813 , 0.000329
-found still record
-render , OSPRay Dev , 0.038442 , 0.038442
-render , OpenGL Dev , 4.2e-05 , 4.2e-05
-found still record
-#Frame  3
-still , Still , 0.03952 , 0.00024
-found still record
-render , OSPRay Dev , 0.039233 , 0.039233
-render , OpenGL Dev , 4.7e-05 , 4.7e-05
-found still record
-#Frame  4
-still , Still , 0.044173 , 0.0003
-found still record
-render , OSPRay Dev , 0.043807 , 0.043807
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  5
-still , Still , 0.05157 , 0.000279
-found still record
-render , OSPRay Dev , 0.051226 , 0.051226
-render , OpenGL Dev , 6.5e-05 , 6.5e-05
-found still record
-#Frame  6
-still , Still , 0.048144 , 0.000241
-found still record
-render , OSPRay Dev , 0.047858 , 0.047858
-render , OpenGL Dev , 4.5e-05 , 4.5e-05
-found still record
-#Frame  7
-still , Still , 0.060678 , 0.000273
-found still record
-render , OSPRay Dev , 0.06034 , 0.06034
-render , OpenGL Dev , 6.5e-05 , 6.5e-05
-found still record
-#Frame  8
-still , Still , 0.051692 , 0.000443
-found still record
-render , OSPRay Dev , 0.051183 , 0.051183
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  9
-still , Still , 0.0479 , 0.000262
-found still record
-render , OSPRay Dev , 0.047593 , 0.047593
-render , OpenGL Dev , 4.5e-05 , 4.5e-05
-found still record
-#Frame  10
-still , Still , 0.03998 , 0.000372
-found still record
-render , OSPRay Dev , 0.039562 , 0.039562
-render , OpenGL Dev , 4.6e-05 , 4.6e-05
-found still record
-#Frame  11
-still , Still , 0.043545 , 0.000249
-found still record
-render , OSPRay Dev , 0.04323 , 0.04323
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  12
-still , Still , 0.052706 , 0.000377
-found still record
-render , OSPRay Dev , 0.052263 , 0.052263
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  13
-still , Still , 0.051658 , 0.000279
-found still record
-render , OSPRay Dev , 0.051314 , 0.051314
-render , OpenGL Dev , 6.5e-05 , 6.5e-05
-found still record
-#Frame  14
-still , Still , 0.050112 , 0.000426
-found still record
-render , OSPRay Dev , 0.049639 , 0.049639
-render , OpenGL Dev , 4.7e-05 , 4.7e-05
-found still record
-#Frame  15
-still , Still , 0.044127 , 0.000282
-found still record
-render , OSPRay Dev , 0.043781 , 0.043781
-render , OpenGL Dev , 6.4e-05 , 6.4e-05
-found still record
-#Frame  16
-still , Still , 0.054053 , 0.000404
-found still record
-render , OSPRay Dev , 0.053576 , 0.053576
-render , OpenGL Dev , 7.3e-05 , 7.3e-05
-found still record
-#Frame  17
-still , Still , 0.047948 , 0.000266
-found still record
-render , OSPRay Dev , 0.047637 , 0.047637
-render , OpenGL Dev , 4.5e-05 , 4.5e-05
-found still record
-#Frame  18
-still , Still , 0.040339 , 0.000425
-found still record
-render , OSPRay Dev , 0.039867 , 0.039867
-render , OpenGL Dev , 4.7e-05 , 4.7e-05
-found still record
-#Frame  19
-still , Still , 0.043482 , 0.000271
-found still record
-render , OSPRay Dev , 0.043145 , 0.043145
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  20
-still , Still , 0.051799 , 0.000265
-found still record
-render , OSPRay Dev , 0.051468 , 0.051468
-render , OpenGL Dev , 6.6e-05 , 6.6e-05
-found still record
-#Frame  21
-still , Still , 0.047839 , 0.000263
-found still record
-render , OSPRay Dev , 0.047531 , 0.047531
-render , OpenGL Dev , 4.5e-05 , 4.5e-05
-found still record
-#Frame  22
-still , Still , 0.039903 , 0.00024
-found still record
-render , OSPRay Dev , 0.039616 , 0.039616
-render , OpenGL Dev , 4.7e-05 , 4.7e-05
-found still record
-#Frame  23
-still , Still , 0.039313 , 0.000282
-found still record
-render , OSPRay Dev , 0.038985 , 0.038985
-render , OpenGL Dev , 4.6e-05 , 4.6e-05
-found still record
-#FILTER TIMINGS
-#filter id, filter type, count, sum inclusive duration, sum local duration
-render , OSPRay Dev , 46 , 1.140019 , 1.140019
-could not find reader record in name OSPRay Dev
-310 , vtkXdmfReader , 1 , 0.000452 , 0.000452
-found reader record
-3 , vtkPVOSPRayRepresentation , 1 , 0.006546 , 0.006546
-could not find reader record in name vtkPVOSPRayRepresentation
-322 , vtkPVContourFilter , 1 , 5e-05 , 5e-05
-could not find reader record in name vtkPVContourFilter
-XdmfReader , XdmfReader , 2 , 0.000156 , -0.00639
-found reader record
-still , Still , 23 , 1.953189 , 0.81317
-could not find reader record in name Still
+name: /work/00401/pnav/data/dns_full/u_1280.xmf
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/IO/Xdmf2/vtkXdmfReader.cxx, line 195
+vtkXdmfReader (0x4152740): Error opening file /work/00401/pnav/data/dns_full/u_1280.xmf
 
-[[{'vtkPVContourFilter': 5e-05, 'vtkXdmfReader': 0.000452, 'filter': 3.1004119999999995, 'XdmfReader': 0.000156, 'OSPRay Dev': 1.1400189999999997, 'reader': 0.000608, 'OpenGL Dev': 0.000477, 'Still': 0.923895, 'vtkPVOSPRayRepresentation': 0.006546}], [{'OpenGL Dev': 4.2e-05, 'Still': 0.038813}], [{'OpenGL Dev': 4.7e-05, 'Still': 0.03952}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.044173}], [{'OpenGL Dev': 6.5e-05, 'Still': 0.05157}], [{'OpenGL Dev': 4.5e-05, 'Still': 0.048144}], [{'OpenGL Dev': 6.5e-05, 'Still': 0.060678}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.051692}], [{'OpenGL Dev': 4.5e-05, 'Still': 0.0479}], [{'OpenGL Dev': 4.6e-05, 'Still': 0.03998}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.043545}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.052706}], [{'OpenGL Dev': 6.5e-05, 'Still': 0.051658}], [{'OpenGL Dev': 4.7e-05, 'Still': 0.050112}], [{'OpenGL Dev': 6.4e-05, 'Still': 0.044127}], [{'OpenGL Dev': 7.3e-05, 'Still': 0.054053}], [{'OpenGL Dev': 4.5e-05, 'Still': 0.047948}], [{'OpenGL Dev': 4.7e-05, 'Still': 0.040339}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.043482}], [{'OpenGL Dev': 6.6e-05, 'Still': 0.051799}], [{'OpenGL Dev': 4.5e-05, 'Still': 0.047839}], [{'OpenGL Dev': 4.7e-05, 'Still': 0.039903}], [{'OpenGL Dev': 4.6e-05, 'Still': 0.039313}], []]
-#RunMode: batch ServerType: unified Component:  CLIENT  RENDER  DATA  processor#: 0
-CellCenters::GatherInformation,  0.000134 seconds
-DataSetSurfaceFilter::GatherInformation,  4.1e-05 seconds
-XdmfReader::GatherInformation,  9.8e-05 seconds
-Execute vtkXdmfReader id: 310,  0.000452 seconds
-Execute vtkPVContourFilter id: 322,  5e-05 seconds
-XdmfReader::GatherInformation,  5.8e-05 seconds
-Contour::GatherInformation,  5.8e-05 seconds
-RenderView::Update,  0.007176 seconds
-    vtkPVView::Update,  0.006976 seconds
-        Execute vtkPVOSPRayRepresentation id: 3,  0.006546 seconds
-RenderView::Update,  4.6e-05 seconds
-    vtkPVView::Update,  2.9e-05 seconds
-vtkSMDataDeliveryManager: Deliver Geome,  0.000275 seconds
-    FullRes Data Migration,  0.000187 seconds
-Still Render,  0.923895 seconds
-    OSPRay Dev Render,  0.117016 seconds
-        Geometry,  0.002253 seconds
-        Total LayerRender,  0.114705 seconds
-            Image Conversion,  0.010586 seconds
-    OpenGL Dev Render,  0.000477 seconds
-Still Render,  0.038813 seconds
-    OSPRay Dev Render,  0.038442 seconds
-        Geometry,  0.001085 seconds
-        Total LayerRender,  0.037352 seconds
-            Image Conversion,  0.003999 seconds
-    OpenGL Dev Render,  4.2e-05 seconds
-Still Render,  0.03952 seconds
-    OSPRay Dev Render,  0.039233 seconds
-        Geometry,  0.00063 seconds
-        Total LayerRender,  0.0386 seconds
-            Image Conversion,  0.004 seconds
-    OpenGL Dev Render,  4.7e-05 seconds
-Still Render,  0.044173 seconds
-    OSPRay Dev Render,  0.043807 seconds
-        Geometry,  0.000621 seconds
-        Total LayerRender,  0.043182 seconds
-            Image Conversion,  0.008646 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.05157 seconds
-    OSPRay Dev Render,  0.051226 seconds
-        Geometry,  0.000953 seconds
-        Total LayerRender,  0.050269 seconds
-            Image Conversion,  0.007854 seconds
-    OpenGL Dev Render,  6.5e-05 seconds
-Still Render,  0.048144 seconds
-    OSPRay Dev Render,  0.047858 seconds
-        Geometry,  0.000966 seconds
-        Total LayerRender,  0.046888 seconds
-            Image Conversion,  0.004024 seconds
-    OpenGL Dev Render,  4.5e-05 seconds
-Still Render,  0.060678 seconds
-    OSPRay Dev Render,  0.06034 seconds
-        Geometry,  0.001085 seconds
-        Total LayerRender,  0.059252 seconds
-            Image Conversion,  0.007743 seconds
-    OpenGL Dev Render,  6.5e-05 seconds
-Still Render,  0.051692 seconds
-    OSPRay Dev Render,  0.051183 seconds
-        Geometry,  0.001183 seconds
-        Total LayerRender,  0.049996 seconds
-            Image Conversion,  0.007324 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.0479 seconds
-    OSPRay Dev Render,  0.047593 seconds
-        Geometry,  0.001087 seconds
-        Total LayerRender,  0.046501 seconds
-            Image Conversion,  0.004038 seconds
-    OpenGL Dev Render,  4.5e-05 seconds
-Still Render,  0.03998 seconds
-    OSPRay Dev Render,  0.039562 seconds
-        Geometry,  0.000899 seconds
-        Total LayerRender,  0.038657 seconds
-            Image Conversion,  0.004013 seconds
-    OpenGL Dev Render,  4.6e-05 seconds
-Still Render,  0.043545 seconds
-    OSPRay Dev Render,  0.04323 seconds
-        Geometry,  0.000394 seconds
-        Total LayerRender,  0.042832 seconds
-            Image Conversion,  0.008654 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.052706 seconds
-    OSPRay Dev Render,  0.052263 seconds
-        Geometry,  0.001006 seconds
-        Total LayerRender,  0.051253 seconds
-            Image Conversion,  0.007885 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.051658 seconds
-    OSPRay Dev Render,  0.051314 seconds
-        Geometry,  0.001061 seconds
-        Total LayerRender,  0.05025 seconds
-            Image Conversion,  0.007472 seconds
-    OpenGL Dev Render,  6.5e-05 seconds
-Still Render,  0.050112 seconds
-    OSPRay Dev Render,  0.049639 seconds
-        Geometry,  0.00113 seconds
-        Total LayerRender,  0.048505 seconds
-            Image Conversion,  0.004046 seconds
-    OpenGL Dev Render,  4.7e-05 seconds
-Still Render,  0.044127 seconds
-    OSPRay Dev Render,  0.043781 seconds
-        Geometry,  0.000894 seconds
-        Total LayerRender,  0.042883 seconds
-            Image Conversion,  0.008596 seconds
-    OpenGL Dev Render,  6.4e-05 seconds
-Still Render,  0.054053 seconds
-    OSPRay Dev Render,  0.053576 seconds
-        Geometry,  0.001052 seconds
-        Total LayerRender,  0.05252 seconds
-            Image Conversion,  0.007999 seconds
-    OpenGL Dev Render,  7.3e-05 seconds
-Still Render,  0.047948 seconds
-    OSPRay Dev Render,  0.047637 seconds
-        Geometry,  0.000903 seconds
-        Total LayerRender,  0.04673 seconds
-            Image Conversion,  0.004023 seconds
-    OpenGL Dev Render,  4.5e-05 seconds
-Still Render,  0.040339 seconds
-    OSPRay Dev Render,  0.039867 seconds
-        Geometry,  0.001104 seconds
-        Total LayerRender,  0.038759 seconds
-            Image Conversion,  0.004005 seconds
-    OpenGL Dev Render,  4.7e-05 seconds
-Still Render,  0.043482 seconds
-    OSPRay Dev Render,  0.043145 seconds
-        Geometry,  0.000379 seconds
-        Total LayerRender,  0.042762 seconds
-            Image Conversion,  0.008651 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.051799 seconds
-    OSPRay Dev Render,  0.051468 seconds
-        Geometry,  0.000944 seconds
-        Total LayerRender,  0.050522 seconds
-            Image Conversion,  0.00773 seconds
-    OpenGL Dev Render,  6.6e-05 seconds
-Still Render,  0.047839 seconds
-    OSPRay Dev Render,  0.047531 seconds
-        Geometry,  0.001096 seconds
-        Total LayerRender,  0.046431 seconds
-            Image Conversion,  0.00402 seconds
-    OpenGL Dev Render,  4.5e-05 seconds
-Still Render,  0.039903 seconds
-    OSPRay Dev Render,  0.039616 seconds
-        Geometry,  0.001125 seconds
-        Total LayerRender,  0.038488 seconds
-            Image Conversion,  0.004013 seconds
-    OpenGL Dev Render,  4.7e-05 seconds
-Still Render,  0.039313 seconds
-    OSPRay Dev Render,  0.038985 seconds
-        Geometry,  0.000577 seconds
-        Total LayerRender,  0.038405 seconds
-            Image Conversion,  0.003991 seconds
-    OpenGL Dev Render,  4.6e-05 seconds
+ERROR: In /home/01249/gda/build/ParaView-v4.1.0/VTK/Common/ExecutionModel/vtkExecutive.cxx, line 754
+vtkPVCompositeDataPipeline (0x4169fa0): Algorithm vtkXdmfReader(0x4152740) returned failure for request: vtkInformation (0x416d140)
+  Debug: Off
+  Modified Time: 147770
+  Reference Count: 1
+  Registered Events: (none)
+  Request: REQUEST_DATA_OBJECT
+  ALGORITHM_AFTER_FORWARD: 1
+  FORWARD_DIRECTION: 0
 
-[0.0443720817565918, 0.04838109016418457, 0.051876068115234375, 0.04017305374145508, 0.05289006233215332, 0.05030012130737305, 0.05425310134887695, 0.04052901268005371, 0.05204892158508301, 0.040158987045288086]
-overall time avg fps: 21.0534072274 avg: 0.0474982500076 dev: 0.00537652236606
-overall frame time results avg: 0.0474982500076 dev: 0.00537652236606
-overall render time results avg: 0.0474982500076 dev: 0.00537652236606
-still zoomed out results avg: 0.0474982500076 dev: 0.00537652236606
-rotate zoomed out results avg: 0.0474982500076 dev: 0.00537652236606
-zooming results avg: 0.0474982500076 dev: 0.00537652236606
-rotate zoomed in results avg: 0.0474982500076 dev: 0.00537652236606
-still zoomed in results avg: 0.0474982500076 dev: 0.00537652236606
-reader time 0.000608
-filter time 3.100412
+
+
+[c221-301.maverick.tacc.utexas.edu:mpi_rank_0][error_sighandler] Caught error: Segmentation fault (signal 11)
+[c221-301.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c221-301.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c221-301.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 62265) terminated with signal 11 -> abort job
+[c221-301.maverick.tacc.utexas.edu:mpirun_rsh][process_mpispawn_connection] mpispawn_0 from node c221-301 aborted: Error while reading a PMI socket (4)
+TACC: MPI job exited with code: 1
  
 TACC: Shutdown complete. Exiting.
 + date
-Thu Jun 11 10:16:26 CDT 2015
+Thu Jun 18 02:10:33 CDT 2015

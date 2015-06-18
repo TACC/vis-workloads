@@ -32,7 +32,8 @@ def svbSetup(geometryLevel=1, stage=0):
   numPoints = 0
   numFiles=geometryLevel
   #name=dns_data_dir+"u_10000.xdmf"
-  name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
+  #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
+  name = dns_data_dir+"/u_"+str(numFiles*256)+'.xmf'
   print "name: %s" % name
   dns_xmf = XDMFReader( FileName=name )
   print "happy"

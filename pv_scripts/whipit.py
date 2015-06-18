@@ -58,7 +58,7 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		Whipple_Shield_exo_300_010.FileRange = [0, 299]
 		Whipple_Shield_exo_300_010.XMLFileName = 'Invalid result'
-		Whipple_Shield_exo_300_010.FilePrefix = datasetpath+'.'
+		Whipple_Shield_exo_300_010.FilePrefix = whipple_data_dir+'Whipple_Shield.exo.300.'
 		Whipple_Shield_exo_300_010.ModeShape = 20
 		Whipple_Shield_exo_300_010.FilePattern = '%s%03i'
 
