@@ -92,7 +92,7 @@ PRELOAD=""
 #
 # node scaling
 #
-tris=( 4 6 9 )
+tris=( )
 nodes=( 1 2 4 8 16 32 )
 renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
@@ -116,11 +116,11 @@ done
 #
 # single node scaling
 #
-tris=( 1 2 3 4 5 6 7 8 9)
+tris=( 1 5 10)
 nodes=( 1 )
 renderer=swr
-renderers=( "swr" "gpu" "gluray" "vbo" "ospray")
-dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
+renderers=( "gpu" "vbo" "ospray")
+dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
 set -x
 #for i in "${tris[@]}"; do vglrun /work/01336/carson/git/GLuRay/buildOSPRay/gluray pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 100 |& tee gluray_fiu_$i.out ; done
 #for i in "${tris[@]}"; do tacc_xrun pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 200 |& tee gpu_fiu_$i.out ; done

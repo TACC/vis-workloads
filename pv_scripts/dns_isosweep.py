@@ -17,7 +17,10 @@ def svbSetup(geometryLevel=1, stage=0):
   
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-  reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
+  # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
+  reader = XDMFReader(FileNames=['/work/00401/pnav/workloads/dns/u_0032_pv.xmf'])
+  reader.PointArrayStatus = ['dataset0']
+  reader.GridStatus = ['Grid_2']
 
   Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
@@ -33,6 +36,8 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2 = Show()
   DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  DataRepresentation2.Representation = 'Surface'  
+  DataRepresentation2.ColorArrayName = ['POINTS', '']
   
   ResetCamera()
   cam = GetActiveCamera()
