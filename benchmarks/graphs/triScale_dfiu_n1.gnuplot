@@ -1,6 +1,6 @@
 #graph triScale_dfiu_n1
 set terminal svg
-set output '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.svg'
+set output '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.svg'
 set size 0.98,1.0
 set datafile missing 'none'
 set xtics (1,2,3,4,5,6,7,8,9)
@@ -26,4 +26,4 @@ set ylabel 'seconds'
 set title 'triScale_dfiu_n1'
 set grid lc rgb '#aaaaaa'
 set pointsize 0.5
-plot '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 , '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 
+plot '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 , '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 , '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gluray.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#ffb428', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.gluray.part' using 1:6 title 'gluray' with lines linestyle 3 , '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.ospray.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#28b4ff', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.ospray.part' using 1:6 title 'ospray' with lines linestyle 4 , '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.vbo.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#333333', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/triScale_dfiu_n1.gnuplot.vbo.part' using 1:6 title 'vbo' with lines linestyle 5 

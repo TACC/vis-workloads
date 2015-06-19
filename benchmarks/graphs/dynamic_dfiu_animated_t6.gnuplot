@@ -1,6 +1,6 @@
 #graph dynamic_dfiu_animated_t6
 set terminal svg
-set output '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.svg'
+set output '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/dynamic_dfiu_animated_t6.svg'
 set size 0.98,1.0
 set datafile missing 'none'
 set xtics
@@ -24,4 +24,4 @@ set ylabel 'seconds'
 set title 'dynamic_dfiu_animated_t6'
 set grid lc rgb '#aaaaaa'
 set pointsize 0.5
-plot '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 , '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_adb/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 
+plot '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#0060ad', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.swr.part' using 1:6 title 'swr' with lines linestyle 1 , '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 notitle with points pointtype 7 linecolor rgb '#888888', '/work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/dynamic_dfiu_animated_t6.gnuplot.gpu.part' using 1:6 title 'gpu' with lines linestyle 2 

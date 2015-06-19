@@ -1,4 +1,4 @@
-#datpart /work/01891/adb/maverick/svb_adb/benchmarks/graphs/strongScale_ddns_t6.gnuplot.gpu.part
+#datpart /work/01891/adb/maverick/svb_checkmerge3/benchmarks/graphs/strongScale_ddns_t6.gnuplot.gpu.part
 1  ddns_rgpu_t6_n1
  ddns_rgpu_t6_n2
  ddns_rgpu_t6_n4

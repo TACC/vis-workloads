@@ -128,8 +128,8 @@ done
 tris=( 1 2 3 4 5 6 7 8 9)
 nodes=( 1 )
 renderer=swr
-renderers=( "swr" "gpu")
-dataSources=("fiu" "dns")
+renderers=( "swr" "gpu" "gluray" "ospray" "vbo")
+dataSources=("fiu" "dns" "rm")
 set -x
 PRELOAD=""
 stages=0
@@ -165,7 +165,7 @@ done
 tris=( 6 )
 nodes=( 1 2 4 8 16 32 )
 renderers=( "swr" "gpu" "gluray" "ospray" "vbo" )
-dataSources=("fiu" "dns" "molecule" "geo")
+dataSources=("fiu" "dns" "molecule" "geo" "rm" "wrf")
 stages=1
 for data in "${dataSources[@]}";
 do
