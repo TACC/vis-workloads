@@ -1,13 +1,35 @@
 try: paraview.simple
 except: from paraview.simple import *
+import os
 
-def svbSetup(geometryLevel=1):
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+path_vars = dict()
+
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+
+mol_data_dir =  path_vars["MOLDATA_DIR"]
+
+def svbSetup(geometryLevel=1, stage=0):
+  print "in svbSetup"
   numCells = 0
   numPolys = 0 
   numPoints = 0
   paraview.simple._DisableFirstRenderCameraReset()
 
-  a4RHV_ribbons_obj = WavefrontOBJReader( FileName='/work/01891/adb/molecule_benchmark/bacteriaphage_ribbons.obj' )
+  print "about to load OBJ"
+  fname = "\'"+mol_data_dir+"/bacteriophage_ribbons.obj"+"\'"
+  a4RHV_ribbons_obj = WavefrontOBJReader( FileName=fname )
 
   RenderView1 = GetRenderView()
   RenderView1.CenterOfRotation = [77.85100555419922, 193.92295455932617, 40.27460050582886]
@@ -23,8 +45,10 @@ def svbSetup(geometryLevel=1):
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-  a4RHV_pdb = PDBReader( FileName='/work/01891/adb/molecule_benchmark/1VRI.pdb' )
+  
+  print "about to load PDB"
+  fname = "\'"+mol_data_dir+"/1VRI.pdb"+"\'"
+  a4RHV_pdb = PDBReader( FileName=fname )
 
   DataRepresentation6 = Show()
   DataRepresentation6.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -50,7 +74,10 @@ def svbSetup(geometryLevel=1):
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-  return {'azimuth':90, 'dolly':3.0}
+
+def svbGetStagesSize():
+  return 1;
+
 
 def svbRender():
-        Render()
+  Render()

@@ -1,14 +1,42 @@
 try: paraview.simple
 except: from paraview.simple import *
+import os
+import sys
 
-def svbSetup(geometryLevel=1):
+
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+path_vars = dict()
+
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+dns_data_dir =  path_vars["DNSDATA_DIR"]
+print "dns_data_dir:%s" %  dns_data_dir
+
+
+def svbGetStagesSize():
+  return 1;
+
+def svbSetup(geometryLevel=1, stage=0):
   numCells = 0
   numPolys = 0 
   numPoints = 0
   numFiles=geometryLevel
-  name = '/scratch/01336/carson/intelTACC/dns/u_yz_'+str(numFiles*128)+'.xmf'
+  #name=dns_data_dir+"u_10000.xdmf"
+  #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
+  name = dns_data_dir+"/u_"+str(numFiles*256)+'.xmf'
+  print "name: %s" % name
   dns_xmf = XDMFReader( FileName=name )
-
+  print "happy"
   dns_xmf.Sets = []
   dns_xmf.Grids = ['Grid_2']
   dns_xmf.PointArrays = ['RTData']
@@ -44,7 +72,7 @@ def svbSetup(geometryLevel=1):
     Contour1.Isosurfaces = [contourPoints[j]]
 
     cDataRepresentation2 = Show()
-    cDataRepresentation2.ScaleFactor = 968.4097045898438
+    #cDataRepresentation2.ScaleFactor = 968.4097045898438
     #cDataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
     #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
     cDataRepresentation2.DiffuseColor = contourColors[j]

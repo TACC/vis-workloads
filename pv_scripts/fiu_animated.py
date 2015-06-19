@@ -1,8 +1,31 @@
 try: paraview.simple
 except: from paraview.simple import *
+import os
+import sys
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+path_vars = dict()
 
-u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/u_380x380x828_frame0010_subs00.nhdr' )
-rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+fiu_data_dir =  path_vars["FIUDATA_DIR"]
+print "fiu_data_dir:%s" %  fiu_data_dir
+
+
+
+
+u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
+rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr")
+
 
 streamlineResults = []
 numberOfStreamlines = 1000
@@ -14,20 +37,9 @@ def createStreamlines(source, source2, time):
   length = time*700.0
   if (length < 0.5):
     return;
-  # global writerIndex
-
-  # u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/scratch/01336/carson/intelTACC/FIU/u_380x380x828_frame0010_subs00.nhdr' )
-  # source = u_380x380x828_frame0010_subs00_nhdr
   SetActiveSource(source)
 
   RenderView1 = GetRenderView()
-  # DataRepresentation3 = Show()
-  # DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  # DataRepresentation3.SelectionPointFieldDataArrayName = 'ImageFile'
-  # #DataRepresentation3.ScalarOpacityUnitDistance = 2.0047589136882165
-  # DataRepresentation3.Representation = 'Outline'
-  # DataRepresentation3.ScaleFactor = 82.7
-
   StreamTracer1 = StreamTracer( SeedType="Point Source" )
 
   RenderView1.CameraClippingRange = [1061.9371333317906, 2968.215646799765]
@@ -42,18 +54,6 @@ def createStreamlines(source, source2, time):
   a3_ImageFile_PVLookupTable = GetLookupTableForArray( "ImageFile", 3, RGBPoints=[0.0, 0.133333333333333, 0.254901960784314, 0.407843137254902, 0.00556127075105906, 0.247058823529412, 0.407843137254902, 0.854901960784314, 0.0102825257927179, 1.0, 1.0, 1.0, 0.0191711561615985, 1.0, 1.0, 1.0], VectorMode='Magnitude', NanColor=[0.25, 0.0, 0.0], ColorSpace='Diverging', ScalarRangeInitialized=1.0, AllowDuplicateScalars=1 )
 
   a3_ImageFile_PiecewiseFunction = CreatePiecewiseFunction( Points=[0.0, 0.0, 0.5, 0.0, 1.0, 1.0, 0.5, 0.0] )
-
-  #
-  # to show streamlines as lines
-  #
-  # DataRepresentation4 = Show()
-  # DataRepresentation4.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  # DataRepresentation4.SelectionPointFieldDataArrayName = 'ImageFile'
-  # DataRepresentation4.SelectionCellFieldDataArrayName = 'ReasonForTermination'
-  # DataRepresentation4.ColorArrayName = 'ImageFile'
-  # DataRepresentation4.LookupTable = a3_ImageFile_PVLookupTable
-  # DataRepresentation4.ScaleFactor = 82.70055550341495
-
   StreamTracer1.SeedType.Radius = 60.0
   StreamTracer1.SeedType.NumberOfPoints = numberOfStreamlines
   #StreamTracer1.SeedType.NumberOfPoints = 300
@@ -76,22 +76,9 @@ def createStreamlines(source, source2, time):
   Tube1.Radius = 0.05270055550341494
   Tube1.RadiusFactor = 20.0
 
-  # DataRepresentation5 = Show()
-  # DataRepresentation5.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  # DataRepresentation5.SelectionPointFieldDataArrayName = 'ImageFile'
-  # DataRepresentation5.SelectionCellFieldDataArrayName = 'ReasonForTermination'
-  # #CARSON DEBUG: for some reason making this a function it now complains that ImageFile field doesn't exist.  We need this for the colormap
-  # # DataRepresentation5.ColorArrayName = "ImageFile"
-  # DataRepresentation5.LookupTable = a3_ImageFile_PVLookupTable
-  # DataRepresentation5.ScaleFactor = 82.95756218433381
-
-  # DataRepresentation4.Visibility = 0
 
   a3_ImageFile_PVLookupTable.RGBPoints = [0.0, 0.133333333333333, 0.254901960784314, 0.407843137254902, 0.005595855680303297, 0.247058823529412, 0.407843137254902, 0.854901960784314, 0.010346471686185769, 1.0, 1.0, 1.0, 0.01929037946667726, 1.0, 1.0, 1.0]
 
-  # Tube1.Radius = 0.07270055550341494
-  #Tube1.Radius = 0.05270055550341494
-  # Tube1.RadiusFactor = 20.0
 
   RenderView1.CameraClippingRange = [1059.365355735317, 2971.4323511683565]
 
@@ -101,25 +88,12 @@ def createStreamlines(source, source2, time):
 
   a3_ImageFile_PiecewiseFunction.Points = [0.0, 0.0, 0.5, 0.0, 0.01929037946667726, 1.0, 0.5, 0.0]
 
-  # di = source.GetDataInformation()
-  # pdinfo=di.GetPointDataInformation()
-  # print "pdinfo " + str(pdinfo)
-  # print "array0: " + str(pdinfo.GetArrayInformation(0).GetName())
-  # print "array1: " + str(pdinfo.GetArrayInformation(1).GetName())
-
-
-  # """
   DataRepresentation6 = Show()
-  DataRepresentation6.ScaleFactor = 300.0
-  # DataRepresentation6.SelectionPointFieldDataArrayName = 'Normals'
-  DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
+  #DataRepresentation6.ScaleFactor = 300.0
+  #DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
   DataRepresentation6.LookupTable = a3_ImageFile_PVLookupTable
-  # DataRepresentation6.ColorArrayName = 'AngularVelocity'
+  #ADB: Bizarre Suddenly May 21 at 3:00 stopped working because it couldn't find ImageFIle
   DataRepresentation6.ColorArrayName = 'ImageFile'
-  # DataRepresentation6.ColorArrayName = pdinfo.GetArrayInformation(0).GetName()
-  # DataRepresentation6.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-
-  # rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName='/scratch/01336/carson/intelTACC/FIU/rho_380x380x828_frame0010_subs00.nhdr' )
   SetActiveSource(source2)
   originz = -800.0+(430.92--800.0)*time
 
@@ -163,7 +137,7 @@ def createStreamlines(source, source2, time):
   DataRepresentation3.DiffuseColor = [0.6823529411764706, 0.4627450980392157, 0.08627450980392157]
   #DataRepresentation3.DiffuseColor = [0.7823529411764706, 0.4627450980392157, 0.08627450980392157]
   #DataRepresentation3.ScalarOpacityUnitDistance = 4.932379654708959
-  DataRepresentation3.ScaleFactor = 82.7
+  #DataRepresentation3.ScaleFactor = 82.7
 
   #DataRepresentation2.Visibility = 0
 
