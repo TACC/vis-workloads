@@ -41,13 +41,13 @@ SET(SWR_LIB libGL.so.1 CACHE STRING "root SVB directory")
 
 FILE(REMOVE ${PROJECT_BINARY_DIR}/paths.txt)
 FILE(WRITE ${PROJECT_BINARY_DIR}/paths.txt
-  "SVB_DIR "${SVB_DIR}\n
-  "output_DIR "${output_DIR}\n
-  "ParaView_DIR "${ParaView_DIR}\n
-  "pvOSPRay_DIR "${pvOSPRay_DIR}\n
-  "pvVBO_DIR "${pvVBO_DIR}\n
-  "GLuRay_PATH "${GLuRay_PATH}\n
-  "SWR_LIB "${SWR_LIB}\n
+  "SVB_DIR "${SVB_DIR} \n
+  "output_DIR "${output_DIR} \n
+  "ParaView_DIR "${ParaView_DIR} \n
+  "pvOSPRay_DIR "${pvOSPRay_DIR} \n
+  "pvVBO_DIR "${pvVBO_DIR} \n
+  "GLuRay_PATH "${GLuRay_PATH} \n
+  "SWR_LIB "${SWR_LIB} \n
   )
 
 
