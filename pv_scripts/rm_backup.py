@@ -1,26 +1,5 @@
 try: paraview.simple
 except: from paraview.simple import *
-<<<<<<< HEAD
-import os
-#read in paths from the environment variables bash script generate by cmake
-dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
-pathsfile = os.path.join(dir,'paths.sh')
-path_vars = dict()
-
-with open(pathsfile) as f:
-    print f
-    next(f)
-    for line in f:
-        print line
-        eq_index = line.find('=')
-        var_name = line[:eq_index].strip()
-        paths = line[eq_index + 1:].strip()
-        path_vars[var_name] = paths
-
-rm_data_dir =  path_vars["RMDATA_DIR"]
-print "rm_data_dir:%s" %  rm_data_dir
-=======
->>>>>>> ede70d38508baa4d6f8ec8fbb612fdff696f62ff
 
 def svbGetStagesSize():
   return 1;
@@ -30,12 +9,6 @@ def svbSetup(geometryLevel=1, stage=0):
   numCells = 0
   numPolys = 0 
   numPoints = 0
-<<<<<<< HEAD
-  print "h"
-  print(rm_data_dir+"/rm_0273.nhdr")
-  if geometryLevel > 6:
-    ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"/rm_0273.nhdr" )
-=======
 
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
@@ -44,7 +17,6 @@ def svbSetup(geometryLevel=1, stage=0):
 
   
   Contour1 = Contour( PointMergeMethod="Uniform Binning" )
->>>>>>> ede70d38508baa4d6f8ec8fbb612fdff696f62ff
 
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'ImageFile']
@@ -64,7 +36,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-    print "ha"
+
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'ImageFile']
     Contour1.Isosurfaces = [27.0]
@@ -78,19 +50,18 @@ def svbSetup(geometryLevel=1, stage=0):
     #ppmt273_nrrd = NrrdReader( FileName='/scratch/01336/carson/intelTACC/rm/ppmt273.nrrd' )
     def computeFileName(x):
       return {
-      0:"rm_yz_128.xmf",
-      1:"rm_yz_256.xmf",
-      2:"rm_yz_512.xmf",
-      3:"rm_yz_1024.xmf",
-      4:"rm_yz_1280.xmf",
-      5:"rm_yz_1792.xmf",
-      6:"rm_0273.xmf",
+      0:'/scratch/01336/carson/intelTACC/rm/rm_yz_256.xmf',
+      1:'/scratch/01336/carson/intelTACC/rm/rm_yz_256.xmf',
+      2:'/scratch/01336/carson/intelTACC/rm/rm_yz_512',
+      3:'/scratch/01336/carson/intelTACC/rm/rm_yz_1024.xmf',
+      4:'/scratch/01336/carson/intelTACC/rm/rm_yz_1280.xmf',
+      5:'/scratch/01336/carson/intelTACC/rm/rm_yz_1792.xmf',
+      6:'/scratch/01336/carson/intelTACC/rm/rm.xmf',
       }.get(x,6)
     fileName = computeFileName(geometryLevel)
-    print(fileName)
     # name = '/scratch/01336/carson/intelTACC/rm/rm.xmf'
-    rm_xmf = XDMFReader( FileName=rm_data_dir+"/"+fileName )
-    print "happy"
+    rm_xmf = XDMFReader( FileName=fileName )
+
     # rm_xmf.Sets = []
     # rm_xmf.Grids = ['Grid_5']
     # rm_xmf.PointArrays = ['ImageFile']
