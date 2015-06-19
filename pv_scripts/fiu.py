@@ -104,11 +104,11 @@ def svbSetup(geometryLevel=1, stage=0):
   StreamTracer1.SeedType.Radius = 60.0
   DataRepresentation3 = Show()
   DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  DataRepresentation3.SelectionPointFieldDataArrayName = 'ImageFile'
-  DataRepresentation3.SelectionCellFieldDataArrayName = 'ReasonForTermination'
+  #DataRepresentation3.SelectionPointFieldDataArrayName = 'ImageFile'
+ # DataRepresentation3.SelectionCellFieldDataArrayName = 'ReasonForTermination'
   DataRepresentation3.ColorArrayName = ('POINT_DATA','ImageFile')
   DataRepresentation3.LookupTable = a3_ImageFile_PVLookupTable
-  DataRepresentation3.ScaleFactor = 82.69024540111423
+  #DataRepresentation3.ScaleFactor = 82.69024540111423
 
   
   #a3_ImageFile_PVLookupTable.ScalarOpacityFunction = a3_ImageFile_PiecewiseFunction
@@ -159,9 +159,9 @@ def svbSetup(geometryLevel=1, stage=0):
     Clip1.InsideOut = 1
 
     DataRepresentation5 = Show()
-    DataRepresentation5.ScaleFactor = 82.7
+    #DataRepresentation5.ScaleFactor = 82.7
     #DataRepresentation5.ScalarOpacityUnitDistance = 5.357494554385383
-    DataRepresentation5.SelectionPointFieldDataArrayName = 'Normals'
+    #DataRepresentation5.SelectionPointFieldDataArrayName = 'Normals'
     DataRepresentation5.EdgeColor = [0.0, 0.0, 0.5000076295109483]
     DataRepresentation5.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
 
