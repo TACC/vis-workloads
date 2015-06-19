@@ -74,6 +74,15 @@ function processBench {
        CAM_FLAG="--nocamera"
     fi
 
+      if [ "$dataSource" == "rm_isosweep" ]; then
+       CAM_FLAG="--nocamera"
+    fi
+
+   if [ "$dataSource" == "dns_clipsweep" ]; then
+       CAM_FLAG="--nocamera"
+    fi
+
+
     IMG_FLAG=""
      
 
@@ -259,6 +268,18 @@ if [ ${USE_WHIPPLE_TIME} == "ON" ]; then
         dataSources[$COUNT]="whipit"
         COUNT=$((COUNT+1))
 fi
+
+
+if [ ${USE_RM_ISOSWEEP} == "ON" ]; then
+        dataSources[$COUNT]="rm_isosweep"
+        COUNT=$((COUNT+1))
+fi
+
+if [ ${USE_DNS_CLIPSWEEP} == "ON" ]; then
+        dataSources[$COUNT]="dns_clipsweep"
+        COUNT=$((COUNT+1))
+fi
+
 
 
 echo ${dataSources[*]}

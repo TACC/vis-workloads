@@ -114,7 +114,7 @@ if (plugin_vbo):
     view.ViewSize =  windowsize
 
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
-
+#adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
     # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
@@ -260,6 +260,7 @@ for stage in range(numStages):
   start_time = time.time()
   for i in range(0,num_runs):
     #move the camera for static datasets
+    #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
     if no_camera == True:
 	frac=0.1
     elif no_camera == False:
@@ -362,6 +363,10 @@ for stage in range(numStages):
         rtime = pv_logs[i][0]['OpenGL Dev']
         times.append(rtime)
   times = times[num_runs/10+1:]
+
+
+#or the still camea, only the "overall render time" and "still zoomed out" are relevent
+#left things as they were origianally in case I introduced an error 
 
   printTimings(times[:int(num_runs*.2)], "overall render time")
   printTimings(times[int(num_runs):int(num_runs*.2)], "still zoomed out")

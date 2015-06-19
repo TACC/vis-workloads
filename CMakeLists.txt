@@ -92,7 +92,9 @@ set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
 set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
 set(USE_FIU OFF CACHE BOOL "run fiu data")
 set(USE_RM OFF CACHE BOOL "run the rm data")
+set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
+set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
 set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
 set(USE_GEO OFF CACHE BOOL "run the geo data")
 set(USE_WRF OFF CACHE BOOL "run the wrf data")
@@ -223,7 +225,9 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_FIU_ANIMATED=" ${USE_FIU_ANIMATED}\n
   "USE_FIU=" ${USE_FIU}\n
   "USE_RM=" ${USE_RM}\n
+  "USE_RM_ISOSWEEP= "  ${USE_RM_ISOSWEEP}\n
   "USE_DNS=" ${USE_DNS}\n
+  "USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP}\n
   "USE_MOLECULE=" ${USE_MOLECULE}\n
   "USE_GEO=" ${USE_GEO}\n
   "USE_WRF=" ${USE_WRF}\n

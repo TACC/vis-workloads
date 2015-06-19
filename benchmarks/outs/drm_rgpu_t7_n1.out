@@ -1,5 +1,5 @@
 + date
-Thu Jun 18 13:09:14 CDT 2015
+Thu Jun 18 15:31:17 CDT 2015
 + module load qt
 ++ /opt/apps/lmod/lmod/libexec/lmod bash load qt
 + eval 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'LD_LIBRARY_PATH="/opt/apps/qt/4.8.4/lib:/work/01891/adb/lib:/opt/apps/intel14/mvapich2/2.0b/lib:/opt/apps/intel14/mvapich2/2.0b/lib/shared:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/intel/mic/coi/host-linux-release/lib:/opt/intel/mic/myo/lib:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/../compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/ipp/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/compiler/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mkl/lib/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/tbb/lib/intel64";' export 'LD_LIBRARY_PATH;' 'LMOD_DEFAULT_MODULEPATH="/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'LMOD_DEFAULT_MODULEPATH;' 'LOADEDMODULES="TACC-paths:Linux:cluster-paths:intel/14.0.1.106:mvapich2/2.0b:cluster:TACC:qt/4.8.4";' export 'LOADEDMODULES;' 'MODULEPATH="/opt/apps/intel14/mvapich2_2_0/modulefiles:/opt/apps/intel14/modulefiles:/opt/apps/xsede/modulefiles:/opt/apps/modulefiles:/opt/modulefiles";' export 'MODULEPATH;' 'PATH="/opt/apps/qt/4.8.4/bin:/work/01891/adb/bin:/opt/apps/intel14/mvapich2/2.0b/bin:/opt/apps/intel/13/vtune_amplifier_xe_2013/bin64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/mpirt/bin/intel64:/opt/intel/sep/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:.:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/bin/intel64_mic:/opt/apps/intel/13/composer_xe_2013_sp1.1.106/debugger/gui/intel64";' export 'PATH;' 'TACC_QT_DIR="/opt/apps/qt/4.8.4";' export 'TACC_QT_DIR;' 'TACC_QT_INC="/opt/apps/qt/4.8.4/include";' export 'TACC_QT_INC;' 'TACC_QT_LIB="/opt/apps/qt/4.8.4/lib";' export 'TACC_QT_LIB;' '_LMFILES_="/opt/modulefiles/TACC-paths.lua:/opt/modulefiles/Linux:/opt/modulefiles/cluster-paths.lua:/opt/apps/modulefiles/intel/14.0.1.106:/opt/apps/intel14/modulefiles/mvapich2/2.0b:/opt/modulefiles/cluster:/opt/modulefiles/TACC:/opt/apps/modulefiles/qt/4.8.4";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09OCxiYXNlTXBhdGhBPXsiL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzIiwiL29wdC9hcHBzL21vZHVsZWZpbGVzIiwiL29wdC9tb2R1bGVmaWxlcyIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXtbIk1QSSJdPSJtdmFwaWNoMiIsWyJjb21waWxlciJdPSJpbnRlbCIsfSxpbmFjdGl2ZT17fSxtVD17TGludXg9e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9MaW51eCIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09IkxpbnV4IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzaG9ydCJdPSJMaW51eCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFRBQ0M9e1siRk4iXT0i";' export '_ModuleTable001_;' '_ModuleTable002_="L29wdC9tb2R1bGVmaWxlcy9UQUNDIixbImRlZmF1bHQiXT0wLFsiZnVsbE5hbWUiXT0iVEFDQyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic2hvcnQiXT0iVEFDQyIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LFsiVEFDQy1wYXRocyJdPXtbIkZOIl09Ii9vcHQvbW9kdWxlZmlsZXMvVEFDQy1wYXRocy5sdWEiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJUQUNDLXBhdGhzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJUQUNDLXBhdGhzIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sY2x1c3Rlcj17WyJGTiJdPSIvb3B0L21vZHVsZWZpbGVzL2NsdXN0ZXIiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJjbHVzdGVyIixbImxvYWRPcmRlciJdPTYs";' export '_ModuleTable002_;' '_ModuleTable003_="cHJvcFQ9e30sWyJzaG9ydCJdPSJjbHVzdGVyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0sWyJjbHVzdGVyLXBhdGhzIl09e1siRk4iXT0iL29wdC9tb2R1bGVmaWxlcy9jbHVzdGVyLXBhdGhzLmx1YSIsWyJkZWZhdWx0Il09MCxbImZ1bGxOYW1lIl09ImNsdXN0ZXItcGF0aHMiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInNob3J0Il09ImNsdXN0ZXItcGF0aHMiLFsic3RhdHVzIl09ImFjdGl2ZSIsfSxpbnRlbD17WyJGTiJdPSIvb3B0L2FwcHMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4xLjEwNiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMS4xMDYiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInNob3J0Il09ImludGVsIixbInN0YXR1cyJd";' export '_ModuleTable003_;' '_ModuleTable004_="PSJhY3RpdmUiLH0sbXZhcGljaDI9e1siRk4iXT0iL29wdC9hcHBzL2ludGVsMTQvbW9kdWxlZmlsZXMvbXZhcGljaDIvMi4wYiIsWyJkZWZhdWx0Il09MSxbImZ1bGxOYW1lIl09Im12YXBpY2gyLzIuMGIiLFsibG9hZE9yZGVyIl09NSxwcm9wVD17fSxbInNob3J0Il09Im12YXBpY2gyIixbInN0YXR1cyJdPSJhY3RpdmUiLH0scXQ9e1siRk4iXT0iL29wdC9hcHBzL21vZHVsZWZpbGVzL3F0LzQuOC40IixbImRlZmF1bHQiXT0xLFsiZnVsbE5hbWUiXT0icXQvNC44LjQiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInNob3J0Il09InF0IixbInN0YXR1cyJdPSJhY3RpdmUiLH0sfSxtcGF0aEE9eyIvb3B0L2FwcHMvaW50ZWwxNC9tdmFwaWNoMl8yXzAvbW9kdWxlZmlsZXMi";' export '_ModuleTable004_;' '_ModuleTable005_="LCIvb3B0L2FwcHMvaW50ZWwxNC9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy94c2VkZS9tb2R1bGVmaWxlcyIsIi9vcHQvYXBwcy9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9hcHBzL3hzZWRlL21vZHVsZWZpbGVzOi9vcHQvYXBwcy9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIixbInZlcnNpb24iXT0yLH0=";' export '_ModuleTable005_;' '_ModuleTable_Sz_="5";' export '_ModuleTable_Sz_;'
@@ -113,7 +113,7 @@ Thu Jun 18 13:09:14 CDT 2015
 ++ : -s sh
 + eval
 + tacc_xrun ibrun -n 1 -o 0 /opt/apps/intel14/mvapich2_2_0/paraview/4.1.0/bin/pvbatch /work/01891/adb/maverick/svb_adb/pv_bench.py -w 1920x1080 --save_images -i /work/01891/adb/maverick/svb_adb/benchmarks/images/ --geoLevel 7 --numruns 10 --source rm --immediatemode
-TACC: Starting up job 347988
+TACC: Starting up job 348046
 TACC: Setting up parallel environment for MVAPICH2+mpispawn.
 TACC: Starting parallel tasks...
  pv_scscript_path:/work/01891/adb/maverick/svb_adb/pv_scripts
@@ -122,7 +122,7 @@ windowsize: [1920, 1080]
 enabling immediate mode
 immmediate mode set correctly
 trying to import from source
-<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x48b7300>
+<open file '/work/01891/adb/maverick/svb_adb/paths.sh', mode 'r' at 0x3b75300>
 SVB_DIR=/work/01891/adb/maverick/svb_adb
 
 output_DIR=/work/01891/adb/maverick/svb_adb/benchmarks
@@ -135,7 +135,7 @@ pvVBO_DIR=/../lib
 
 WRF_PLUGIN_PATH=/home/01249/gda/plugins/wrf-4.1-mav/libWRFReader.so 
 
-GLuRay_PATH= /work/01336/carson/opt/apps/gluray/1.1.0/bin/gluray
+GLuRay_PATH=/work/01336/carson/opt/apps/gluray/1.1.0/bin/gluray
 
 GEODATA_DIR=/work/00401/pnav/workloads/geo
 
@@ -147,11 +147,11 @@ ENZODATA_DIR=ENZODATA_DIR_NOTFOUND
 
 WRFDATA_DIR=/work/01891/adb/wrf
 
-DNSDATA_DIR= /work/00401/pnav/data/dns_full
+DNSDATA_DIR=/work/00401/pnav/data/dns_full
 
-FIUDATA_DIR= /work/01336/carson/intelTACC/data/fiu
+FIUDATA_DIR=/work/01336/carson/intelTACC/data/fiu
 
-RMDATA_DIR=/work/03108/awasim/workloads/rm-unblocked
+RMDATA_DIR=/work/00401/pnav/workloads/RM-unblocked
 
 ACCOUNT=A-ccvis
 
@@ -207,7 +207,7 @@ RANKS_PER_HOST=
 
 
 
-rm_data_dir:/work/03108/awasim/workloads/rm-unblocked
+rm_data_dir:/work/00401/pnav/workloads/RM-unblocked
 finished svbSetup
 finished svbRender
 finished svbGetStageSize
@@ -216,16 +216,16 @@ Total Stages: 1
 Stage 0...
 #
 h
-/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr
-Traceback (most recent call last):
-  File "/work/01891/adb/maverick/svb_adb/pv_bench.py", line 201, in <module>
-    svbResults = svbSetup(geometryLevel, stage)
-  File "/work/01891/adb/maverick/svb_adb/pv_scripts/rm.py", line 59, in svbSetup
-    rm_xmf = XDMFReader( FileName=rm_data_dir+fileName )
-TypeError: cannot concatenate 'str' and 'int' objects
-[c225-703.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 1165) exited with status 1
+/work/00401/pnav/workloads/RM-unblocked/rm_0273.nhdr
+ha
+Assertion failed in file src/mpi/datatype/type_size.c at line 102: size_x >= 0
+[cli_0]: aborting job:
+internal ABORT - process 0
+[c225-102.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c225-102.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c225-102.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 11762) exited with status 1
 TACC: MPI job exited with code: 1
  
 TACC: Shutdown complete. Exiting.
 + date
-Thu Jun 18 13:09:30 CDT 2015
+Thu Jun 18 15:31:33 CDT 2015
