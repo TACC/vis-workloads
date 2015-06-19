@@ -69,13 +69,6 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
 #parser.add_option("--noContour",
                   #action="store_false", dest="use_contour", default=True,
                   #help="render with contour")
-
-
-
-
-parser.add_option("--nocamera", action="store_true", dest="nocamera",
-                  default=False, help="Do not animate camera path")
-
 (options, args) = parser.parse_args()
 
 #pm = servermanager.vtkProcessModule.GetProcessModule()
@@ -101,7 +94,6 @@ immediatemode = options.immediatemode
 num_runs = options.numruns
 
 num_runs = options.numruns
-no_camera = options.nocamera
 
 
 
@@ -201,10 +193,13 @@ for stage in range(numStages):
   svbResults = svbSetup(geometryLevel, stage)
   azimuth = 90
   dolly = 2.0
+  animateCamera = True
   try:
     azimuth = svbResults['azimuth']
     dolly = svbResults['dolly']
+    animateCamera = svbResults['animateCamera']
   except:
+    print "Error reading parameters from svbSetup"
     pass
 
   print "#"
@@ -261,9 +256,9 @@ for stage in range(numStages):
   for i in range(0,num_runs):
     #move the camera for static datasets
     #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
-    if no_camera == True:
-	frac=0.1
-    elif no_camera == False:
+    if animateCamera == False:
+	   frac=0.1
+    elif animateCamera == True:
         frac = float(i)/float(num_runs)
         if (frac < .2):
           pass
@@ -276,11 +271,6 @@ for stage in range(numStages):
         else:
           pass
         
-
-
-
-
-
     #start time
     st = time.time()
     svbRender()
@@ -288,7 +278,6 @@ for stage in range(numStages):
     et = time.time()
     tt = (et-st)
     times.append(tt)
-
      
     #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
     if (frac < .2):
@@ -301,7 +290,6 @@ for stage in range(numStages):
       rotate_in_times.append(tt)
     else:
       still_in_times.append(tt)
-
 
     #print "frame Render: " + str(tt)
     if save_images != "":
@@ -345,7 +333,6 @@ for stage in range(numStages):
   #if (results['numFrames'] > 0):
     #print "still zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 
-
   times = []
   for i in range (0, len(pv_logs)):
     if len(pv_logs[i]):
@@ -364,9 +351,8 @@ for stage in range(numStages):
         times.append(rtime)
   times = times[num_runs/10+1:]
 
-
-#or the still camea, only the "overall render time" and "still zoomed out" are relevent
-#left things as they were origianally in case I introduced an error 
+  #or the still camea, only the "overall render time" and "still zoomed out" are relevent
+  #left things as they were origianally in case I introduced an error 
 
   printTimings(times[:int(num_runs*.2)], "overall render time")
   printTimings(times[int(num_runs):int(num_runs*.2)], "still zoomed out")

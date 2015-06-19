@@ -34,7 +34,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-  reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
+  #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
   #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
 
   
