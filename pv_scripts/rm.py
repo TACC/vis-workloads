@@ -1,6 +1,5 @@
 try: paraview.simple
 except: from paraview.simple import *
-<<<<<<< HEAD
 import os
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
@@ -19,8 +18,6 @@ with open(pathsfile) as f:
 
 rm_data_dir =  path_vars["RMDATA_DIR"]
 print "rm_data_dir:%s" %  rm_data_dir
-=======
->>>>>>> ede70d38508baa4d6f8ec8fbb612fdff696f62ff
 
 def svbGetStagesSize():
   return 1;
@@ -30,12 +27,10 @@ def svbSetup(geometryLevel=1, stage=0):
   numCells = 0
   numPolys = 0 
   numPoints = 0
-<<<<<<< HEAD
   print "h"
   print(rm_data_dir+"/rm_0273.nhdr")
   if geometryLevel > 6:
     ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"/rm_0273.nhdr" )
-=======
 
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
@@ -44,7 +39,6 @@ def svbSetup(geometryLevel=1, stage=0):
 
   
   Contour1 = Contour( PointMergeMethod="Uniform Binning" )
->>>>>>> ede70d38508baa4d6f8ec8fbb612fdff696f62ff
 
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'ImageFile']
@@ -55,7 +49,6 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   
-  """
   if geometryLevel < 0:
     #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
     #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
@@ -156,14 +149,12 @@ def svbSetup(geometryLevel=1, stage=0):
   #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
   #RenderView1.Background = [1.0,1.0,1.0]
 
-  """
   ResetCamera()
   cam = GetActiveCamera()
   cam.Roll(90)
   cam.Elevation(65)
   cam.Azimuth(-20)
 
-  """ 
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -171,7 +162,6 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  """
 
 
   return {'azimuth':90, 'dolly':3.0}
