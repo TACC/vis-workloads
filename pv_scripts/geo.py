@@ -1,15 +1,40 @@
 try: paraview.simple
 except: from paraview.simple import *
-def svbSetup(geometryLevel=1):
+import os
 
+#read in paths from the environment variables bash script generate by cmake
+dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
+pathsfile = os.path.join(dir,'paths.sh')
+
+
+path_vars = dict()
+
+with open(pathsfile) as f:
+    print f
+    next(f)
+    for line in f:
+        print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+geo_data_dir =  path_vars["GEODATA_DIR"]
+print "geo_data_dir:%s" %  geo_data_dir
+
+
+
+
+
+def svbSetup(geometryLevel=1, stage=0):
 	numCells = 0
 	numPolys = 0 
 	numPoints = 0
 
 	paraview.simple._DisableFirstRenderCameraReset()
-
-	Top_Albian_large_normals_fixed_obj = WavefrontOBJReader( FileName='/scratch/01891/adb/geo/Top_Albian_large_normals_fixed.obj' )
-
+        
+        fname1 = "\'"+geo_data_dir+"/Top_Albian.obj"+"\'"
+	Top_Albian_obj = WavefrontOBJReader( FileName=fname1 )
 	RenderView1 = GetRenderView()
 
 	DataRepresentation2 = Show()
@@ -23,7 +48,9 @@ def svbSetup(geometryLevel=1):
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-	Basement_large_normalsgaain_obj = WavefrontOBJReader( FileName='/scratch/01891/adb/geo/Basement.large.normalsgaain.obj' )
+
+        fname2 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
+	Basement_obj = WavefrontOBJReader( FileName=fname2 )
 
 	DataRepresentation3 = Show()
 	DataRepresentation3.ScaleFactor = 3493.5687500000004
@@ -34,7 +61,9 @@ def svbSetup(geometryLevel=1):
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-	Base_MTC_large_obj = WavefrontOBJReader( FileName='/scratch/01891/adb/geo/Base_MTC_large.obj' )
+
+        fname3 = "\'"+geo_data_dir+"/Base_MTC_large.obj"+"\'"
+	Base_MTC_obj = WavefrontOBJReader( FileName=fname3 )
 
 	DataRepresentation4 = Show()
 	DataRepresentation4.ScaleFactor = 4129.846875
@@ -44,8 +73,8 @@ def svbSetup(geometryLevel=1):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-	Seafloor_zap_asc_obj = WavefrontOBJReader( FileName='/scratch/01891/adb/geo/Seafloor_zap.asc.obj' )
+ 	fname4 = "\'"+geo_data_dir+"/Seafloor_zap_asc.obj"+"\'"
+	Seafloor_zap_asc_obj = WavefrontOBJReader( FileName=fname4 )
 
 	DataRepresentation5 = Show()
 	DataRepresentation5.ScaleFactor = 5525.181250000001
@@ -55,8 +84,9 @@ def svbSetup(geometryLevel=1):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-	Top_MTC_large_obj = WavefrontOBJReader( FileName='/scratch/01891/adb/geo/Top_MTC_large.obj' )
+        
+        fname5 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
+	Top_MTC_obj = WavefrontOBJReader( FileName=fname5 )
 
 	DataRepresentation6 = Show()
 	DataRepresentation6.ScaleFactor = 4129.846875
@@ -70,7 +100,6 @@ def svbSetup(geometryLevel=1):
 
 	DataRepresentation6.DiffuseColor = [0.47058823529411764, 0.7372549019607844, 1.0]
 
-	DataRepresentation5.DiffuseColor = [1.0, 0.7843137254901961, 0.5372549019607843]
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -97,7 +126,7 @@ def svbSetup(geometryLevel=1):
 
 	DataRepresentation7.DiffuseColor = [1.0, 0.7843137254901961, 0.5372549019607843]
 
-	SetActiveSource(Top_MTC_large_obj)
+	SetActiveSource(Top_MTC_obj)
 	Transform2 = Transform( Transform="Transform" )
 
 	Transform2.Transform = "Transform"
@@ -119,7 +148,7 @@ def svbSetup(geometryLevel=1):
 
 	DataRepresentation2.Visibility = 1
 
-	SetActiveSource(Basement_large_normalsgaain_obj)
+	SetActiveSource(Basement_obj)
 	Transform3 = Transform( Transform="Transform" )
 
 	Transform3.Transform = "Transform"
@@ -141,7 +170,7 @@ def svbSetup(geometryLevel=1):
 
 	DataRepresentation9.DiffuseColor = [0.592156862745098, 0.0, 0.0]
 
-	SetActiveSource(Top_Albian_large_normals_fixed_obj)
+	SetActiveSource(Top_Albian_obj)
 	Transform4 = Transform( Transform="Transform" )
 
 	Transform4.Transform = "Transform"
@@ -210,7 +239,11 @@ def svbSetup(geometryLevel=1):
 	print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
 	print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-	return {'azimuth':90, 'dolly':4.0}
+
+
+def svbGetStagesSize():
+	return 1;
+
 
 def svbRender():
 	Render()
