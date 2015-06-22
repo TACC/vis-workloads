@@ -202,18 +202,19 @@ for stage in range(numStages):
     print "Error reading parameters from svbSetup"
     pass
 
-  print "#"
-  print "Warmup..."
-  print "#"
-  for i in range(0,num_runs/10+1):
-    st = time.time()
-    print "rendering warmup frame"
-    svbRender()
-    if (i == 0):
-      print "time to first frame: " + str(time.time()-start_time)
-    et = time.time()
-    tt = (et-st)
-    print "warmup frame Render: " + str(tt)
+  if stage == 0:
+    print "#"
+    print "Warmup..."
+    print "#"
+    for i in range(0,num_runs/10+1):
+      st = time.time()
+      print "rendering warmup frame"
+      svbRender()
+      if (i == 0):
+        print "time to first frame: " + str(time.time()-start_time)
+      et = time.time()
+      tt = (et-st)
+      print "warmup frame Render: " + str(tt)
 
   print "#"
   print "Running..."
