@@ -112,7 +112,7 @@ SET(ROOT_IMAGE_DIR ${ROOT_IMAGE_DIR} CACHE STRING "root image dir")
 #
 # Where the data is
 #
-find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /scratch/01891/adb/geo)
+find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /work/00401/pnav/workloads/geo)
 if(${GEODATA} MATCHES "GEODATA-NOTFOUND")
 	set(GEODATA_DIR "GEODATA_DIR-NOTFOUND" CACHE PATH "geo data directory")
 	MESSAGE(SEND_ERROR "geo data not found " )
@@ -144,7 +144,7 @@ endif(${RMDATA} MATCHES "RMDATA-NOTFOUND")
 get_filename_component(RMDATAD ${RMDATA} PATH)
 set(RMDATA_DIR ${RMDATAD} CACHE PATH "RM data directory")
 
-find_file(FIUDATA NAMES rho_380x380x828_frame0010_subs00.nhdr PATHS /scratch/01336/carson/intelTACC/fiu)
+find_file(FIUDATA NAMES rho_380x380x828_frame0010_subs00.nhdr PATHS /work/00401/pnav/workloads/fiu)
 if(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
 	set(FIUDATA_DIR "FIUDATA_DIR-NOTFOUND" CACHE PATH "FIU data directory")
 	MESSAGE(WARNING "FIU data not found " )
@@ -152,7 +152,7 @@ endif(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
 get_filename_component(FIUDATAD ${FIUDATA} PATH)
 set(FIUDATA_DIR ${FIUDATAD} CACHE PATH "FIU data directory")
 
-find_file(WHIPPLEDATA NAMES Whipple_Shield.exo.300.000 PATHS /scratch/01336/carson/intelTACC/data/Whipple300)
+find_file(WHIPPLEDATA NAMES Whipple_Shield.exo.300.000 PATHS /work/00401/pnav/workloads/Whipple300)
 if(${WHIPPLEDATA} MATCHES "WHIPPLEDATA-NOTFOUND")
 	set(WHIPPLEDATA_DIR "WHIPPLEDATA_DIR-NOTFOUND" CACHE PATH "WHIPPLE data directory")
 	MESSAGE(WARNING "WHIPPLE data not found " )
