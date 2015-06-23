@@ -22,27 +22,32 @@ print "data_dir:%s" %  data_dir
 global Slice1
 global reader
 
+valRanges = [1,7679]
+valRange = valRanges[1]-valRanges[0]
+
 def svbGetStagesSize():
   return 10;
 
 def svbSetup(geometryLevel=1, stage=0):
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  clipVal = val
   global Clip1
   global reader
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  valRanges = [-0.03,1.26]
-  valRange = valRanges[1]-valRanges[0]
-  val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
+  #valRanges = [-0.03,1.26]
+  #valRange = valRanges[1]-valRanges[0]
+  #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
 
   # bounds are same as dimensions.
-  clipRanges = [1,7679]
-  clipRange = clipRanges[1]-clipRanges[0]
-  clipVal = (float(stage)/float(svbGetStagesSize()))*clipRange+clipRanges[0]
+  #clipRanges = [1,7679]
+  #clipRange = clipRanges[1]-clipRanges[0]
+  #clipVal = (float(stage)/float(svbGetStagesSize()))*clipRange+clipRanges[0]
 
   if (stage != 0):  
     ResetCamera()
-    Clip1.ClipType.Origin = [1, clipVal, 1]
+    Clip1.ClipType.Origin = [clipVal, 1, 1]
     #Contour1.Isosurfaces = [val]
     return returnVals;
 
@@ -71,8 +76,8 @@ def svbSetup(geometryLevel=1, stage=0):
 
 
   Clip1 = Clip(ClipType="Plane")
-  Clip1.ClipType.Origin = [1, clipVal, 1]
-  Clip1.ClipType.Normal = [0,1,0]
+  Clip1.ClipType.Origin = [clipVal, 1, 1]
+  Clip1.ClipType.Normal = [1,0,0]
   #Slice1 = Slice( SliceType="Plane" )
 
   #Slice1.SliceOffsetValues = [0.0]

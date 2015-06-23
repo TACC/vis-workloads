@@ -20,13 +20,19 @@ rm_data_dir =  path_vars["RMDATA_DIR"]
 print "rm_data_dir:%s" %  rm_data_dir
 
 
-global Slice1
-global reader
+valRanges = [0,255]
+valRange = valRanges[1]-valRanges[0]
+
+#global Slice1
+#global reader
 
 def svbGetStagesSize():
   return 10;
 
 def svbSetup(geometryLevel=1, stage=0):
+  #global Clip1
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  clipVal = val
   global Clip1
   global reader
 
@@ -36,10 +42,8 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-
-  clipVal = (float(stage)/float(svbGetStagesSize()))*2045+1
   if (stage != 0):  
-    ResetCamera()
+    #ResetCamera()
     Clip1.ClipType.Origin = [clipVal, 1023.5, 959]
     #Contour1.Isosurfaces = [val]
     return returnVals;
@@ -74,17 +78,16 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2.SetRepresentationType('Surface')
   
   ResetCamera()
-  if (stage == 0):
-	renderView1 = GetActiveViewOrCreate('RenderView')
-	renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
-	renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
-	renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
-	renderView1.CameraParallelScale = 220.83647796503186
-	renderView1.Background = [0.6,0.6,0.6]
-    #cam = GetActiveCamera()
-    #cam.Roll(90)
-    #cam.Elevation(65)
-    #cam.Azimuth(-20)
+  renderView1 = GetActiveViewOrCreate('RenderView')
+  renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
+  renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
+  renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
+  renderView1.CameraParallelScale = 220.83647796503186
+  renderView1.Background = [0.6,0.6,0.6]
+  #cam = GetActiveCamera()
+  #cam.Roll(90)
+  #cam.Elevation(65)
+  #cam.Azimuth(-20)
 
   #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()

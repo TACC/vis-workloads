@@ -57,7 +57,7 @@ def svbSetup(geometryLevel=1, stage=0):
   Contour1.ComputeNormals = 1
 
   DataRepresentation2 = Show()
-  DataRepresentation2.ScaleFactor = 25.5
+  #DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   DataRepresentation2.SetRepresentationType('Surface')
   
@@ -67,7 +67,7 @@ def svbSetup(geometryLevel=1, stage=0):
   renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
   renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
   renderView1.CameraParallelScale = 220.83647796503186
-  renderView1.Background = [0.7,0.7,0.7]
+  renderView1.Background = [0.6,0.6,0.6]
   #cam = GetActiveCamera()
   #cam.Roll(90)
   #cam.Elevation(65)
