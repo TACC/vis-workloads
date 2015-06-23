@@ -5,6 +5,8 @@ import time
 import os
 import math
 import sys
+#import subprocess
+import resource
 paraview.simple._DisableFirstRenderCameraReset()
 
 path_vars = dict()
@@ -26,6 +28,14 @@ print "pv_scscript_path:%s" % pv_script_path
 sys.path.append("%s/pv_scripts" % path_vars["SVB_DIR"])
 import benchmark
 benchmark.maximize_logs()
+
+def PrintMemoryUsage():
+   #cmd = "top -b -n 1 -m | grep pvbatch | awk \'{print $6;}\'"
+   #result = subprocess.check_output(cmd,shell=True)
+   #os.system(cmd+"> /dev/null 2>&1")
+   result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*resource.getpagesize()
+   print "Memory: " + str(float(result)/float(1024*1024*1024)) + "GB"
+   # print "Page size: " + str(resource.getpagesize())
 
 
 from optparse import (OptionParser,BadOptionError,AmbiguousOptionError)
@@ -76,7 +86,6 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
 #pm.SetLogBufferLength(servermanager.ActiveConnection.ID, 0x4, 1000000)
 #pm.SetLogBufferLength(servermanager.ActiveConnection.ID, 0x10, 1000000)
 
-
 #write_data = options.write_data
 source = options.source
 plugin_osp = options.osp
@@ -92,10 +101,7 @@ framecnt = 0 # framecount is used to name saved files
 use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
-
 num_runs = options.numruns
-
-
 
 if (plugin_vbo):
     #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
@@ -193,6 +199,7 @@ for stage in range(numStages):
   print "#"
   start_time=time.time()
   svbResults = svbSetup(geometryLevel, stage)
+  PrintMemoryUsage()
   azimuth = 90
   dolly = 2.0
   animateCamera = True
