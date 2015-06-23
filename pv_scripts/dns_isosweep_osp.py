@@ -16,14 +16,15 @@ with open(pathsfile) as f:
         paths = line[eq_index + 1:].strip()
         path_vars[var_name] = paths
 
-rm_data_dir =  path_vars["RMDATA_DIR"]
-print "rm_data_dir:%s" %  rm_data_dir
+data_dir =  path_vars["DNSDATA_DIR"]
+print "data_dir:%s" %  data_dir
+
 
 global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 4;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
@@ -31,41 +32,56 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  val = (float(stage)/float(svbGetStagesSize()))*255.0
+  valRanges = [-0.03,1.26]
+  valRange = valRanges[1]-valRanges[0]
+  val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
+
   if (stage != 0):  
-    Contour1.Isosurfaces = [val]
     ResetCamera()
+    Contour1.Isosurfaces = [val]
     return returnVals;
 
   numCells = 0
   numPolys = 0 
   numPoints = 0
-  print "h"
-  print(rm_data_dir+"/rm_0273.nhdr")
   
-  reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
+  # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
+  reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])
+  reader.PointArrayStatus = ['dataset0']
+  reader.GridStatus = ['Grid_2']
 
-  # Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-  Contour1 = Contour(Input=reader)
+  #Contour1 = Contour(Input=reader)
 
-  Contour1.PointMergeMethod = "Uniform Binning"
-  Contour1.ContourBy = ['POINTS', 'ImageFile']
-  Contour1.Isosurfaces = [val]
-  # Contour1.Isosurfaces = [125.0]
-  Contour1.PointMergeMethod = 'Uniform Binning'
-  Contour1.ComputeNormals = 1
+  #Contour1.PointMergeMethod = "Uniform Binning"
+  #Contour1.ContourBy = ['POINTS', 'dataset0']
+  #data range for smaller 32 is -.0299 to 1.268
+  #Contour1.Isosurfaces = [val]
+  #Contour1.ComputeNormals = 1
 
-  DataRepresentation2 = Show()
-  DataRepresentation2.ScaleFactor = 25.5
-  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  DataRepresentation2.SetRepresentationType('Surface')
+  ospIso = ospIsosurface(Input=reader)
+  ospIso.IsosurfaceValue = val
+
+  rTDataLUT = GetColorTransferFunction('dataset0')
+
+  rep = Show()
+  rep.ColorArrayName = ['POINTS','dataset0']
+  rep.LookupTable = rTDataLUT
+  rep.SetRepresentationType('Volume')
+
+
+  # DataRepresentation2 = Show()
+  # DataRepresentation2.ScaleFactor = 25.5
+  # DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  # DataRepresentation2.SetRepresentationType('Surface')
+  #DataRepresentation2.ColorArrayName = ['POINTS', '']
   
   ResetCamera()
   cam = GetActiveCamera()
-  cam.Roll(90)
-  cam.Elevation(65)
-  cam.Azimuth(-20)
+  #cam.Roll(90)
+  #cam.Elevation(65)
+  #cam.Azimuth(-20)
 
   #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()

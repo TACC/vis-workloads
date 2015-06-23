@@ -34,7 +34,8 @@ def svbSetup(geometryLevel=1, stage=0):
 
   valRanges = [-0.03,1.26]
   valRange = valRanges[1]-valRanges[0]
-  val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
 
   if (stage != 0):  
     ResetCamera()
@@ -61,7 +62,7 @@ def svbSetup(geometryLevel=1, stage=0):
   Contour1.ComputeNormals = 1
 
   DataRepresentation2 = Show()
-  DataRepresentation2.ScaleFactor = 25.5
+  #DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   DataRepresentation2.SetRepresentationType('Surface')
   #DataRepresentation2.ColorArrayName = ['POINTS', '']

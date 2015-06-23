@@ -87,6 +87,8 @@ set(USE_OSPRAY OFF CACHE BOOL "use ospray renderer")
 set(USE_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
 set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
 
+set(LDAV_RUNS OFF CACHE BOOL "runs for ldav paper")
+
 
 # DATA
 set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
@@ -221,6 +223,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_OSPRAY=" ${USE_OSPRAY} \n
   "USE_SWRVBO=" ${USE_SWRVBO} \n
   "USE_TACHYON=" ${USE_TACHYON} \n
+  "LDAV_RUNS=" ${LDAV_RUNS} \n
   "TACHYONBIN=" ${TACHYONBIN} \n
   "TACHYONDATA=" ${TACHYONDATA} \n
   "TACHYONDATA_DIR=" ${TACHYONDATA_DIR} \n

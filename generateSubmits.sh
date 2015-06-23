@@ -111,6 +111,7 @@ function processBench {
       PRELOAD=""
     fi
     PRE_CMD=tacc_xrun
+    ENV_FLAGS=""
     PV_PLUGIN_FLAG=""
     if [ $renderer == vbo ]; then
       PV_PLUGIN_FLAG="--vbo"
@@ -134,7 +135,8 @@ function processBench {
     #need to determing how to handle this, for general benchmarking, carson has two pvospray modules, one looks better and one is faster...
     echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
     if [ $renderer == "ospray" ]; then
-        echo "module load pvospray/1.0.2" >> ${FILE}
+        #echo "module load pvospray/1.0.2" >> ${FILE}
+        ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
     fi
 
     if [ $dataSource == "wrf" ]; then
@@ -156,7 +158,7 @@ function processBench {
 	PRE_CMD=""
         MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
     fi
-     echo "$PRE_CMD ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+     echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
      #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
@@ -314,6 +316,9 @@ nodes=( 1 )
 renderer=swr
 renderers=( "gpu" "vbo" "ospray")
 dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
+if [ ${LDAV_RUNS} == "ON" ]; then
+  dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep" "dns_isosweep_osp" "dns_clipsweep_osp" "rm_isosweep_osp" "rm_clipsweep_osp")
+fi
 set -x
 #for i in "${tris[@]}"; do vglrun /work/01336/carson/git/GLuRay/buildOSPRay/gluray pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 100 |& tee gluray_fiu_$i.out ; done
 #renderer=swr

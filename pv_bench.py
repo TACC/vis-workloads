@@ -111,6 +111,7 @@ if (plugin_osp):
     # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+
     print "loading ospray plugin"
     #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
@@ -121,6 +122,7 @@ if (plugin_osp):
     view = CreateView("OSPRayView")
     #view.Threads = options.threads
     view.ViewSize =  windowsize
+    view.EnableProgressiveRefinement = 0
 
 try:
  if immediatemode == 1:
@@ -207,11 +209,11 @@ for stage in range(numStages):
     print "Warmup..."
     print "#"
     for i in range(0,num_runs/10+1):
+      if (i == 0):
+        print "time to first frame: " + str(time.time()-start_time)
       st = time.time()
       print "rendering warmup frame"
       svbRender()
-      if (i == 0):
-        print "time to first frame: " + str(time.time()-start_time)
       et = time.time()
       tt = (et-st)
       print "warmup frame Render: " + str(tt)
