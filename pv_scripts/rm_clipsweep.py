@@ -35,7 +35,10 @@ def svbSetup(geometryLevel=1, stage=0):
   numPoints = 0
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
-
+  contour_values = []
+  for i in range(geometryLevel):
+    cval = (i+1) *(255.0/(geometryLevel+1))
+    contour_values.append(cval)
 
   clipVal = (float(stage)/float(svbGetStagesSize()))*2045+1
   if (stage != 0):  
@@ -53,7 +56,8 @@ def svbSetup(geometryLevel=1, stage=0):
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'ImageFile']
   val = (float(stage)/float(svbGetStagesSize()))*255.0
-  Contour1.Isosurfaces = [125.0]
+  #Contour1.Isosurfaces = [125.0]
+  Contour1.Isosurfaces = contour_values
   Contour1.ComputeNormals = 1
 
   #clipVal = (float(stage)/float(svbGetStagesSize()))*2046+1
