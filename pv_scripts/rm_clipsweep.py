@@ -75,10 +75,16 @@ def svbSetup(geometryLevel=1, stage=0):
   
   ResetCamera()
   if (stage == 0):
-    cam = GetActiveCamera()
-    cam.Roll(90)
-    cam.Elevation(65)
-    cam.Azimuth(-20)
+	renderView1 = GetActiveViewOrCreate('RenderView')
+	renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
+	renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
+	renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
+	renderView1.CameraParallelScale = 220.83647796503186
+	renderView1.Background = [0.6,0.6,0.6]
+    #cam = GetActiveCamera()
+    #cam.Roll(90)
+    #cam.Elevation(65)
+    #cam.Azimuth(-20)
 
   #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
