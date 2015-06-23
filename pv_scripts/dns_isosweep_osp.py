@@ -20,25 +20,28 @@ data_dir =  path_vars["DNSDATA_DIR"]
 print "data_dir:%s" %  data_dir
 
 
-global Contour1
-global reader
+#global Contour1
+#global reader
 
 def svbGetStagesSize():
-  return 1;
+  return 5;
+
+valRanges = [-0.03,1.26]
+valRange = valRanges[1]-valRanges[0]
+
 
 def svbSetup(geometryLevel=1, stage=0):
-  global Contour1
+  #global Contour1
   global reader
+  global ospIso
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  valRanges = [-0.03,1.26]
-  valRange = valRanges[1]-valRanges[0]
-  val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
-
   if (stage != 0):  
     ResetCamera()
-    Contour1.Isosurfaces = [val]
+    #Contour1.Isosurfaces = [val]
+    ospIso.IsosurfaceValue = val
     return returnVals;
 
   numCells = 0

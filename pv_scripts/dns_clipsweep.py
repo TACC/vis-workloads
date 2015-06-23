@@ -22,14 +22,14 @@ print "data_dir:%s" %  data_dir
 global Slice1
 global reader
 
-valRanges = [1,7679]
+valRanges = [1,7679.0]
 valRange = valRanges[1]-valRanges[0]
 
 def svbGetStagesSize():
   return 10;
 
 def svbSetup(geometryLevel=1, stage=0):
-  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  val = (float(stage+.5)/float(svbGetStagesSize()))*float(valRange) + float(valRanges[0])
   clipVal = val
   global Clip1
   global reader
@@ -62,22 +62,21 @@ def svbSetup(geometryLevel=1, stage=0):
   reader.PointArrayStatus = ['dataset0']
   reader.GridStatus = ['Grid_2']
 
-  renderView1 = GetActiveViewOrCreate('RenderView')
   Contour1 = Contour(Input=reader)
 
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'dataset0']
   #data range for smaller 32 is -.0299 to 1.268
-  valRanges = [-0.03,1.26]
-  valRange = valRanges[1]-valRanges[0]
-  val = (float(stage)/float(svbGetStagesSize()))*valRange/2.0+valRanges[0]
+  #valRanges = [-0.03,1.26]
+  #valRange = valRanges[1]-valRanges[0]
+  #val = (float(stage)/float(svbGetStagesSize()))*valRange/2.0+valRanges[0]
   Contour1.Isosurfaces = [1.0]
   Contour1.ComputeNormals = 1
 
 
   Clip1 = Clip(ClipType="Plane")
-  Clip1.ClipType.Origin = [clipVal, 1, 1]
-  Clip1.ClipType.Normal = [1,0,0]
+  Clip1.ClipType.Origin = [1,clipVal, 1]
+  Clip1.ClipType.Normal = [0,1,0]
   #Slice1 = Slice( SliceType="Plane" )
 
   #Slice1.SliceOffsetValues = [0.0]
@@ -92,6 +91,7 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2.SetRepresentationType('Surface')
   
   ResetCamera()
+  renderView1 = GetActiveView()
   renderView1.Background = [0.5529411764705883, 0.5529411764705883, 0.5529411764705883]
   renderView1.CameraPosition = [5630.224162601005, -6026.47810866812, 6733.205518587123]
   renderView1.CameraFocalPoint = [336.5950056411767, 3593.3184025734727, 534.8053287858077]

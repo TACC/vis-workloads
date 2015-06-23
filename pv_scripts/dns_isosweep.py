@@ -34,7 +34,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   valRanges = [-0.03,1.26]
   valRange = valRanges[1]-valRanges[0]
-  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
   #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
 
   if (stage != 0):  
