@@ -28,7 +28,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  valRanges = [0,255]
+  valRanges = [0,250]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
   if (stage != 0):
