@@ -72,7 +72,7 @@ def svbSetup(geometryLevel=1, stage=0):
   rep.ColorArrayName = ['POINTS','ImageFile']
   rep.SetRepresentationType('Surface')
   
-  ResetCamera()
+  #ResetCamera()
   renderView1 = GetActiveView()
   displayProperties = GetDisplayProperties(Contour1, renderView1)
   displayProperties.RescaleTransferFunctionToDataRange(True)
@@ -81,6 +81,7 @@ def svbSetup(geometryLevel=1, stage=0):
   renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
   renderView1.CameraParallelScale = 220.83647796503186
   renderView1.Background = [1,1,1]
+  ResetCamera()
   #cam = GetActiveCamera()
   #cam.Roll(90)
   #cam.Elevation(65)
