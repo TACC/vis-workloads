@@ -380,6 +380,7 @@ for stage in range(numStages):
   if pv_logs[0][0].get('filter') != None:
     filterTime = pv_logs[0][0]['filter']
   print "filter time " + str(filterTime)
+  benchmark.clear_logs()
 
 view=GetActiveView()
 # exit()

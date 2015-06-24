@@ -77,6 +77,8 @@ start_frame = 0
 default_log_threshold = dict()
 default_buffer_length = dict()
 
+logStageHack = 0
+
 class OneLog :
     def __init__(self):
         self.runmode = 'batch'
@@ -165,15 +167,18 @@ def clear_logs() :
      global current_frames_records
      global frames
      global start_frame
+     global logStageHack
+     logStageHack += len(logs)
      logs = []
      filter = []
+     # filters = []
+     filters.clear()
      current_frames_records = []
      frames = []
-     start_frame = []
+     start_frame = 0
 
-
-     logs.clear()
-     filters.clear()
+     # logs.clear()
+     # filters.clear()
 
 
 
@@ -182,6 +187,7 @@ def get_logs() :
     This is for bringing in logs at run time to parse while running.
     """
     global logs
+    global logStageHack
     logs = []
 
     pm = paraview.servermanager.vtkProcessModule.GetProcessModule()
@@ -648,7 +654,8 @@ def parse_logs(show_parse = False, tabular = False) :
                   parse_results[0][rank]['filter'] = 0.0
                 if record['name'].find("Filter") != -1:
                     if record['name'].find("Reader") == -1:
-                        parse_results[0][rank]['filter'] += float(record['duration'])
+                        #Carson: this is a hack to keep it from accumulating values across stages... get last filter value
+                        parse_results[0][rank]['filter'] = float(record['duration'])
                   #print "adding filter results for proc " + str(rank) + " " + str(cnt) + " " + str(record['duration'])
             print
     return parse_results
