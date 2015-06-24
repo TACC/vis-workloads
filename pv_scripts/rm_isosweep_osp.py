@@ -24,7 +24,7 @@ global reader
 global ospIso
 
 def svbGetStagesSize():
-  return 4;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   #global Contour1
@@ -33,11 +33,13 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  val = (float(stage)/float(svbGetStagesSize()))*255.0
+  valRanges = [0,255]
+  valRange = valRanges[1]-valRanges[0]
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
   if (stage != 0):  
     #ResetCamera()
     #Contour1.Isosurfaces = [val]
-    ospIso.IsosurfaceValue = val
+    ospIso.Isosurfaces = [val]
     return returnVals;
 
   numCells = 0
@@ -52,6 +54,7 @@ def svbSetup(geometryLevel=1, stage=0):
   lut = imageFileLUT = GetColorTransferFunction('ImageFile')
 
   ospIso = ospIsosurface(Input=reader)
+  ospIso.Isosurfaces = [val]
 
   rep = Show()
   rep.ColorArrayName = ['POINTS','ImageFile']
@@ -76,10 +79,18 @@ def svbSetup(geometryLevel=1, stage=0):
   # DataRepresentation2.SetRepresentationType('Surface')
   
   ResetCamera()
-  cam = GetActiveCamera()
-  cam.Roll(90)
-  cam.Elevation(65)
-  cam.Azimuth(-20)
+  renderView1 = GetActiveView()
+  renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
+  renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
+  renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
+  renderView1.CameraParallelScale = 220.83647796503186
+  renderView1.Background = [0.6,0.6,0.6]
+
+  #ResetCamera()
+  #cam = GetActiveCamera()
+  #cam.Roll(90)
+  #cam.Elevation(65)
+  #cam.Azimuth(-20)
 
   #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()

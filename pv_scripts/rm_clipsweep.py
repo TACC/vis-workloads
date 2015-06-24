@@ -27,7 +27,7 @@ valRange = valRanges[1]-valRanges[0]
 #global reader
 
 def svbGetStagesSize():
-  return 10;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   #global Clip1
@@ -47,11 +47,15 @@ def svbSetup(geometryLevel=1, stage=0):
     contour_values.append(cval)
 
   #clipVal = (float(stage)/float(svbGetStagesSize()))*2045+1
-  if (stage != 0):  
+  if (stage != 0):
     #ResetCamera()
     Clip1.ClipType.Origin = [clipVal, 1023.5, 959]
     #Contour1.Isosurfaces = [val]
     return returnVals;
+
+  #contour_values = [23,30,40,50,60,70,80,90,100,110]
+  #contour_values = contour_values[:geometryLevel]
+  #print "contour_values: " + str(contour_values)
   
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
@@ -65,11 +69,15 @@ def svbSetup(geometryLevel=1, stage=0):
   #Contour1.Isosurfaces = [125.0]
   Contour1.Isosurfaces = contour_values
   Contour1.ComputeNormals = 1
+  Contour1.ComputeScalars = 1
+
+  lut = imageFileLUT = GetColorTransferFunction('ImageFile')
+  lut.RescaleTransferFunction(0,250)
 
   #clipVal = (float(stage)/float(svbGetStagesSize()))*2046+1
   Clip1 = Clip(ClipType="Plane")
   Clip1.ClipType.Origin = [clipVal, 1023.5, 959]
-  Clip1.ClipType.Normal = [1,0,0]
+  Clip1.ClipType.Normal = [-1,0,0]
   #Slice1 = Slice( SliceType="Plane" )
 
   #Slice1.SliceOffsetValues = [0.0]
@@ -78,18 +86,21 @@ def svbSetup(geometryLevel=1, stage=0):
   #Slice1.SliceType.Origin = [1, 1023.5, 959]
   #Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
 
-  DataRepresentation2 = Show()
+  rep = Show()
+  rep.LookupTable = lut
+  imageFilePWF = GetOpacityTransferFunction('ImageFile')
   #DataRepresentation2.ScaleFactor = 25.5
-  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  DataRepresentation2.SetRepresentationType('Surface')
+  #rep.SelectionPointFieldDataArrayName = 'Normals'
+  rep.ColorArrayName = ['POINTS','ImageFile']
+  rep.SetRepresentationType('Surface')
   
   ResetCamera()
-  renderView1 = GetActiveViewOrCreate('RenderView')
+  renderView1 = GetActiveView()
   renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
   renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
   renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
   renderView1.CameraParallelScale = 220.83647796503186
-  renderView1.Background = [0.6,0.6,0.6]
+  renderView1.Background = [1,1,1]
   #cam = GetActiveCamera()
   #cam.Roll(90)
   #cam.Elevation(65)

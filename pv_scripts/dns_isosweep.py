@@ -24,7 +24,7 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 10;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
@@ -38,7 +38,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
 
   if (stage != 0):  
-    ResetCamera()
+    #ResetCamera()
     Contour1.Isosurfaces = [val]
     return returnVals;
 
@@ -53,7 +53,6 @@ def svbSetup(geometryLevel=1, stage=0):
   reader.PointArrayStatus = ['dataset0']
   reader.GridStatus = ['Grid_2']
 
-  renderView1 = GetActiveViewOrCreate('RenderView')
   Contour1 = Contour(Input=reader)
 
   Contour1.PointMergeMethod = "Uniform Binning"
@@ -61,15 +60,22 @@ def svbSetup(geometryLevel=1, stage=0):
   #data range for smaller 32 is -.0299 to 1.268
   Contour1.Isosurfaces = [val]
   Contour1.ComputeNormals = 1
+  Contour1.ComputeScalars = 1
 
-  DataRepresentation2 = Show()
+  lut = imageFileLUT = GetColorTransferFunction('dataset0')
+  lut.RescaleTransferFunction(-.03,1.26)
+
+  rep = Show()
+  rep.LookupTable = lut
   #DataRepresentation2.ScaleFactor = 25.5
-  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  DataRepresentation2.SetRepresentationType('Surface')
+  # DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  rep.SetRepresentationType('Surface')
+  rep.ColorArrayName = ['POINTS','dataset0']
   #DataRepresentation2.ColorArrayName = ['POINTS', '']
   
   ResetCamera()
-  renderView1.Background = [0.5529411764705883, 0.5529411764705883, 0.5529411764705883]
+  renderView1 = GetActiveView()  
+  renderView1.Background = [1,1,1]
   renderView1.CameraPosition = [5630.224162601005, -6026.47810866812, 6733.205518587123]
   renderView1.CameraFocalPoint = [336.5950056411767, 3593.3184025734727, 534.8053287858077]
   renderView1.CameraViewUp = [-0.08525959200958713, 0.5060899960109523, 0.8582562076140161]
