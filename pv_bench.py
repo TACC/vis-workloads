@@ -130,6 +130,7 @@ if (plugin_osp):
     #view.Threads = options.threads
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
+    view.EnableAO = 0
 
 try:
  if immediatemode == 1:
