@@ -59,7 +59,8 @@ def svbSetup(geometryLevel=1, stage=0):
   
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-  reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
 
   Contour1 = Contour(Input=reader)
 
