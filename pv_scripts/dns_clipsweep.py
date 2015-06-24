@@ -96,14 +96,15 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   DataRepresentation2.SetRepresentationType('Surface')
   
-  ResetCamera()
+  #ResetCamera()
   renderView1 = GetActiveView()
   renderView1.Background = [1,1,1]
   renderView1.CameraPosition = [5630.224162601005, -6026.47810866812, 6733.205518587123]
   renderView1.CameraFocalPoint = [336.5950056411767, 3593.3184025734727, 534.8053287858077]
   renderView1.CameraViewUp = [-0.08525959200958713, 0.5060899960109523, 0.8582562076140161]
   renderView1.CameraParallelScale = 3948.7274848994075
-  
+  ResetCamera()
+
   #cam = GetActiveCamera()
   #cam.Roll(90)
   #cam.Elevation(65)
