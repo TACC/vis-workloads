@@ -19,9 +19,6 @@ with open(pathsfile) as f:
 rm_data_dir =  path_vars["RMDATA_DIR"]
 print "rm_data_dir:%s" %  rm_data_dir
 
-global Contour1
-global reader
-
 def svbGetStagesSize():
   return 5;
 
@@ -38,20 +35,17 @@ def svbSetup(geometryLevel=1, stage=0):
   print "isosweep val: " + str(val)
   if (stage != 0):  
     Contour1.Isosurfaces = [val]
-    ResetCamera()
     return returnVals;
 
-  numCells = 0
-  numPolys = 0 
-  numPoints = 0
   print "h"
   print(rm_data_dir+"/rm_0273.nhdr")
   
-  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
-  reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
+  if (geometryLevel == 0):
+    reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  else:
+    reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
-  # Contour1 = Contour( PointMergeMethod="Uniform Binning" )
   Contour1 = Contour(Input=reader)
 
   Contour1.PointMergeMethod = "Uniform Binning"
@@ -67,34 +61,18 @@ def svbSetup(geometryLevel=1, stage=0):
   rep = Show()
   rep.LookupTable = lut
   imageFilePWF = GetOpacityTransferFunction('ImageFile')
-  #DataRepresentation2.ScaleFactor = 25.5
-  #rep.SelectionPointFieldDataArrayName = 'Normals'
   rep.ColorArrayName = ['POINTS','ImageFile']
   rep.SetRepresentationType('Surface')
   
-  #ResetCamera()
   renderView1 = GetActiveView()
-  displayProperties = GetDisplayProperties(Contour1, renderView1)
-  displayProperties.RescaleTransferFunctionToDataRange(True)
+  #displayProperties = GetDisplayProperties(Contour1, renderView1)
+  #displayProperties.RescaleTransferFunctionToDataRange(True)
   renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
   renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
   renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
   renderView1.CameraParallelScale = 220.83647796503186
   renderView1.Background = [1,1,1]
   ResetCamera()
-  #cam = GetActiveCamera()
-  #cam.Roll(90)
-  #cam.Elevation(65)
-  #cam.Azimuth(-20)
-
-  #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-  #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-  #numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-  #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-  #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-  #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-
   return returnVals
 
 def svbRender():
