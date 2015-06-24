@@ -137,6 +137,12 @@ def maximize_logs () :
     prop.SetElements1(2000000)
     tl.UpdateVTKObjects()
 
+def clear_all() :
+   global filters
+   global logs
+   logs = []
+   filters.clear()
+
 def dump_logs( filename ) :
     """
     This saves off the logs we've gathered.

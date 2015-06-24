@@ -381,7 +381,7 @@ for stage in range(numStages):
     filterTime = pv_logs[0][0]['filter']
   print "filter time " + str(filterTime)
   benchmark.clear_logs()
-
+  benchmark.clear_all()
 view=GetActiveView()
 # exit()
 
