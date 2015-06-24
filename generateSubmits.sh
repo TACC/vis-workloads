@@ -6,7 +6,7 @@
 DIR=$output_DIR
 IMAGE_DIR=$ROOT_IMAGE_DIR
 
-NUM_RUNS=10
+NUM_RUNS=1
 mkdir $DIR
 mkdir $DIR/outs
 mkdir $DIR/submits
@@ -33,7 +33,8 @@ function processBench {
     FILE=${DIR}/submits/submit_${NAME}.sh
     echo "${PND}!/bin/bash " >${FILE}
     echo "#SBATCH -J ${NAME} " >> ${FILE} #echo "#$ -q normal " >> ${FILE}
-    echo "#SBATCH -N ${node}"  >> ${FILE}
+    # echo "#SBATCH -N ${node}"  >> ${FILE}
+    echo "#SBATCH -N 1"  >> ${FILE}
     echo "#SBATCH -n $(( $node * 1 )) " >> ${FILE}
     queue="vis"
 
@@ -59,29 +60,6 @@ function processBench {
     DL_FLAG=""
 
         DL_FLAG="--immediatemode"
-
-    CAM_FLAG=""
-    if [ "$dataSource" == "fiu_animated" ]; then
-       CAM_FLAG="--nocamera"
-    fi
-
-     if [ "$dataSource" == "whipit" ]; then
-       CAM_FLAG="--nocamera"
-    fi
-
-
-     if [ "$dataSource" == "wrf" ]; then
-       CAM_FLAG="--nocamera"
-    fi
-
-      if [ "$dataSource" == "rm_isosweep" ]; then
-       CAM_FLAG="--nocamera"
-    fi
-
-   if [ "$dataSource" == "dns_clipsweep" ]; then
-       CAM_FLAG="--nocamera"
-    fi
-
 
     IMG_FLAG=""
      
@@ -158,8 +136,8 @@ function processBench {
 	PRE_CMD=""
         MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
     fi
-     echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1024x1024  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
-     #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+     echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1024x1024  ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+     #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
     IFILE=${DIR}/interactive/inter_${NAME}.sh
@@ -312,7 +290,7 @@ done
 # single node scaling
 #
 tris=( 1 5 10)
-nodes=( 1 )
+nodes=( 1 10 20)
 renderer=swr
 renderers=( "gpu" "vbo" "ospray")
 dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
