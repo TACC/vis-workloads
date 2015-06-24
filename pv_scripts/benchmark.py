@@ -646,7 +646,9 @@ def parse_logs(show_parse = False, tabular = False) :
                   print "could not find reader record in name " + str(record['name'])
                 if parse_results[0][rank].get('filter') == None:
                   parse_results[0][rank]['filter'] = 0.0
-                parse_results[0][rank]['filter'] += float(record['duration'])
+                if record['name'].find("Filter") != -1:
+                    if record['name'].find("Reader") == -1:
+                        parse_results[0][rank]['filter'] += float(record['duration'])
                   #print "adding filter results for proc " + str(rank) + " " + str(cnt) + " " + str(record['duration'])
             print
     return parse_results
