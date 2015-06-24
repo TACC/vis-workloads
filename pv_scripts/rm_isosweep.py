@@ -23,7 +23,7 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 4;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
@@ -31,7 +31,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  val = (float(stage)/float(svbGetStagesSize()))*255.0
+  valRanges = [0,255]
+  valRange = valRanges[1]-valRanges[0]
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
+ 
+  print "isosweep val: " + str(val)
   if (stage != 0):  
     Contour1.Isosurfaces = [val]
     ResetCamera()
@@ -43,7 +47,8 @@ def svbSetup(geometryLevel=1, stage=0):
   print "h"
   print(rm_data_dir+"/rm_0273.nhdr")
   
-  reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+  reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
   # Contour1 = Contour( PointMergeMethod="Uniform Binning" )
@@ -55,19 +60,27 @@ def svbSetup(geometryLevel=1, stage=0):
   # Contour1.Isosurfaces = [125.0]
   Contour1.PointMergeMethod = 'Uniform Binning'
   Contour1.ComputeNormals = 1
+  Contour1.ComputeScalars = 1
 
-  DataRepresentation2 = Show()
+  lut = imageFileLUT = GetColorTransferFunction('ImageFile')
+  lut.RescaleTransferFunction(0,250)
+  rep = Show()
+  rep.LookupTable = lut
+  imageFilePWF = GetOpacityTransferFunction('ImageFile')
   #DataRepresentation2.ScaleFactor = 25.5
-  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  DataRepresentation2.SetRepresentationType('Surface')
+  #rep.SelectionPointFieldDataArrayName = 'Normals'
+  rep.ColorArrayName = ['POINTS','ImageFile']
+  rep.SetRepresentationType('Surface')
   
   ResetCamera()
-  renderView1 = GetActiveViewOrCreate('RenderView')
+  renderView1 = GetActiveView()
+  displayProperties = GetDisplayProperties(Contour1, renderView1)
+  displayProperties.RescaleTransferFunctionToDataRange(True)
   renderView1.CameraPosition = [582.5678621725423, 464.5664327088711, 765.7235282760473]
   renderView1.CameraFocalPoint = [127.50000000000001, 127.50000000000006, 127.50000000000001]
   renderView1.CameraViewUp = [-0.08930979131282728, 0.9056097848422845, -0.4146018316090396]
   renderView1.CameraParallelScale = 220.83647796503186
-  renderView1.Background = [0.6,0.6,0.6]
+  renderView1.Background = [1,1,1]
   #cam = GetActiveCamera()
   #cam.Roll(90)
   #cam.Elevation(65)

@@ -158,7 +158,7 @@ function processBench {
 	PRE_CMD=""
         MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
     fi
-     echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
+     echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1024x1024  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
      #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${CAM_FLAG} ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
