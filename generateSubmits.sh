@@ -117,6 +117,11 @@ function processBench {
         ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
     fi
 
+    if [ $renderer != "ospray" ]; then
+      echo "module load paraview/4.3.1" >> ${FILE}
+      PARAVIEW=pvbatch
+    fi
+
     if [ $dataSource == "wrf" ]; then
          echo 'export PATH=/home/01249/gda/pvospray/pv-4.1/bin:$PATH' >> ${FILE}
          echo 'export LD_LIBRARY_PATH=/work/01249/gda/maverick/git/ospray/release:$LD_LIBRARY_PATH' >> ${FILE}
