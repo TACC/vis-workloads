@@ -91,7 +91,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
 
   DataRepresentation2 = Show()
-  DataRepresentation2.ScaleFactor = 25.5
+  #DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   DataRepresentation2.SetRepresentationType('Surface')
   

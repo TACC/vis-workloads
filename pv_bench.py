@@ -33,9 +33,10 @@ def PrintMemoryUsage():
    #cmd = "top -b -n 1 -m | grep pvbatch | awk \'{print $6;}\'"
    #result = subprocess.check_output(cmd,shell=True)
    #os.system(cmd+"> /dev/null 2>&1")
-   result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*resource.getpagesize()
-   print "Memory: " + str(float(result)/float(1024*1024*1024)) + "GB"
-   # print "Page size: " + str(resource.getpagesize())
+   result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+   #*resource.getpagesize()
+   print "Memory: " + str(float(result)/float(1024*1024)) + "GB"
+   print "Page size: " + str(resource.getpagesize())
 
 
 from optparse import (OptionParser,BadOptionError,AmbiguousOptionError)
