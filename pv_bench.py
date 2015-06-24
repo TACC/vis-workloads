@@ -314,10 +314,14 @@ for stage in range(numStages):
   print "#"
   #log_parser.print_logs()
 
-  #benchmark.run()
   pv_logs = benchmark.parse_logs(True)
+  print "PRINTING print pv_logs for Stage: %d" % stage
   print pv_logs
+  print "PRINTING benchmark.print_logs()"
   benchmark.print_logs()
+  print "DONE PRINTING"
+
+
 
   fps = float(num_runs)/(end_time-start_time);
   print times
@@ -379,6 +383,7 @@ for stage in range(numStages):
   if pv_logs[0][0].get('filter') != None:
     filterTime = pv_logs[0][0]['filter']
   print "filter time " + str(filterTime)
+  benchmark.clear_logs()
 
 view=GetActiveView()
 # exit()

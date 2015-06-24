@@ -158,6 +158,25 @@ def import_logs( filename ) :
     logs = pickle.load(f)
     f.close()
 
+
+def clear_logs() :
+     global logs
+     global filters
+     global current_frames_records
+     global frames
+     global start_frame
+     logs = []
+     filter = []
+     current_frames_records = []
+     frames = []
+     start_frame = []
+
+
+     logs.clear()
+     filters.clear()
+
+
+
 def get_logs() :
     """
     This is for bringing in logs at run time to parse while running.
