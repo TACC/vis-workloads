@@ -19,6 +19,14 @@ with open(pathsfile) as f:
 rm_data_dir =  path_vars["RMDATA_DIR"]
 print "rm_data_dir:%s" %  rm_data_dir
 
+def drange(start,stop,step):
+  vals = []
+  v = start
+  while v < stop:
+    vals.append(v)
+    v+=step
+  return vals
+
 def svbGetStagesSize():
   return 5;
 
@@ -35,7 +43,7 @@ def svbSetup(geometryLevel=1, stage=0):
   if (geometryLevel == 0):
     isovals = [val]
   else:
-    isovals = range(val,val+50,51/geometryLevel)
+    isovals = drange(val,val+50.0,51.0/float(geometryLevel))
     isovals = isovals[:geometryLevel]
   print "isosweep vals: " + str(isovals)
 

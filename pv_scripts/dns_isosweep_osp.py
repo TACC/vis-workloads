@@ -19,7 +19,14 @@ with open(pathsfile) as f:
 data_dir =  path_vars["DNSDATA_DIR"]
 print "data_dir:%s" %  data_dir
 
-
+def drange(start,stop,step):
+  vals = []
+  v = start
+  while v < stop:
+    vals.append(v)
+    v+=step
+  return vals
+  
 #global Contour1
 #global reader
 
