@@ -28,11 +28,19 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  valRanges = [0,250]
+  valRanges = [0,200]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
+ 
+  if (geometryLevel == 0):
+    isovals = [val]
+  else:
+    isovals = range(val,val+50,51/geometryLevel)
+    isovals = isovals[:geometryLevel]
+  print "isosweep vals: " + str(isovals)
+
   if (stage != 0):
-    ospIso.Isosurfaces = [val]
+    ospIso.Isosurfaces = isovals
     return returnVals;
 
   print "h"
@@ -45,7 +53,7 @@ def svbSetup(geometryLevel=1, stage=0):
   lut = imageFileLUT = GetColorTransferFunction('ImageFile')
 
   ospIso = ospIsosurface(Input=reader)
-  ospIso.Isosurfaces = [val]
+  ospIso.Isosurfaces = isovals
 
   rep = Show()
   rep.ColorArrayName = ['POINTS','ImageFile']

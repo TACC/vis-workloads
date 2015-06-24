@@ -28,29 +28,36 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
-  valRanges = [0,250]
+  valRanges = [0,200]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
  
-  print "isosweep val: " + str(val)
+  if (geometryLevel == 0):
+    isovals = [val]
+  else:
+    isovals = range(val,val+50,51/geometryLevel)
+    isovals = isovals[:geometryLevel]
+  print "isosweep vals: " + str(isovals)
+
   if (stage != 0):  
-    Contour1.Isosurfaces = [val]
+    Contour1.Isosurfaces = isovals
     return returnVals;
 
   print "h"
   print(rm_data_dir+"/rm_0273.nhdr")
   
   if (geometryLevel == 0):
-    reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+   reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
   else:
-    reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
+   reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
+  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )  
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
   Contour1 = Contour(Input=reader)
 
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'ImageFile']
-  Contour1.Isosurfaces = [val]
+  Contour1.Isosurfaces = isovals
   # Contour1.Isosurfaces = [125.0]
   Contour1.PointMergeMethod = 'Uniform Binning'
   Contour1.ComputeNormals = 1

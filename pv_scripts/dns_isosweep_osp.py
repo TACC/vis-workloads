@@ -33,15 +33,24 @@ valRange = valRanges[1]-valRanges[0]
 def svbSetup(geometryLevel=1, stage=0):
   #global Contour1
   global reader
-  global ospIso
+  global ospIso  
+  valRanges = [-0.03,0.8]
+  valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
+ 
+  if (geometryLevel == 0):
+    isovals = [val]
+  else:
+    isovals = drange(val,val+.46,.46/float(geometryLevel))
+    isovals = isovals[:geometryLevel]
+  print "isosweep vals: " + str(isovals)
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
 
   if (stage != 0):  
     #ResetCamera()
     #Contour1.Isosurfaces = [val]
-    ospIso.Isosurfaces = [val]
+    ospIso.Isosurfaces = isovals
     return returnVals;
 
   numCells = 0
@@ -65,7 +74,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #Contour1.ComputeNormals = 1
 
   ospIso = ospIsosurface(Input=reader)
-  ospIso.Isosurfaces = [val]
+  ospIso.Isosurfaces = isovals
 
   rTDataLUT = GetColorTransferFunction('dataset0')
 
