@@ -30,7 +30,7 @@ def svbGetStagesSize():
 
 def svbSetup(geometryLevel=1, stage=0):
   val = (float(stage+.5)/float(svbGetStagesSize()))*float(valRange) + float(valRanges[0])
-  clipVal = val-7678.0/2.0
+  clipVal = val
   global Clip1
   global reader
 
@@ -47,7 +47,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   if (stage != 0):  
     #ResetCamera()
-    Clip1.ClipType.Origin = [clipVal, 1, 1]
+    Clip1.ClipType.Origin = [clipVal, clipVal, clipVal]
     #Contour1.Isosurfaces = [val]
     return returnVals;
 
@@ -81,8 +81,8 @@ def svbSetup(geometryLevel=1, stage=0):
 
 
   Clip1 = Clip(ClipType="Plane")
-  Clip1.ClipType.Origin = [1,clipVal, 1]
-  Clip1.ClipType.Normal = [0,1,0]
+  Clip1.ClipType.Origin = [clipVal,clipVal, clipVal]
+  Clip1.ClipType.Normal = [0,-1,0]
   #Slice1 = Slice( SliceType="Plane" )
 
   #Slice1.SliceOffsetValues = [0.0]

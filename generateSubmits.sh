@@ -294,8 +294,8 @@ done
 #
 # single node scaling
 #
-tris=( 1 5 10)
-nodes=( 1 10 19 20)
+tris=( 1 2 3)
+nodes=( 1 10 20)
 renderer=swr
 renderers=( "gpu" "vbo" "ospray")
 dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
