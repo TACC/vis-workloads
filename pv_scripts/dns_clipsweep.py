@@ -30,7 +30,7 @@ def svbGetStagesSize():
 
 def svbSetup(geometryLevel=1, stage=0):
   val = (float(stage+.5)/float(svbGetStagesSize()))*float(valRange) + float(valRanges[0])
-  clipVal = val
+  clipVal = val-7678.0/2.0
   global Clip1
   global reader
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 SVB_DIR=/work/01336/carson/intelTACC/svb
 output_DIR=/work/01336/carson/intelTACC/svb/benchmarks/maverick
-ParaView_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCDebug/bin
-pvOSPRay_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCDebug/lib
-pvVBO_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCDebug/lib
+ParaView_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCRelease/bin
+pvOSPRay_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCRelease/lib
+pvVBO_DIR=/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCRelease/lib
 GLuRay_PATH=GLURAY_FIND-NOTFOUND
 WRF_PLUGIN_PATH=
 GEODATA_DIR=/scratch/01891/adb/geo
@@ -14,7 +14,7 @@ WRFDATA_DIR=WRFDATA_DIR-NOTFOUND
 DNSDATA_DIR=/work/00401/pnav/workloads/dns
 FIUDATA_DIR=FIUDATA_DIR-NOTFOUND
 RMDATA_DIR=/work/00401/pnav/workloads/rm
-ACCOUNT=Vis-Workload-Charact
+ACCOUNT=A-ccvis
 SWR_LIB=libGL.so.1
 USE_SWR=OFF
 USE_GPU=OFF
