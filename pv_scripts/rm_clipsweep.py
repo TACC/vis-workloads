@@ -31,7 +31,7 @@ def svbGetStagesSize():
 
 def svbSetup(geometryLevel=1, stage=0):
   #global Clip1
-  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
   clipVal = val-1023.5
   global Clip1
   global reader
@@ -56,11 +56,14 @@ def svbSetup(geometryLevel=1, stage=0):
   #contour_values = [23,30,40,50,60,70,80,90,100,110]
   #contour_values = contour_values[:geometryLevel]
   #print "contour_values: " + str(contour_values)
-  
+  if (geometryLevel == 0):
+  reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+else:
+  reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0273.xmf'])
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
-  reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
+  # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
 
   Contour1 = Contour(Input=reader)
 
