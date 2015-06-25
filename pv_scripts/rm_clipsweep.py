@@ -20,7 +20,7 @@ rm_data_dir =  path_vars["RMDATA_DIR"]
 print "rm_data_dir:%s" %  rm_data_dir
 
 
-valRanges = [0,255]
+valRanges = [0,2047]
 valRange = valRanges[1]-valRanges[0]
 
 #global Slice1
@@ -32,7 +32,7 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   #global Clip1
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange
-  clipVal = val
+  clipVal = val-1023.5
   global Clip1
   global reader
 
