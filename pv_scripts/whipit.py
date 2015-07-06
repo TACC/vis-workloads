@@ -37,8 +37,9 @@ def svbSetup(geometryLevel=1,stage=0):
 	 that corresponds to the particular stage/timestep and render
 	"""
 	print "CALL svbSETUP"
-	datasetpath = whipple_data_dir+'/Whipple_Shield.exo.300.000'
-        print "datasetpate:%s" % datasetpath
+#	datasetpath = whipple_data_dir+"//Whipple_Shield.exo.300.000"
+	datasetpath = os.path.join(whipple_data_dir,"Whipple_Shield.exo.300.000")
+        print "datasetpath:%s" % datasetpath
 	if os.path.exists(datasetpath):
 		if os.access(datasetpath,os.R_OK):
 			Whipple_Shield_exo_300_010 = ExodusIIReader(FileName=[datasetpath])
@@ -58,7 +59,8 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		Whipple_Shield_exo_300_010.FileRange = [0, 299]
 		Whipple_Shield_exo_300_010.XMLFileName = 'Invalid result'
-		Whipple_Shield_exo_300_010.FilePrefix = whipple_data_dir+'Whipple_Shield.exo.300.'
+		#Whipple_Shield_exo_300_010.FilePrefix = whipple_data_dir+'Whipple_Shield.exo.300.'
+		Whipple_Shield_exo_300_010.FilePrefix = os.path.join(whipple_data_dir,'Whipple_Shield.exo.300.')
 		Whipple_Shield_exo_300_010.ModeShape = 20
 		Whipple_Shield_exo_300_010.FilePattern = '%s%03i'
 
@@ -95,7 +97,7 @@ def svbSetup(geometryLevel=1,stage=0):
 
 #		DataRepresentation1.Visibility = 0
 
-		Contour1 = Contour( PointMergeMethod="Uniform Binning" )
+		Contour1 = Contour(Input=Whipple_Shield_exo_300_010)
 
 		Contour1.PointMergeMethod = "Uniform Binning"
 		Contour1.ContourBy = ['POINTS', 'DENSITY']
@@ -112,7 +114,8 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		SetActiveSource(CellDatatoPointData1)
 
-		Contour2 = Contour( PointMergeMethod="Uniform Binning" )
+		#Contour2 = Contour( PointMergeMethod="Uniform Binning" )
+		Contour2 = Contour(Input=Whipple_Shield_exo_300_010 )
 
                 Contour2.PointMergeMethod = "Uniform Binning"
                 Contour2.ContourBy = ['POINTS', 'DENSITY']
