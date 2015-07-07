@@ -94,6 +94,7 @@ set(LDAV_RUNS OFF CACHE BOOL "runs for ldav paper")
 set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
 set(USE_FIU OFF CACHE BOOL "run fiu data")
 set(USE_RM OFF CACHE BOOL "run the rm data")
+set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
 set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
 set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
@@ -230,8 +231,11 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_FIU_ANIMATED=" ${USE_FIU_ANIMATED} \n
   "USE_FIU=" ${USE_FIU} \n
   "USE_RM=" ${USE_RM} \n
+  "USE_RM_TIME=" ${USE_RM_TIME} \n
   "USE_RM_ISOSWEEP= "  ${USE_RM_ISOSWEEP} \n
+  "USE_RM_CLIPSWEEP= "  ${USE_RM_CLIPSWEEP} \n
   "USE_DNS=" ${USE_DNS} \n
+  "USE_DNS_ISOSWEEP=" ${USE_DNS_ISOSWEEP} \n
   "USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP} \n
   "USE_MOLECULE=" ${USE_MOLECULE} \n
   "USE_GEO=" ${USE_GEO} \n

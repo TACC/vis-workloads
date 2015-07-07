@@ -235,6 +235,13 @@ if [ ${USE_RM} == "ON" ]; then
 	dataSources[$COUNT]="rm"
 	COUNT=$((COUNT+1))
 fi
+
+if [ ${USE_RM_TIME} == "ON" ]; then
+        dataSources[$COUNT]="rm_time"
+        COUNT=$((COUNT+1))
+fi
+
+
 if [ ${USE_DNS} == "ON" ]; then
 	dataSources[$COUNT]="dns"
 	COUNT=$((COUNT+1))
@@ -268,6 +275,17 @@ if [ ${USE_RM_ISOSWEEP} == "ON" ]; then
         dataSources[$COUNT]="rm_isosweep"
         COUNT=$((COUNT+1))
 fi
+
+if [ ${USE_RM_CLIPSWEEP} == "ON" ]; then
+        dataSources[$COUNT]="rm_clipsweep"
+        COUNT=$((COUNT+1))
+fi
+
+if [ ${USE_DNS_ISOSWEEP} == "ON" ]; then
+        dataSources[$COUNT]="dns_isosweep"
+        COUNT=$((COUNT+1))
+fi
+
 
 if [ ${USE_DNS_CLIPSWEEP} == "ON" ]; then
         dataSources[$COUNT]="dns_clipsweep"
