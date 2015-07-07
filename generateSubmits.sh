@@ -109,7 +109,7 @@ function processBench {
     #PARAVIEW=pvbatch
     PARAVIEW=$ParaView_DIR/pvbatch
     echo "module load qt" >> ${FILE}
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/git/osprayGHDev/buildStampedeICCRelease' >> ${FILE} 
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
     #need to determing how to handle this, for general benchmarking, carson has two pvospray modules, one looks better and one is faster...
     #echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
     if [ $renderer == "ospray" ]; then
@@ -120,6 +120,14 @@ function processBench {
     if [ $renderer != "ospray" ]; then
       echo "module load paraview/4.3.1" >> ${FILE}
       PARAVIEW=pvbatch
+    fi
+    if [ $renderer == "gluray" ]; then
+      DL_FLAG=""
+      PARAVIEW=$ParaView_DIR/pvbatch
+    fi
+    if [ $renderer == "vbo" ]; then
+      DL_FLAG=""
+      PARAVIEW=$ParaView_DIR/pvbatch
     fi
 
     if [ $dataSource == "wrf" ]; then
@@ -297,7 +305,7 @@ done
 tris=( 1 2 3)
 nodes=( 1 10 20)
 renderer=swr
-renderers=( "gpu" "vbo" "ospray")
+renderers=( "gpu" "vbo" "ospray" "gluray")
 dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
 if [ ${LDAV_RUNS} == "ON" ]; then
   dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep" "dns_isosweep_osp" "dns_clipsweep_osp" "rm_isosweep_osp" "rm_clipsweep_osp")

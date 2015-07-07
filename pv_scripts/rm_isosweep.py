@@ -52,13 +52,16 @@ def svbSetup(geometryLevel=1, stage=0):
     Contour1.Isosurfaces = isovals
     return returnVals;
 
-  print "h"
-  print(rm_data_dir+"/rm_0273.nhdr")
-  
+  #print "h"
+  #print(rm_data_dir+"/rm_0273.nhdr")
+  filename = ""
   if (geometryLevel == 0):
-    reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+    filename = rm_data_dir+ '/ppmt273_256_256_256.nrrd' 
+    reader = NrrdReader( FileName=filename)
   else:
-    reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0273.xmf'])
+    filename = rm_data_dir+ '/rm_0273.xmf'
+    reader = XDMFReader(FileName=filename)
+  print "reading file: " + filename
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0202.xmf'])
   # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )  
