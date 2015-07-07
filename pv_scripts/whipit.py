@@ -27,6 +27,7 @@ print "whipple_data_dir:%s" %  whipple_data_dir
 AnimationScene1 = GetAnimationScene()
 timesteps = []
 def svbSetup(geometryLevel=1,stage=0):
+
 	""" Specify the dataset here. Check to see if it exists
 	 (these things have a way of changing places) Check to
 	 see if we have access and open it with the Exodus 
@@ -52,6 +53,9 @@ def svbSetup(geometryLevel=1,stage=0):
 
 	global AnimationScene1 
 	global timesteps
+        returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
+        
+        
 	if stage == 0: #pipeline setup
 		timesteps = Whipple_Shield_exo_300_010.TimestepValues
 		AnimationScene1.EndTime = timesteps[len(timesteps)-1]
@@ -131,6 +135,7 @@ def svbSetup(geometryLevel=1,stage=0):
 		DataRepresentation4.SelectionCellFieldDataArrayName = 'DENSITY'
 #		DataRepresentation2.Visibility = 0
 
+
 	AnimationScene1.AnimationTime = timesteps[stage]
 	RenderView1 = GetRenderView()
 	RenderView1.CenterOfRotation = [0.0, 0.0, 0.018435800448060036]
@@ -139,6 +144,8 @@ def svbSetup(geometryLevel=1,stage=0):
 	RenderView1.CameraClippingRange = [0.007083748934846819, 0.1534122165178119]
 	RenderView1.CameraFocalPoint = [0.0006400393297762241, -0.008990028403178798, 0.0075681618661409275]
 	RenderView1.CameraParallelScale = 0.043921579808790676
+        ResetCamera()
+        return returnVals
 
 
 # this function returns the number of time steps.
@@ -147,7 +154,7 @@ def svbSetup(geometryLevel=1,stage=0):
 # what timestep to render. 
 def svbGetStagesSize():
 	global timesteps
-	return 2
+	return 299
 	#uncomment next line to do the whole time series
 	#return len(timesteps);
 
