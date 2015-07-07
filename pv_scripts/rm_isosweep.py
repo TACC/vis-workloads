@@ -60,7 +60,7 @@ def svbSetup(geometryLevel=1, stage=0):
     reader = NrrdReader( FileName=filename)
   else:
     filename = rm_data_dir+ '/rm_0273.xmf'
-    reader = XDMFReader(FileName=filename)
+    reader = XDMFReader(FileNames=[filename])
   print "reading file: " + filename
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0202.xmf'])

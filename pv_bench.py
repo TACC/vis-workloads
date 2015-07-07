@@ -107,7 +107,7 @@ num_runs = options.numruns
 if (plugin_vbo):
     #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
     #LoadPlugin("/scratch/01336/carson/intelTACC/pvPlugins/libVBOView.so", True)
-    LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.3.1-source/buildStampedeICCRelease/lib/libVBOView.so", True)
+    # LoadPlugin("/work/01336/carson/intelTACC/opt/maverick/lib/libVBOView.so", True)
     #view = paraview.simple._create_view("MantaBatchView")
     view = CreateView("VBOView")
     #view.Threads = options.threads

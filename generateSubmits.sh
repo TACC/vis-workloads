@@ -128,6 +128,7 @@ function processBench {
     if [ $renderer == "vbo" ]; then
       DL_FLAG=""
       PARAVIEW=$ParaView_DIR/pvbatch
+        ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvVBO_DIR"
     fi
 
     if [ $dataSource == "wrf" ]; then
