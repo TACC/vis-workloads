@@ -2,6 +2,7 @@ try: paraview.simple
 except: from paraview.simple import *
 import os
 import sys
+import time
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -28,6 +29,9 @@ def svbGetStagesSize():
   return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
+  global Contour1
+  global reader
+   
   #try:
     #parser = PassThroughOptionParser()
     #parser.add_option("--numStreamlines", action="store", dest="numStreamlines",type="int",
@@ -75,6 +79,7 @@ def svbSetup(geometryLevel=1, stage=0):
   numPoints = 0
 
 
+  st_reader = time.time()
   u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
 
 
@@ -90,7 +95,10 @@ def svbSetup(geometryLevel=1, stage=0):
 
 
   rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr" )
-
+  rho_380x380x828_frame0010_subs00_nhdr.UpdatePipeline()
+  u_380x380x828_frame0010_subs00_nhdr.UpdatePipeline()
+  et_reader = time.time()
+  tt_reader = (et_reader - st_reader)
 
   #RenderView1.CameraPosition = [189.5, 189.5, 2317.3405387189805]
   #RenderView1.CameraFocalPoint = [189.5, 189.5, 413.5]
@@ -104,6 +112,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #DataRepresentation2.Representation = 'Outline'
   #DataRepresentation2.ScaleFactor = 82.7
 
+  st_filter_streamline = time.time()
   SetActiveSource(u_380x380x828_frame0010_subs00_nhdr)
   StreamTracer1 = StreamTracer( SeedType="Point Source" )
 
@@ -128,6 +137,11 @@ def svbSetup(geometryLevel=1, stage=0):
   a3_ImageFile_PiecewiseFunction = CreatePiecewiseFunction( Points=[0.0, 0.0, 0.5, 0.0, 1.0, 1.0, 0.5, 0.0] )
 
   StreamTracer1.SeedType.Radius = 60.0
+  
+  StreamTracer1.UpdatePipeline()
+  Tube1.UpdatePipeline()
+  et_filter_streamline = time.time()
+  tt_filter_streamline = (et_filter_streamline-st_filter_streamline)
   DataRepresentation3 = Show()
   DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
   #DataRepresentation3.SelectionPointFieldDataArrayName = 'ImageFile'
@@ -137,7 +151,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #DataRepresentation3.ScaleFactor = 82.69024540111423
 
   
-  #a3_ImageFile_PVLookupTable.ScalarOpacityFunction = a3_ImageFile_PiecewiseFunction
+  a3_ImageFile_PVLookupTable.ScalarOpacityFunction = a3_ImageFile_PiecewiseFunction
 
   RenderView1 = GetRenderView()
   RenderView1.CameraViewUp = [0.1220323904995946, 0.9179892738319476, -0.3773642653967754]
@@ -152,10 +166,14 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+ 
   
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter_streamline};
+  return returnVals
   if (useContour):
+    st_filter_contour = time.time()
     SetActiveSource(rho_380x380x828_frame0010_subs00_nhdr)
-    Contour1 = Contour( PointMergeMethod="Uniform Binning" )
+    Contour1 = Contour(Input=reader)
 
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'ImageFile']
@@ -163,6 +181,9 @@ def svbSetup(geometryLevel=1, stage=0):
 
     Contour1.Isosurfaces = [0.3]
 
+    Countour1.UpdatePipeline()
+    et_filter_contour = time.time()
+    tt_filter_contour = (et_filter_contour - st_filter_contour)
     DataRepresentation4 = Show()
 
     #DataRepresentation4.ScaleFactor = 82.7
@@ -173,6 +194,7 @@ def svbSetup(geometryLevel=1, stage=0):
     DataRepresentation4.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
 
 
+    st_filter_clip = time.time()
     Clip1 = Clip( ClipType="Plane" )
 
     Clip1.Scalars = ['POINTS', '']
@@ -188,10 +210,14 @@ def svbSetup(geometryLevel=1, stage=0):
     #DataRepresentation4.Visibility = 0
     Clip1.InsideOut = 1
 
+    Clip1.UpdatePipeline()
+    et_filter_clip = time.time()
+    tt_filter_clip = (et_filter_clip - st_filter_clip)
     DataRepresentation5 = Show()
-    #DataRepresentation5.ScaleFactor = 82.7
-    #DataRepresentation5.ScalarOpacityUnitDistance = 5.357494554385383
-    #DataRepresentation5.SelectionPointFieldDataArrayName = 'Normals'
+
+    DataRepresentation5.ScaleFactor = 82.7
+    DataRepresentation5.ScalarOpacityUnitDistance = 5.357494554385383
+    DataRepresentation5.SelectionPointFieldDataArrayName = 'Normals'
     DataRepresentation5.EdgeColor = [0.0, 0.0, 0.5000076295109483]
     DataRepresentation5.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
 
@@ -223,7 +249,11 @@ def svbSetup(geometryLevel=1, stage=0):
     print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
     print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
     print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  
+
+    tt_all = (tt_filter_streamlines + tt_filter_contour + tt_filter_clip)
+    returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_all};
+    return returnVals
+
 
 def svbRender():
   Render()

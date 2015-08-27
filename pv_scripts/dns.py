@@ -2,7 +2,7 @@ try: paraview.simple
 except: from paraview.simple import *
 import os
 import sys
-
+import time
 
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +27,9 @@ def svbGetStagesSize():
   return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
+  global Contour1
+  global dns_xmf
+
   numCells = 0
   numPolys = 0 
   numPoints = 0
@@ -34,12 +37,19 @@ def svbSetup(geometryLevel=1, stage=0):
   #name=dns_data_dir+"u_10000.xdmf"
   #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
   name = dns_data_dir+"/u_"+str(numFiles*256)+'.xmf'
+  #name = dns_data_dir+"/u_1024_pv.xmf"
   print "name: %s" % name
-  dns_xmf = XDMFReader( FileName=name )
-  print "happy"
-  dns_xmf.Sets = []
-  dns_xmf.Grids = ['Grid_2']
-  dns_xmf.PointArrays = ['RTData']
+
+  st_reader = time.time()
+  #dns_xmf = XDMFReader( FileName=name )
+  #dns_xmf = XDMFReader(FileNames=[dns_data_dir + '/u_0032_pv.xmf'])
+  dns_xmf = XDMFReader(FileNames=[dns_data_dir + '/u_1024_pv.xmf'])
+ 
+  dns_xmf.PointArrayStatus = ['dataset0']
+  dns_xmf.GridStatus = ['Grid_2']
+  dns_xmf.UpdatePipeline()
+  et_reader = time.time()
+  tt_reader = (et_reader - st_reader)
 
   RenderView1 = GetRenderView()
   #RenderView1.CenterOfRotation = [1.5, 3839.0, 5119.0]
@@ -62,15 +72,19 @@ def svbSetup(geometryLevel=1, stage=0):
   contourPoints = [.8]
   #contourColors = [[.01,.12,.22],[.3,.39,.55],[.5,.24,.8],[.83,.57,.42]]
   contourColors = [[.01,.17,.29],[.34,.53,.70],[.56,.7,.77],[.46,.24,.08],[1,.8,.46],[1,.89,.72]]
+  st_filter = time.time()
   for j in range(0,len(contourPoints)):
     SetActiveSource(dns_xmf)
     print "adding contour " + str(contourPoints[j]) + " color " + str(contourColors[j])
+    st_filter = time.time()
+    Contour1 = Contour(Input=dns_xmf)
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'RTData']
     Contour1.Isosurfaces = [contourPoints[j]]
+    Contour1.UpdatePipeline()
 
+    
     cDataRepresentation2 = Show()
     #cDataRepresentation2.ScaleFactor = 968.4097045898438
     #cDataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
@@ -79,15 +93,18 @@ def svbSetup(geometryLevel=1, stage=0):
     numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
     numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
     numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+  et_filter = time.time()
+  tt_filter = (et_filter - st_filter)
   ResetCamera()
   cam = GetActiveCamera()
   cam.Elevation(65)
   cam.Azimuth(-20)
 
+  returnVals = {'azimuth':90, 'dolly':3.0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-
+  return returnVals
 
 def svbRender():
   Render()
