@@ -39,6 +39,22 @@ def PrintMemoryUsage():
    print "Page size: " + str(resource.getpagesize())
 
 
+def WarmupRender():
+    print "#"
+    print "Warmup..."
+    print "#"
+    for i in range(0,10):
+      if (i == 0):
+        print "time to first frame: " + str(time.time()-start_time)
+      warmup_st = time.time()
+      print "rendering warmup frame"
+      svbRender()
+      warmup_et = time.time()
+      warmup_tt = (warmup_et-warmup_st)
+      print "warmup frame Render: " + str(warmup_tt)
+    
+
+#parse the command line arguments to pv_bench.py
 from optparse import (OptionParser,BadOptionError,AmbiguousOptionError)
 
 class PassThroughOptionParser(OptionParser):
@@ -154,6 +170,10 @@ try:
  print "trying to import from source"
  svbSetup = import_from(source, "svbSetup")
  print "finished svbSetup"
+
+ 
+
+
  svbRender = import_from(source, "svbRender")
  print "finished svbRender"
  svbGetStagesSize = import_from(source, "svbGetStagesSize")
@@ -210,24 +230,13 @@ for stage in range(numStages):
     azimuth = svbResults['azimuth']
     dolly = svbResults['dolly']
     animateCamera = svbResults['animateCamera']
+    tt_reader = svbResults['tt_reader']
+    tt_filter = svbResults['tt_filter']
   except:
     print "Error reading parameters from svbSetup"
     pass
 
-  if stage == 0:
-    print "#"
-    print "Warmup..."
-    print "#"
-    for i in range(0,num_runs/10+1):
-      if (i == 0):
-        print "time to first frame: " + str(time.time()-start_time)
-      st = time.time()
-      print "rendering warmup frame"
-      svbRender()
-      et = time.time()
-      tt = (et-st)
-      print "warmup frame Render: " + str(tt)
-
+  WarmupRender()
   print "#"
   print "Running..."
   print "#"
@@ -238,6 +247,8 @@ for stage in range(numStages):
   rotate_in_times = []
   still_in_times = []
 
+  
+  #finds the average and std deviation when there are multiple runs
   def parseTimings(timings):
     sum = 0.0
     for i in range(0,len(timings)):
@@ -258,8 +269,9 @@ for stage in range(numStages):
     numFrames = len(timings)
     return {'avg':avg, 'dev':dev, 'total':sum, 'numFrames':numFrames}
 
+  #prints the average and std deviation when there are multiple runs
   def printTimings(timings, name):
-    restuls = parseTimings(timings)
+    results = parseTimings(timings)
     if (results['numFrames'] > 0):
       print str(name) + " results avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 
@@ -285,24 +297,23 @@ for stage in range(numStages):
           pass
         
     #start time
-    st = time.time()
+    st_render = time.time()
     svbRender()
     #end time
-    et = time.time()
-    tt = (et-st)
-    times.append(tt)
-     
+    et_render = time.time()
+    tt_render = (et_render-st_render)
+    times.append(tt_render)
     #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
     if (frac < .2):
-      still_out_times.append(tt)
+      still_out_times.append(tt_render)
     elif (frac < .4):
-      rotate_out_times.append(tt)
+      rotate_out_times.append(tt_render)
     elif (frac < .6):
-      zoom_times.append(tt)
+      zoom_times.append(tt_render)
     elif (frac < .8):
-      rotate_in_times.append(tt)
+      rotate_in_times.append(tt_render)
     else:
-      still_in_times.append(tt)
+      still_in_times.append(tt_render)
 
     #print "frame Render: " + str(tt)
     if save_images != "":
@@ -319,71 +330,85 @@ for stage in range(numStages):
 
   #benchmark.run()
   pv_logs = benchmark.parse_logs(True)
+  print "paraview benchmark log:"
   print pv_logs
-  benchmark.print_logs()
+  #benchmark.print_logs()
 
   fps = float(num_runs)/(end_time-start_time);
+  print "times: "
   print times
-  results = parseTimings(times)
+  #results = parseTimings(times)
   
-  if (results['numFrames'] > 0):
-    print "overall time avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  printTimings(times, "overall render time") 
+  printTimings(still_out_times, "still zoomed out") 
+  printTimings(rotate_out_times, "rotate zoomed out")
+  printTimings(zoom_times, "zooming")
+  printTimings(still_in_times, "still zoomed in")
+  printTimings(rotate_in_times, "rotate zoomed in")
+
+  #if (results['numFrames'] > 0):
+  #  print "overall time avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 
   #results = parseTimings(still_out_times)
-
   #if (results['numFrames'] > 0):
-    #print "still zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  #  print "still zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+
   #results = parseTimings(rotate_out_times)
   #if (results['numFrames'] > 0):
-    #print "rotate zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  #  print "rotate zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+
   #results = parseTimings(zoom_times)
   #if (results['numFrames'] > 0):
-    #print "zoom results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  #  print "zoom results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+
   #results = parseTimings(rotate_in_times)
   #if (results['numFrames'] > 0):
-    #print "rotate zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  #  print "rotate zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+
+
   #results = parseTimings(still_in_times)
   #if (results['numFrames'] > 0):
-    #print "still zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+  #  print "still zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 
-  times = []
-  for i in range (0, len(pv_logs)):
-    if len(pv_logs[i]):
-      if pv_logs[i][0].get('Still') != None:
-        stime = pv_logs[i][0]['Still']
-        times.append(stime)
-  times = times[num_runs/10+1:]
+  #times = []
+  #for i in range (0, len(pv_logs)):
+  #  if len(pv_logs[i]):
+  #    if pv_logs[i][0].get('Still') != None:
+  #      stime = pv_logs[i][0]['Still']
+  #      times.append(stime)
+  #times = times[num_runs/10+1:]
 
-  printTimings(times[:int(num_runs*.2)], "overall frame time")
+  #printTimings(times[:int(num_runs*.2)], "Paraview overall frame time")
 
-  times = []
-  for i in range (0, len(pv_logs)):
-    if len(pv_logs[i]):
-      if pv_logs[i][0].get('OpenGL Dev'):
-        rtime = pv_logs[i][0]['OpenGL Dev']
-        times.append(rtime)
-  times = times[num_runs/10+1:]
+  #times = []
+  #for i in range (0, len(pv_logs)):
+  #  if len(pv_logs[i]):
+  #    if pv_logs[i][0].get('OpenGL Dev'):
+  #      rtime = pv_logs[i][0]['OpenGL Dev']
+  #      times.append(rtime)
+  #times = times[num_runs/10+1:]
 
-  #or the still camea, only the "overall render time" and "still zoomed out" are relevent
-  #left things as they were origianally in case I introduced an error 
+  #Paraview times
 
-  printTimings(times[:int(num_runs*.2)], "overall render time")
-  printTimings(times[int(num_runs):int(num_runs*.2)], "still zoomed out")
-  printTimings(times[int(num_runs*.2):int(num_runs*.4)], "rotate zoomed out")
-  printTimings(times[int(num_runs*.4):int(num_runs*.6)], "zooming")
-  printTimings(times[int(num_runs*.6):int(num_runs*.8)], "rotate zoomed in")
-  printTimings(times[int(num_runs*.8):], "still zoomed in")
+  #printTimings(times[:int(num_runs*.2)], "Paraview overall render time")
+  #printTimings(times[int(num_runs):int(num_runs*.2)], "Paraview still zoomed out")
+  #printTimings(times[int(num_runs*.2):int(num_runs*.4)], "Paraview rotate zoomed out")
+  #printTimings(times[int(num_runs*.4):int(num_runs*.6)], "Paraview zooming")
+  #printTimings(times[int(num_runs*.6):int(num_runs*.8)], "Paraview rotate zoomed in")
+  #printTimings(times[int(num_runs*.8):], "still zoomed in")
 
   readerTime = -1.0
   filterTime = -1.0
   if pv_logs[0][0].get('reader') != None:
     readerTime = pv_logs[0][0]['reader']
-  print "reader time " + str(readerTime)
+  print "pv_reader time " + str(readerTime)
   if pv_logs[0][0].get('filter') != None:
     filterTime = pv_logs[0][0]['filter']
-  print "filter time " + str(filterTime)
+  print "pv_filter time " + str(filterTime)
   benchmark.clear_logs()
   benchmark.clear_all()
+  print "reader time " + str(tt_reader)
+  print "filter time " + str(tt_filter)
 view=GetActiveView()
 # exit()
 
