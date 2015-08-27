@@ -1,6 +1,7 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
+import time
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -23,45 +24,54 @@ def svbGetStagesSize():
   return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
-
+  global Contour1
+  global reader
+  
   numCells = 0
   numPolys = 0 
   numPoints = 0
-  print "h"
-  print(rm_data_dir+"/rm_0273.nhdr")
+  st_reader = time.time()
+  print("rm_data_dir: "+rm_data_dir)
+
   if geometryLevel > 6:
-    ppmt273_256_256_256_nrrd = NrrdReader( FileName=rm_data_dir+"/rm_0273.nhdr" )
+    st_reader = time.time()
+    reader = NrrdReader( FileName=rm_data_dir+"/rm_0273.nhdr" )
+    et_reader = time.time()
+    tt_reader = (et_reader - st_reader)
 
-  #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
-  #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-  #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
-  #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
-
-  
-  Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-
-  Contour1.PointMergeMethod = "Uniform Binning"
-  Contour1.ContourBy = ['POINTS', 'ImageFile']
-  Contour1.Isosurfaces = [27.0]
-  Contour1.ComputeNormals = 1
-
-  DataRepresentation2 = Show()
-  DataRepresentation2.ScaleFactor = 25.5
-  DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  
-  if geometryLevel < 0:
-    #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
-    #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-    reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
-    #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
-
-    
+    st_filter = time.time()
+    Contour1 = Contour(Input=reader)
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-    print "ha"
+
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'ImageFile']
     Contour1.Isosurfaces = [27.0]
     Contour1.ComputeNormals = 1
+    Contour1.Update()
+    et_filter = time.time()
+    tt_filter = (et_filter-st_filter) 
+    DataRepresentation2 = Show()
+    DataRepresentation2.ScaleFactor = 25.5
+    DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  
+  if geometryLevel < 0:
+    #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
+    #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
+    st_reader = time.time()
+    reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nhdr')
+    #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/fiu/rho_380x380x828_frame0010_subs00.nhdr' )
+    et_reader = time.time()
+    tt_reader = (et_reader - st_reader)
+    st_filter = time.time()
+    Contour1 = Contour(Input=reader) 
+    Contour1 = Contour( PointMergeMethod="Uniform Binning" )
+    Contour1.PointMergeMethod = "Uniform Binning"
+    Contour1.ContourBy = ['POINTS', 'ImageFile']
+    Contour1.Isosurfaces = [27.0]
+    Contour1.ComputeNormals = 1
+    Contour1.Update()
+    et_filter = time.time()
+    tt_filter = (et_filter-st_filter)
 
     DataRepresentation2 = Show()
     DataRepresentation2.ScaleFactor = 25.5
@@ -82,8 +92,10 @@ def svbSetup(geometryLevel=1, stage=0):
     fileName = computeFileName(geometryLevel)
     print(fileName)
     # name = '/scratch/01336/carson/intelTACC/rm/rm.xmf'
-    rm_xmf = XDMFReader( FileName=rm_data_dir+"/"+fileName )
-    print "happy"
+    st_reader = time.time()   
+    rm_xmf = XDMFReader( FileNames=[rm_data_dir+"-unblocked/"+fileName] )
+    et_reader = time.time()
+    tt_reader = (et_reader - st_reader)
     # rm_xmf.Sets = []
     # rm_xmf.Grids = ['Grid_5']
     # rm_xmf.PointArrays = ['ImageFile']
@@ -109,7 +121,8 @@ def svbSetup(geometryLevel=1, stage=0):
     # DataRepresentation2.ScaleFactor = 204.70000000000002
 
     RenderView2.CameraClippingRange = [4733.166751461594, 9213.860962357088]
-
+    
+    st_filter = time.time()
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
     Contour1.PointMergeMethod = "Uniform Binning"
@@ -125,6 +138,10 @@ def svbSetup(geometryLevel=1, stage=0):
       Contour1.Isosurfaces = [22,27.0,33,56]
     if (geometryLevel == 10):
       Contour1.Isosurfaces = [18,22,27.0,33,56]
+    
+    Contour1.UpdatePipeline()
+    et_filter = time.time()
+    tt_filter = (et_filter - st_filter)
 
     DataRepresentation3 = Show()
     DataRepresentation3.ScaleFactor = 204.70000000000002
@@ -164,7 +181,8 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
 
-  return {'azimuth':90, 'dolly':3.0}
+  returnVals = {'azimuth':90, 'dolly':3.0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
+  return returnVals
 
 
 def svbRender():
