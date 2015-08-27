@@ -27,19 +27,22 @@ function createGraph
   echo "set datafile missing 'none'" >> ${GP_FILE}
     if [ "${graphType}" == "triScale" ]; then
     echo "set xtics (1,2,3,4,5,6,7,8,9)" >> ${GP_FILE}
-    echo "set logscale x" >> ${GP_FILE}
-    echo "set logscale y" >> ${GP_FILE}
-  elif [ "${graphType}" == "strongScale" ]; then
-    echo "set logscale x" >> ${GP_FILE}
+    #echo "set logscale x" >> ${GP_FILE}
+    #echo "set logscale y" >> ${GP_FILE}
+  elif [ "${graphType}" == "nodeScale" ]; then
+    #echo "set logscale x" >> ${GP_FILE}
     echo "set xtics (1,2,4,8,16,32)" >> ${GP_FILE}
+  elif [ "${graphType}" == "procScale" ]; then
+    #echo "set logscale x" >> ${GP_FILE}
+    echo "set xtics (1,10,20)" >> ${GP_FILE}
   elif [ "${graphType}" == "dynamicScale" ]; then
-    echo "set xtics" >> ${GP_FILE}
+    echo "set xtics (1,10,20)" >> ${GP_FILE}
    fi
    
   echo "set key top left" >> ${GP_FILE}
   #echo "unset key" >> ${GP_FILE} 
   # echo "set ytics 10"  >> ${GP_FILE}
-  echo "set tics scale 0.5"  >> ${GP_FILE}
+  echo "set tics scale 1.0"  >> ${GP_FILE}
 
   COLOR0="#0060ad"
   COLOR1="#888888"
@@ -102,10 +105,11 @@ function addPlot
   counter=$6
   scaleType=$7
   file=${graphFile}.${title}.part
-  fileD=/work/01891/adb/maverick/svb_adb/scratch.txt
   echo "#datpart ${file}" > ${file}
   grep ${grepString} ${datFile} | while read -r line; do 
-    if [ "${scaleType}" == "strongScale" ]; then
+    if [ "${scaleType}" == "nodeScale" ]; then
+      echo -n `echo -n "$line" |  awk -F "_N" '/1/ {print $2}' | awk -F "_" '{print $1}'` " " >> ${file}
+    elif [ "${scaleType}" == "procScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_n" '/1/ {print $2}' | awk '{print $1}'` " " >> ${file}
     elif [ "${scaleType}" == "dynamicScale" ]; then
       echo -n `echo -n "$line" |  awk -F "_s" '/1/ {print $2}' | awk '{print $1}'` " " >> ${file}
@@ -129,7 +133,7 @@ tris=( 1 2 3 4 5 6 7 8 9)
 nodes=( 1 )
 renderer=swr
 renderers=( "swr" "gpu" "gluray" "ospray" "vbo")
-dataSources=("fiu" "dns" "rm")
+dataSources=("fiu")
 set -x
 PRELOAD=""
 stages=0
@@ -137,7 +141,7 @@ for data in "${dataSources[@]}";
 do
   for node in "${nodes[@]}";
   do
-  datFile=${DIR}/dats/triScale_d${data}_n${nodes}.dat
+  datFile=${DIR}/dats_v1/triScale_d${data}_n${nodes}.dat
   graphFile=${DIR}/graphs/triScale_d${data}_n${nodes}.gnuplot
   graphTitle=triScale_d${data}_n${nodes}
   createGraph $graphFile $graphTitle ${DIR}/graphs/triScale_d${data}_n${nodes} triangles seconds "triScale" $stages
@@ -160,22 +164,22 @@ do
 done
 
 #
-# strong scaling
+#  node scaling
 #
-tris=( 6 )
+tris=( 1 6 )
 nodes=( 1 2 4 8 16 32 )
-renderers=( "swr" "gpu" "gluray" "ospray" "vbo" )
-dataSources=("fiu" "dns" "molecule" "geo" "rm" "wrf")
+renderers=( "swr" "gpu" "ospray" "gluray")
+dataSources=("fiu" "dns_vol")
 stages=1
 for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
   do
-    name="strongScale_d${data}_t${tri}"
-    datFile=${DIR}/dats/${name}.dat
+    name="nodeScale_d${data}_t${tri}"
+    datFile=${DIR}/dats_v1/${name}.dat
   graphFile=${DIR}/graphs/${name}.gnuplot
   graphTitle=${name}
-  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} nodes seconds strongScale
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} nodes seconds nodeScale
   counter=0 
   for renderer in "${renderers[@]}";
   do
@@ -184,7 +188,119 @@ do
         title=$renderer
         column=5
         grepString="_r${renderer}_"
-        addPlot $title $datFile $graphFile $grepString $column $counter "strongScale" $stages
+        addPlot $title $datFile $graphFile $grepString $column $counter "nodeScale" $stages
+        counter=$(( $counter + 1 ))
+      # done
+    done
+    echo "" >> ${graphFile}
+  gnuplot ${graphFile}
+  convert ${DIR}/graphs/${graphTitle}.svg ${DIR}/graphs/${graphTitle}.png
+  done
+done
+
+
+#
+#  dynamic node scaling
+#
+tris=( 0 1 )
+nodes=( 1 2 4 8 16 32 )
+renderers=( "swr" "gpu" "ospray" "gluray")
+dataSources=("fiu_animated" "dns_isosweep" "rm_isosweep" "dns_clipsweep" "rm_clipsweep")
+stage=1
+for data in "${dataSources[@]}";
+do
+  for tri in "${tris[@]}";
+  do
+    name="dyNode_d${data}_t${tri}_s${stage}"
+    datFile=${DIR}/dats_v1/${name}.dat
+  graphFile=${DIR}/graphs/${name}.gnuplot
+  graphTitle=${name}
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} nodes seconds nodeScale
+  counter=0
+  for renderer in "${renderers[@]}";
+  do
+      # for node in "${nodes[@]}";
+      # do
+        title=$renderer
+        column=5
+        grepString="_r${renderer}_"
+        addPlot $title $datFile $graphFile $grepString $column $counter "nodeScale" $stages
+        counter=$(( $counter + 1 ))
+      # done
+    done
+    echo "" >> ${graphFile}
+  gnuplot ${graphFile}
+  convert ${DIR}/graphs/${graphTitle}.svg ${DIR}/graphs/${graphTitle}.png
+  done
+done
+
+
+
+#
+# single node proc scaling
+#
+tris=( 6 )
+nodes=( 1 )
+procs=(1 10 20)
+renderers=( "swr" "gpu" "ospray" "gluray")
+dataSources=("fiu" "dns_vol")
+stages=1
+for data in "${dataSources[@]}";
+do
+  for tri in "${tris[@]}";
+  do
+    name="procScale_d${data}_t${tri}"
+    datFile=${DIR}/dats_v1/${name}.dat
+  graphFile=${DIR}/graphs/${name}.gnuplot
+  graphTitle=${name}
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} procs seconds procScale
+  counter=0
+  for renderer in "${renderers[@]}";
+  do
+      # for node in "${nodes[@]}";
+      # do
+        title=$renderer
+        column=5
+        grepString="_r${renderer}_"
+        addPlot $title $datFile $graphFile $grepString $column $counter "procScale" $stages
+        counter=$(( $counter + 1 ))
+      # done
+    done
+    echo "" >> ${graphFile}
+  gnuplot ${graphFile}
+  convert ${DIR}/graphs/${graphTitle}.svg ${DIR}/graphs/${graphTitle}.png
+  done
+done
+
+
+
+
+#
+#  dynamic proc scaling
+#
+tris=( 0 1 2 3 6)
+nodes=( 1 10 20 )
+renderers=( "swr" "gpu" "ospray" "gluray")
+dataSources=("fiu_animated" "dns_isosweep" "dns_isosweep_512" "rm_isosweep" "dns_clipsweep" "rm_clipsweep")
+stages=1
+for data in "${dataSources[@]}";
+do
+  for tri in "${tris[@]}";
+  do
+  name="dyProc_d${data}_t${tri}_s${stage}"
+  datFile=${DIR}/dats_v1/${name}.dat
+  graphFile=${DIR}/graphs/${name}.gnuplot
+  graphTitle=${name}
+  createGraph $graphFile $graphTitle ${DIR}/graphs/${name} procs seconds procScale
+  counter=0
+  for renderer in "${renderers[@]}";
+  do
+      # for node in "${nodes[@]}";
+      # do
+        title=$renderer
+        column=5
+        grepString="_r${renderer}_"
+        addPlot $title $datFile $graphFile $grepString $column $counter "procScale" $stages
         counter=$(( $counter + 1 ))
       # done
     done
@@ -198,20 +314,21 @@ done
 
 
 
+
 #
 # dynamic scaling
 #
-tris=( 6 )
+tris=( 0 1 2 3 6 )
 nodes=( 1 )
-renderers=( "swr" "gpu" )
-dataSources=("fiu_animated")
+renderers=( "swr" "gpu" "ospray" "gluray")
+dataSources=("fiu_animated" "rm_time" "rm_time_end" "dns_isosweep" "dns_isosweep_512" "rm_isosweep" "dns_clipsweep" "rm_clipsweep")
 
 for data in "${dataSources[@]}";
 do
   for tri in "${tris[@]}";
   do
   name="dynamic_d${data}_t${tri}"
-  datFile=${DIR}/dats/${name}.dat
+  datFile=${DIR}/dats_v1/${name}.dat
   stages=`cat ${datFile} | grep "Stages" | awk '{print $2}' `   
   graphFile=${DIR}/graphs/${name}.gnuplot
   graphTitle=${name}

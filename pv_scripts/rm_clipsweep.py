@@ -1,6 +1,7 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
+import time
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -41,7 +42,7 @@ def svbSetup(geometryLevel=1, stage=0):
   numPolys = 0 
   numPoints = 0
 
-  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0.0, 'tt_filter':0.0}; 
   contour_values = []
   for i in range(geometryLevel):
     cval = (i+1) *(255.0/(geometryLevel+1))
@@ -50,13 +51,19 @@ def svbSetup(geometryLevel=1, stage=0):
   #clipVal = (float(stage)/float(svbGetStagesSize()))*2045+1
   if (stage != 0):
     #ResetCamera()
+    st_filter = time.time()
     Clip1.ClipType.Origin = [clipVal, 1023.5, 959]
-    #Contour1.Isosurfaces = [val]
+    Clip1.UpdatePipeline()
+    et_filter = time.time()
+    tt_filter = (et_filter - st_filter)
+    returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
+
 
   #contour_values = [23,30,40,50,60,70,80,90,100,110]
   #contour_values = contour_values[:geometryLevel]
   #print "contour_values: " + str(contour_values)
+  st_reader = time.time()
   if (geometryLevel == 0):
     reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
   else:
@@ -65,7 +72,11 @@ def svbSetup(geometryLevel=1, stage=0):
   #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
+  reader.UpdatePipeline()
+  et_reader = time.time()
+  tt_reader = (et_reader - st_reader)
 
+  st_filter = time.time() 
   Contour1 = Contour(Input=reader)
 
   Contour1.PointMergeMethod = "Uniform Binning"
@@ -90,6 +101,10 @@ def svbSetup(geometryLevel=1, stage=0):
 
   #Slice1.SliceType.Origin = [1, 1023.5, 959]
   #Slice1.SliceType.Normal = [1.0, 0.0, 0.0]
+  Contour1.UpdatePipeline()
+  Clip1.UpdatePipeline()
+  et_filter = time.time()
+  tt_filter = (et_filter - st_filter)
 
   rep = Show()
   rep.LookupTable = lut
@@ -119,7 +134,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 
 def svbRender():

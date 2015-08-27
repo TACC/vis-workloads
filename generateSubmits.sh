@@ -19,23 +19,28 @@ fi
 
 
 
-rm $DIR/submits/*
-rm $DIR/interactive/*
+#rm $DIR/submits/*
+#rm $DIR/interactive/*
 PND="#"
 
 function processBench {
     tri=$1
     node=$2
-    renderer=$3
-    dataSource=$4
-    account=$5
-    NAME=d${dataSource}_r${renderer}_t${tri}_n${node}
+    proc=$3
+    renderer=$4
+    dataSource=$5
+    account=$6
+    if [ $renderer == "swr" ]; then
+       NAME=d${dataSource}_r${renderer}14_t${tri}_N${node}_n${proc}
+    else
+       NAME=d${dataSource}_r${renderer}_t${tri}_N${node}_n${proc}
+    fi
     FILE=${DIR}/submits/submit_${NAME}.sh
     echo "${PND}!/bin/bash " >${FILE}
     echo "#SBATCH -J ${NAME} " >> ${FILE} #echo "#$ -q normal " >> ${FILE}
     # echo "#SBATCH -N ${node}"  >> ${FILE}
-    echo "#SBATCH -N 1"  >> ${FILE}
-    echo "#SBATCH -n $(( $node * 1 )) " >> ${FILE}
+    echo "#SBATCH -N ${node}"  >> ${FILE}
+    echo "#SBATCH -n $(( ${node} * ${proc} )) " >> ${FILE}
     queue="vis"
 
 #    if [ "$dataSource" != "fiu" ]; then
@@ -67,8 +72,16 @@ function processBench {
     if [ ${GENERATE_IMAGES} == "ON" ]; then
           IMG_FLAG="--save_images -i ${IMAGE_DIR}/images/"
     fi
-
     
+    if [ $dataSource == "fiu" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "rm" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "dns" ]; then
+          NUM_RUNS=10
+    else
+          NUM_RUNS=1
+    fi    
 
     echo "#SBATCH -p $queue " >> ${FILE}
     echo "#SBATCH -A $account " >> ${FILE}
@@ -81,7 +94,7 @@ function processBench {
     if [ $renderer == "swr" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2417/Centos/libGL.so.1
       # SWR_CMD=LD_PRELOAD=/work/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
-	SWR_CMD=LD_PRELOAD=$SWR_LIB
+	SWR_CMD=LD_PRELOAD="$SWR_LIB swr"
     elif [ $renderer == "gluray" ]; then
       #GLURAY_CMD=/work/01336/carson/git/GLuRay/buildOptix/gluray
       GLURAY_CMD=$GLuRay_PATH
@@ -97,6 +110,8 @@ function processBench {
       PV_PLUGIN_FLAG="--osp"
     elif [ $renderer == "gluray" ]; then
       PRE_CMD="DISPLAY=:0.0"
+    elif [ $renderer == "swr" ]; then
+      PRE_CMD="DISPLAY=:0.0"
     fi
     if [ $renderer == "swrvbo" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
@@ -109,26 +124,37 @@ function processBench {
     #PARAVIEW=pvbatch
     PARAVIEW=$ParaView_DIR/pvbatch
     echo "module load qt" >> ${FILE}
+    echo "module load paraview/4.3.1" >> ${FILE}
+    PARAVIEW=pvbatch
     echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
-    #need to determing how to handle this, for general benchmarking, carson has two pvospray modules, one looks better and one is faster...
-    #echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
     if [ $renderer == "ospray" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
-        ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
+        #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
+        echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
+        echo "module load pvospray" >> ${FILE}
+        
     fi
 
-    if [ $renderer != "ospray" ]; then
-      echo "module load paraview/4.3.1" >> ${FILE}
-      PARAVIEW=pvbatch
+    if [ $renderer == "swr" ]; then
+        #echo "module load pvospray/1.0.2" >> ${FILE}
+        #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
+        echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
+        echo "module load swr/1.4" >> ${FILE}
+
     fi
+
+    
+      
+
     if [ $renderer == "gluray" ]; then
       DL_FLAG=""
-      PARAVIEW=$ParaView_DIR/pvbatch
+      PARAVIEW=pvbatch
+      echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/gluray/1.1.0/lib' >> ${FILE}
     fi
     if [ $renderer == "vbo" ]; then
       DL_FLAG=""
       PARAVIEW=$ParaView_DIR/pvbatch
-        ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvVBO_DIR"
+      ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvVBO_DIR"
     fi
 
     if [ $dataSource == "wrf" ]; then
@@ -141,11 +167,12 @@ function processBench {
          echo 'module load netcdf' >> ${FILE}
      fi      
     
-    #if [ $renderer == "swr" ]; then
+    if [ $renderer == "swr" ]; then
+    DL_FLAG=""
     #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
-    #fi
+    fi
     if [ $MPI_COMMAND == "ibrun" ]; then
-        MPI_CMD="$MPI_COMMAND -n $[node] -o 0"
+        MPI_CMD="$MPI_COMMAND -n  $(( ${node} * ${proc} )) -o 0"
     elif [ $MPI_COMMAND == "mpirun" ]; then
 	PRE_CMD=""
         MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
@@ -189,10 +216,11 @@ function processTachyon {
 
 PRELOAD=""
 #
-# node scaling
+# single node scaling
 #
-tris=( 1 6 9 )
-nodes=( 1 2 4 8 16 32 )
+tris=( 0 1 2 3 5 6 )
+procs=( 1 2 8 10 16 20 )
+nodes=( 1 2 4 8 16 32)
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 COUNT=0
 if [ ${USE_SWR} == "ON" ]; then
@@ -237,7 +265,7 @@ if [ ${USE_RM} == "ON" ]; then
 fi
 
 if [ ${USE_RM_TIME} == "ON" ]; then
-        dataSources[$COUNT]="rm_time"
+        dataSources[$COUNT]="rm_time_end"
         COUNT=$((COUNT+1))
 fi
 
@@ -282,7 +310,7 @@ if [ ${USE_RM_CLIPSWEEP} == "ON" ]; then
 fi
 
 if [ ${USE_DNS_ISOSWEEP} == "ON" ]; then
-        dataSources[$COUNT]="dns_isosweep"
+        dataSources[$COUNT]="dns_isosweep_512"
         COUNT=$((COUNT+1))
 fi
 
@@ -292,7 +320,10 @@ if [ ${USE_DNS_CLIPSWEEP} == "ON" ]; then
         COUNT=$((COUNT+1))
 fi
 
-
+if [ ${USE_DNS_VOL} == "ON" ]; then
+        dataSources[$COUNT]="dns_vol"
+        COUNT=$((COUNT+1))
+fi
 
 echo ${dataSources[*]}
 set -x
@@ -302,11 +333,14 @@ for tri in "${tris[@]}";
 do
   for node in "${nodes[@]}";
   do
-    for renderer in "${renderers[@]}";
-    do
-      for data in "${dataSources[@]}";
+    for proc in "${procs[@]}";
+    do 
+      for renderer in "${renderers[@]}";
       do
-        processBench $tri $node $renderer $data $ACCOUNT
+        for data in "${dataSources[@]}";
+        do
+          processBench $tri $node $proc $renderer $data $ACCOUNT
+        done
       done
     done
   done
@@ -321,37 +355,37 @@ done
 #
 # single node scaling
 #
-tris=( 1 2 3)
-nodes=( 1 10 20)
-renderer=swr
-renderers=( "gpu" "vbo" "ospray" "gluray")
-dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
-if [ ${LDAV_RUNS} == "ON" ]; then
-  dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep" "dns_isosweep_osp" "dns_clipsweep_osp" "rm_isosweep_osp" "rm_clipsweep_osp")
-fi
-set -x
+#tris=( 1 2 3)
+#nodes=( 1 )
+#renderer=swr
+#renderers=( "gpu" "vbo" "ospray" "gluray")
+#dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep")
+#if [ ${LDAV_RUNS} == "ON" ]; then
+#  dataSources=("dns_isosweep" "dns_clipsweep" "rm_isosweep" "rm_clipsweep" "dns_isosweep_osp" "dns_clipsweep_osp" "rm_isosweep_osp" "rm_clipsweep_osp")
+#fi
+#set -x
 #for i in "${tris[@]}"; do vglrun /work/01336/carson/git/GLuRay/buildOSPRay/gluray pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 100 |& tee gluray_fiu_$i.out ; done
 #renderer=swr
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray")
 #dataSources=("fiu_animated" "fiu" "rm" "dns" "molecule" "geo")
 #for i in "${tris[@]}"; do tacc_xrun pvpython fiu.py  -w 1024x1024 --numStreamlines $i --numruns 200 |& tee gpu_fiu_$i.out ; done
-PRELOAD=""
+#PRELOAD=""
 #PRELOAD=""
 
 
-for tri in "${tris[@]}";
-do
-  for node in "${nodes[@]}";
-  do
-    for renderer in "${renderers[@]}";
-    do
-      for data in "${dataSources[@]}";
-      do
-        processBench $tri $node $renderer $data $ACCOUNT
-      done
-    done
-  done
-done
+#for tri in "${tris[@]}";
+#do
+#  for node in "${nodes[@]}";
+#  do
+#    for renderer in "${renderers[@]}";
+#    do
+#      for data in "${dataSources[@]}";
+#      do
+#        processBench $tri $node $renderer $data $ACCOUNT
+#      done
+#    done
+#  done
+#done
 
 
 

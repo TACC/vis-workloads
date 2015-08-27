@@ -56,7 +56,7 @@ def svbSetup(geometryLevel=1, stage=0):
           print("timesteps:")
           print (len(timesteps))
           AnimationScene1.EndTime = timesteps[len(timesteps)-1]
-          AnimationScene1.StartTime = 0 
+          AnimationScene1.StartTime = 263 
           AnimationScene1.PlayMode = 'Snap To TimeSteps' 
 
   if (stage != 0):
@@ -98,7 +98,8 @@ def svbSetup(geometryLevel=1, stage=0):
   #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-  AnimationScene1.AnimationTime = timesteps[stage]
+  adj=stage+263
+  AnimationScene1.AnimationTime = timesteps[adj]
   print "AnimationsScene1.AnimationTime %s:" %  AnimationScene1.AnimationTime
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
