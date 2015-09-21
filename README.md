@@ -31,8 +31,9 @@ This will clone the primary benchmarking folder "svb" that contains:
 		-->fiu_animated( fiu dataset with incrementally increasing streamlines)
 	-->visit_scripts visit python scripts for creating desirec visualization (under development)
         -->vmd_scripts python  scripts to generate tachyon files from pdb or dcd files (under development)
-2) Set up environment variables using cmake:
-for more info on camke: www.cmake.org/runningcmake 
+2) You can set up the environment by editing the path.sh file directly or by using cmake:
+This will allow the specification of the paths for the datasets, applications, libraries and output directories as well as options such as which renderer to use.
+for more info on cmake: www.cmake.org/runningcmake 
 bashshell$ ccmake .
 "c" to configure 
 Specify the paths manually if cmake does not automatically find them, you will need to enter paths to the data files, for TACC/Intel use for now  /work/00401/pnav/workloads/ contains the data or links to the data 
@@ -59,12 +60,17 @@ and the n# is the number of nodes
 
  
 6) Parse/Process Results:
-Results are stored in outs. Timings are done over portions of the animation as well as the whole run. For example "still zoomed out" gives the average fps, average time, and deviation of the frames spent in the initial zoomed out view. There is an initial warmup period for all results not currently timed for loading and setup.
+Results are stored in outs. The generateDats.sh script is a bash script that will parse the raw output files to create a number of different data files for plotting in excel or with the generateGraphs.sh to provide basic gnuplot plots of node scaling, processor scaling, triangle scaling and dynamic scaling (parameters as they change per stage) are supported currently. 
+For static data-sets:
+Timings are done over portions of the animation as well as the whole run. For example "still zoomed out" gives the average fps, average time, and deviation of the frames spent in the initial zoomed out view. There is an initial warmup period for all results not currently timed for loading and setup. Memory use and the total number of triangles is also reported.
+For dynamic data-sets:
+Timings are tracked "per stage" that correspond to an attribute being changes (e.g. position of a clipping plane, isosurface value or timestep).  For the node and processor scaling options, one Stage is selected 
+
+The generateDats.sh file can be edited directly to change the parameters for 1)nodes 2) processors 3)data-sets 3)renderers 4)stage selection (for dynamic data)
+ 
 
 7) Adding new scripts:
 to add a new source script you just need to implement two functions , svbSetup and svbRender, which you can see examples of in pv_scripts/fiu.py. Then just add x from "x.py" that you added to the pv_scripts directory to the list of sources in generateScripts. GeometryLevel is an indication of a script-specific level of geometry. For example, the fiu has 10 geometry levels from 0-9 which it interprets to generate different amounts of streamlines for each of those levels. Whether or not you need to add this depends on the run you want to do.
-
-
 
 
 
