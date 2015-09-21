@@ -37,7 +37,7 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global reader
-  
+
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':0};
   valRanges = [0,200]
   valRange = valRanges[1]-valRanges[0]
@@ -51,28 +51,9 @@ def svbSetup(geometryLevel=1, stage=0):
   print "isosweep vals: " + str(isovals)
 
   if (stage != 0):  
-    numCells = 0
-    numPolys = 0
-    numPoints = 0
-    st_filter = time.time()
     Contour1.Isosurfaces = isovals
-    Contour1.UpdatePipeline()
-    et_filter = time.time()
-    tt_filter = (et_filter - st_filter)
-    numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-    numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-    numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-    print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-    print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-    print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-    
-    returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
- 
-  numCells = 0
-  numPolys = 0
-  numPoints = 0
+
   #print "h"
   #print(rm_data_dir+"/rm_0273.nhdr")
   filename = ""
@@ -130,14 +111,6 @@ def svbSetup(geometryLevel=1, stage=0):
   renderView1.CameraParallelScale = 220.83647796503186
   renderView1.Background = [1,1,1]
   ResetCamera()
-  
-  numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-  numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-  numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-  print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-  print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-  print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
 
   return returnVals

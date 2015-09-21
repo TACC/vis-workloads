@@ -16,8 +16,7 @@ function processDat {
     inFile=${DIR}/outs_v1/${name}.out
     echo -n $name >> ${datFile}
     echo -n "" `cat ${inFile} | grep "first frame" | awk '{print $5}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall frame time" | awk '{print $6}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "overall frame time" | awk '{print $8}' ` >> ${datFile}
+    echo -n "" `cat ${inFile} | grep "fps" | awk '{print $2}' | awk '{print 1 / $1}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "overall render time" | awk '{print $6}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "overall render time" | awk '{print $8}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "still zoomed out" | awk '{print $6}' ` >> ${datFile}
@@ -30,8 +29,10 @@ function processDat {
     echo -n "" `cat ${inFile} | grep "rotate zoomed in" | awk '{print $8}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "still zoomed in" | awk '{print $6}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "still zoomed in" | awk '{print $8}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "reader time" | awk '{print $3}' ` >> ${datFile}
-    echo -n "" `cat ${inFile} | grep "filter time" | awk '{print $3}' ` >> ${datFile}
+    echo -n "" `cat ${inFile} | grep "pv_reader time" |  awk '{print $3}' ` >> ${datFile}
+    echo -n "" `cat ${inFile} | grep "pv_filter time" |  awk '{print $3}' ` >> ${datFile}
+    echo -n "" `cat ${inFile} | grep "reader time" | grep -v "pv_" | awk '{print $3}' ` >> ${datFile}
+    echo -n "" `cat ${inFile} | grep "filter time" | grep -v "pv_" | awk '{print $3}' ` >> ${datFile}
     echo -n "" `cat ${inFile} | grep "Memory" | awk '{print $2}' | awk '{$0=substr($0,0,length($0)-2); print $0}' ` >> ${datFile}
     echo "" >> ${datFile}
   }
@@ -58,6 +59,7 @@ function writeOutDat {
 
     echo -n $_name"_s"$_stage >> ${__datFile}
     echo -n ""  `processStage $_inp $_stage | grep "first frame" | awk '{print $5}' ` >> ${__datFile}
+    echo -n ""  `processStage $_inp $_stage | grep "fps" | awk '{print $2}' | awk '{print 1 / $1}' ` >> ${datFile}
     echo -n ""  `processStage $_inp $_stage | grep "overall render time" | awk '{print $6}' ` >> ${__datFile}
     echo -n ""  `processStage $_inp $_stage | grep "reader time" | grep -v "pv_" | awk '{print $3}' ` >> ${__datFile}
     echo -n ""  `processStage $_inp $_stage | grep "filter time" | grep -v "pv_" | awk '{print $3}' ` >> ${__datFile}
@@ -169,7 +171,7 @@ do
   do
     datFile=${DIR}/dats_v1/procScale_d${data}_t${tri}.dat
     echo "#datFile procScale_d${data}_t${tri}.dat" > ${datFile}
-    echo "#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time" >> ${datFile}
+    echo "#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time, memory" >> ${datFile}
     for renderer in "${renderers[@]}";
     do
       for node in "${nodes[@]}";
@@ -210,7 +212,7 @@ do
   do
   datFile=${DIR}/dats_v1/triScale_d${data}_n${nodes}.dat
   echo "#datFile triScale_d${data}_t${tri}.dat" > ${datFile}
-  echo "#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time" >> ${datFile}
+  echo "#runName first_frame, overall_frame_time, dev, overall_render_time, dev, still_zoomed_out, dev, rotate_zoomed_out, dev, zooming, dev, rotate_zoomed_in, dev, still_zoomed_in, dev, reader_time, filter_time, memory" >> ${datFile}
   for renderer in "${renderers[@]}";
   do
       for tri in "${tris[@]}";
@@ -248,7 +250,7 @@ do
   do
     datFile=${DIR}/dats_v1/dynamic_d${data}_t${tri}.dat
     echo "#datFile dynamic_d${data}_t${tri}.dat" > ${datFile}
-    echo "#runName, first_frame, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
+    echo "#runName, first_frame, overall_frame_time, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
     for renderer in "${renderers[@]}";
     do
       for node in "${nodes[@]}";
@@ -283,7 +285,7 @@ do
   do
     datFile=${DIR}/dats_v1/dyProc_d${data}_t${tri}_s${stage}.dat
     echo "#datFile dyProc_d${data}_t${tri}.dat" > ${datFile}
-    echo "#runName, first_frame, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
+    echo "#runName, first_frame, overall_time, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
     for renderer in "${renderers[@]}";
     do
       for node in "${nodes[@]}";
@@ -315,7 +317,7 @@ do
   do
     datFile=${DIR}/dats_v1/dyNode_d${data}_t${tri}_s${stage}.dat
     echo "#datFile dyNode_d${data}_t${tri}.dat" > ${datFile}
-    echo "#runName, first_frame, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
+    echo "#runName, first_frame, overall_time, overall_render_time, reader_time, filter_time, memory" >> ${datFile}
     for renderer in "${renderers[@]}";
     do
       for node in "${nodes[@]}";

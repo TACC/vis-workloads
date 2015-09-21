@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 try: paraview.simple
 except: from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
@@ -38,9 +39,11 @@ def svbSetup(geometryLevel=1,stage=0):
 	 that corresponds to the particular stage/timestep and render
 	"""
 	print "CALL svbSETUP"
+        returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0.0, 'tt_filter':0.0};
 #	datasetpath = whipple_data_dir+"//Whipple_Shield.exo.300.000"
 	datasetpath = os.path.join(whipple_data_dir,"Whipple_Shield.exo.300.000")
         print "datasetpath:%s" % datasetpath
+        st_reader = time.time()
 	if os.path.exists(datasetpath):
 		if os.access(datasetpath,os.R_OK):
 			Whipple_Shield_exo_300_010 = ExodusIIReader(FileName=[datasetpath])
@@ -50,10 +53,13 @@ def svbSetup(geometryLevel=1,stage=0):
 	else:
 		print "Dataset %s does not exist\n" % datasetpath
 		sys.exit()
-
+        
+        et_reader = time.time()
+        tt_reader = time.time()
 	global AnimationScene1 
 	global timesteps
-        returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
+        global tt_filter
+        returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0.0, 'tt_filter':0.0};
         
         
 	if stage == 0: #pipeline setup
@@ -100,7 +106,7 @@ def svbSetup(geometryLevel=1,stage=0):
 #		DataRepresentation2.ScaleFactor = 0.005079999938607216
 
 #		DataRepresentation1.Visibility = 0
-
+                st_filter1 = time.time()
 		Contour1 = Contour(Input=Whipple_Shield_exo_300_010)
 
 		Contour1.PointMergeMethod = "Uniform Binning"
@@ -109,9 +115,13 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		Contour1.Isosurfaces = [0.5]
 		Contour1.ContourBy = ['POINTS', 'VOLFRC2']
+                Contour1.UpdatePipeline()
+                et_filter1 = time.time()
+                tt_filter1 = (et_filter1 - st_filter1)
+                    
 
 		DataRepresentation3 = Show()
-		DataRepresentation3.ScaleFactor = 0.005079999938607216
+		#DataRepresentation3.ScaleFactor = 0.005079999938607216
 		DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 		DataRepresentation3.SelectionPointFieldDataArrayName = 'DENSITY'
 		DataRepresentation3.SelectionCellFieldDataArrayName = 'DENSITY'
@@ -119,6 +129,7 @@ def svbSetup(geometryLevel=1,stage=0):
 		SetActiveSource(CellDatatoPointData1)
 
 		#Contour2 = Contour( PointMergeMethod="Uniform Binning" )
+                st_filter2 = time.time()
 		Contour2 = Contour(Input=Whipple_Shield_exo_300_010 )
 
                 Contour2.PointMergeMethod = "Uniform Binning"
@@ -128,8 +139,13 @@ def svbSetup(geometryLevel=1,stage=0):
                 Contour2.Isosurfaces = [0.5]
                 Contour2.ContourBy = ['POINTS', 'VOLFRC1']
 
+                Contour2.UpdatePipeline()
+                et_filter2 = time.time()
+                tt_filter2 = (et_filter2 - st_filter2)
+                
+                tt_filter = tt_filter1 + tt_filter2
 		DataRepresentation4 = Show()
-		DataRepresentation4.ScaleFactor = 0.005079999938607216
+		#DataRepresentation4.ScaleFactor = 0.005079999938607216
 		DataRepresentation4.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 		DataRepresentation4.SelectionPointFieldDataArrayName = 'DENSITY'
 		DataRepresentation4.SelectionCellFieldDataArrayName = 'DENSITY'
@@ -145,6 +161,14 @@ def svbSetup(geometryLevel=1,stage=0):
 	RenderView1.CameraFocalPoint = [0.0006400393297762241, -0.008990028403178798, 0.0075681618661409275]
 	RenderView1.CameraParallelScale = 0.043921579808790676
         ResetCamera()
+        numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+        numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+        numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+
+        print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
+        print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
+        print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+        returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
         return returnVals
 
 
@@ -154,7 +178,7 @@ def svbSetup(geometryLevel=1,stage=0):
 # what timestep to render. 
 def svbGetStagesSize():
 	global timesteps
-	return 299
+	return 40
 	#uncomment next line to do the whole time series
 	#return len(timesteps);
 

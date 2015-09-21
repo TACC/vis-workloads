@@ -2,6 +2,7 @@ try: paraview.simple
 except: from paraview.simple import *
 import os
 import sys
+import time
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -21,29 +22,20 @@ fiu_data_dir =  path_vars["FIUDATA_DIR"]
 print "fiu_data_dir:%s" %  fiu_data_dir
 
 
-
-
-u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
-rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr")
-
-
 streamlineResults = []
 numberOfStreamlines = 1000
 
 # source - vector source
 # source2 - scalar source
 # time - time in animation, 0 - 1
-def createStreamlines(source, source2, time):
-  length = time*700.0
+def createStreamlines(source, source2, t):
+  length = t*700.0
   if (length < 0.5):
     return;
   SetActiveSource(source)
-
   RenderView1 = GetRenderView()
+  st_filter_streamline = time.time()
   StreamTracer1 = StreamTracer( SeedType="Point Source" )
-
-  RenderView1.CameraClippingRange = [1061.9371333317906, 2968.215646799765]
-
   StreamTracer1.SeedType.Center = [189.5, 189.5, 413.5]
   StreamTracer1.SeedType.Radius = 82.7
   StreamTracer1.Vectors = ['POINTS', 'ImageFile']
@@ -63,6 +55,13 @@ def createStreamlines(source, source2, time):
   a3_ImageFile_PVLookupTable.ScalarOpacityFunction = a3_ImageFile_PiecewiseFunction
   # """
 
+
+  RenderView1.CameraViewUp = [-0.6976752257395223, 0.7157372315836574, 0.031136710074581617]
+  RenderView1.CameraPosition = [198.095, 180.662, 902.466]
+  RenderView1.CameraFocalPoint = [179.604, 186.099, 263.144]
+  RenderView1.CameraClippingRange = [4.173792286478831, 4173.792286478831]
+
+  
   Tube1 = Tube()
 
   RenderView1.OrientationAxesVisibility = 0
@@ -88,32 +87,27 @@ def createStreamlines(source, source2, time):
 
   a3_ImageFile_PiecewiseFunction.Points = [0.0, 0.0, 0.5, 0.0, 0.01929037946667726, 1.0, 0.5, 0.0]
 
+  Tube1.UpdatePipeline()
+  StreamTracer1.UpdatePipeline()
+  et_filter_streamline = time.time() 
+  tt_filter_streamline = (et_filter_streamline-st_filter_streamline)
   DataRepresentation6 = Show()
+  
   #DataRepresentation6.ScaleFactor = 300.0
-  #DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
+  DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
   DataRepresentation6.LookupTable = a3_ImageFile_PVLookupTable
-  #ADB: Bizarre Suddenly May 21 at 3:00 stopped working because it couldn't find ImageFIle
   DataRepresentation6.ColorArrayName = 'ImageFile'
   SetActiveSource(source2)
-  originz = -800.0+(430.92--800.0)*time
+  originz = -800.0+(430.92--800.0)*t
 
-  #DataRepresentation1 = Show()
-  #DataRepresentation1.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  #DataRepresentation1.SelectionPointFieldDataArrayName = 'ImageFile'
-  #DataRepresentation1.ScalarOpacityUnitDistance = 2.0047589136882165
-  #DataRepresentation1.Representation = 'Outline'
-  #DataRepresentation1.ScaleFactor = 82.7
-
+  st_filter_contour = time.time()
+  Contour1 = Contour(Input=source2)
   Contour1 = Contour( PointMergeMethod="Uniform Binning" )
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'ImageFile']
   #Contour1.Isosurfaces = [0.503040273885536]
   Contour1.Isosurfaces = [0.3]
 
-  #DataRepresentation2 = Show()
-  #DataRepresentation2.ScaleFactor = 82.7
-  #DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 
   Clip1 = Clip( ClipType="Plane" )
 
@@ -130,20 +124,25 @@ def createStreamlines(source, source2, time):
   Clip1.ClipType.Normal = [0.69, 0.65, 0.3]
   # Show()
 
+  Contour1.UpdatePipeline()
+  Clip1.UpdatePipeline()
+  et_filter_contour = time.time()
+  tt_filter_contour = (et_filter_contour - st_filter_contour)
+
   DataRepresentation3 = Show()
   DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  #DataRepresentation3.SelectionPointFieldDataArrayName = 'Normals'
-  #DataRepresentation3.DiffuseColor = [1.0, 1.0, 1.0]
+  DataRepresentation3.SelectionPointFieldDataArrayName = 'Normals'
+  DataRepresentation3.DiffuseColor = [1.0, 1.0, 1.0]
   DataRepresentation3.DiffuseColor = [0.6823529411764706, 0.4627450980392157, 0.08627450980392157]
-  #DataRepresentation3.DiffuseColor = [0.7823529411764706, 0.4627450980392157, 0.08627450980392157]
-  #DataRepresentation3.ScalarOpacityUnitDistance = 4.932379654708959
+  DataRepresentation3.DiffuseColor = [0.7823529411764706, 0.4627450980392157, 0.08627450980392157]
+  DataRepresentation3.ScalarOpacityUnitDistance = 4.932379654708959
   #DataRepresentation3.ScaleFactor = 82.7
 
   #DataRepresentation2.Visibility = 0
 
   # writerIndex += 1
-
-  return {'slRepresentation':DataRepresentation6,'cRepresentation':DataRepresentation3}
+  tt_filter_streamall = tt_filter_contour + tt_filter_streamline
+  return {'slRepresentation':DataRepresentation6,'cRepresentation':DataRepresentation3,'tt_filter_streamall':tt_filter_streamall}
 
 
 
@@ -151,82 +150,36 @@ def svbGetStagesSize():
   return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
+  
+
+  global Contour1
+  #readers
+  global u_380x380x828_frame0010_subs00_nhdr
+  global rho_380x380x828_frame0010_subs00_nhdr
+
+  numCells = 0
+  numPolys = 0
+  numPoints = 0
+
+
+  if( stage ==0)
+    st_reader = time.time()
+    u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
+
+
+
+    rho_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/rho_380x380x828_frame0010_subs00.nhdr" )
+    rho_380x380x828_frame0010_subs00_nhdr.UpdatePipeline()
+    u_380x380x828_frame0010_subs00_nhdr.UpdatePipeline()
+    et_reader = time.time()
+    tt_reader = (et_reader - st_reader)
+   
+
   RenderView1 = GetRenderView()
 
   AnimationScene1 = GetAnimationScene()
-  CameraAnimationCue1 = GetCameraTrack()
-  CameraAnimationCue1.Mode = 'Interpolate Camera'
 
-  TimeAnimationCue1 = GetTimeTrack()
-
-  KeyFrame3196 = CameraKeyFrame( FocalPathPoints=[189.45121002197266, 190.12999725341797, 416.1247253417969], FocalPoint=[286.0130337520959, 178.34157026957035, 157.68427564227449], PositionPathPoints=[189.45121002197266, 314.3047150387376, 719.0042288897554, 329.16238822864443, 412.99678271403013, 610.9747621113049, 415.5086449686611, 426.56131330679966, 428.5192039960692, 415.5086449686611, 349.81711717204604, 241.3293763077366, 329.1623882286443, 212.07786879395684, 120.90543087501385, 189.4512100219726, 65.95527946809835, 113.24522179383854, 49.740031815300966, -32.73678820719408, 221.27468857228894, -36.60622492471566, -46.30131879996361, 403.7302466875246, -36.606224924715576, 30.442877334789983, 590.9200743758572, 49.74003181530114, 168.1821257128791, 711.3440198085798], ClosedPositionPath=1, Position=[225.4620337520957, 327.54657026957045, 672.7672756422737], ViewUp=[-0.6875730560667721, 0.6718440547841821, -0.27544302246045105] )
-
-  KeyFrame3197 = CameraKeyFrame( Position=[225.4620337520957, 327.54657026957045, 672.7672756422737], ViewUp=[-0.6875730560667721, 0.6718440547841821, -0.27544302246045105], KeyTime=0.6, FocalPoint=[286.0130337520959, 178.34157026957035, 157.68427564227449] )
-  #KeyFrame3197 = CameraKeyFrame( Position=[225.4620337520957, 327.54657026957045, 672.7672756422737], ViewUp=[-0.6875730560667721, 0.6718440547841821, -0.27544302246045105], KeyTime=1.0, FocalPoint=[286.0130337520959, 178.34157026957035, 157.68427564227449] )
-
-  #KeyFrame3196 = CameraKeyFrame( FocalPathPoints=[189.45121002197266, 190.12999725341797, 416.1247253417969], FocalPoint=[286.0130337520959, 178.34157026957035, 157.68427564227449], PositionPathPoints=[189.45121002197266, 314.3047150387376, 719.0042288897554, 329.16238822864443, 412.99678271403013, 610.9747621113049, 415.5086449686611, 426.56131330679966, 428.5192039960692, 415.5086449686611, 349.81711717204604, 241.3293763077366, 329.1623882286443, 212.07786879395684, 120.90543087501385, 189.4512100219726, 65.95527946809835, 113.24522179383854, 49.740031815300966, -32.73678820719408, 221.27468857228894, -36.60622492471566, -46.30131879996361, 403.7302466875246, -36.606224924715576, 30.442877334789983, 590.9200743758572, 49.74003181530114, 168.1821257128791, 711.3440198085798], ClosedPositionPath=1, Position=[225.4620337520957, 327.54657026957045, 672.7672756422737], ViewUp=[-0.6875730560667721, 0.6718440547841821, -0.27544302246045105] )
-
-  #KeyFrame3197 = CameraKeyFrame( Position=[225.4620337520957, 327.54657026957045, 672.7672756422737], ViewUp=[-0.6875730560667721, 0.6718440547841821, -0.27544302246045105], KeyTime=1.0, FocalPoint=[286.0130337520959, 178.34157026957035, 157.68427564227449] )
-
-  RenderView1.CameraFocalPoint = [286.0130337520959, 178.34157026957035, 157.68427564227449]
-  RenderView1.CameraClippingRange = [4.7891677655235645, 4789.167765523564]
-  RenderView1.CameraPosition = [225.4620337520957, 327.54657026957045, 672.7672756422737]
-
-
-  CameraAnimationCue1.KeyFrames = [ KeyFrame3196, KeyFrame3197 ]
-
-  RenderView1.CameraViewUp = [-0.6976752257395223, 0.7157372315836574, 0.031136710074581617]
-  RenderView1.CameraPosition = [198.095, 180.662, 802.466]
-  RenderView1.CameraFocalPoint = [179.604, 186.099, 263.144]
-  RenderView1.CameraClippingRange = [4.173792286478831, 4173.792286478831]
-
-  #KeyFrame3196.Position = [225.462, 327.547, 672.767]
-  #KeyFrame3196.ViewUp = [-0.687573, 0.671844, -0.275443]
-  #KeyFrame3196.FocalPoint = [286.013, 178.342, 157.684]
-  #KeyFrame3196.ViewAngle = 30.0
-
-  #KeyFrame3196.Position = [213.457, 315.566, 707.492]
-  #KeyFrame3196.ViewUp = [-0.687573, 0.671844, -0.275443]
-  #KeyFrame3196.FocalPoint = [272.785, 168.755, 192.033]
-  #KeyFrame3196.ViewAngle = 30.0
-
-  KeyFrame3196.Position = [219.457, 279.266, 581.192]
-  KeyFrame3196.ViewUp = [-0.687573, 0.671844, -0.275443]
-  KeyFrame3196.FocalPoint = [278.785, 132.755, 65.033]
-  KeyFrame3196.ViewAngle = 60.0
-
-  #KeyFrame3197.Position = [225.462, 327.547, 672.767]
-  #KeyFrame3197.ViewUp = [-0.687573, 0.671844, -0.275443]
-  #KeyFrame3197.FocalPoint = [286.013, 178.342, 157.684]
-  #KeyFrame3197.ViewAngle = 30.0
-
-  KeyFrame3197.Position = [225.462, 327.547, 672.767]
-  KeyFrame3197.ViewUp = [-0.687573, 0.671844, -0.275443]
-  KeyFrame3197.FocalPoint = [286.013, 178.342, 157.684]
-  KeyFrame3197.ViewAngle = 50.0
-
-  KeyFrame3197.Position = [198.095, 180.662, 802.466]
-  KeyFrame3197.ViewUp = [-0.697675, 0.715737, 0.0311367]
-  KeyFrame3197.FocalPoint = [179.604, 186.099, 263.144]
-
-  AnimationScene1.AnimationTime = 0.0
   AnimationScene1.Caching = 0
-
-
-  # KeyFrameAnimationCue1 = GetAnimationTrack( 'MaximumPropagation' )
-
-  # KeyFrame3231 = CompositeKeyFrame()
-
-  # KeyFrame3232 = CompositeKeyFrame( KeyTime=1.0, KeyValues=[700.0] )
-  # KeyFrameAnimationCue1.KeyFrames = [ KeyFrame3231, KeyFrame3232 ]
-
-  RenderView1.CameraViewUp = [-0.687573056066772, 0.671844054784182, -0.27544302246045127]
-  RenderView1.CacheKey = 1.0
-  RenderView1.CameraPosition = [225.462, 327.547, 672.767]
-  RenderView1.CameraClippingRange = [4.789167518263233, 4789.167518263233]
-  RenderView1.ViewTime = 0.0
-  RenderView1.UseCache = 0
-  RenderView1.CameraFocalPoint = [286.013, 178.342, 157.684]
 
   #try:
     #parser = PassThroughOptionParser()
@@ -271,14 +224,11 @@ def svbSetup(geometryLevel=1, stage=0):
   if geometryLevel < 2:
     useContour = False
 
-  numCells = 0
-  numPolys = 0 
-  numPoints = 0
 
-
-  #streamlineResults = []
+    #streamlineResults = []
   streamIndex = 0
   i=stage
+  tt_filter_all = -1
   frames = svbGetStagesSize()
   AnimationScene1.AnimationTime = 0.0
   print "animation frame " + str(i+1) + "/" + str(frames)
@@ -292,7 +242,10 @@ def svbSetup(geometryLevel=1, stage=0):
       streamlineResults[(streamIndex-1)%len(streamlineResults)]['cRepresentation'].Visibility = 0
     streamlineResults[streamIndex]['slRepresentation'].Visibility = 1
     streamlineResults[streamIndex]['cRepresentation'].Visibility = 1
+    tt_filter_all = streamlineResults[streamIndex]['tt_filter_streamall']
     streamIndex+=1
+  
+  print 'tt_filter_all: ' + str(tt_filter_all)
   AnimationScene1.AnimationTime = lerp
 
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
@@ -302,6 +255,10 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+
+
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter_all};
+  return returnVals
   
 
 def svbRender():

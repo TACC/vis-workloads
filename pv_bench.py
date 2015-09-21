@@ -105,6 +105,7 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
 
 #write_data = options.write_data
 source = options.source
+geo = options.geoLevel
 plugin_osp = options.osp
 plugin_vbo = options.vbo
 geometryLevel = options.geoLevel
@@ -117,7 +118,6 @@ save_images = options.save_images
 framecnt = 0 # framecount is used to name saved files
 use_immediate = 0
 immediatemode = options.immediatemode
-num_runs = options.numruns
 num_runs = options.numruns
 
 if (plugin_vbo):
@@ -277,7 +277,6 @@ for stage in range(numStages):
 
 
   cam = GetActiveCamera()
-  start_time = time.time()
   for i in range(0,num_runs):
     #move the camera for static datasets
     #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
@@ -285,6 +284,9 @@ for stage in range(numStages):
 	   frac=0.1
     elif animateCamera == True:
         frac = float(i)/float(num_runs)
+        print "frac: " + str(frac)
+        print "cam.Azimuth: " + str(azimuth)
+        print "cam.Dolly: " + str(dolly)
         if (frac < .2):
           pass
         elif (frac < .4):
@@ -317,7 +319,7 @@ for stage in range(numStages):
 
     #print "frame Render: " + str(tt)
     if save_images != "":
-       file = save_images + '%s_%05d.jpg' % (source, framecnt)
+       file = save_images + '%s_%d_%05d.jpg' % (source, geo, framecnt)
        WriteImage(file)
        print "saved image: " + file
        framecnt += 1
@@ -335,6 +337,7 @@ for stage in range(numStages):
   #benchmark.print_logs()
 
   fps = float(num_runs)/(end_time-start_time);
+  print "fps: " +str(fps)
   print "times: "
   print times
   #results = parseTimings(times)

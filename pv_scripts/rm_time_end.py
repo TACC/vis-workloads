@@ -90,13 +90,13 @@ def svbSetup(geometryLevel=1, stage=0):
   #cam.Elevation(65)
   #cam.Azimuth(-20)
 
-  #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-  #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-  #numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+  numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+  numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+  numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-  #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-  #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-  #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+  print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
+  print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
+  print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
   adj=stage+263
   AnimationScene1.AnimationTime = timesteps[adj]

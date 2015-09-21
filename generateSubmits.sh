@@ -31,7 +31,7 @@ function processBench {
     dataSource=$5
     account=$6
     if [ $renderer == "swr" ]; then
-       NAME=d${dataSource}_r${renderer}14_t${tri}_N${node}_n${proc}
+       NAME=d${dataSource}_r${renderer}_t${tri}_N${node}_n${proc}
     else
        NAME=d${dataSource}_r${renderer}_t${tri}_N${node}_n${proc}
     fi
@@ -78,6 +78,14 @@ function processBench {
     elif [ $dataSource == "rm" ]; then
           NUM_RUNS=10
     elif [ $dataSource == "dns" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "dns_vol" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "dns_2048" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "geo" ]; then
+          NUM_RUNS=10
+    elif [ $dataSource == "molecule" ]; then
           NUM_RUNS=10
     else
           NUM_RUNS=1
@@ -138,8 +146,9 @@ function processBench {
     if [ $renderer == "swr" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
+        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/swr/3.1/lib' >> ${FILE}
         echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
-        echo "module load swr/1.4" >> ${FILE}
+        echo "module load swr" >> ${FILE}
 
     fi
 
@@ -218,8 +227,9 @@ PRELOAD=""
 #
 # single node scaling
 #
-tris=( 0 1 2 3 5 6 )
-procs=( 1 2 8 10 16 20 )
+tris=( 1 2 3 4 5 6 7 8 9 )
+#tris=( 0 1 2 3 5 6 )
+procs=( 1 10 20 )
 nodes=( 1 2 4 8 16 32)
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 COUNT=0
@@ -265,13 +275,13 @@ if [ ${USE_RM} == "ON" ]; then
 fi
 
 if [ ${USE_RM_TIME} == "ON" ]; then
-        dataSources[$COUNT]="rm_time_end"
+        dataSources[$COUNT]="rm_time"
         COUNT=$((COUNT+1))
 fi
 
 
 if [ ${USE_DNS} == "ON" ]; then
-	dataSources[$COUNT]="dns"
+	dataSources[$COUNT]="dns_2048"
 	COUNT=$((COUNT+1))
 fi
 if [ ${USE_MOLECULE} == "ON" ]; then
@@ -310,7 +320,7 @@ if [ ${USE_RM_CLIPSWEEP} == "ON" ]; then
 fi
 
 if [ ${USE_DNS_ISOSWEEP} == "ON" ]; then
-        dataSources[$COUNT]="dns_isosweep_512"
+        dataSources[$COUNT]="dns_isosweep"
         COUNT=$((COUNT+1))
 fi
 

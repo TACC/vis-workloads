@@ -37,7 +37,7 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   global reader
 
-  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0.0, 'tt_filter':0.0};
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':True, 'tt_reader':0.0, 'tt_filter':0.0};
 
   numCells = 0
   numPolys = 0 
@@ -53,7 +53,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
   name = data_dir+"/u_"+str(numFiles*256)+'_pv.xmf'
   
-  #reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
+
   #reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
   reader = XDMFReader(FileNames=[name])
   reader.PointArrayStatus = ['dataset0']
@@ -113,14 +113,14 @@ def svbSetup(geometryLevel=1, stage=0):
   #cam.Elevation(65)
   #cam.Azimuth(-20)
 
-  numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-  numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-  numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+  #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+  #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+  #numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-  print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-  print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-  print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
+  #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
+  #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
+  #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 
 def svbRender():

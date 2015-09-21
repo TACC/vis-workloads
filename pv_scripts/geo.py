@@ -1,6 +1,7 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
+import time
 
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
@@ -30,9 +31,10 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells = 0
 	numPolys = 0 
 	numPoints = 0
-
+        returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
 	paraview.simple._DisableFirstRenderCameraReset()
         
+        st_reader = time.time()
         fname1 = "\'"+geo_data_dir+"/Top_Albian.obj"+"\'"
 	Top_Albian_obj = WavefrontOBJReader( FileName=fname1 )
 	RenderView1 = GetRenderView()
@@ -87,6 +89,8 @@ def svbSetup(geometryLevel=1, stage=0):
         
         fname5 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
 	Top_MTC_obj = WavefrontOBJReader( FileName=fname5 )
+        et_reader = time.time()
+        tt_reader = (et_reader-st_reader)
 
 	DataRepresentation6 = Show()
 	DataRepresentation6.ScaleFactor = 4129.846875
@@ -103,8 +107,9 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
+        
 	SetActiveSource(Seafloor_zap_asc_obj)
+        st_filter = time.time()
 	Transform1 = Transform( Transform="Transform" )
 
 	Transform1.Transform = "Transform"
@@ -114,6 +119,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
 	Transform1.Transform.Translate = [0.0, 0.0, -4000.0]
+        Transform1.UpdatePipeline()
 
 	DataRepresentation7 = Show()
 	DataRepresentation7.ScaleFactor = 5525.181250000001
@@ -136,6 +142,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
 	Transform2.Transform.Translate = [0.0, 0.0, -2000.0]
+        Transform2.UpdatePipeline()
 
 	DataRepresentation8 = Show()
 	DataRepresentation8.ScaleFactor = 4129.846875
@@ -160,7 +167,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
 	Transform3.Transform.Translate = [0.0, 0.0, 5000.0]
-
+        Transform3.UpdatePipeline()
 	DataRepresentation9 = Show()
 	DataRepresentation9.ScaleFactor = 3493.5687500000004
 	DataRepresentation9.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -172,13 +179,15 @@ def svbSetup(geometryLevel=1, stage=0):
 
 	SetActiveSource(Top_Albian_obj)
 	Transform4 = Transform( Transform="Transform" )
-
+        
 	Transform4.Transform = "Transform"
 
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
 	Transform4.Transform.Translate = [0.0, 0.0, 4000.0]
-
+        Transform4.UpdatePipeline()
+        et_filter = time.time()
+        tt_filter = (et_filter-st_filter)
 	DataRepresentation10 = Show()
 	DataRepresentation10.ScaleFactor = 4038.859375
 	DataRepresentation10.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -239,7 +248,8 @@ def svbSetup(geometryLevel=1, stage=0):
 	print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
 	print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-
+        returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
+        return returnVals
 
 def svbGetStagesSize():
 	return 1;

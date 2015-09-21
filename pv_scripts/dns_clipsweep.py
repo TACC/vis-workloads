@@ -48,11 +48,21 @@ def svbSetup(geometryLevel=1, stage=0):
 
   if (stage != 0):  
     #ResetCamera()
+    numCells = 0
+    numPolys = 0
+    numPoints = 0
     st_filter = time.time()
     Clip1.ClipType.Origin = [clipVal, clipVal, clipVal]
     Clip1.UpdatePipeline()
     et_filter = time.time()
     tt_filter = (et_filter - st_filter)
+    numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+    numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+    numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+
+    print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
+    print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
+    print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
     returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
 
@@ -127,13 +137,13 @@ def svbSetup(geometryLevel=1, stage=0):
   #cam.Elevation(65)
   #cam.Azimuth(-20)
 
-  #numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-  #numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-  #numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+  numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+  numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+  numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-  #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-  #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-  #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+  print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
+  print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
+  print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 

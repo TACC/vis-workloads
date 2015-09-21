@@ -1,6 +1,7 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
+import time
 
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
@@ -27,13 +28,18 @@ def svbSetup(geometryLevel=1, stage=0):
   numPoints = 0
   paraview.simple._DisableFirstRenderCameraReset()
 
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
   print "about to load OBJ"
-  fname = "\'"+mol_data_dir+"/bacteriophage_ribbons.obj"+"\'"
-  a4RHV_ribbons_obj = WavefrontOBJReader( FileName=fname )
+  st_obj_reader = time.time()
+  fname = "\'"+mol_data_dir+"/bacteriaphage_ribbons.obj"+"\'"
+  #a4RHV_ribbons_obj = WavefrontOBJReader( FileName=fname )
+  a4RHV_ribbons_obj = WavefrontOBJReader( FileName='/work/00401/pnav/workloads/molecule/bacteriaphage_ribbons.obj')
+  et_obj_reader = time.time()
+  tt_obj_reader = (et_obj_reader-st_obj_reader)
 
   RenderView1 = GetRenderView()
   RenderView1.CenterOfRotation = [77.85100555419922, 193.92295455932617, 40.27460050582886]
-
+  
   DataRepresentation1 = Show()
   DataRepresentation1.ScaleFactor = 45.73679962158204
   DataRepresentation1.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -47,9 +53,17 @@ def svbSetup(geometryLevel=1, stage=0):
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
   
   print "about to load PDB"
+  st_pdb_reader = time.time()
   fname = "\'"+mol_data_dir+"/1VRI.pdb"+"\'"
-  a4RHV_pdb = PDBReader( FileName=fname )
+  #a4RHV_pdb = PDBReader( FileName=fname )
+  a4RHV_pdb = PDBReader( FileName='/work/00401/pnav/workloads/molecule/1VRI.pdb')
+  
+  a4RHV_pdb.UpdatePipeline()
+  et_pdb_reader = time.time()
+  tt_pdb_reader = (et_pdb_reader-st_pdb_reader)
 
+  tt_reader = (tt_pdb_reader+tt_obj_reader)
+  
   DataRepresentation6 = Show()
   DataRepresentation6.EdgeColor = [0.0, 0.0, 0.5000076295109483]
   DataRepresentation6.SelectionPointFieldDataArrayName = 'rgb_colors'
@@ -73,7 +87,8 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':0};
+  return returnVals
 
 def svbGetStagesSize():
   return 1;

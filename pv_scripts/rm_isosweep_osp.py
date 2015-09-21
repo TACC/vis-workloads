@@ -1,6 +1,7 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
+import time
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -34,7 +35,7 @@ def svbSetup(geometryLevel=1, stage=0):
   global ospIso
   global reader
 
-  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False};
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':0};
 
   valRanges = [0,200]
   valRange = valRanges[1]-valRanges[0]
@@ -48,21 +49,37 @@ def svbSetup(geometryLevel=1, stage=0):
   print "isosweep vals: " + str(isovals)
 
   if (stage != 0):
+    st_filter = time.time()
     ospIso.Isosurfaces = isovals
+    et_filter = time.time()
+    tt_filter = et_filter-st_filter
+    returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
 
   print "h"
   print(rm_data_dir+"/rm_0273.nhdr")
     
   if (geometryLevel == 0):
+    st_reader = time.time()
     reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
+    reader.UpdatePipeline()
+    et_reader = time.time()
+    tt_reader = time.time()
   else:
+    st_reader = time.time()
     reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0273.xmf'])
+    reader.UpdatePipeline()
+    et_reader = time.time()
+    tt_reader = (et_reader-st_reader)
     #reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   lut = imageFileLUT = GetColorTransferFunction('ImageFile')
 
+  st_filter = time.time()
   ospIso = ospIsosurface(Input=reader)
   ospIso.Isosurfaces = isovals
+  ospIso.UpdatePipeline()
+  et_filter = time.time()
+  tt_filter = (et_filter-st_filter)
 
   rep = Show()
   rep.ColorArrayName = ['POINTS','ImageFile']
@@ -77,7 +94,7 @@ def svbSetup(geometryLevel=1, stage=0):
   renderView1.CameraParallelScale = 220.83647796503186
   renderView1.Background = [1,1,1]
   ResetCamera()
-
+  returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 
 def svbRender():

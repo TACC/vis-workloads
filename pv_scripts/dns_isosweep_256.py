@@ -59,26 +59,8 @@ def svbSetup(geometryLevel=1, stage=0):
 
   if (stage != 0):  
     #ResetCamera()
-    numCells = 0
-    numPolys = 0
-    numPoints = 0
-    tt_filter=0
-    #ResetCamera()
-    st_filter = time.time()
     Contour1.Isosurfaces = isovals
-    Contour1.UpdatePipeline()
-    et_filter = time.time()
-    tt_filter = (et_filter-st_filter)
-    numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-    numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-    numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-
-    print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
-    print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
-    print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-
-    returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
-    return returnVals;
+    #return returnVals;
 
   numCells = 0
   numPolys = 0 
@@ -87,9 +69,9 @@ def svbSetup(geometryLevel=1, stage=0):
   st_reader = time.time() 
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
-  reader = XDMFReader( FileNames='/work/00401/pnav/workloads/dns-subsets/u_512_pv.xmf')
+  reader = XDMFReader( FileName='/work/00401/pnav/workloads/dns-subsets/u_256_pv.xmf')
   # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])  
-  #reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
+  reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
   reader.PointArrayStatus = ['dataset0']
   reader.GridStatus = ['Grid_2']
   reader.UpdatePipeline()

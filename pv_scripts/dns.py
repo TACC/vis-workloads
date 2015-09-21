@@ -1,7 +1,6 @@
 try: paraview.simple
 except: from paraview.simple import *
 import os
-import sys
 import time
 
 #read in paths from the environment variables bash script generate by cmake
@@ -10,100 +9,123 @@ pathsfile = os.path.join(dir,'paths.sh')
 path_vars = dict()
 
 with open(pathsfile) as f:
-    print f
+    #print f
     next(f)
     for line in f:
-        print line
+        #print line
         eq_index = line.find('=')
         var_name = line[:eq_index].strip()
         paths = line[eq_index + 1:].strip()
         path_vars[var_name] = paths
 
-dns_data_dir =  path_vars["DNSDATA_DIR"]
-print "dns_data_dir:%s" %  dns_data_dir
+data_dir =  path_vars["DNSDATA_DIR"]
+print "data_dir:%s" %  data_dir
 
+def drange(start,stop,step):
+  vals = []
+  v = start
+  while v < stop:
+    vals.append(v)
+    v+=step
+  return vals
+
+global Contour1
+global reader
 
 def svbGetStagesSize():
   return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
-  global dns_xmf
+  global reader
+
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
+
+  valRanges = [-0.03,1.26]
+  # valRange = valRanges[1]-valRanges[0]
+  # val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
+  #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
+
+  valRanges = [-0.03,0.8]
+  valRange = valRanges[1]-valRanges[0]
+  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
+ 
+  if (geometryLevel == 0):
+    isovals = [val]
+  else:
+    isovals = drange(val,val+.46,.46/float(geometryLevel))
+    isovals = isovals[:geometryLevel]
+  print "isosweep vals: " + str(isovals)
+
+  if (stage != 0):  
+    #ResetCamera()
+    st_filter = time.time()
+    Contour1.Isosurfaces = isovals
+    Contour1.UpdatePipeline()
+    et_filter = time.time()
+    tt_filter = (et_filter-st_filter)
+    returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':tt_filter};
+    return returnVals;
 
   numCells = 0
   numPolys = 0 
   numPoints = 0
-  numFiles=geometryLevel
-  #name=dns_data_dir+"u_10000.xdmf"
-  #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
-  name = dns_data_dir+"/u_"+str(numFiles*256)+'.xmf'
-  #name = dns_data_dir+"/u_1024_pv.xmf"
-  print "name: %s" % name
 
-  st_reader = time.time()
-  #dns_xmf = XDMFReader( FileName=name )
-  #dns_xmf = XDMFReader(FileNames=[dns_data_dir + '/u_0032_pv.xmf'])
-  dns_xmf = XDMFReader(FileNames=[dns_data_dir + '/u_1024_pv.xmf'])
- 
-  dns_xmf.PointArrayStatus = ['dataset0']
-  dns_xmf.GridStatus = ['Grid_2']
-  dns_xmf.UpdatePipeline()
+  st_reader = time.time() 
+  #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
+  # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
+  # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
+  # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])  
+  reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
+  reader.PointArrayStatus = ['dataset0']
+  reader.GridStatus = ['Grid_2']
+  reader.UpdatePipeline()
   et_reader = time.time()
-  tt_reader = (et_reader - st_reader)
+  tt_reader = et_reader - st_reader
+  st_filter = time.time() 
+  Contour1 = Contour(Input=reader)
+   
+  Contour1.PointMergeMethod = "Uniform Binning"
+  Contour1.ContourBy = ['POINTS', 'dataset0']
+  #data range for smaller 32 is -.0299 to 1.268
+  Contour1.Isosurfaces = isovals
+  Contour1.ComputeNormals = 1
+  Contour1.ComputeScalars = 1
 
-  RenderView1 = GetRenderView()
-  #RenderView1.CenterOfRotation = [1.5, 3839.0, 5119.0]
-
-  #DataRepresentation1 = Show()
-  #DataRepresentation1.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-  #DataRepresentation1.Slice = 5119
-  #DataRepresentation1.SelectionPointFieldDataArrayName = 'RTData'
-  #DataRepresentation1.ScalarOpacityUnitDistance = 20.713499280232124
-  #DataRepresentation1.Representation = 'Outline'
-  #DataRepresentation1.ScaleFactor = 1023.8000000000001
-
-  RenderView1.CameraPosition = [3288.9337054286098, 3838.9999999999995, 29621.745437756035]
-  RenderView1.CameraViewUp = [0.0, 1.0, 0.0]
-  RenderView1.CameraFocalPoint = [1.4999999999999774, 3838.9999999999995, 5119.0]
-  RenderView1.CameraClippingRange = [14378.327142273009, 37802.84573819896]
-  RenderView1.CameraParallelScale = 6398.600178945392
-
-  #contourPoints = [.8,.95,1.05,1.15]
-  contourPoints = [.8]
-  #contourColors = [[.01,.12,.22],[.3,.39,.55],[.5,.24,.8],[.83,.57,.42]]
-  contourColors = [[.01,.17,.29],[.34,.53,.70],[.56,.7,.77],[.46,.24,.08],[1,.8,.46],[1,.89,.72]]
-  st_filter = time.time()
-  for j in range(0,len(contourPoints)):
-    SetActiveSource(dns_xmf)
-    print "adding contour " + str(contourPoints[j]) + " color " + str(contourColors[j])
-    st_filter = time.time()
-    Contour1 = Contour(Input=dns_xmf)
-    Contour1 = Contour( PointMergeMethod="Uniform Binning" )
-    Contour1.PointMergeMethod = "Uniform Binning"
-    Contour1.ContourBy = ['POINTS', 'RTData']
-    Contour1.Isosurfaces = [contourPoints[j]]
-    Contour1.UpdatePipeline()
-
-    
-    cDataRepresentation2 = Show()
-    #cDataRepresentation2.ScaleFactor = 968.4097045898438
-    #cDataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-    #DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-    cDataRepresentation2.DiffuseColor = contourColors[j]
-    numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
-    numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
-    numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+  lut = imageFileLUT = GetColorTransferFunction('dataset0')
+  lut.RescaleTransferFunction(-.03,1.26)
+  Contour1.UpdatePipeline()
   et_filter = time.time()
   tt_filter = (et_filter - st_filter)
+  rep = Show()
+  rep.LookupTable = lut
+  #DataRepresentation2.ScaleFactor = 25.5
+  # DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
+  rep.SetRepresentationType('Surface')
+  rep.ColorArrayName = ['POINTS','dataset0']
+  #DataRepresentation2.ColorArrayName = ['POINTS', '']
+  
   ResetCamera()
-  cam = GetActiveCamera()
-  cam.Elevation(65)
-  cam.Azimuth(-20)
+  renderView1 = GetActiveView()  
+  renderView1.Background = [1,1,1]
+  renderView1.CameraPosition = [5630.224162601005, -6026.47810866812, 6733.205518587123]
+  renderView1.CameraFocalPoint = [336.5950056411767, 3593.3184025734727, 534.8053287858077]
+  renderView1.CameraViewUp = [-0.08525959200958713, 0.5060899960109523, 0.8582562076140161]
+  renderView1.CameraParallelScale = 3948.7274848994075
+  ResetCamera()
+  #cam = GetActiveCamera()
+  #cam.Roll(90)
+  #cam.Elevation(65)
+  #cam.Azimuth(-20)
 
-  returnVals = {'azimuth':90, 'dolly':3.0, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
+  numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
+  numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
+  numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
+
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 
 def svbRender():
