@@ -39,10 +39,18 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h3>
-<a id="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>SVBench: Scientific Visualization Benchmarking Suite</h3>
+<a id="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting SVBench</h3>
 
-<p>The SVBench benchmark suite is designed to examine visualization processes on a diverse set of system configurations and has the flexibility to evaluate and steer the evolution of system configurations. The front-end to the benchmark suite is a set of scripts that generate batch job submission scripts, parsing scripts, and graph generation scripts.  The benchmark suite is straightforward to update as it consists of a set of bash and python scripts which interact with python modules that either directly use system timing information or application logs to extract the pertinent information. Paraview was selected as the primary benchmark applications as it is able to analyze extremely large datasets using distributed memory computing resources across scientific disciplines.  Some scientific disciplines use specialized software for visualization and the benchmark suite can be extended to also include these applications where appropriate. For example, molecular science research account for a quarter of TACC research projects, but Paravew and VisIt do not have tools to represent protein secondary structure, and are therefore not typically used for molecular visualization of proteins. To meet the needs of this research community, the benchmark suite also includes the most commonly used application for molecular science visualization, VMD.</p>
+<p>
+<ul> 
+<li><a href="http://www.paraview.org/download/">Download Paraview</a> (the scripts should work for Paraview 4.3 and above Linux and Mac), for pvOSPRAY and SWR benchmarks please download Paraview 5.0 or follow instructions i
+<a href="http://tacc.github.io/pvOSPRay/getting_pvospray.html"i>here</a></li>
+<li>Get the benchmark suite scripts<code>git clone stampede.tacc.utexas.edu:/work/01336/carson/git/svb.git svb</code></li>
+<li><i>Follow the instructions in the README for detailed instructions</i></li>
+<li>You will need to run cmake or edit paths.sh directly to indicate</li>
+</ul>
 
+</p>
 <h3>
 <a id="motivation" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h3>
 
@@ -51,15 +59,6 @@
 The goal of this benchmark suite is to capture "typical" visualization use-cases across a variety of disciplines, and also to design a series of performance tests that allow useful metrics to be extracted from each visualization workflow. To narrow down the wide-variety of visualization tasks that might be used for a particular field of science, a survey of TACC usage statistics was used to prioritize research areas and select workflows that are representative of the research field as a whole.
 </p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">SVBench maintained by <a href="https://github.com/TACC">TACC</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
 
   </body>
 </html>
