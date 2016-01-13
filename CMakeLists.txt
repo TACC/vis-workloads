@@ -34,16 +34,14 @@ SET(output_DIR ${PROJECT_SOURCE_DIR}/benchmarks CACHE STRING "output directory")
 # place. if not do something like module load paraview to get the paths
 # correctly set. If paraview is not found nothing will run. 
 #
-find_file(PV_FINDO NAMES pvbatch)
+find_file(PV_FINDO NAMES pvbatch pvpython)  #CARSON TODO: be able to use pvpython or pvbatch
 if(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
-	MESSAGE(SEND_ERROR "pvbatch not found " )
+	MESSAGE("pvbatch not found " )
 endif(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
 get_filename_component(PV_FIND ${PV_FINDO} PATH)
 SET(ParaView_DIR ${PV_FIND} CACHE STRING "root SVB directory")
-SET(pvOSPRay_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
-SET(pvVBO_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
-
-
+SET(pvOSPRay_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
+SET(pvVBO_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
 
 #
 #tachyon (will update this to find the tachyon binary as above)
@@ -52,9 +50,6 @@ SET(pvVBO_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
 SET(TACHYONBIN ${TACHYONBIN} CACHE STRING "Tachyon renderer")
 SET(TACHYONDATA ${TACHYONDATA} CACHE STRING "Tachyon datafile")
 SET(TACHYONDATA_DIR ${TACHYONDATAi_DIR} CACHE STRING "Tachyon directorya")
-
-
-
 
 #
 #wrf plugin
@@ -115,13 +110,15 @@ SET(ROOT_IMAGE_DIR ${ROOT_IMAGE_DIR} CACHE STRING "root image dir")
 #
 # Where the data is
 #
+if (USE_GEO)
 find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /work/00401/pnav/workloads/geo)
 if(${GEODATA} MATCHES "GEODATA-NOTFOUND")
 	set(GEODATA_DIR "GEODATA_DIR-NOTFOUND" CACHE PATH "geo data directory")
-	MESSAGE(SEND_ERROR "geo data not found " )
+	MESSAGE(WARNING "geo data not found " )
 endif(${GEODATA} MATCHES "GEODATA-NOTFOUND")
 get_filename_component(GEODATAD ${GEODATA} PATH)
 set(GEODATA_DIR ${GEODATAD} CACHE PATH "geo data directory")
+endif (USE_GEO)
 
 find_file(MOLDATA NAMES 1VRI.pdb PATHS /work/01891/adb/molecule_benchmark)
 if(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
@@ -187,6 +184,7 @@ if(NOT MPI_COMMAND)
 	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
 endif(NOT MPI_COMMAND)
 
+set(ENV_COMMAND "" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
 #
 # if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
 # look in the directory where this file is for the hosts file used with mpi
@@ -195,6 +193,10 @@ if(${MPI_COMMAND} MATCHES "mpirun")
 	find_file(HOSTFILE NAMES hosts PATHS $CMAKE_CURRENT_LIST_DIR )
 	set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
 endif(${MPI_COMMAND} MATCHES "mpirun")
+
+
+set(NumNodes "1" CACHE STRING "The number of nodes to use")
+set(NumProcs "1" CACHE STRING "The number of mpi processes per nodes to use")
 
 SET(PND \# CACHE INTERNAL STRING )
 FILE(REMOVE ${PROJECT_BINARY_DIR}/paths.sh)
@@ -245,8 +247,11 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "GENERATE_IMAGES=" ${GENERATE_IMAGES} \n
   "ROOT_IMAGE_DIR=" ${ROOT_IMAGE_DIR} \n
   "MPI_COMMAND=" ${MPI_COMMAND} \n
+  "ENV_COMMAND=" ${ENV_COMMAND} \n
   "HOSTFILE=" ${HOSTFILE} \n
   "RANKS_PER_HOST=" ${RANKS_PER_HOST} \n
+  "NumNodes="${NumNodes}\n
+  "NumProcs="${NumProcs}\n
   )
 
 

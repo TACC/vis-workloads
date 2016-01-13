@@ -12,12 +12,9 @@ mkdir $DIR/outs
 mkdir $DIR/submits
 mkdir $DIR/interactive
 
-
 if [ ${GENERATE_IMAGES} == "ON" ]; then
     mkdir  $IMAGE_DIR/images
 fi
-
-
 
 #rm $DIR/submits/*
 #rm $DIR/interactive/*
@@ -54,13 +51,6 @@ function processBench {
 #      fi
 #    fi
 #    fi
-
-
-
-
-
-
-
 
     DL_FLAG=""
 
@@ -109,7 +99,7 @@ function processBench {
     else
       PRELOAD=""
     fi
-    PRE_CMD=tacc_xrun
+    PRE_CMD=$ENV_COMMAND
     ENV_FLAGS=""
     PV_PLUGIN_FLAG=""
     if [ $renderer == vbo ]; then
@@ -130,10 +120,10 @@ function processBench {
     echo "date" >> ${FILE}
     #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
     #PARAVIEW=pvbatch
-    PARAVIEW=$ParaView_DIR/pvbatch
-    echo "module load qt" >> ${FILE}
-    echo "module load paraview/4.3.1" >> ${FILE}
-    PARAVIEW=pvbatch
+    PARAVIEW=$ParaView_DIR/bin/pvbatch
+    #echo "module load qt" >> ${FILE}
+    #echo "module load paraview/4.3.1" >> ${FILE}
+    #PARAVIEW=pvbatch
     echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
     if [ $renderer == "ospray" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
@@ -152,9 +142,6 @@ function processBench {
 
     fi
 
-    
-      
-
     if [ $renderer == "gluray" ]; then
       DL_FLAG=""
       PARAVIEW=pvbatch
@@ -162,7 +149,7 @@ function processBench {
     fi
     if [ $renderer == "vbo" ]; then
       DL_FLAG=""
-      PARAVIEW=$ParaView_DIR/pvbatch
+      PARAVIEW=$ParaView_DIR/bin/pvbatch
       ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvVBO_DIR"
     fi
 
@@ -219,18 +206,17 @@ function processTachyon {
 
 }
 
-
-
-
-
 PRELOAD=""
 #
 # single node scaling
 #
 tris=( 1 2 3 4 5 6 7 8 9 )
 #tris=( 0 1 2 3 5 6 )
-procs=( 1 10 20 )
-nodes=( 1 2 4 8 16 32)
+#procs=( 1 10 20 )
+numProcs="1 2"
+numNodes="1"
+procs=($numProcs)
+nodes=($numNodes)
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 COUNT=0
 if [ ${USE_SWR} == "ON" ]; then
@@ -356,12 +342,6 @@ do
   done
 done
 
-
-
-
-
-
-
 #
 # single node scaling
 #
@@ -382,7 +362,6 @@ done
 #PRELOAD=""
 #PRELOAD=""
 
-
 #for tri in "${tris[@]}";
 #do
 #  for node in "${nodes[@]}";
@@ -397,18 +376,12 @@ done
 #  done
 #done
 
-
-
-
-
 if [ ${USE_TACHYON} == "ON" ]; then
 
      nodes=( 1 2 4 8 16 32)     
      mkdir  $DIR/tachyon
       for node in "${nodes[@]}";
  	 do
-
      		processTachyon $node
-
           done
 fi

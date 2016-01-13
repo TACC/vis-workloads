@@ -67,8 +67,10 @@ def svbSetup(geometryLevel=1, stage=0):
     tt_reader = time.time()
   else:
     filename = rm_data_dir+ '/rm_0273.xmf'
+    #filename = rm_data_dir+ '/llnl__0270.hdr'
     st_reader = time.time()
     reader = XDMFReader(FileNames=[filename])
+    #reader = NrrdReader(FileName=filename)
     reader.UpdatePipeline()
     et_reader = time.time()
     tt_reader = (et_reader-st_reader)
