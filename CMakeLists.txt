@@ -96,7 +96,7 @@ set(USE_RM OFF CACHE BOOL "run the rm data")
 set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
 set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
 set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
-set(USE_TRUBULENCE OFF CACHE BOOL "run the turbulence data")
+set(USE_TURBULENCE OFF CACHE BOOL "run the turbulence data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
 set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
 set(USE_DNS_ISOSWEEP OFF CACHE BOOL "run the dns isosweep data")
@@ -182,7 +182,7 @@ get_filename_component(WRFDATAD ${WRFDATA} PATH)
 set(WRFDATA_DIR ${WRFDATAD} CACHE PATH "WRF data directory")
 
 
-set(TURBLUENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
+set(TURBULENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
 set(ENZODATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
 
 #

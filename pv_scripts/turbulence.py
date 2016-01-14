@@ -8,7 +8,20 @@ dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
 path_vars = dict()
 
+with open(pathsfile) as f:
+    #print f
+    next(f)
+    for line in f:
+        #print line
+        eq_index = line.find('=')
+        var_name = line[:eq_index].strip()
+        paths = line[eq_index + 1:].strip()
+        path_vars[var_name] = paths
+
+
 data_dir =  path_vars["TURBULENCEDATA_DIR"]
+#rm_data_dir =  path_vars["RMDATA_DIR"]
+#print "rm_data_dir:%s" %  rm_data_dir
 
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
@@ -19,7 +32,8 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   # find source
   #enstrophy_0016raw = FindSource('Enstrophy_0016.raw')
-  filename = data_dir + 'Enstrophy_0016.raw'
+  filename = data_dir + '/Enstrophy_0016.raw'
+  print "turbulence file:%s" % filename
   enstrophy_0016raw = ImageReader(FilePrefix=filename)
 
   # Properties modified on enstrophy_0016raw
