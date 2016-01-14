@@ -1,8 +1,0 @@
-Tue Jun 23 15:58:53 CDT 2015
-TACC: Starting up job 5433539
-TACC: Setting up parallel environment for MVAPICH2+mpispawn.
-TACC: Starting parallel tasks...
-TACC: MPI job exited with code: 134
- 
-TACC: Shutdown complete. Exiting.
-Tue Jun 23 15:58:57 CDT 2015
