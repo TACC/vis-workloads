@@ -69,6 +69,9 @@ parser = PassThroughOptionParser()
 parser.add_option("--osp",
                   action="store_true", dest="osp", default=False,
                   help="Use OSPRay plugin, default is No")
+parser.add_option("--ao",
+                  action="store_true", dest="use_ao", default=False,
+                  help="Use OSPRay plugin, default is No")
 parser.add_option("--vbo",
                   action="store_true", dest="vbo", default=False,
                   help="Use VBO plugin, default is NO")
@@ -107,6 +110,7 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
 source = options.source
 geo = options.geoLevel
 plugin_osp = options.osp
+use_ao = options.use_ao
 plugin_vbo = options.vbo
 geometryLevel = options.geoLevel
 fn = "/scratch1/patchett/daughton/global.vpc"
@@ -147,7 +151,11 @@ if (plugin_osp):
     #view.Threads = options.threads
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
-    view.EnableAO = 0
+    if use_ao:
+      view.EnableAO = 1
+    else:
+      view.EnableAO = 0
+
 
 try:
  if immediatemode == 1:
@@ -225,10 +233,14 @@ for stage in range(numStages):
   PrintMemoryUsage()
   azimuth = 90
   dolly = 2.0
+  azimuth=0
+  dolly=0
   animateCamera = True
+  tt_reader=-1
+  tt_filter=-1
   try:
-    azimuth = svbResults['azimuth']
-    dolly = svbResults['dolly']
+    #azimuth = svbResults['azimuth']
+    #dolly = svbResults['dolly']
     animateCamera = svbResults['animateCamera']
     tt_reader = svbResults['tt_reader']
     tt_filter = svbResults['tt_filter']
@@ -320,7 +332,8 @@ for stage in range(numStages):
     #print "frame Render: " + str(tt)
     if save_images != "":
        file = save_images + '%s_%d_%05d.jpg' % (source, geo, framecnt)
-       WriteImage(file)
+       #WriteImage(file)
+       SaveScreenshot(file)
        print "saved image: " + file
        framecnt += 1
 

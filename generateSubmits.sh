@@ -16,8 +16,8 @@ if [ ${GENERATE_IMAGES} == "ON" ]; then
     mkdir  $IMAGE_DIR/images
 fi
 
-#rm $DIR/submits/*
-#rm $DIR/interactive/*
+rm $DIR/submits/*
+rm $DIR/interactive/*
 PND="#"
 
 function processBench {
@@ -54,7 +54,9 @@ function processBench {
 
     DL_FLAG=""
 
+    if [ ${IMMEDIATEMODE} == "OM" ]; then
         DL_FLAG="--immediatemode"
+    fi
 
     IMG_FLAG=""
      
@@ -99,6 +101,7 @@ function processBench {
     else
       PRELOAD=""
     fi
+    PARAVIEW=$ParaView_DIR/bin/pvbatch
     PRE_CMD=$ENV_COMMAND
     ENV_FLAGS=""
     PV_PLUGIN_FLAG=""
@@ -106,10 +109,14 @@ function processBench {
       PV_PLUGIN_FLAG="--vbo"
     elif [ $renderer == "ospray" ]; then
       PV_PLUGIN_FLAG="--osp"
+    elif [ $renderer == "osprayao" ]; then
+      PV_PLUGIN_FLAG="--osp --ao"
     elif [ $renderer == "gluray" ]; then
       PRE_CMD="DISPLAY=:0.0"
     elif [ $renderer == "swr" ]; then
       PRE_CMD="DISPLAY=:0.0"
+    elif [ $renderer == "gpu2" ]; then
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
     fi
     if [ $renderer == "swrvbo" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
@@ -120,17 +127,15 @@ function processBench {
     echo "date" >> ${FILE}
     #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
     #PARAVIEW=pvbatch
-    PARAVIEW=$ParaView_DIR/bin/pvbatch
     #echo "module load qt" >> ${FILE}
     #echo "module load paraview/4.3.1" >> ${FILE}
     #PARAVIEW=pvbatch
     echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
-    if [ $renderer == "ospray" ]; then
+    if [ $renderer == "ospray" -o $renderer == "osprayao" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
         echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
         echo "module load pvospray" >> ${FILE}
-        
     fi
 
     if [ $renderer == "swr" ]; then
@@ -210,13 +215,11 @@ PRELOAD=""
 #
 # single node scaling
 #
-tris=( 1 2 3 4 5 6 7 8 9 )
+tris=( $GeometryLevels )
 #tris=( 0 1 2 3 5 6 )
 #procs=( 1 10 20 )
-numProcs="1 2"
-numNodes="1"
-procs=($numProcs)
-nodes=($numNodes)
+procs=($NumProcs)
+nodes=($NumNodes)
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 COUNT=0
 if [ ${USE_SWR} == "ON" ]; then
@@ -225,6 +228,10 @@ if [ ${USE_SWR} == "ON" ]; then
 fi
 if [ $USE_GPU == "ON" ]; then
 	renderers[$COUNT]="gpu"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_GPU2 == "ON" ]; then
+	renderers[$COUNT]="gpu2"
 	COUNT=$((COUNT+1))
 fi
 if [ $USE_GLURAY == "ON" ]; then
@@ -237,6 +244,10 @@ if [ $USE_VBO == "ON" ]; then
 fi
 if [ $USE_OSPRAY == "ON" ]; then
 	renderers[$COUNT]="ospray"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_OSPRAYAO == "ON" ]; then
+	renderers[$COUNT]="osprayao"
 	COUNT=$((COUNT+1))
 fi
 if [ $USE_SWRVBO == "ON" ]; then
@@ -259,7 +270,10 @@ if [ ${USE_RM} == "ON" ]; then
 	dataSources[$COUNT]="rm"
 	COUNT=$((COUNT+1))
 fi
-
+if [ ${USE_TURBULENCE} == "ON" ]; then
+	dataSources[$COUNT]="turbulence"
+	COUNT=$((COUNT+1))
+fi
 if [ ${USE_RM_TIME} == "ON" ]; then
         dataSources[$COUNT]="rm_time"
         COUNT=$((COUNT+1))
