@@ -266,8 +266,8 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "ENV_COMMAND=" ${ENV_COMMAND} \n
   "HOSTFILE=" ${HOSTFILE} \n
   "RANKS_PER_HOST=" ${RANKS_PER_HOST} \n
-  "NumNodes=\""${NumNodes}"\""\n
-  "NumProcs=\""${NumProcs}"\""\n
+  "NumNodes=\""${NumNodes}\"\n
+  "NumProcs=\""${NumProcs}\"\n
   "GeometryLevels="${GeometryLevels}\n
   )
 
