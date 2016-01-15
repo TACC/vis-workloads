@@ -6,7 +6,7 @@
 DIR=$output_DIR
 IMAGE_DIR=$ROOT_IMAGE_DIR
 
-NUM_RUNS=1
+NUM_RUNS=10
 mkdir $DIR
 mkdir $DIR/outs
 mkdir $DIR/submits
@@ -65,23 +65,21 @@ function processBench {
           IMG_FLAG="--save_images -i ${IMAGE_DIR}/images/"
     fi
     
-    if [ $dataSource == "fiu" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "rm" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns_vol" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns_2048" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "geo" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "molecule" ]; then
-          NUM_RUNS=10
-    else
-          NUM_RUNS=1
-    fi    
+    #if [ $dataSource == "fiu" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "rm" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns_vol" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns_2048" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "geo" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "molecule" ]; then
+    #      NUM_RUNS=10
+    #fi    
 
     echo "#SBATCH -p $queue " >> ${FILE}
     echo "#SBATCH -A $account " >> ${FILE}

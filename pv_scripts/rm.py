@@ -78,7 +78,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   print "reading file: " + filename
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
-  # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0202.xmf'])
+  # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0273.xmf'])
   # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )  
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
