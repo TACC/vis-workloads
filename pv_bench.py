@@ -43,7 +43,7 @@ def WarmupRender():
     print "#"
     print "Warmup..."
     print "#"
-    for i in range(0,10):
+    for i in range(0,3):
       if (i == 0):
         print "time to first frame: " + str(time.time()-start_time)
       warmup_st = time.time()
@@ -139,6 +139,11 @@ if (plugin_osp):
     # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
     #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+    try:
+      LoadPlugin(str(path_vars["ParaView_DIR"]) + "/lib/libpvOSPRay.so", True)
+    except:
+      print "Error could not load plugin!"
+      exit(0)
 
     print "loading ospray plugin"
     #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
@@ -147,7 +152,7 @@ if (plugin_osp):
     #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildMaverickICCRelease/lib/libOSPRayView.so", True)
     print "loaded ospray plugin"
     #view = paraview.simple._create_view("MantaBatchView")
-    view = CreateView("OSPRayView")
+    view = CreateView('OSPRayView')
     #view.Threads = options.threads
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
@@ -218,6 +223,9 @@ RenderView1.Background = [1,1,1]
 #Render()
 view = GetActiveView()
 view.ViewSize=windowsize
+view.LODThreshold = 9999999
+view.LODResolution = 1
+view.RemoteRenderThreshold = 9999999
 
 
 numStages = svbGetStagesSize()

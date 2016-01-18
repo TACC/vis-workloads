@@ -107,8 +107,10 @@ function processBench {
       PV_PLUGIN_FLAG="--vbo"
     elif [ $renderer == "ospray" ]; then
       PV_PLUGIN_FLAG="--osp"
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
     elif [ $renderer == "osprayao" ]; then
       PV_PLUGIN_FLAG="--osp --ao"
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
     elif [ $renderer == "gluray" ]; then
       PRE_CMD="DISPLAY=:0.0"
     elif [ $renderer == "swr" ]; then

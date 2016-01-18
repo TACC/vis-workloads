@@ -103,7 +103,7 @@ def svbSetup(geometryLevel=1, stage=0):
     et_reader = time.time()
     tt_reader = time.time()
   else:
-    filename = rm_data_dir+ '/rm_0202.xmf'
+    filename = rm_data_dir+ '/rm_0273.xmf'
     #filename = rm_data_dir+'/rm_0202.nhdr'
     print "reading file: " + filename
     st_reader = time.time()
@@ -208,3 +208,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
 def svbRender():
   Render()
+
+
+svbSetup()
+svbRender()
