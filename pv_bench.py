@@ -43,7 +43,7 @@ def WarmupRender():
     print "#"
     print "Warmup..."
     print "#"
-    for i in range(0,10):
+    for i in range(0,3):
       if (i == 0):
         print "time to first frame: " + str(time.time()-start_time)
       warmup_st = time.time()
@@ -132,15 +132,13 @@ if (plugin_vbo):
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 #adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
-    # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-
     print "loading ospray plugin"
-    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildStampedeICCDebug/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildMaverickICCRelease/lib/libOSPRayView.so", True)
+    try:
+        LoadPlugin(str(path_vars["ParaView_DIR"]) + "/lib/libpvOSPRay.so", True)
+    except:
+        print "Error could not load plugin!"
+        exit(0)
+
     print "loaded ospray plugin"
     #view = paraview.simple._create_view("MantaBatchView")
     view = CreateView("OSPRayView")
