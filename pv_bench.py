@@ -72,6 +72,12 @@ parser.add_option("--osp",
 parser.add_option("--vbo",
                   action="store_true", dest="vbo", default=False,
                   help="Use VBO plugin, default is NO")
+parser.add_option("--swr",
+                  action="store_true", dest="swr", default=False,
+                                    help="Use SWR plugin, default is NO")
+parser.add_option("--gluray",
+                  action="store_true", dest="gluray", default=False,
+                                                      help="Use GLURAY plugin, default is NO")
 parser.add_option("-i", "--save-images",
                   action="store", dest="save_images", type ="string", default="",
                   help="Save's images to <string> when set")
@@ -108,6 +114,8 @@ source = options.source
 geo = options.geoLevel
 plugin_osp = options.osp
 plugin_vbo = options.vbo
+plugin_swr = options.swr
+plugin_gluray = options.gluray
 geometryLevel = options.geoLevel
 fn = "/scratch1/patchett/daughton/global.vpc"
 winwidth=int(options.windowsize.split("x")[0])
@@ -119,7 +127,7 @@ framecnt = 0 # framecount is used to name saved files
 use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
-
+renderer = "gpu"
 if (plugin_vbo):
     #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
     #LoadPlugin("/scratch/01336/carson/intelTACC/pvPlugins/libVBOView.so", True)
@@ -128,13 +136,21 @@ if (plugin_vbo):
     view = CreateView("VBOView")
     #view.Threads = options.threads
     view.ViewSize =  windowsize
+    renderer="vbo"
+    
+if(plugin_swr):
+    renderer="swr" 
+if(plugin_gluray):
+    renderer="gluray"
+
+
 
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 #adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
     print "loading ospray plugin"
     try:
-        LoadPlugin(str(path_vars["ParaView_DIR"]) + "/lib/libpvOSPRay.so", True)
+        LoadPlugin(str(path_vars["pvOSPRay_DIR"]) + "/libpvOSPRay.so", True)
     except:
         print "Error could not load plugin!"
         exit(0)
@@ -146,6 +162,7 @@ if (plugin_osp):
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
     view.EnableAO = 0
+    renderer="osp"
 
 try:
  if immediatemode == 1:
@@ -317,7 +334,7 @@ for stage in range(numStages):
 
     #print "frame Render: " + str(tt)
     if save_images != "":
-       file = save_images + '%s_%d_%05d.jpg' % (source, geo, framecnt)
+       file = save_images + '%s_%s_%d_%05d.jpg' % (source, renderer, geo, framecnt)
        WriteImage(file)
        print "saved image: " + file
        framecnt += 1
