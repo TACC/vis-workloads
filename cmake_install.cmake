@@ -1,4 +1,4 @@
-# Install script for directory: /home/intel/paper-ospray/git/vis-workloads
+# Install script for directory: /work/01336/carson/git/vis-workloads
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/intel/paper-ospray/git/vis-workloads/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/work/01336/carson/git/vis-workloads/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/intel/paper-ospray/git/vis-workloads/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/work/01336/carson/git/vis-workloads/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
