@@ -39,23 +39,27 @@ def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global reader
 
-  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':False, 'tt_reader':0, 'tt_filter':0};
 
-  valRanges = [-0.03,1.26]
-  # valRange = valRanges[1]-valRanges[0]
-  # val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
-  #val = (float(stage)/float(svbGetStagesSize()))*valRange + valRanges[0]
-
-  valRanges = [-0.03,0.8]
-  valRange = valRanges[1]-valRanges[0]
-  val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
  
   if (geometryLevel == 0):
-    isovals = [val]
+    file_name = '/u_256_pv.xmf'
+  elif (geometryLevel == 1):
+    file_name = '/u_512_pv.xmf'
+  elif (geometryLevel == 2):
+    file_name = '/u_1024_pv.xmf'
+  elif (geometryLevel == 3):
+    file_name = '/u_2048_pv.xmf'
   else:
-    isovals = drange(val,val+.46,.46/float(geometryLevel))
-    isovals = isovals[:geometryLevel]
-  print "isosweep vals: " + str(isovals)
+    file_name = '/u_2048_pv.xmf'
+    
+    
+    
+
+  
+
+  isovals = [1]
+  print "isoval: " + str(isovals)
 
   if (stage != 0):  
     #ResetCamera()
@@ -64,7 +68,7 @@ def svbSetup(geometryLevel=1, stage=0):
     Contour1.UpdatePipeline()
     et_filter = time.time()
     tt_filter = (et_filter-st_filter)
-    returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':tt_filter};
+    returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
 
   numCells = 0
@@ -76,7 +80,7 @@ def svbSetup(geometryLevel=1, stage=0):
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
   # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])  
-  reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
+  reader = XDMFReader(FileNames=[data_dir + file_name])
   reader.PointArrayStatus = ['dataset0']
   reader.GridStatus = ['Grid_2']
   reader.UpdatePipeline()
@@ -125,7 +129,7 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter};
   return returnVals
 
 def svbRender():

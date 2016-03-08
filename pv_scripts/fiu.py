@@ -58,7 +58,7 @@ def svbSetup(geometryLevel=1, stage=0):
     #numStreamlines = 16000
   #if (geometryLevel == 6):
     #numStreamlines = 32000
-  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
+  returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':False, 'tt_reader':0, 'tt_filter':0};
   def computeStreamlines(x):
     return {
         0:10,
@@ -149,6 +149,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #DataRepresentation3.SelectionPointFieldDataArrayName = 'ImageFile'
  # DataRepresentation3.SelectionCellFieldDataArrayName = 'ReasonForTermination'
   DataRepresentation3.ColorArrayName = ('POINT_DATA','ImageFile')
+  DataRepresentation3.Representation = 'Surface'
   DataRepresentation3.LookupTable = a3_ImageFile_PVLookupTable
   #DataRepresentation3.ScaleFactor = 82.69024540111423
 
@@ -170,7 +171,6 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
   
   returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter_streamline};
-  return returnVals
   if (useContour):
     st_filter_contour = time.time()
     SetActiveSource(rho_380x380x828_frame0010_subs00_nhdr)
@@ -182,13 +182,13 @@ def svbSetup(geometryLevel=1, stage=0):
 
     Contour1.Isosurfaces = [0.3]
 
-    Countour1.UpdatePipeline()
+    Contour1.UpdatePipeline()
     et_filter_contour = time.time()
     tt_filter_contour = (et_filter_contour - st_filter_contour)
     DataRepresentation4 = Show()
 
-    #DataRepresentation4.ScaleFactor = 82.7
-    #DataRepresentation4.SelectionPointFieldDataArrayName = 'Normals'
+    DataRepresentation4.ScaleFactor = 82.7
+    DataRepresentation4.SelectionPointFieldDataArrayName = 'Normals'
 
 
     DataRepresentation4.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -208,7 +208,7 @@ def svbSetup(geometryLevel=1, stage=0):
     RenderView1.CameraClippingRange = [775.4151925055533, 3333.0640307903323]
 
     Clip1.ClipType.Normal = [0.7325209930676672, 0.663549941673441, 0.15203443563986424]
-    #DataRepresentation4.Visibility = 0
+    DataRepresentation4.Visibility = 0
     Clip1.InsideOut = 1
 
     Clip1.UpdatePipeline()
@@ -221,6 +221,7 @@ def svbSetup(geometryLevel=1, stage=0):
     DataRepresentation5.SelectionPointFieldDataArrayName = 'Normals'
     DataRepresentation5.EdgeColor = [0.0, 0.0, 0.5000076295109483]
     DataRepresentation5.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
+    DataRepresentation5.Representation = 'Surface'
 
 
     RenderView1.CameraClippingRange = [776.2726362511573, 3330.2827710502524]
@@ -251,9 +252,9 @@ def svbSetup(geometryLevel=1, stage=0):
     print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
     print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
 
-    tt_all = (tt_filter_streamlines + tt_filter_contour + tt_filter_clip)
+    tt_all = (tt_filter_streamline + tt_filter_contour + tt_filter_clip)
     cam = GetActiveCamera()
-    returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_all};
+    returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_all};
     return returnVals
 
 
