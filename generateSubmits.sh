@@ -6,18 +6,15 @@
 DIR=$output_DIR
 IMAGE_DIR=$ROOT_IMAGE_DIR
 
-NUM_RUNS=1
+NUM_RUNS=10
 mkdir $DIR
 mkdir $DIR/outs
 mkdir $DIR/submits
 mkdir $DIR/interactive
 
-
 if [ ${GENERATE_IMAGES} == "ON" ]; then
     mkdir  $IMAGE_DIR/images
 fi
-
-
 
 #rm $DIR/submits/*
 #rm $DIR/interactive/*
@@ -55,16 +52,11 @@ function processBench {
 #    fi
 #    fi
 
-
-
-
-
-
-
-
     DL_FLAG=""
 
+    if [ ${IMMEDIATEMODE} == "OM" ]; then
         DL_FLAG="--immediatemode"
+    fi
 
     IMG_FLAG=""
      
@@ -73,23 +65,21 @@ function processBench {
           IMG_FLAG="--save_images -i ${IMAGE_DIR}/images/"
     fi
     
-    if [ $dataSource == "fiu" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "rm" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns_vol" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "dns_2048" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "geo" ]; then
-          NUM_RUNS=10
-    elif [ $dataSource == "molecule" ]; then
-          NUM_RUNS=10
-    else
-          NUM_RUNS=1
-    fi    
+    #if [ $dataSource == "fiu" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "rm" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns_vol" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "dns_1024" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "geo" ]; then
+    #      NUM_RUNS=10
+    #elif [ $dataSource == "molecule" ]; then
+    #      NUM_RUNS=10
+    #fi    
 
     echo "#SBATCH -p $queue " >> ${FILE}
     echo "#SBATCH -A $account " >> ${FILE}
@@ -102,24 +92,39 @@ function processBench {
     if [ $renderer == "swr" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2417/Centos/libGL.so.1
       # SWR_CMD=LD_PRELOAD=/work/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
-	SWR_CMD=LD_PRELOAD="$SWR_LIB swr"
+      #SWR_CMD=LD_PRELOAD="$SWR_LIB swr"
+      SWR_CMD="swr"
     elif [ $renderer == "gluray" ]; then
       #GLURAY_CMD=/work/01336/carson/git/GLuRay/buildOptix/gluray
       GLURAY_CMD=$GLuRay_PATH
     else
       PRELOAD=""
     fi
-    PRE_CMD=tacc_xrun
+    PARAVIEW=$ParaView_DIR/bin/pvbatch
+    PRE_CMD=$ENV_COMMAND
     ENV_FLAGS=""
     PV_PLUGIN_FLAG=""
     if [ $renderer == vbo ]; then
       PV_PLUGIN_FLAG="--vbo"
     elif [ $renderer == "ospray" ]; then
       PV_PLUGIN_FLAG="--osp"
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
+    elif [ $renderer == "osprayao" ]; then
+      PV_PLUGIN_FLAG="--osp --ao"
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
     elif [ $renderer == "gluray" ]; then
       PRE_CMD="DISPLAY=:0.0"
+      PV_PLUGIN_FLAG="--gluray"
     elif [ $renderer == "swr" ]; then
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
+      PV_PLUGIN_FLAG="--swr"
       PRE_CMD="DISPLAY=:0.0"
+    elif [ $renderer == "gpu2" ]; then
+      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
+      PV_PLUGIN_FLAG="--gpu2"
+    elif [ $renderer == "gpu" ]; then
+      PARAVIEW=$ParaView_DIR/bin/pvbatch
+      PV_PLUGIN_FLAG="--gpu"
     fi
     if [ $renderer == "swrvbo" ]; then
       # SWR_CMD=LD_PRELOAD=/scratch/01336/carson/intelTACC/SWR-OGL1.4-2445/CentOS/libGL.so.1
@@ -130,30 +135,43 @@ function processBench {
     echo "date" >> ${FILE}
     #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
     #PARAVIEW=pvbatch
-    PARAVIEW=$ParaView_DIR/pvbatch
-    echo "module load qt" >> ${FILE}
-    echo "module load paraview/4.3.1" >> ${FILE}
-    PARAVIEW=pvbatch
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
-    if [ $renderer == "ospray" ]; then
+    #echo "module load qt" >> ${FILE}
+    #echo "module load paraview/4.3.1" >> ${FILE}
+    #PARAVIEW=pvbatch
+
+    echo 'module load remora' >> ${FILE}
+    echo 'module use /work/01336/carson/opt/modulefiles/stampede' >> ${FILE}
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE}
+    echo 'export REMORA_PERIOD=1' >> ${FILE} 
+    if [ $renderer == "gpu2" ]; then
+        echo 'module load pvospray'  >> ${FILE}
+    fi
+
+    if [ $renderer == "gpu" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
-        echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
+        echo "module load pvospray/5.0.0_gl1" >> ${FILE}
+        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/maverick/pvospray/5.0.0_gl1/lib' >> ${FILE}
+        #echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE}
+    fi
+
+    if [ $renderer == "ospray" -o $renderer == "osprayao" ]; then
+        #echo "module load pvospray/1.0.2" >> ${FILE}
+        #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
+        echo "module use /work/01336/carson/opt/modulefiles/stampede" >> ${FILE}
         echo "module load pvospray" >> ${FILE}
-        
     fi
 
     if [ $renderer == "swr" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
-        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/swr/3.1/lib' >> ${FILE}
-        echo "module use /work/01336/carson/opt/modulefiles" >> ${FILE}
+        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/swr/3.2/lib' >> ${FILE}
+        echo 'module load pvospray'  >> ${FILE}
         echo "module load swr" >> ${FILE}
 
     fi
-
     
-      
+    /work/01336/carson/opt/apps/maverick/ddpvospray/5.0.0_gl1/lib
 
     if [ $renderer == "gluray" ]; then
       DL_FLAG=""
@@ -162,7 +180,7 @@ function processBench {
     fi
     if [ $renderer == "vbo" ]; then
       DL_FLAG=""
-      PARAVIEW=$ParaView_DIR/pvbatch
+      PARAVIEW=$ParaView_DIR/bin/pvbatch
       ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvVBO_DIR"
     fi
 
@@ -191,7 +209,7 @@ function processBench {
     echo "date" >> ${FILE}
     chmod ug+x ${FILE}
     IFILE=${DIR}/interactive/inter_${NAME}.sh
-    echo "${FILE} | 2>&1 tee ${DIR}/outs/${NAME}.out" > ${IFILE}
+    echo "${FILE} 2>&1 | tee ${DIR}/outs/${NAME}.out" > ${IFILE}
     chmod +x $IFILE
 }
 
@@ -219,18 +237,15 @@ function processTachyon {
 
 }
 
-
-
-
-
 PRELOAD=""
 #
 # single node scaling
 #
-tris=( 1 2 3 4 5 6 7 8 9 )
+tris=( $GeometryLevels )
 #tris=( 0 1 2 3 5 6 )
-procs=( 1 10 20 )
-nodes=( 1 2 4 8 16 32)
+#procs=( 1 10 20 )
+procs=($NumProcs)
+nodes=($NumNodes)
 #renderers=( "swr" "gpu" "gluray" "vbo" "ospray" "swrvbo")
 COUNT=0
 if [ ${USE_SWR} == "ON" ]; then
@@ -239,6 +254,10 @@ if [ ${USE_SWR} == "ON" ]; then
 fi
 if [ $USE_GPU == "ON" ]; then
 	renderers[$COUNT]="gpu"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_GPU2 == "ON" ]; then
+	renderers[$COUNT]="gpu2"
 	COUNT=$((COUNT+1))
 fi
 if [ $USE_GLURAY == "ON" ]; then
@@ -251,6 +270,10 @@ if [ $USE_VBO == "ON" ]; then
 fi
 if [ $USE_OSPRAY == "ON" ]; then
 	renderers[$COUNT]="ospray"
+	COUNT=$((COUNT+1))
+fi
+if [ $USE_OSPRAYAO == "ON" ]; then
+	renderers[$COUNT]="osprayao"
 	COUNT=$((COUNT+1))
 fi
 if [ $USE_SWRVBO == "ON" ]; then
@@ -273,7 +296,10 @@ if [ ${USE_RM} == "ON" ]; then
 	dataSources[$COUNT]="rm"
 	COUNT=$((COUNT+1))
 fi
-
+if [ ${USE_TURBULENCE} == "ON" ]; then
+	dataSources[$COUNT]="turbulence"
+	COUNT=$((COUNT+1))
+fi
 if [ ${USE_RM_TIME} == "ON" ]; then
         dataSources[$COUNT]="rm_time"
         COUNT=$((COUNT+1))
@@ -281,7 +307,7 @@ fi
 
 
 if [ ${USE_DNS} == "ON" ]; then
-	dataSources[$COUNT]="dns_2048"
+	dataSources[$COUNT]="dns"
 	COUNT=$((COUNT+1))
 fi
 if [ ${USE_MOLECULE} == "ON" ]; then
@@ -356,12 +382,6 @@ do
   done
 done
 
-
-
-
-
-
-
 #
 # single node scaling
 #
@@ -382,7 +402,6 @@ done
 #PRELOAD=""
 #PRELOAD=""
 
-
 #for tri in "${tris[@]}";
 #do
 #  for node in "${nodes[@]}";
@@ -397,18 +416,12 @@ done
 #  done
 #done
 
-
-
-
-
 if [ ${USE_TACHYON} == "ON" ]; then
 
      nodes=( 1 2 4 8 16 32)     
      mkdir  $DIR/tachyon
       for node in "${nodes[@]}";
  	 do
-
      		processTachyon $node
-
           done
 fi

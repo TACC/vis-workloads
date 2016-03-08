@@ -34,16 +34,15 @@ SET(output_DIR ${PROJECT_SOURCE_DIR}/benchmarks CACHE STRING "output directory")
 # place. if not do something like module load paraview to get the paths
 # correctly set. If paraview is not found nothing will run. 
 #
-find_file(PV_FINDO NAMES pvbatch)
+find_file(PV_FINDO NAMES pvbatch pvpython)  #CARSON TODO: be able to use pvpython or pvbatch
 if(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
-	MESSAGE(SEND_ERROR "pvbatch not found " )
+	MESSAGE("pvbatch not found " )
 endif(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
 get_filename_component(PV_FIND ${PV_FINDO} PATH)
-SET(ParaView_DIR ${PV_FIND} CACHE STRING "root SVB directory")
-SET(pvOSPRay_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
-SET(pvVBO_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
-
-
+SET(ParaView_DIR ${PV_FIND} CACHE STRING "ParaView build directory directory")
+SET(ParaViewGL2_DIR ${PV_FIND} CACHE STRING "ParaView build directory with OpenGL2 directory")
+SET(pvOSPRay_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
+SET(pvVBO_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
 
 #
 #tachyon (will update this to find the tachyon binary as above)
@@ -52,9 +51,6 @@ SET(pvVBO_DIR ${PV_FIND}/../lib CACHE STRING "root SVB directory")
 SET(TACHYONBIN ${TACHYONBIN} CACHE STRING "Tachyon renderer")
 SET(TACHYONDATA ${TACHYONDATA} CACHE STRING "Tachyon datafile")
 SET(TACHYONDATA_DIR ${TACHYONDATAi_DIR} CACHE STRING "Tachyon directorya")
-
-
-
 
 #
 #wrf plugin
@@ -81,9 +77,12 @@ set(ACCOUNT Vis-Workload-Charact CACHE STRING "account to charge to")
 #
 set(USE_SWR OFF CACHE BOOL "use swr renderer")
 set(USE_GPU OFF CACHE BOOL "use gpu renderer")
+set(USE_GPU2 OFF CACHE BOOL "use gpu opengl2 renderer")
+set(IMMEDIATEMODE OFF CACHE BOOL "use immediatemode for gpu renderer")
 set(USE_GLURAY OFF CACHE BOOL "use gluray renderer")
 set(USE_VBO OFF CACHE BOOL "use vbo renderer")
 set(USE_OSPRAY OFF CACHE BOOL "use ospray renderer")
+set(USE_OSPRAYAO OFF CACHE BOOL "use ospray renderer with ao")
 set(USE_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
 set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
 
@@ -97,6 +96,7 @@ set(USE_RM OFF CACHE BOOL "run the rm data")
 set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
 set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
 set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
+set(USE_TURBULENCE OFF CACHE BOOL "run the turbulence data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
 set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
 set(USE_DNS_ISOSWEEP OFF CACHE BOOL "run the dns isosweep data")
@@ -115,13 +115,15 @@ SET(ROOT_IMAGE_DIR ${ROOT_IMAGE_DIR} CACHE STRING "root image dir")
 #
 # Where the data is
 #
+if (USE_GEO)
 find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /work/00401/pnav/workloads/geo)
 if(${GEODATA} MATCHES "GEODATA-NOTFOUND")
 	set(GEODATA_DIR "GEODATA_DIR-NOTFOUND" CACHE PATH "geo data directory")
-	MESSAGE(SEND_ERROR "geo data not found " )
+	MESSAGE(WARNING "geo data not found " )
 endif(${GEODATA} MATCHES "GEODATA-NOTFOUND")
 get_filename_component(GEODATAD ${GEODATA} PATH)
 set(GEODATA_DIR ${GEODATAD} CACHE PATH "geo data directory")
+endif (USE_GEO)
 
 find_file(MOLDATA NAMES 1VRI.pdb PATHS /work/01891/adb/molecule_benchmark)
 if(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
@@ -179,6 +181,10 @@ endif(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
 get_filename_component(WRFDATAD ${WRFDATA} PATH)
 set(WRFDATA_DIR ${WRFDATAD} CACHE PATH "WRF data directory")
 
+
+set(TURBULENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
+set(ENZODATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
+
 #
 # set how mpi programs are launched. default is ibrun
 # Note: mpirun and ibrun should be in your path or this wont work. 
@@ -187,6 +193,7 @@ if(NOT MPI_COMMAND)
 	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
 endif(NOT MPI_COMMAND)
 
+set(ENV_COMMAND "" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
 #
 # if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
 # look in the directory where this file is for the hosts file used with mpi
@@ -196,6 +203,11 @@ if(${MPI_COMMAND} MATCHES "mpirun")
 	set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
 endif(${MPI_COMMAND} MATCHES "mpirun")
 
+
+set(NumNodes "1" CACHE STRING "The number of nodes to use")
+set(NumProcs "1" CACHE STRING "The number of mpi processes per nodes to use")
+set(GeometryLevels "1" CACHE STRING "The geometry levels to use, ie 1 2 4 8.  Up to 10.  Dataset script specific.")
+
 SET(PND \# CACHE INTERNAL STRING )
 FILE(REMOVE ${PROJECT_BINARY_DIR}/paths.sh)
 FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
@@ -203,6 +215,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "SVB_DIR=" ${SVB_DIR}  \n
   "output_DIR=" ${output_DIR}  \n
   "ParaView_DIR=" ${ParaView_DIR}  \n
+  "ParaViewGL2_DIR=" ${ParaViewGL2_DIR}  \n
   "pvOSPRay_DIR=" ${pvOSPRay_DIR}  \n
   "pvVBO_DIR=" ${pvVBO_DIR}  \n
   "GLuRay_PATH=" ${GLuRay_PATH}  \n 
@@ -215,13 +228,17 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "DNSDATA_DIR=" ${DNSDATA_DIR} \n
   "FIUDATA_DIR=" ${FIUDATA_DIR} \n
   "RMDATA_DIR=" ${RMDATA_DIR} \n
+  "TURBULENCEDATA_DIR=" ${TURBULENCEDATA_DIR} \n
   "ACCOUNT=" ${ACCOUNT} \n
   "SWR_LIB=" ${SWR_LIB} \n
   "USE_SWR=" ${USE_SWR} \n
   "USE_GPU=" ${USE_GPU} \n
+  "USE_GPU2=" ${USE_GPU} \n
+  "IMMEDIATEMODE=" ${IMMEDIATEMODE} \n
   "USE_GLURAY=" ${USE_GLURAY} \n
   "USE_VBO=" ${USE_VBO} \n
   "USE_OSPRAY=" ${USE_OSPRAY} \n
+  "USE_OSPRAYAO=" ${USE_OSPRAYAO} \n
   "USE_SWRVBO=" ${USE_SWRVBO} \n
   "USE_TACHYON=" ${USE_TACHYON} \n
   "LDAV_RUNS=" ${LDAV_RUNS} \n
@@ -232,8 +249,9 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_FIU=" ${USE_FIU} \n
   "USE_RM=" ${USE_RM} \n
   "USE_RM_TIME=" ${USE_RM_TIME} \n
-  "USE_RM_ISOSWEEP= "  ${USE_RM_ISOSWEEP} \n
-  "USE_RM_CLIPSWEEP= "  ${USE_RM_CLIPSWEEP} \n
+  "USE_RM_ISOSWEEP="  ${USE_RM_ISOSWEEP} \n
+  "USE_RM_CLIPSWEEP="  ${USE_RM_CLIPSWEEP} \n
+  "USE_TURBULENCE="  ${USE_TURBULENCE} \n
   "USE_DNS=" ${USE_DNS} \n
   "USE_DNS_ISOSWEEP=" ${USE_DNS_ISOSWEEP} \n
   "USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP} \n
@@ -245,8 +263,12 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "GENERATE_IMAGES=" ${GENERATE_IMAGES} \n
   "ROOT_IMAGE_DIR=" ${ROOT_IMAGE_DIR} \n
   "MPI_COMMAND=" ${MPI_COMMAND} \n
+  "ENV_COMMAND=" ${ENV_COMMAND} \n
   "HOSTFILE=" ${HOSTFILE} \n
   "RANKS_PER_HOST=" ${RANKS_PER_HOST} \n
+  "NumNodes=\""${NumNodes}\"\n
+  "NumProcs=\""${NumProcs}\"\n
+  "GeometryLevels="${GeometryLevels}\n
   )
 
 

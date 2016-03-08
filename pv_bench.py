@@ -66,8 +66,17 @@ class PassThroughOptionParser(OptionParser):
         largs.append(e.opt_str)
 
 parser = PassThroughOptionParser()
+parser.add_option("--gpu",
+                  action="store_true", dest="gpu", default=False,
+                  help="Use OSPRay plugin, default is No")
+parser.add_option("--gpu2",
+                  action="store_true", dest="gpu2", default=False,
+                  help="Use OSPRay plugin, default is No")
 parser.add_option("--osp",
                   action="store_true", dest="osp", default=False,
+                  help="Use OSPRay plugin, default is No")
+parser.add_option("--ao",
+                  action="store_true", dest="use_ao", default=False,
                   help="Use OSPRay plugin, default is No")
 parser.add_option("--vbo",
                   action="store_true", dest="vbo", default=False,
@@ -113,9 +122,13 @@ parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
 source = options.source
 geo = options.geoLevel
 plugin_osp = options.osp
+use_ao = options.use_ao
 plugin_vbo = options.vbo
 plugin_swr = options.swr
 plugin_gluray = options.gluray
+plugin_gpu = options.gpu
+plugin_gpu2 = options.gpu2
+
 geometryLevel = options.geoLevel
 fn = "/scratch1/patchett/daughton/global.vpc"
 winwidth=int(options.windowsize.split("x")[0])
@@ -127,7 +140,6 @@ framecnt = 0 # framecount is used to name saved files
 use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
-renderer = "gpu"
 if (plugin_vbo):
     #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
     #LoadPlugin("/scratch/01336/carson/intelTACC/pvPlugins/libVBOView.so", True)
@@ -137,32 +149,47 @@ if (plugin_vbo):
     #view.Threads = options.threads
     view.ViewSize =  windowsize
     renderer="vbo"
-    
+
 if(plugin_swr):
-    renderer="swr" 
+    renderer="swr"
 if(plugin_gluray):
     renderer="gluray"
-
+if(plugin_gpu):
+    renderer="gpu"
+if(plugin_gpu2):
+    renderer="gpu2"
 
 
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 #adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
-    print "loading ospray plugin"
+    # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
+    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
     try:
-        LoadPlugin(str(path_vars["pvOSPRay_DIR"]) + "/libpvOSPRay.so", True)
+      LoadPlugin(str(path_vars["ParaViewGL2_DIR"]) + "/lib/libpvOSPRay.so", True)
     except:
-        print "Error could not load plugin!"
-        exit(0)
+      print "Error could not load plugin!"
+      exit(0)
 
+    print "loading ospray plugin"
+    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildStampedeICCDebug/lib/libOSPRayView.so", True)
+    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildMaverickICCRelease/lib/libOSPRayView.so", True)
     print "loaded ospray plugin"
     #view = paraview.simple._create_view("MantaBatchView")
-    view = CreateView("OSPRayView")
+    view = CreateView('OSPRayView')
     #view.Threads = options.threads
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
-    view.EnableAO = 0
-    renderer="osp"
+    if use_ao:
+      view.EnableAO = 1
+      renderer="ospao"
+    else:
+      view.EnableAO = 0
+      renderer="osp"
+
 
 try:
  if immediatemode == 1:
@@ -225,6 +252,9 @@ RenderView1.Background = [1,1,1]
 #Render()
 view = GetActiveView()
 view.ViewSize=windowsize
+view.LODThreshold = 9999999999999
+#view.LODResolution = 1
+view.RemoteRenderThreshold = 9999999
 
 
 numStages = svbGetStagesSize()
@@ -240,7 +270,11 @@ for stage in range(numStages):
   PrintMemoryUsage()
   azimuth = 90
   dolly = 2.0
+  azimuth=0
+  dolly=0
   animateCamera = True
+  tt_reader=-1
+  tt_filter=-1
   try:
     azimuth = svbResults['azimuth']
     dolly = svbResults['dolly']
@@ -300,16 +334,21 @@ for stage in range(numStages):
     elif animateCamera == True:
         frac = float(i)/float(num_runs)
         print "frac: " + str(frac)
-        print "cam.Azimuth: " + str(azimuth)
-        print "cam.Dolly: " + str(dolly)
         if (frac < .2):
           pass
         elif (frac < .4):
+          
           cam.Azimuth(-azimuth/(float(num_runs)/5.0))
+          print "cam.Azimuth: " + str(-azimuth/(float(num_runs)/5.0))
+          print "cam.Dolly: " + str(dolly)
         elif (frac < .6):
           cam.Dolly(1.0 + dolly/(float(num_runs)/5.0))
+          print "cam.Azimuth: " + str(azimuth)
+          print "cam.Dolly: " + str(1 + dolly/(float(num_runs)/5.0))
         elif (frac < .8):
           cam.Azimuth(azimuth/(float(num_runs)/5.0))
+          print "cam.Azimuth: " + str(azimuth/(float(num_runs)/5.0))
+          print "cam.Dolly: " + str(dolly)
         else:
           pass
         
@@ -334,8 +373,9 @@ for stage in range(numStages):
 
     #print "frame Render: " + str(tt)
     if save_images != "":
-       file = save_images + '%s_%s_%d_%05d.jpg' % (source, renderer, geo, framecnt)
-       WriteImage(file)
+       file = save_images + 'd%s_r%s_t%d_%05d.jpg' % (source, renderer, geo, framecnt)
+       #WriteImage(file)
+       SaveScreenshot(file)
        print "saved image: " + file
        framecnt += 1
 
