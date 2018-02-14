@@ -104,7 +104,6 @@ def svbSetup(geometryLevel=1, stage=0):
 
   #RenderView1.CameraPosition = [189.5, 189.5, 2317.3405387189805]
   #RenderView1.CameraFocalPoint = [189.5, 189.5, 413.5]
-  #RenderView1.CameraClippingRange = [1061.9371333317906, 2968.215646799765]
   #RenderView1.CameraParallelScale = 492.7501902587152
 
   #DataRepresentation2 = Show()
@@ -159,7 +158,6 @@ def svbSetup(geometryLevel=1, stage=0):
   RenderView1 = GetRenderView()
   RenderView1.CameraViewUp = [0.1220323904995946, 0.9179892738319476, -0.3773642653967754]
   RenderView1.CameraPosition = [1641.8585346768702, 487.40856690408344, 1607.8676022842458]
-  RenderView1.CameraClippingRange = [1021.8948997770883, 3018.6205689377375]
   RenderView1.CameraFocalPoint = [189.50000000000009, 189.5000000000001, 413.5]
 
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
@@ -205,7 +203,6 @@ def svbSetup(geometryLevel=1, stage=0):
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
 
 
-    RenderView1.CameraClippingRange = [775.4151925055533, 3333.0640307903323]
 
     Clip1.ClipType.Normal = [0.7325209930676672, 0.663549941673441, 0.15203443563986424]
     DataRepresentation4.Visibility = 0
@@ -224,24 +221,20 @@ def svbSetup(geometryLevel=1, stage=0):
     DataRepresentation5.Representation = 'Surface'
 
 
-    RenderView1.CameraClippingRange = [776.2726362511573, 3330.2827710502524]
 
     Clip1.ClipType.Normal = [0.7438769158737222, 0.5671401800076783, 0.3535521888647525]
 
     RenderView1.CameraViewUp = [0.1962873715201739, 0.9002484677398408, -0.3886180182567067]
     RenderView1.CameraFocalPoint = [189.50000000000014, 189.5000000000001, 413.49999999999994]
-    RenderView1.CameraClippingRange = [1074.1386677858422, 2867.7684315317306]
     RenderView1.CameraPosition = [2008.3637843775757, -314.68686783528074, 164.22317987438336]
 
     Clip1.ClipType.Origin = [235.79504344847828, 222.5090416428755, 434.0774128880307]
 
-    RenderView1.CameraClippingRange = [1110.3564373301474, 2842.7199687385264]
 
     Clip1.ClipType.Origin = [230.795043448478, 220.509041642876, 430.077412888031]
     Clip1.ClipType.Normal = [0.693876915873722, 0.657140180007678, 0.303552188864752]
 
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [1316.9209663918095, 2647.243535334783]
     RenderView1.Background = [1.0,1.0,1.0]
 
     numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()

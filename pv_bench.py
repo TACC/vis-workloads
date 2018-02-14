@@ -5,8 +5,8 @@ import time
 import os
 import math
 import sys
-#import subprocess
 import resource
+import paraview.benchmark as benchmark
 paraview.simple._DisableFirstRenderCameraReset()
 
 path_vars = dict()
@@ -26,18 +26,14 @@ with open(filename) as f:
 pv_script_path = "%s/pv_scripts" % path_vars["SVB_DIR"]
 print "pv_scscript_path:%s" % pv_script_path
 sys.path.append("%s/pv_scripts" % path_vars["SVB_DIR"])
-import benchmark
-benchmark.maximize_logs()
+
+paraview.benchmark.logbase.maximize_logs()
 
 def PrintMemoryUsage():
-   #cmd = "top -b -n 1 -m | grep pvbatch | awk \'{print $6;}\'"
-   #result = subprocess.check_output(cmd,shell=True)
-   #os.system(cmd+"> /dev/null 2>&1")
    result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-   #*resource.getpagesize()
+   
    print "Memory: " + str(float(result)/float(1024*1024)) + "GB"
    print "Page size: " + str(resource.getpagesize())
-
 
 def WarmupRender():
     print "#"
@@ -52,7 +48,6 @@ def WarmupRender():
       warmup_et = time.time()
       warmup_tt = (warmup_et-warmup_st)
       print "warmup frame Render: " + str(warmup_tt)
-    
 
 #parse the command line arguments to pv_bench.py
 from optparse import (OptionParser,BadOptionError,AmbiguousOptionError)
@@ -90,8 +85,6 @@ parser.add_option("--gluray",
 parser.add_option("-i", "--save-images",
                   action="store", dest="save_images", type ="string", default="",
                   help="Save's images to <string> when set")
-#parser.add_option("-l", "--mantathreads", action="store", dest="threads",type="int",
-                  #default=16, help="set number of manta threads")
 parser.add_option("--geoLevel", action="store", dest="geoLevel",type="int",
                   default=1, help="number of triangles to render")
 parser.add_option("-s", "--source", action="store", dest="source",
@@ -101,24 +94,10 @@ parser.add_option("-w", "--windowsize", action="store", dest="windowsize",type="
                   default="512x512", help="windows size widthxheight")
 parser.add_option("--numruns", action="store", dest="numruns",type="int",
                   default=300, help="number of runs to do")
-#parser.add_option("-b", "--binaryswap", action="store_true", dest="usebswap",
-                  #default=False, help="Loads the Generic View Plugin")
 parser.add_option("--immediatemode", action="store_true", dest="immediatemode",
                   default=False, help="Use Immediate Mode Rendering")
-#parser.add_option("--save-data",
-                  #action="store", dest="write_data", type ="string", default="",
-                  #help="save generated data to file")
-#parser.add_option("--noContour",
-                  #action="store_false", dest="use_contour", default=True,
-                  #help="render with contour")
 (options, args) = parser.parse_args()
 
-#pm = servermanager.vtkProcessModule.GetProcessModule()
-#pm.SetLogBufferLength(servermanager.ActiveConnection.ID, 0x1, 1000000)
-#pm.SetLogBufferLength(servermanager.ActiveConnection.ID, 0x4, 1000000)
-#pm.SetLogBufferLength(servermanager.ActiveConnection.ID, 0x10, 1000000)
-
-#write_data = options.write_data
 source = options.source
 geo = options.geoLevel
 plugin_osp = options.osp
@@ -130,7 +109,6 @@ plugin_gpu = options.gpu
 plugin_gpu2 = options.gpu2
 
 geometryLevel = options.geoLevel
-fn = "/scratch1/patchett/daughton/global.vpc"
 winwidth=int(options.windowsize.split("x")[0])
 winheight=int(options.windowsize.split("x")[1])
 windowsize = [winwidth, winheight]
@@ -141,12 +119,9 @@ use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
 if (plugin_vbo):
-    #LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0/buildICC/lib/libVBOView.so", True)
-    #LoadPlugin("/scratch/01336/carson/intelTACC/pvPlugins/libVBOView.so", True)
-    # LoadPlugin("/work/01336/carson/intelTACC/opt/maverick/lib/libVBOView.so", True)
-    #view = paraview.simple._create_view("MantaBatchView")
+    
     view = CreateView("VBOView")
-    #view.Threads = options.threads
+   
     view.ViewSize =  windowsize
     renderer="vbo"
 
@@ -163,9 +138,7 @@ if(plugin_gpu2):
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 #adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
-    # LoadPlugin("/scratch/01336/carson/ParaView-v4.1.0-3/buildICC/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
+    
     try:
       LoadPlugin(str(path_vars["ParaViewGL2_DIR"]) + "/lib/libpvOSPRay.so", True)
     except:
@@ -173,14 +146,11 @@ if (plugin_osp):
       exit(0)
 
     print "loading ospray plugin"
-    #LoadPlugin("/work/01336/carson/opt/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/opt/maverick/apps/pvospray/1.0.0/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildStampedeICCDebug/lib/libOSPRayView.so", True)
-    #LoadPlugin("/work/01336/carson/ParaView/ParaView-v4.1.0/buildMaverickICCRelease/lib/libOSPRayView.so", True)
+    
     print "loaded ospray plugin"
-    #view = paraview.simple._create_view("MantaBatchView")
+    
     view = CreateView('OSPRayView')
-    #view.Threads = options.threads
+   
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
     if use_ao:
@@ -190,283 +160,245 @@ if (plugin_osp):
       view.EnableAO = 0
       renderer="osp"
 
-
 try:
- if immediatemode == 1:
-  use_immediate = 1
-  print "enabling immediate mode"
- else:
-  print "disabling immediate mode"
- #v.UseImmediateMode = use_immediate
- obj = servermanager.misc.GlobalMapperProperties()
- obj.GlobalImmediateModeRendering = use_immediate
- print "immmediate mode set correctly"
+    if immediatemode == 1:
+        use_immediate = 1
+        print "enabling immediate mode"
+    else:
+        print "disabling immediate mode"
+    obj = servermanager.misc.GlobalMapperProperties()
+    obj.GlobalImmediateModeRendering = use_immediate
+    print "immmediate mode set correctly"
 except:
- print "setting immediate mode failed, using default"
- #v.UseImmediateMode = 0
+    print "setting immediate mode failed, using default"
+
 
 def import_from(module, name):
+    print("inside import_from")
+    print("module: " + module)
+    print("name: " + name)
     module = __import__(module, fromlist=[name])
     return getattr(module, name)
+
+
 try:
- print "trying to import from source"
- svbSetup = import_from(source, "svbSetup")
- print "finished svbSetup"
-
- 
-
-
- svbRender = import_from(source, "svbRender")
- print "finished svbRender"
- svbGetStagesSize = import_from(source, "svbGetStagesSize")
- print "finished svbGetStageSize"
+    print "trying to import from source"
+    svbSetup = import_from(source, "svbSetup")
+    print "finished svbSetup"
+    svbRender = import_from(source, "svbRender")
+    print "finished svbRender"
+    svbGetStagesSize = import_from(source, "svbGetStagesSize")
+    print "finished svbGetStageSize"
 except:
- print "ERROR: could not load source module"
- if source != "sphere":
-   exit(1)
- def svbSetup(geo, stage):
-  ResetCamera()
- def svbRender():
-   Render() 
- def svbGetStagesSize():
-  return 1;
+    print "ERROR: could not load source module"
+    if source != "sphere":
+        print("exiting...")
+        exit(1)
+    def svbSetup(geo, stage):
+        ResetCamera()
+    def svbRender():
+        Render() 
+    def svbGetStagesSize():
+        return 1;
+
 
 r = GetRenderView()
 try:
- r.OrientationAxesVisibility = 0
- r.CenterAxesVisibility = 0
+    r.OrientationAxesVisibility = 0
+    r.CenterAxesVisibility = 0
 except:
- pass
+    pass
+
 RenderView1 = GetRenderView()
 RenderView1.CameraViewUp = [0.1962873715201739, 0.9002484677398408, -0.3886180182567067]
 RenderView1.CameraFocalPoint = [189.50000000000014, 189.5000000000001, 413.49999999999994]
-RenderView1.CameraClippingRange = [1074.1386677858422, 2867.7684315317306]
 RenderView1.CameraPosition = [2008.3637843775757, -314.68686783528074, 164.22317987438336]
 RenderView1.OrientationAxesVisibility = 0
 RenderView1.Background = [1,1,1]
 
-#sp = Sphere()
-#sp.PhiResolution = 100;
-#sp.ThetaResolution = 100;
-#Show()
-#Render()
 view = GetActiveView()
 view.ViewSize=windowsize
 view.LODThreshold = 9999999999999
-#view.LODResolution = 1
 view.RemoteRenderThreshold = 9999999
-
 
 numStages = svbGetStagesSize()
 
 print "Total Stages: " + str(numStages)
 
 for stage in range(numStages):
-  print "#"
-  print "Stage " + str(stage) + str("...")
-  print "#"
-  start_time=time.time()
-  svbResults = svbSetup(geometryLevel, stage)
-  PrintMemoryUsage()
-  azimuth = 90
-  dolly = 2.0
-  azimuth=0
-  dolly=0
-  animateCamera = True
-  tt_reader=-1
-  tt_filter=-1
-  try:
-    azimuth = svbResults['azimuth']
-    dolly = svbResults['dolly']
-    animateCamera = svbResults['animateCamera']
-    tt_reader = svbResults['tt_reader']
-    tt_filter = svbResults['tt_filter']
-  except:
-    print "Error reading parameters from svbSetup"
-    pass
+    print "#"
+    print "Stage " + str(stage) + str("...")
+    print "#"
+    start_time=time.time()
+    svbResults = svbSetup(geometryLevel, stage)
+    PrintMemoryUsage()
+    print("done printing memory usage")
+    azimuth = 90
+    dolly = 2.0
+    azimuth=0
+    dolly=0
+    animateCamera = True
+    tt_reader=-1
+    tt_filter=-1
+    print("about to go into try/except block")
+    try:
+        print("inside try/except block")
+        azimuth = svbResults['azimuth']
+        print("azimuth success")
+        dolly = svbResults['dolly']
+        print("dolly success")
+        animateCamera = svbResults['animateCamera']
+        print("animateCamera success")
+        tt_reader = svbResults['tt_reader']
+        print("tt_reader success")
+        tt_filter = svbResults['tt_filter']
+        print("tt_filter success")
+    except:
+        print "Error reading parameters from svbSetup"
+        pass
 
-  WarmupRender()
-  print "#"
-  print "Running..."
-  print "#"
-  times = []
-  still_out_times = []
-  rotate_out_times = []
-  zoom_times = []
-  rotate_in_times = []
-  still_in_times = []
+    WarmupRender()
+    print "#"
+    print "Running..."
+    print "#"
+    times = []
+    still_out_times = []
+    rotate_out_times = []
+    zoom_times = []
+    rotate_in_times = []
+    still_in_times = []
 
-  
-  #finds the average and std deviation when there are multiple runs
-  def parseTimings(timings):
-    sum = 0.0
-    for i in range(0,len(timings)):
-      sum += float(timings[i])
-    avg = 0.0
-    if (len(timings) > 0):
-      avg = sum/float(len(timings))
-    dev = 0.0
-    for i in range(0, len(timings) ):
-      val = float(timings[i])-avg
-      dev += val*val
-    if (len(timings) > 0):
-      dev = dev/float(len(timings))
-    dev = math.sqrt(dev)
-    total = 0.0
-    if (len(timings) > 0):
-      total = timings[len(timings)-1]-timings[0]
-    numFrames = len(timings)
-    return {'avg':avg, 'dev':dev, 'total':sum, 'numFrames':numFrames}
+    #finds the average and std deviation when there are multiple runs
+    def parseTimings(timings):
 
-  #prints the average and std deviation when there are multiple runs
-  def printTimings(timings, name):
-    results = parseTimings(timings)
-    if (results['numFrames'] > 0):
-      print str(name) + " results avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+        sum = 0.0
 
-
-  cam = GetActiveCamera()
-  for i in range(0,num_runs):
-    #move the camera for static datasets
-    #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
-    if animateCamera == False:
-	   frac=0.1
-    elif animateCamera == True:
-        frac = float(i)/float(num_runs)
-        print "frac: " + str(frac)
-        if (frac < .2):
-          pass
-        elif (frac < .4):
-          
-          cam.Azimuth(-azimuth/(float(num_runs)/5.0))
-          print "cam.Azimuth: " + str(-azimuth/(float(num_runs)/5.0))
-          print "cam.Dolly: " + str(dolly)
-        elif (frac < .6):
-          cam.Dolly(1.0 + dolly/(float(num_runs)/5.0))
-          print "cam.Azimuth: " + str(azimuth)
-          print "cam.Dolly: " + str(1 + dolly/(float(num_runs)/5.0))
-        elif (frac < .8):
-          cam.Azimuth(azimuth/(float(num_runs)/5.0))
-          print "cam.Azimuth: " + str(azimuth/(float(num_runs)/5.0))
-          print "cam.Dolly: " + str(dolly)
-        else:
-          pass
+        for i in range(0,len(timings)):
+            sum += float(timings[i])
         
-    #start time
-    st_render = time.time()
-    svbRender()
-    #end time
-    et_render = time.time()
-    tt_render = (et_render-st_render)
-    times.append(tt_render)
-    #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
-    if (frac < .2):
-      still_out_times.append(tt_render)
-    elif (frac < .4):
-      rotate_out_times.append(tt_render)
-    elif (frac < .6):
-      zoom_times.append(tt_render)
-    elif (frac < .8):
-      rotate_in_times.append(tt_render)
-    else:
-      still_in_times.append(tt_render)
+        avg = 0.0
+        
+        if (len(timings) > 0):
+            avg = sum/float(len(timings))
+        
+        dev = 0.0
+        
+        for i in range(0, len(timings) ):
+            val = float(timings[i])-avg
+            dev += val*val
+        
+        if (len(timings) > 0):
+            dev = dev/float(len(timings))
+        
+        dev = math.sqrt(dev)
+        total = 0.0
 
-    #print "frame Render: " + str(tt)
-    if save_images != "":
-       file = save_images + 'd%s_r%s_t%d_%05d.jpg' % (source, renderer, geo, framecnt)
-       #WriteImage(file)
-       SaveScreenshot(file)
-       print "saved image: " + file
-       framecnt += 1
+        if (len(timings) > 0):
+            total = timings[len(timings)-1]-timings[0]
+        
+        numFrames = len(timings)
+        return {'avg':avg, 'dev':dev, 'total':sum, 'numFrames':numFrames}
 
-  end_time = time.time()
-  print "#"
-  print "parsing..."
-  print "#"
-  #log_parser.print_logs()
-
-  #benchmark.run()
-  pv_logs = benchmark.parse_logs(True)
-  print "paraview benchmark log:"
-  print pv_logs
-  #benchmark.print_logs()
-
-  fps = float(num_runs)/(end_time-start_time);
-  print "fps: " +str(fps)
-  print "times: "
-  print times
-  #results = parseTimings(times)
-  
-  printTimings(times, "overall render time") 
-  printTimings(still_out_times, "still zoomed out") 
-  printTimings(rotate_out_times, "rotate zoomed out")
-  printTimings(zoom_times, "zooming")
-  printTimings(still_in_times, "still zoomed in")
-  printTimings(rotate_in_times, "rotate zoomed in")
-
-  #if (results['numFrames'] > 0):
-  #  print "overall time avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
-
-  #results = parseTimings(still_out_times)
-  #if (results['numFrames'] > 0):
-  #  print "still zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
-
-  #results = parseTimings(rotate_out_times)
-  #if (results['numFrames'] > 0):
-  #  print "rotate zoomed out results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
-
-  #results = parseTimings(zoom_times)
-  #if (results['numFrames'] > 0):
-  #  print "zoom results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
-
-  #results = parseTimings(rotate_in_times)
-  #if (results['numFrames'] > 0):
-  #  print "rotate zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+    #prints the average and std deviation when there are multiple runs
+    def printTimings(timings, name):
+        results = parseTimings(timings)
+        if (results['numFrames'] > 0):
+            print str(name) + " results avg: " + str(results['avg']) + " dev: " + str(results['dev'])
 
 
-  #results = parseTimings(still_in_times)
-  #if (results['numFrames'] > 0):
-  #  print "still zoomed in results avg fps: " + str(1.0/results['avg']) + " avg: " + str(results['avg']) + " dev: " + str(results['dev'])
+    cam = GetActiveCamera()
+    for i in range(0,num_runs):
+        #move the camera for static datasets
+        #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
+        if animateCamera == False:
+            frac = 0.1    
+        elif animateCamera == True:
+            frac = float(i)/float(num_runs)
+            print "frac: " + str(frac)
+            if (frac < .2):
+                pass
+            elif (frac < .4):
+                cam.Azimuth(-azimuth/(float(num_runs)/5.0))
+                print "cam.Azimuth: " + str(-azimuth/(float(num_runs)/5.0))
+                print "cam.Dolly: " + str(dolly)
+            elif (frac < .6):
+                cam.Dolly(1.0 + dolly/(float(num_runs)/5.0))
+                print "cam.Azimuth: " + str(azimuth)
+                print "cam.Dolly: " + str(1 + dolly/(float(num_runs)/5.0))
+            elif (frac < .8):
+                cam.Azimuth(azimuth/(float(num_runs)/5.0))
+                print "cam.Azimuth: " + str(azimuth/(float(num_runs)/5.0))
+                print "cam.Dolly: " + str(dolly)
+            else:
+                pass
 
-  #times = []
-  #for i in range (0, len(pv_logs)):
-  #  if len(pv_logs[i]):
-  #    if pv_logs[i][0].get('Still') != None:
-  #      stime = pv_logs[i][0]['Still']
-  #      times.append(stime)
-  #times = times[num_runs/10+1:]
+        #start time
+        st_render = time.time()
+        svbRender()
+        #end time
+        et_render = time.time()
+        tt_render = (et_render-st_render)
+        times.append(tt_render)
+        #if the camera us disabled frac will be 0.1 and all times will be added to still_out_times
+        if (frac < .2):
+            still_out_times.append(tt_render)
+        elif (frac < .4):
+            rotate_out_times.append(tt_render)
+        elif (frac < .6):
+            zoom_times.append(tt_render)
+        elif (frac < .8):
+            rotate_in_times.append(tt_render)
+        else:
+            still_in_times.append(tt_render)
 
-  #printTimings(times[:int(num_runs*.2)], "Paraview overall frame time")
+   
+        if save_images != "":
+            file = save_images + 'd%s_r%s_t%d_%05d.jpg' % (source, renderer, geo, framecnt)
+    
+            SaveScreenshot(file)
+            print "saved image: " + file
+            framecnt += 1
 
-  #times = []
-  #for i in range (0, len(pv_logs)):
-  #  if len(pv_logs[i]):
-  #    if pv_logs[i][0].get('OpenGL Dev'):
-  #      rtime = pv_logs[i][0]['OpenGL Dev']
-  #      times.append(rtime)
-  #times = times[num_runs/10+1:]
+    end_time = time.time()
+    print "#"
+    print "parsing..."
+    print "#"
 
-  #Paraview times
+    #pv_logs = benchmark.parse_logs(True)
+    print "paraview benchmark log:"
+    #print pv_logs
 
-  #printTimings(times[:int(num_runs*.2)], "Paraview overall render time")
-  #printTimings(times[int(num_runs):int(num_runs*.2)], "Paraview still zoomed out")
-  #printTimings(times[int(num_runs*.2):int(num_runs*.4)], "Paraview rotate zoomed out")
-  #printTimings(times[int(num_runs*.4):int(num_runs*.6)], "Paraview zooming")
-  #printTimings(times[int(num_runs*.6):int(num_runs*.8)], "Paraview rotate zoomed in")
-  #printTimings(times[int(num_runs*.8):], "still zoomed in")
+    benchmark.logbase.get_logs()
+    benchmark.logbase.print_logs()
 
-  readerTime = -1.0
-  filterTime = -1.0
-  if pv_logs[0][0].get('reader') != None:
-    readerTime = pv_logs[0][0]['reader']
-  print "pv_reader time " + str(readerTime)
-  if pv_logs[0][0].get('filter') != None:
-    filterTime = pv_logs[0][0]['filter']
-  print "pv_filter time " + str(filterTime)
-  benchmark.clear_logs()
-  benchmark.clear_all()
-  print "reader time " + str(tt_reader)
-  print "filter time " + str(tt_filter)
+    fps = float( num_runs ) / ( end_time - start_time );
+    
+    print "fps: " + str( fps )
+    print "times: "
+    print times
+
+    
+    printTimings(times,            "overall render time" ) 
+    printTimings(still_out_times,  "still zoomed out"    ) 
+    printTimings(rotate_out_times, "rotate zoomed out"   )
+    printTimings(zoom_times,       "zooming"             )
+    printTimings(still_in_times,   "still zoomed in"     )
+    printTimings(rotate_in_times,  "rotate zoomed in"    )
+
+
+    
+'''    readerTime = -1.0
+    filterTime = -1.0
+    if pv_logs[0][0].get('reader') != None:
+        readerTime = pv_logs[0][0]['reader']
+    print "pv_reader time " + str(readerTime)
+    if pv_logs[0][0].get('filter') != None:
+        filterTime = pv_logs[0][0]['filter']
+    print "pv_filter time " + str(filterTime)
+    benchmark.clear_logs()
+    benchmark.clear_all()
+    print "reader time " + str(tt_reader)
+    print "filter time " + str(tt_filter)
+'''
 view=GetActiveView()
-# exit()
 
