@@ -6,7 +6,6 @@ import os
 import math
 import sys
 import resource
-import paraview.benchmark as benchmark
 paraview.simple._DisableFirstRenderCameraReset()
 
 path_vars = dict()
@@ -27,7 +26,8 @@ pv_script_path = "%s/pv_scripts" % path_vars["SVB_DIR"]
 print "pv_scscript_path:%s" % pv_script_path
 sys.path.append("%s/pv_scripts" % path_vars["SVB_DIR"])
 
-paraview.benchmark.logbase.maximize_logs()
+import benchmark
+benchmark.maximize_logs()
 
 def PrintMemoryUsage():
    result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
@@ -364,12 +364,9 @@ for stage in range(numStages):
     print "parsing..."
     print "#"
 
-    #pv_logs = benchmark.parse_logs(True)
+    pv_logs = benchmark.parse_logs(True)
     print "paraview benchmark log:"
-    #print pv_logs
-
-    benchmark.logbase.get_logs()
-    benchmark.logbase.print_logs()
+    print pv_logs
 
     fps = float( num_runs ) / ( end_time - start_time );
     
@@ -387,7 +384,7 @@ for stage in range(numStages):
 
 
     
-'''    readerTime = -1.0
+    readerTime = -1.0
     filterTime = -1.0
     if pv_logs[0][0].get('reader') != None:
         readerTime = pv_logs[0][0]['reader']
@@ -399,6 +396,6 @@ for stage in range(numStages):
     benchmark.clear_all()
     print "reader time " + str(tt_reader)
     print "filter time " + str(tt_filter)
-'''
+
 view=GetActiveView()
 
