@@ -116,7 +116,7 @@ function processBench {
       PRE_CMD="DISPLAY=:0.0"
       PV_PLUGIN_FLAG="--gluray"
     elif [ $renderer == "swr" ]; then
-      PARAVIEW=$ParaViewGL2_DIR/bin/pvbatch
+      PARAVIEW="pvbatch"
       PV_PLUGIN_FLAG="--swr"
       PRE_CMD="DISPLAY=:0.0"
     elif [ $renderer == "gpu2" ]; then
@@ -140,8 +140,10 @@ function processBench {
     #PARAVIEW=pvbatch
 
     echo 'module load remora' >> ${FILE}
-    echo 'module use /work/01336/carson/opt/modulefiles/stampede' >> ${FILE}
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE}
+    echo 'module load swr' >> ${FILE}
+    echo 'module load qt5' >> ${FILE}
+    echo 'module load paraview' >> ${FILE}
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB' >> ${FILE}
     echo 'export REMORA_PERIOD=1' >> ${FILE} 
     if [ $renderer == "gpu2" ]; then
         echo 'module load pvospray'  >> ${FILE}
@@ -165,14 +167,9 @@ function processBench {
     if [ $renderer == "swr" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
-        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/opt/apps/swr/3.2/lib' >> ${FILE}
-        echo 'module load pvospray'  >> ${FILE}
-        echo "module load swr" >> ${FILE}
-
+        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB' >> ${FILE}
     fi
     
-    /work/01336/carson/opt/apps/maverick/ddpvospray/5.0.0_gl1/lib
-
     if [ $renderer == "gluray" ]; then
       DL_FLAG=""
       PARAVIEW=pvbatch
