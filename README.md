@@ -1,36 +1,5 @@
  Instructions for Running Benchmarks (Beta, v2):
 
-1) Clone benchmarking scripts and applications:
-bashshell$ git clone stampede.tacc.utexas.edu:/work/01336/carson/git/svb.git svb
-This will clone the primary benchmarking folder "svb" that contains:
---->svb
-	-->CMakeLists.txt
-	-->pv_scripts(this has all the pv scripts for each datafile as well as core modules in the benchmark.py)
-	-->(benchmarks) this will be generated once you run generateSubmits.sh
-		-->outs
-		-->submits
-		-->interactive
-                -->tachyon
-	-->pv_bench.py:  the primary python script for running the benchmarks
-	-->generateSubmits.sh: suplementary script to generate slurm scripts to launch all of the data-sets with varying geometry scaling using all the renderers
-	-->generateDats.sh:  Parse the logs and put the results into a more easily readable format
-	-->generateGraphs.sh:  Generate graphs for the triangle and node scaling across all the renderers
-	-->CMakeLists.txt: cmake file to assist in finding required executables and libraries
- 	-->paths.sh: this is written out by cmake to set paths for libaries/applications/paths required for the bencmark
-	-->pv_scripts: the folder for the paraview python scripts that create the desired visulization and benchmark.py which has functions related to the benchmark themselves
-		(the full list is what we have slated for phase2, the ones with * are the test cases that are completely working)
-		-->fiu.py (static groundwater flow data-set with streamlines and contours "interactive" camera motion)
-		-->molecule.py (static molecule data-set with pdb spheres and an obj of ribbons"interactive" camera motion)
-		-->geo.py (static OBJ seismic horizons with "interactive" camerea motion)
-		-->dns.py (static isosurfaces with "interactive" camera motion)
-		-->rm.py (static isosurfaces with "interactive" camera motion)
-		-->rm-time.py (time series rm data with isosurfaces without camera motion)
-		-->wrf.py (streamlines and contours of climate data over chicago)
-		-->whipit.py ( for TACC/Intel use only time series whipple shield data without camera motion)
-		-->moreland.py( for TACC/Intel use only, time series/dynamic whipple shield data with "interactive" camera motion)
-		-->fiu_animated( fiu dataset with incrementally increasing streamlines)
-	-->visit_scripts visit python scripts for creating desirec visualization (under development)
-        -->vmd_scripts python  scripts to generate tachyon files from pdb or dcd files (under development)
 2) You can set up the environment by editing the path.sh file directly or by using cmake:
 This will allow the specification of the paths for the datasets, applications, libraries and output directories as well as options such as which renderer to use.
 for more info on cmake: www.cmake.org/runningcmake 
@@ -74,4 +43,83 @@ to add a new source script you just need to implement two functions , svbSetup a
 
 
 
+# VIS Workloads
+
+Scripting library used to benchmark and test different rendering engines across supercluster resources.
+
+## Getting Started
+
+These instructions will explain the different files contained inside the repository, their uses, and how to generate and submit benchmarking scripts. 
+
+### Prerequisites
+
+Clone the repository into a location located inside your home directory in a supercluster location
+
+```
+$ git clone https://github.com/TACC/vis-workloads.git
+```
+
+## The file structure and descriptions are as followed:
+
+* CmakeLists.txt
+* generateDats.sh - script to parse the and put results into a more easily readable format
+* generateGraphs.sh - script used to generate graphs for the triangle and node scaling across all the renderers
+* generateSubmits.sh - supplementary script to generate slurm scripts to launch all of the data-sets with varying geometry scaling using all the renderers
+* graphsDebug.sh
+* paths.sh - this is written out by cmake to set paths for libaries/applications/paths required for the bencmark. You can also edit this file manually if you wish. This is read by a few files for loading certain libraries and placing results in their proper folders.
+* pv_bench.py - the primary python script for running benchmark tests
+* README.md - this file
+* pv_scripts/ - contains python scripts for each datafile (as well as core modules in the benchmark.py file) 
+    * fiu.py - static groundwater flow data-set with streamlines and contours "interactive" camera motion
+    * molecule.py - static molecule data-set with pdb spheres and an obj of ribbons"interactive" camera motion
+    * geo.py - static OBJ seismic horizons with "interactive" camerea motion
+    * dns.py - static isosurfaces with "interactive" camera motion
+    * rm.py - static isosurfaces with "interactive" camera motion
+    * rm-time.py - time series rm data with isosurfaces without camera motion
+    * wrf.py - streamlines and contours of climate data over chicago
+    * whipit.py - for TACC/Intel use only time series whipple shield data without camera motion
+    * moreland.py - for TACC/Intel use only, time series/dynamic whipple shield data with "interactive" camera motion
+    * fiu_animated - fiu dataset with incrementally increasing streamlines
+* visit_scripts visit python scripts for creating desirec visualization (under development)
+* vmd_scripts - python scripts to generate tachyon files from pdb or dcd files (under development)
+* visit_scripts/
+* vmd_scripts/
+
+### Installing
+
+A step by step series of examples that tell you have to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
 
