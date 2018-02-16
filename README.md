@@ -59,7 +59,7 @@ Clone the repository into a location located inside your home directory in a sup
 $ git clone https://github.com/TACC/vis-workloads.git
 ```
 
-## The file structure and descriptions are as followed:
+### File Descriptions
 
 * CmakeLists.txt
 * generateDats.sh - script to parse the and put results into a more easily readable format
@@ -82,8 +82,11 @@ $ git clone https://github.com/TACC/vis-workloads.git
     * fiu_animated - fiu dataset with incrementally increasing streamlines
 * visit_scripts visit python scripts for creating desirec visualization (under development)
 * vmd_scripts - python scripts to generate tachyon files from pdb or dcd files (under development)
-* visit_scripts/
-* vmd_scripts/
+
+### Paths.sh setup
+
+You can set up the environment by editing the path.sh file directly. This will allow the specification of the paths for the datasets, applications, libraries and output directories as well as options such as which renderer to use. You will need to enter paths to the data files TACC/Intel use for now. `/work/00401/pnav/workloads` contains the data or links to the data. path.sh that is used by pv_bench.py, generateSubmits.sh, generateGraphs.sh and generateGraphs.sh
+
 
 ### Installing
 
