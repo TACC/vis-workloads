@@ -41,7 +41,7 @@ def process_benchmark( triangle, node, process ):
 
     file_obj = open( output_directory + '/submits/' + file_name, 'w' )
 
-    file_obj.write( '#!/bin/bash' )
+    file_obj.write( '#!/bin/bash\n' )
     file_obj.write( '#SBATCH -J {}\n'.format( job_name ) )
     file_obj.write( '#SBATCH -N {}\n'.format( node ) )
     file_obj.write( '#SBATCH -n {}\n'.format( node * process ) )
@@ -52,10 +52,7 @@ def process_benchmark( triangle, node, process ):
     
     file_obj.close()
 
-    os.chmod('{0}/submits/{1}'.format( output_directory, file_name ), stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH )
-    os.chmod('{0}/submits/{1}'.format( output_directory, file_name ), stat.S_IWUSR                               )
-    os.chmod('{0}/submits/{1}'.format( output_directory, file_name ), stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH )
-
+    os.chmod('{0}/submits/{1}'.format( output_directory, file_name ), stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH | stat.S_IWUSR | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH )
 
 for triangle in triangles_count:
 
