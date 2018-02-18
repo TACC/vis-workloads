@@ -12,6 +12,10 @@ image_directory  = '/home1/02064/ajs2987/images'
 # flag to turn on/off images generated from bash scripts
 generate_images = True
 
+# string of image settings to pass to bash script if user 
+# decides to generate images
+image_flag = ''
+
 # array of different triangle counts to try for different tests
 triangles_count = [ 0, 1, 2, 3         ]
 # array of different node counts to try for different tests
@@ -49,6 +53,11 @@ if not os.path.exists(output_directory):
 if generate_images and not os.path.exists(image_directory):
     os.makedirs( image_directory )
 
+# if generate images is set to true then set the image flag
+# string to the correct parameters
+if generate_images:
+    image_flag = '--save_images -i {}/'.format( image_directory )
+
 # main function used to process information to create bash 
 # benchmark script
 def process_benchmark( triangle, node, process ):
@@ -72,6 +81,13 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
     file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
     file_obj.write( '#SBATCH -t {}\n'.format( '04:00:00' ) )
+    file_obj.write( 'set -x\n\n' )
+
+    # write default modules to load for bash file
+    file_obj.write( 'module load remora\n' )
+    file_obj.write( 'module load swr\n' )
+    file_obj.write( 'module load qt5\n' )
+    file_obj.write( 'module load paraview\n' )
     
     file_obj.close()
 
@@ -89,4 +105,5 @@ for triangle in triangles_count:
         for process in processes_count:
 
             process_benchmark( triangle, node, process )
+
 
