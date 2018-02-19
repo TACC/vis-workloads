@@ -90,8 +90,13 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( 'module load remora\n' )
     file_obj.write( 'module load swr\n' )
     file_obj.write( 'module load qt5\n' )
-    file_obj.write( 'module load paraview\n' )
-    
+    file_obj.write( 'module load paraview\n\n' )
+   
+    # set LD_LIBRARY_PATH and REMORA_PERIOD 
+    file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
+    file_obj.write( 'REMORA_PERIOD=1\n\n' )
+
+
     file_obj.close()
 
     # change permissions of bash file
