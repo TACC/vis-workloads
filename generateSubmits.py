@@ -80,8 +80,11 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( '#SBATCH -p {}\n'.format( queue_name ) )
     file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
     file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
-    file_obj.write( '#SBATCH -t {}\n'.format( '04:00:00' ) )
-    file_obj.write( 'set -x\n\n' )
+    file_obj.write( '#SBATCH -t {}\n\n'.format( '04:00:00' ) )
+    
+    file_obj.write( 'set -x\n' )
+    file_obj.write( 'date\n\n' )
+    
 
     # write default modules to load for bash file
     file_obj.write( 'module load remora\n' )
