@@ -28,8 +28,7 @@ nodes_count     = [ 1, 2, 4, 8, 16, 32 ]
 processes_count = [ 1, 8, 16           ]
 
 # define which renderer to use for the tests
-# (only using swr for now)
-renderer = 'swr'
+renderer = ''
 # plugin flag sent through ibrun command based
 # off which renderer is used
 pv_plugin_flag = '--swr'
@@ -49,17 +48,31 @@ queue_name   = 'normal'
 # number of runs to perform for each job
 num_runs = 10
 
+# pre-arguments flag
+pre_args = ''
+
+# swr command to pass if using swr
+# workaround where swr_cmd is not defined if global
+# is not prepended since it is looking for a local scope in the
+# process_benchmark function
+global swr_cmd
+
 # argument parser for command line arguments
 parser = argparse.ArgumentParser()
 
-parser.add_argument( '-od', '--output_directory', default=os.getcwd() + '/benchmark', help='set the output directory for the batch file (default is a directory named \"benchmark\" located in the current directory location of this script)', type=str )
+# output directory argument
+parser.add_argument( '-od', '--output_directory', default=os.getcwd() + '/benchmarks', help='set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)', type=str )
+# renderer argument
+parser.add_argument( '-r', '--renderer', default = 'swr', help = 'set renderer for tests (default is swr)', type = str, choices = ['swr', 'ospray'] )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
 
 # set variables based off passed in command line arguments
-print('setting output directory to {0}'.format( args.output_directory ) )
+print( 'setting output directory to {0}'.format( args.output_directory ) )
 output_directory = args.output_directory
+print( 'setting renderer to {0}'.format( args.renderer ) )
+renderer = args.renderer
 
 # if the bencmark directory does not exist, then create
 # it and its associated folders
@@ -84,7 +97,10 @@ if generate_images:
 # main function used to process information to create bash 
 # benchmark script
 def process_benchmark( triangle, node, process ):
-    
+   
+    # workaround for now
+    swr_cmd = ''
+ 
     # name of job to be used in bash script and file name
     job_name = 'd{0}_r{1}_t{2}_N{3}_n{4}'.format( data_name, renderer, triangle, node, process )
     # file name for bash job
@@ -119,12 +135,21 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
     file_obj.write( 'REMORA_PERIOD=1\n\n' )
 
-    # if renderer is swr append to LD_LIBRARY_PATH
+    # set parameters based off renderer 
     if renderer == 'swr':
-        file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-       
 
-    file_obj.write( 'DISPLAY=:1.0 ibrun -n {0} -o 0 {1} pvbatch {2} {3} -w 1024x1024 {4} --geoLevel {5} --numruns {6} --source {7} \n\n'.format( node, renderer, pv_bench_path , pv_plugin_flag, image_flag, triangle, num_runs, data_name ) )
+        file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
+        pre_args = 'DISPLAY=:1.0'
+        swr_cmd  = 'swr'
+        pv_plugin_flag = '--swr'
+    
+    elif renderer == 'ospray':
+        file_obj.write( 'module load ospray\n\n' )
+        pre_args = 'remora'
+        pv_plugin_flag = '--osp'
+
+    
+    file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, node, swr_cmd, pv_bench_path , pv_plugin_flag, image_flag, triangle, num_runs, data_name ) )
 
     file_obj.write( 'date\n' )
 
