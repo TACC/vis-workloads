@@ -119,6 +119,11 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
     file_obj.write( 'REMORA_PERIOD=1\n\n' )
 
+    # if renderer is swr append to LD_LIBRARY_PATH
+    if renderer == 'swr':
+        file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
+       
+
     file_obj.write( 'DISPLAY=:1.0 ibrun -n {0} -o 0 {1} pvbatch {2} {3} -w 1024x1024 {4} --geoLevel {5} --numruns {6} --source {7} \n\n'.format( node, renderer, pv_bench_path , pv_plugin_flag, image_flag, triangle, num_runs, data_name ) )
 
     file_obj.write( 'date\n' )
