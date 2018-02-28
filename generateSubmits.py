@@ -63,7 +63,7 @@ parser = argparse.ArgumentParser()
 # output directory argument
 parser.add_argument( '-od', '--output_directory', default=os.getcwd() + '/benchmarks', help='set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)', type=str )
 # renderer argument
-parser.add_argument( '-r', '--renderer', default = 'swr', help = 'set renderer for tests (default is swr)', type = str, choices = ['swr', 'ospray'] )
+parser.add_argument( '-r', '--renderer', default = 'swr', help = 'set renderer for tests (default is swr)', type = str, choices = ['swr', 'llvmpipe', 'ospray'] )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
@@ -143,12 +143,20 @@ def process_benchmark( triangle, node, process ):
         swr_cmd  = 'swr'
         pv_plugin_flag = '--swr'
     
+    elif renderer == 'llvmpipe':
+        
+        file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
+        pre_args = 'DISPLAY=:1.0'
+        swr_cmd  = '{}/llvmpipe'.format( os.getcwd() )
+        pv_plugin_flag = '--swr'
+
     elif renderer == 'ospray':
+
         file_obj.write( 'module load ospray\n\n' )
         pre_args = 'remora'
         pv_plugin_flag = '--osp'
 
-    
+    # write out command to file to execute test 
     file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, node, swr_cmd, pv_bench_path , pv_plugin_flag, image_flag, triangle, num_runs, data_name ) )
 
     file_obj.write( 'date\n' )
