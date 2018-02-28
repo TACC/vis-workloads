@@ -1,0 +1,89 @@
+#!/bin/bash
+function usage {
+	echo "swr usage"
+	echo " 	 swr [-t n | -p n ] <application> <application parameters>"
+	echo "   -h or --help : show this help menu"
+	echo "   -p <number>  : number of mpi tasks per node"
+	echo "                  sets the number of threads to"
+	echo "			node number of cores / n"
+	echo "   -t <number>  : openswr number of threads"
+	echo "  ---------------------------------------- "
+	echo " The number of openswr threads can also be definied"
+	echo " by setting the environment variable: "
+	echo " export KNOB_MAX_WORKER_THREADS=<number of threads>"
+	echo ""
+}
+
+if [[ ($# == 0) || ($1 == -h) || ($1 == --help) ]]; then
+	usage
+	exit
+fi
+
+number='^[0-9]+$'
+NUMBER_CORES_IN_NODE=`cat /proc/cpuinfo | grep processor | wc -l`
+NUMBER_CORES_IN_NODE=$(($NUMBER_CORES_IN_NODE / 4))
+
+
+if [[ $1 == -p ]]; then
+ 	TASKS_PER_NODE=$2
+	shift
+	shift
+fi
+
+if [[ $1 == -t ]]; then
+ 	THREADS_PER_TASK=$2
+	shift
+	shift
+fi
+
+if [[ $1 == -t ]]; then
+ 	THREADS_PER_TASK=$2
+	shift
+	shift
+fi
+
+if [[ $1 == -p ]]; then
+ 	TASKS_PER_NODE=$2
+	shift
+	shift
+fi
+
+if  [[ !(-z "$THREADS_PER_TASK") && !(-z "$TASKS_PER_NODE") ]]; then
+	usage
+	exit
+fi
+
+
+if ! [ -z "$THREADS_PER_TASK" ]; then
+	if ! [[ "$THREADS_PER_TASK" =~ $number ]]; then
+		usage
+		exit
+	fi
+	KNOB_MAX_WORKER_THREADS=$THREADS_PER_TASK
+fi
+
+if ! [[ -z "$TASKS_PER_NODE" ]]; then
+	if ! [[ "$TASKS_PER_NODE" =~ $number ]]; then
+		usage
+		exit
+	fi
+	KNOB_MAX_WORKER_THREADS=$(($NUMBER_CORES_IN_NODE / $TASKS_PER_NODE))
+fi
+
+
+if [ -z "$KNOB_MAX_WORKER_THREADS" ]; then
+	if [ -z "$SLURM_TASKS_PER_NODE" ]; then
+		KNOB_MAX_WORKER_THREADS=$NUMBER_CORES_IN_NODE
+	else
+		TASKS_PER_NODE=$(($SLURM_NTASKS / $SLURM_NNODES))
+		KNOB_MAX_WORKER_THREADS=$(($NUMBER_CORES_IN_NODE / $TASKS_PER_NODE))
+	fi
+fi
+echo USING $KNOB_MAX_WORKER_THREADS
+
+if [[ $# == 0 ]]; then
+	usage
+	exit
+fi
+
+KNOB_MAX_WORKER_THREADS=$KNOB_MAX_WORKER_THREADS XLIB_SKIP_ARGB_VISUALS=1 GALLIUM_DRIVER=llvm $*
