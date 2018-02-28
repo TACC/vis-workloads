@@ -29,7 +29,7 @@ processes_count = [ 1, 8, 16           ]
 renderer = ''
 # plugin flag sent through ibrun command based
 # off which renderer is used
-pv_plugin_flag = '--swr'
+global pv_plugin_flag
 
 # path to data directory
 # (using fiu for now)
@@ -110,6 +110,7 @@ def process_benchmark( triangle, node, process ):
    
     # workaround for now
     swr_cmd = ''
+    pv_plugin_flag = ''
  
     # name of job to be used in bash script and file name
     job_name = 'd{0}_r{1}_t{2}_N{3}_n{4}'.format( data_name, renderer, triangle, node, process )
