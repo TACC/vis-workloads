@@ -79,9 +79,6 @@ renderer = args.renderer
 print( 'data: {}'.format( args.data ) )
 data_name = args.data
 
-# print( 'data path: {}'.format( args.data_path ) )
-# data_path = args.data_path
-
 print( 'save images? : {}'.format( args.save_images ) )
 save_images = args.save_images
 
