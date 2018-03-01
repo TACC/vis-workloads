@@ -4,6 +4,7 @@
 import os
 import stat
 import argparse
+import sys
 
 # specify output directory for benchmark bash scripts
 output_directory = ''
@@ -31,12 +32,8 @@ renderer = ''
 # off which renderer is used
 global pv_plugin_flag
 
-# path to data directory
-# (using fiu for now)
-data_path = '/work/00401/pnav/workloads/fiu'
 # name of dataset used for tests
-# (using fiu for now)
-data_name = 'fiu'
+data_name = ''
 
 # account name to use for submitting tests as jobs
 account_name = 'A-ccvis'
@@ -63,21 +60,29 @@ parser.add_argument( '-od', '--output_directory', default=os.getcwd() + '/benchm
 # renderer argument
 parser.add_argument( '-r', '--renderer', default = 'swr', help = 'set renderer for tests (default is swr)', type = str, choices = [ 'swr', 'llvmpipe', 'ospray' ] )
 # save images argument
-parser.add_argument( '-si', '--save_images', help = 'set if you like to save the images from the batch jobs (defaults to false)', action = 'store_true')
+parser.add_argument( '-si', '--save_images', help = 'set if you like to save the images from the batch jobs (default is false)', action = 'store_true')
 # image directory argument
 parser.add_argument( '-id', '--image_directory', default = os.getcwd() + '/images', help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)', type = str )
+# data argument
+parser.add_argument( '-d', '--data', default = 'fiu', help = 'define the data to be used for the tests(default is fiu)', choices = [ 'fiu' ], type = str  )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
 
 # set variables based off passed in command line arguments
-print( 'setting output directory to {0}'.format( args.output_directory ) )
+print( 'setting output directory to {}'.format( args.output_directory ) )
 output_directory = args.output_directory
 
-print( 'setting renderer to {0}'.format( args.renderer ) )
+print( 'setting renderer to {}'.format( args.renderer ) )
 renderer = args.renderer
 
-print( 'save images? : {0}'.format( args.save_images ) )
+print( 'data: {}'.format( args.data ) )
+data_name = args.data
+
+# print( 'data path: {}'.format( args.data_path ) )
+# data_path = args.data_path
+
+print( 'save images? : {}'.format( args.save_images ) )
 save_images = args.save_images
 
 # if the bencmark directory does not exist, then create
