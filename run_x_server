@@ -1,0 +1,10 @@
+# VNC server executable
+VNCSERVER_BIN=`which vncserver`
+echo "using default VNC server $VNCSERVER_BIN $@"
+
+# launch VNC session
+VNC_DISPLAY=`$VNCSERVER_BIN $@ 2>&1 | grep desktop | awk -F: '{print $3}'`
+echo "got VNC display :$VNC_DISPLAY"
+
+# set display for X applications
+export DISPLAY=":$VNC_DISPLAY"

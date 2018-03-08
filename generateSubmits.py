@@ -44,7 +44,7 @@ queue_name   = 'normal'
 num_runs = 10
 
 # pre-arguments flag
-pre_args = ''
+global pre_args
 
 # swr command to pass if using swr
 # workaround where swr_cmd is not defined if global
@@ -65,6 +65,8 @@ parser.add_argument( '-si', '--save_images', help = 'set if you like to save the
 parser.add_argument( '-id', '--image_directory', default = os.getcwd() + '/images', help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)', type = str )
 # data argument
 parser.add_argument( '-d', '--data', default = 'fiu', help = 'define the data to be used for the tests(default is fiu)', choices = [ 'fiu' ], type = str  )
+# x server argument
+parser.add_argument( '-x', '--x_server', help = 'run x server (default is true)', action = 'store_false' )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
@@ -81,6 +83,9 @@ data_name = args.data
 
 print( 'save images? : {}'.format( args.save_images ) )
 save_images = args.save_images
+
+print( 'run X server? : {}'.format( args.x_server ) )
+x_server = args.x_server
 
 # if the bencmark directory does not exist, then create
 # it and its associated folders
@@ -113,6 +118,7 @@ def process_benchmark( triangle, node, process ):
     # workaround for now
     swr_cmd = ''
     pv_plugin_flag = ''
+    pre_args = ''
  
     # name of job to be used in bash script and file name
     job_name = 'd{0}_r{1}_t{2}_N{3}_n{4}'.format( data_name, renderer, triangle, node, process )
@@ -152,14 +158,24 @@ def process_benchmark( triangle, node, process ):
     if renderer == 'swr':
 
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-        pre_args = 'DISPLAY=:1.0'
+        
+        # if x server is not set, then set display environment variable
+        if not x_server:
+
+            pre_args = 'DISPLAY=:1.0'
+        
         swr_cmd  = 'swr -p {}'.format( process )
         pv_plugin_flag = '--swr'
     
     elif renderer == 'llvmpipe':
         
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-        pre_args = 'DISPLAY=:1.0'
+        
+        # if x server is not set, then set display environment variable
+        if not x_server:
+
+            pre_args = 'DISPLAY=:1.0'
+
         swr_cmd  = '{}/llvmpipe -p {}'.format( os.getcwd(), process  )
         pv_plugin_flag = '--swr'
 
@@ -169,10 +185,27 @@ def process_benchmark( triangle, node, process ):
         pre_args = 'remora'
         pv_plugin_flag = '--osp'
 
+    # append x server code to bath file
+    if x_server:
+        
+        x_file = open( os.getcwd() + '/run_x_server', 'r' )
+        
+        x_file_data = x_file.read()
+        x_file.close()
+
+        file_obj.write( x_file_data + '\n' )
+
     # write out command to file to execute test 
     file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, node, swr_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name ) )
 
-    file_obj.write( 'date\n' )
+    file_obj.write( 'date\n\n' )
+
+    # if server is running, be sure to print out commands to kill vnc server
+    if x_server:
+
+        file_obj.write( 'echo \"Killing VNC server\"\n')
+        file_obj.write( 'vncserver -kill $DISPLAY' )
+        
 
     file_obj.close()
 
