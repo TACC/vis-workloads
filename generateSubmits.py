@@ -56,17 +56,46 @@ global swr_cmd
 parser = argparse.ArgumentParser()
 
 # output directory argument
-parser.add_argument( '-od', '--output_directory', default=os.getcwd() + '/benchmarks', help='set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)', type = str )
+parser.add_argument( '-od', 
+                     '--output_directory', 
+                     default=os.getcwd() + '/benchmarks', 
+                     help = 'set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)', 
+                     type = str )
+
 # renderer argument
-parser.add_argument( '-r', '--renderer', default = 'swr', help = 'set renderer for tests (default is swr)', type = str, choices = [ 'swr', 'llvmpipe', 'ospray' ] )
+parser.add_argument( '-r', 
+                     '--renderer', 
+                     default = 'swr', 
+                     help = 'set renderer for tests (default is swr)', 
+                     type = str, 
+                     choices = [ 'swr', 'llvmpipe', 'ospray' ] )
+
 # save images argument
-parser.add_argument( '-si', '--save_images', help = 'set if you like to save the images from the batch jobs (default is false)', action = 'store_true')
+parser.add_argument( '-si', 
+                     '--save_images', 
+                     help = 'set if you like to save the images from the batch jobs (default is false)', 
+                     action = 'store_true')
+
 # image directory argument
-parser.add_argument( '-id', '--image_directory', default = os.getcwd() + '/images', help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)', type = str )
+parser.add_argument( '-id', 
+                     '--image_directory', 
+                     default = os.getcwd() + '/images', 
+                     help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)', 
+                     type = str )
+
 # data argument
-parser.add_argument( '-d', '--data', default = 'fiu', help = 'define the data to be used for the tests(default is fiu)', choices = [ 'fiu' ], type = str  )
+parser.add_argument( '-d', 
+                     '--data', 
+                     default = 'fiu', 
+                     help = 'define the data to be used for the tests(default is fiu)', 
+                     choices = [ 'fiu' ], 
+                     type = str  )
+
 # x server argument
-parser.add_argument( '-x', '--x_server', help = 'run x server (default is true)', action = 'store_false' )
+parser.add_argument( '-x', 
+                     '--x_server', 
+                     help = 'run x server (default is true)', 
+                     action = 'store_false' )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
