@@ -38,7 +38,7 @@ data_name = ''
 # account name to use for submitting tests as jobs
 account_name = 'A-ccvis'
 # queue to submit jobs
-queue_name   = 'normal'
+queue_name   = 'development'
 
 # number of runs to perform for each job
 num_runs = 10
@@ -138,7 +138,7 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( '#SBATCH -p {}\n'.format( queue_name ) )
     file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
     file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
-    file_obj.write( '#SBATCH -t {}\n\n'.format( '04:00:00' ) )
+    file_obj.write( '#SBATCH -t {}\n\n'.format( '02:00:00' ) )
     
     file_obj.write( 'set -x\n' )
     file_obj.write( 'date\n\n' )

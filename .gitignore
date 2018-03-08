@@ -1,4 +1,4 @@
 CMakeCache.txt
 paths.sh
-benchmarks/
+benchmarks*
 images/
