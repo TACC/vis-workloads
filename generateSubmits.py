@@ -153,14 +153,14 @@ def process_benchmark( triangle, node, process ):
 
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
         pre_args = 'DISPLAY=:1.0'
-        swr_cmd  = 'swr'
+        swr_cmd  = 'swr -p {}'.format( process )
         pv_plugin_flag = '--swr'
     
     elif renderer == 'llvmpipe':
         
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
         pre_args = 'DISPLAY=:1.0'
-        swr_cmd  = '{}/llvmpipe'.format( os.getcwd() )
+        swr_cmd  = '{}/llvmpipe -p {}'.format( os.getcwd(), process  )
         pv_plugin_flag = '--swr'
 
     elif renderer == 'ospray':
