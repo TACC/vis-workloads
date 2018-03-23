@@ -15,7 +15,7 @@ current_directory = os.getcwd()
 # string of path to pv_bench.py
 pv_bench_path = current_directory + '/pv_bench.py'
 
-# string of image settings to pass to bash script if user 
+# string of image settings to pass to bash script if user
 # decides to generate images
 image_arguments = ''
 
@@ -55,52 +55,72 @@ global swr_cmd
 # argument parser for command line arguments
 parser = argparse.ArgumentParser()
 
+# System queue/partition name
+parser.add_argument( '-a',
+                     '--account',
+                     'A-ccvis',
+                     help = 'Queue/Partition to submit',
+                     type = str )
+
+# System queue/partition name
+parser.add_argument( '-p',
+                     '--partition',
+                     'development',
+                     help = 'Queue/Partition to submit',
+                     type = str )
+
 # output directory argument
-parser.add_argument( '-od', 
-                     '--output_directory', 
-                     default=os.getcwd() + '/benchmarks', 
-                     help = 'set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)', 
+parser.add_argument( '-od',
+                     '--output_directory',
+                     default=os.getcwd() + '/benchmarks',
+                     help = 'set the output directory for the batch file (default is a directory named \"benchmarks\" located in the current directory location of this script)',
                      type = str )
 
 # renderer argument
-parser.add_argument( '-r', 
-                     '--renderer', 
-                     default = 'swr', 
-                     help = 'set renderer for tests (default is swr)', 
-                     type = str, 
+parser.add_argument( '-r',
+                     '--renderer',
+                     default = 'swr',
+                     help = 'set renderer for tests (default is swr)',
+                     type = str,
                      choices = [ 'swr', 'llvmpipe', 'ospray' ] )
 
 # save images argument
-parser.add_argument( '-si', 
-                     '--save_images', 
-                     help = 'set if you like to save the images from the batch jobs (default is false)', 
+parser.add_argument( '-si',
+                     '--save_images',
+                     help = 'set if you like to save the images from the batch jobs (default is false)',
                      action = 'store_true')
 
 # image directory argument
-parser.add_argument( '-id', 
-                     '--image_directory', 
-                     default = os.getcwd() + '/images', 
-                     help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)', 
+parser.add_argument( '-id',
+                     '--image_directory',
+                     default = os.getcwd() + '/images',
+                     help = 'set the output directory for images generated (default is a directory names \"images\" located in the current directory location of this script)',
                      type = str )
 
 # data argument
-parser.add_argument( '-d', 
-                     '--data', 
-                     default = 'fiu', 
-                     help = 'define the data to be used for the tests(default is fiu)', 
-                     choices = [ 'fiu' ], 
+parser.add_argument( '-d',
+                     '--data',
+                     default = 'fiu',
+                     help = 'define the data to be used for the tests(default is fiu)',
+                     choices = [ 'fiu' ],
                      type = str  )
 
 # x server argument
-parser.add_argument( '-x', 
-                     '--x_server', 
-                     help = 'run x server (default is true)', 
+parser.add_argument( '-x',
+                     '--x_server',
+                     help = 'run x server (default is true)',
                      action = 'store_false' )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
 
 # set variables based off passed in command line arguments
+print( 'setting queue to {}'.format( args.partition ) )
+queue_name =  args.partition;
+
+print( 'setting Account Name to {}'.format( args.account ) )
+queue_name =  args.account;
+
 print( 'setting output directory to {}'.format( args.output_directory ) )
 output_directory = args.output_directory
 
@@ -138,17 +158,17 @@ if save_images:
         os.makedirs( image_directory )
 
     image_arguments = '--save_images -i {}/'.format( image_directory )
-    
 
-# main function used to process information to create bash 
+
+# main function used to process information to create bash
 # benchmark script
 def process_benchmark( triangle, node, process ):
-   
+
     # workaround for now
     swr_cmd = ''
     pv_plugin_flag = ''
     pre_args = ''
- 
+
     # name of job to be used in bash script and file name
     job_name = 'd{0}_r{1}_t{2}_N{3}_n{4}'.format( data_name, renderer, triangle, node, process )
     # file name for bash job
@@ -168,38 +188,38 @@ def process_benchmark( triangle, node, process ):
     file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
     file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
     file_obj.write( '#SBATCH -t {}\n\n'.format( '02:00:00' ) )
-    
+
     file_obj.write( 'set -x\n' )
     file_obj.write( 'date\n\n' )
-    
+
 
     # write default modules to load for bash file
     file_obj.write( 'module load remora\n' )
     file_obj.write( 'module load swr\n' )
     file_obj.write( 'module load qt5\n' )
-    file_obj.write( 'module load paraview\n\n' )
-   
-    # set LD_LIBRARY_PATH and REMORA_PERIOD 
+    file_obj.write( 'module load paraview-omesa\n\n' )
+
+    # set LD_LIBRARY_PATH and REMORA_PERIOD
     file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
     file_obj.write( 'REMORA_PERIOD=1\n\n' )
 
-    # set parameters based off renderer 
+    # set parameters based off renderer
     if renderer == 'swr':
 
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-        
+
         # if x server is not set, then set display environment variable
         if not x_server:
 
             pre_args = 'DISPLAY=:1.0'
-        
+
         swr_cmd  = 'swr -p {}'.format( process )
         pv_plugin_flag = '--swr'
-    
+
     elif renderer == 'llvmpipe':
-        
+
         file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-        
+
         # if x server is not set, then set display environment variable
         if not x_server:
 
@@ -216,15 +236,15 @@ def process_benchmark( triangle, node, process ):
 
     # append x server code to bath file
     if x_server:
-        
+
         x_file = open( os.getcwd() + '/run_x_server', 'r' )
-        
+
         x_file_data = x_file.read()
         x_file.close()
 
         file_obj.write( x_file_data + '\n' )
 
-    # write out command to file to execute test 
+    # write out command to file to execute test
     file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, node, swr_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name ) )
 
     file_obj.write( 'date\n\n' )
@@ -234,14 +254,14 @@ def process_benchmark( triangle, node, process ):
 
         file_obj.write( 'echo \"Killing VNC server\"\n')
         file_obj.write( 'vncserver -kill $DISPLAY' )
-        
+
 
     file_obj.close()
 
     # change permissions of bash file
     os.chmod('{0}/submits/{1}'.format( output_directory, file_name ), stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH | stat.S_IWUSR | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH )
 
-# iterate through different triangles, nodes, and processes 
+# iterate through different triangles, nodes, and processes
 # to generate their corresponding bash script by passing
 # the parameters to process_benchmark
 
@@ -252,5 +272,3 @@ for triangle in triangles_count:
         for process in processes_count:
 
             process_benchmark( triangle, node, process )
-
-
