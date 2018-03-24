@@ -41,10 +41,15 @@ if(len(datasets) ==0):
 
 
 x_parameter=""
-if(path_vars['MPI_LAUNCH_X']=="OFF"):
+if(path_vars['MPI_LAUNCH_X']=="ON"):
     x_parameter=" -x"
+
+si_parameter=""
+if(path_vars['GENERATE_IMAGES']=="ON"):
+    x_parameter=" -si"
+
 
 
 for render in renders:
     for dataset in datasets:
-        os.system("python generate_dataset_submits.py -d {} -r {}{}".format(dataset,render,x_parameter))
+        os.system("python scripts/generate_dataset_submits.py -d {} -r {}{}".format(dataset,render,x_parameter))
