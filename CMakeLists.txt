@@ -2,17 +2,17 @@
 #*                     Copyright (c) 2013-2015 Carson Brownlee
 #*         Texas Advanced Computing Center, University of Texas at Austin
 #*                       All rights reserved
-#* 
+#*
 #*       This library is free software; you can redistribute it and/or
 #* modify it under the terms of the GNU Lesser General Public
 #* License as published by the Free Software Foundation; either
 #* version 2.1 of the License, or (at your option) any later version.
-#* 
+#*
 #* This library is distributed in the hope that it will be useful,
 #* but WITHOUT ANY WARRANTY; without even the implied warranty of
 #* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 #* Lesser General Public License for more details.
-#* 
+#*
 #* You should have received a copy of the GNU Lesser General Public
 #* License along with this library; if not, write to the Free Software
 #* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
@@ -24,251 +24,378 @@ PROJECT(svb)
 
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMake)
 
+mark_as_advanced(CMAKE_INSTALL_PREFIX)
+mark_as_advanced(CMAKE_BUILD_TYPE)
+mark_as_advanced(CMAKE_OSX_ARCHITECTURES)
+mark_as_advanced(CMAKE_OSX_SYSROOT)
+mark_as_advanced(CMAKE_OSX_DEPLOYMENT_TARGET)
 #
 # variables that contain the root svb directory and
 # the directory that will contain all of the output
 #
-SET(SVB_DIR ${PROJECT_SOURCE_DIR} CACHE STRING "root SVB directory")
-SET(output_DIR ${PROJECT_SOURCE_DIR}/benchmarks CACHE STRING "output directory")
+
+SET(SVB_DIR ${PROJECT_SOURCE_DIR} CACHE PATH "Root SVB directory")
+SET(SVB_OUTPUT_DIR ${PROJECT_SOURCE_DIR}/results CACHE PATH "Output directory")
+SET(SVB_DATA_DIR ${PROJECT_SOURCE_DIR}/data CACHE PATH "Data directory")
+set(SVB_GENERATE_IMAGES OFF CACHE BOOL "generate images")
+set(SVB_NUMBER_OF_RUNS "50" CACHE STRING "Number of runs after warmup")
+if(SVB_GENERATE_IMAGES)
+	SET(SVB_IMAGE_DIR ${SVB_OUTPUT_DIR}/images} CACHE PATH "Save images to")
+endif()
 
 # place. if not do something like module load paraview to get the paths
-# correctly set. If paraview is not found nothing will run. 
+# correctly set. If paraview is not found nothing will run.
 #
-find_file(PV_FINDO NAMES pvbatch pvpython)  #CARSON TODO: be able to use pvpython or pvbatch
+find_file(PV_FINDO NAMES pvbatch pvpython)
 if(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
-	MESSAGE("pvbatch not found " )
+	MESSAGE("pvbatch not found, please add Paraview to PATH " )
+else()
+	get_filename_component(PV_FIND ${PV_FINDO} PATH)
+	SET(ParaView_DIR ${PV_FIND} CACHE STRING "ParaView build directory directory")
+	SET(ParaViewGL2_DIR ${PV_FIND} CACHE STRING "ParaView build directory with OpenGL2 directory")
+	SET(pvOSPRay_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
+	SET(pvVBO_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
 endif(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
-get_filename_component(PV_FIND ${PV_FINDO} PATH)
-SET(ParaView_DIR ${PV_FIND} CACHE STRING "ParaView build directory directory")
-SET(ParaViewGL2_DIR ${PV_FIND} CACHE STRING "ParaView build directory with OpenGL2 directory")
-SET(pvOSPRay_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
-SET(pvVBO_DIR ${ParaView_DIR}/../lib CACHE STRING "root SVB directory")
 
+
+set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
+if(USE_TACHYON)
 #
 #tachyon (will update this to find the tachyon binary as above)
 #
-
 SET(TACHYONBIN ${TACHYONBIN} CACHE STRING "Tachyon renderer")
 SET(TACHYONDATA ${TACHYONDATA} CACHE STRING "Tachyon datafile")
 SET(TACHYONDATA_DIR ${TACHYONDATAi_DIR} CACHE STRING "Tachyon directorya")
-
-#
-#wrf plugin
-#
-SET(WRF_PLUGIN_PATH ${WRF_PLUGIN_PATH} CACHE STRING "WRF PLUGIN")
+endif()
 
 
-#
-# find the gluray stuff. 
-#
-find_file(GLURAY_FIND NAMES gluray)
-if(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
-	MESSAGE(WARNING "Gluray not found " )
-endif(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
-SET(GLuRay_PATH ${GLURAY_FIND} CACHE STRING "root SVB directory")
-SET(SWR_LIB libGL.so.1 CACHE STRING "root SVB directory")
+# SET(SWR_LIB libGL.so.1 CACHE STRING "root SVB directory")
 #
 # set the accounting info. What account do I charge this to
 #
-set(ACCOUNT Vis-Workload-Charact CACHE STRING "account to charge to")
+set(SUBMIT_ACCOUNT A-ccvis CACHE STRING "account to charge to")
+set(SUBMIT_PARTITION skx-normal CACHE STRING "Cluster partition")
 #
 # set the renderer and dataSources. Setting to ON includes the
 # renderer or dataSource in the batch scripts collection.
 #
-set(USE_SWR OFF CACHE BOOL "use swr renderer")
-set(USE_GPU OFF CACHE BOOL "use gpu renderer")
-set(USE_GPU2 OFF CACHE BOOL "use gpu opengl2 renderer")
+SET(RENDER_BACKEND "")
+set(ENABLE_BACKEND_SWR OFF CACHE BOOL "use swr renderer")
+if(ENABLE_BACKEND_SWR)
+	set(RENDER_BACKEND "${RENDER_BACKEND} swr")
+endif()
+set(ENABLE_BACKEND_LLVMPIPE OFF CACHE BOOL "use llvmpipe renderer")
+if(ENABLE_BACKEND_LLVMPIPE)
+	set(RENDER_BACKEND "${RENDER_BACKEND} llvmpile")
+endif()
+set(ENABLE_BACKEND_MESA OFF CACHE BOOL "use llvmpipe renderer")
+if(ENABLE_BACKEND_MESA)
+	set(RENDER_BACKEND "${RENDER_BACKEND} mesa")
+endif()
+set(ENABLE_BACKEND_GPU OFF CACHE BOOL "use gpu renderer")
+if(ENABLE_BACKEND_GPU)
+	set(RENDER_BACKEND "${RENDER_BACKEND} gpu")
+endif()
+set(ENABLE_BACKEND_GPU2 OFF CACHE BOOL "use gpu opengl2 renderer")
+if(ENABLE_BACKEND_GPU2)
+	set(RENDER_BACKEND "${RENDER_BACKEND} gpu2")
+endif()
 set(IMMEDIATEMODE OFF CACHE BOOL "use immediatemode for gpu renderer")
-set(USE_GLURAY OFF CACHE BOOL "use gluray renderer")
-set(USE_VBO OFF CACHE BOOL "use vbo renderer")
-set(USE_OSPRAY OFF CACHE BOOL "use ospray renderer")
-set(USE_OSPRAYAO OFF CACHE BOOL "use ospray renderer with ao")
-set(USE_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
-set(USE_TACHYON OFF CACHE BOOL "use vmd tachyon renderer")
+set(ENABLE_BACKEND_GLURAY OFF CACHE BOOL "use gluray renderer")
+if(ENABLE_BACKEND_GLURAY)
+	set(RENDER_BACKEND "${RENDER_BACKEND} gluray")
+	find_file(GLURAY_FIND NAMES gluray)
+	if(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
+		MESSAGE(WARNING "Gluray not found " )
+	endif(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
+	SET(GLuRay_PATH ${GLURAY_FIND} CACHE STRING "root SVB directory")
+endif()
+set(ENABLE_BACKEND_VBO OFF CACHE BOOL "use vbo renderer")
+if(ENABLE_BACKEND_VBO)
+	set(RENDER_BACKEND "${RENDER_BACKEND} vbo")
+endif()
+set(ENABLE_BACKEND_OSPRAY OFF CACHE BOOL "use ospray renderer")
+if(ENABLE_BACKEND_OSPRAY)
+	set(RENDER_BACKEND "${RENDER_BACKEND} ospray")
+	set(ENABLE_BACKEND_OSPRAYAO OFF CACHE BOOL "use ospray renderer with ao")
+endif()
+set(ENABLE_BACKEND_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
+if(ENABLE_BACKEND_SWRVBO)
+	set(RENDER_BACKEND "${RENDER_BACKEND} swrvbo")
+endif()
 
-set(LDAV_RUNS OFF CACHE BOOL "runs for ldav paper")
+#temp hide some backends
+mark_as_advanced(ENABLE_BACKEND_GLURAY)
+mark_as_advanced(ENABLE_BACKEND_GPU) #TODO: Hide this only if the cluster does not have gpus
+mark_as_advanced(ENABLE_BACKEND_GPU2)  #TODO: Hide this only if the cluster does not have gpus
 
+SET(DATASETS "")
 
 # DATA
-set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
 set(USE_FIU OFF CACHE BOOL "run fiu data")
+if(USE_FIU)
+	SET(DATASETS "${DATASETS} fiu")
+	set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
+	if(USE_FIU_ANIMATED)
+		SET(DATASETS "${DATASETS} fiu_animated")
+	ENDIF()
+	find_file(FIUDATA NAMES rho_380x380x828_frame0010_subs00.nhdr PATHS ${SVB_DATA_DIR})
+	if(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
+		set(FIUDATA_DIR "FIUDATA_DIR-NOTFOUND" CACHE PATH "FIU data directory")
+		MESSAGE(WARNING "FIU data not found " )
+	endif(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
+	get_filename_component(FIUDATAD ${FIUDATA} PATH)
+	set(FIUDATA_DIR ${FIUDATAD} CACHE PATH "FIU data directory")
+endif()
+
+
 set(USE_RM OFF CACHE BOOL "run the rm data")
-set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
-set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
-set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
+if(USE_RM)
+	SET(DATASETS "${DATASETS} rm")
+	set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
+	IF(USE_RM_TIME)
+		SET(DATASETS "${DATASETS} rm_time")
+	ENDIF()
+	set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
+	IF(USE_RM_ISOSWEEP)
+		SET(DATASETS "${DATASETS} rm_isosweep")
+	ENDIF()
+	set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
+	IF(USE_RM_CLIPSWEEP)
+		SET(DATASETS "${DATASETS} rm_clipsweep")
+	ENDIF()
+	find_file(RMDATA NAMES ppmt273_256_256_256.nrrd PATHS ${SVB_DATA_DIR})
+	if(${RMDATA} MATCHES "RMDATA-NOTFOUND")
+		set(RMDATA_DIR "RMDATA_DIR-NOTFOUND" CACHE PATH "RM data directory")
+		MESSAGE(WARNING "RM data not found " )
+	endif(${RMDATA} MATCHES "RMDATA-NOTFOUND")
+	get_filename_component(RMDATAD ${RMDATA} PATH)
+	set(RMDATA_DIR ${RMDATAD} CACHE PATH "RM data directory")
+endif()
+
 set(USE_TURBULENCE OFF CACHE BOOL "run the turbulence data")
+if(USE_TURBULENCE)
+	SET(DATASETS "${DATASETS} turbulence")
+	set(TURBULENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
+endif()
+
+
 set(USE_DNS OFF CACHE BOOL "run the dns data")
-set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
-set(USE_DNS_ISOSWEEP OFF CACHE BOOL "run the dns isosweep data")
+if(USE_DNS)
+	SET(DATASETS "${DATASETS} dns")
+	set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
+	IF(USE_DNS_CLIPSWEEP)
+		SET(DATASETS "${DATASETS} dns_clipsweep")
+	ENDIF()
+	set(USE_DNS_ISOSWEEP OFF CACHE BOOL "run the dns isosweep data")
+	IF(USE_DNS_ISOSWEEP)
+		SET(DATASETS "${DATASETS} dns_isosweep")
+	ENDIF()
+	find_file(DNSDATA NAMES u_1024_pv.xmf PATHS /work/00401/pnav/workloads/dns)
+	if(${DNSDATA} MATCHES "DNSDATA-NOTFOUND")
+		set(DNSDATA_DIR "DNSDATA_DIR-NOTFOUND" CACHE PATH "DNS data directory")
+		MESSAGE(WARNING "DNS data not found " )
+	endif(${DNSDATA} MATCHES "DNSDATA-NOTFOUND")
+	get_filename_component(DNSDATAD ${DNSDATA} PATH)
+	set(DNSDATA_DIR ${DNSDATAD} CACHE PATH "DNS data directory")
+endif()
+
 set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
+if(USE_MOLECULE)
+	SET(DATASETS "${DATASETS} mol")
+	find_file(MOLDATA NAMES 1VRI.pdb PATHS /work/01891/adb/molecule_benchmark)
+	if(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
+		set(MOLDATA_DIR "MOLDATA_DIR-NOTFOUND" CACHE PATH "molecular data directory")
+		MESSAGE(WARNING "molecule data not found " )
+	endif(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
+	get_filename_component(MOLDATAD ${MOLDATA} PATH)
+	set(MOLDATA_DIR ${MOLDATAD} CACHE PATH "molecular data directory")
+endif()
+
+
 set(USE_GEO OFF CACHE BOOL "run the geo data")
-set(USE_WRF OFF CACHE BOOL "run the wrf data")
-set(USE_WHIPPLE OFF CACHE BOOL "run whipple shield data")
-set(USE_WHIPPLE_TIME OFF CACHE BOOL "run the whipple shield time series data")
-
-
-#OTHER OPTIONS
-set(GENERATE_IMAGES OFF CACHE BOOL "generate images")
-SET(ROOT_IMAGE_DIR ${ROOT_IMAGE_DIR} CACHE STRING "root image dir")
-
-
-#
-# Where the data is
-#
 if (USE_GEO)
-find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /work/00401/pnav/workloads/geo)
-if(${GEODATA} MATCHES "GEODATA-NOTFOUND")
-	set(GEODATA_DIR "GEODATA_DIR-NOTFOUND" CACHE PATH "geo data directory")
-	MESSAGE(WARNING "geo data not found " )
-endif(${GEODATA} MATCHES "GEODATA-NOTFOUND")
-get_filename_component(GEODATAD ${GEODATA} PATH)
-set(GEODATA_DIR ${GEODATAD} CACHE PATH "geo data directory")
+	SET(DATASETS "${DATASETS} geo")
+	find_file(GEODATA NAMES Top_Albian_large_normals_fixed.obj PATHS /work/00401/pnav/workloads/geo)
+	if(${GEODATA} MATCHES "GEODATA-NOTFOUND")
+		set(GEODATA_DIR "GEODATA_DIR-NOTFOUND" CACHE PATH "geo data directory")
+		MESSAGE(WARNING "geo data not found " )
+	endif(${GEODATA} MATCHES "GEODATA-NOTFOUND")
+	get_filename_component(GEODATAD ${GEODATA} PATH)
+	set(GEODATA_DIR ${GEODATAD} CACHE PATH "geo data directory")
 endif (USE_GEO)
 
-find_file(MOLDATA NAMES 1VRI.pdb PATHS /work/01891/adb/molecule_benchmark)
-if(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
-	set(MOLDATA_DIR "MOLDATA_DIR-NOTFOUND" CACHE PATH "molecular data directory")
-	MESSAGE(WARNING "molecule data not found " )
-endif(${MOLDATA} MATCHES "MOLDATA-NOTFOUND")
-get_filename_component(MOLDATAD ${MOLDATA} PATH)
-set(MOLDATA_DIR ${MOLDATAD} CACHE PATH "molecular data directory")
 
-find_file(DNSDATA NAMES u_1024_pv.xmf PATHS /work/00401/pnav/workloads/dns)
-if(${DNSDATA} MATCHES "DNSDATA-NOTFOUND")
-	set(DNSDATA_DIR "DNSDATA_DIR-NOTFOUND" CACHE PATH "DNS data directory")
-	MESSAGE(WARNING "DNS data not found " )
-endif(${DNSDATA} MATCHES "DNSDATA-NOTFOUND")
-get_filename_component(DNSDATAD ${DNSDATA} PATH)
-set(DNSDATA_DIR ${DNSDATAD} CACHE PATH "DNS data directory")
+set(USE_WRF OFF CACHE BOOL "run the wrf data")
+if(USE_WRF)
+	#
+	#wrf plugin
+	#
+	SET(WRF_PLUGIN_PATH ${WRF_PLUGIN_PATH} CACHE STRING "WRF PLUGIN")
+	SET(DATASETS "${DATASETS} wrf")
+	find_file(WRFDATA NAMES file.wrf PATHS /work/01891/adb/maverick)
+	if(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
+		set(WRFDATA_DIR "WRFDATA_DIR-NOTFOUND" CACHE PATH "WRF data directory")
+		MESSAGE(WARNING "WRF data not found " )
+	endif(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
+	get_filename_component(WRFDATAD ${WRFDATA} PATH)
+	set(WRFDATA_DIR ${WRFDATAD} CACHE PATH "WRF data directory")
+endif()
 
-find_file(RMDATA NAMES ppmt273_256_256_256.nrrd PATHS /work/00401/pnav/workloads/rm)
-if(${RMDATA} MATCHES "RMDATA-NOTFOUND")
-	set(RMDATA_DIR "RMDATA_DIR-NOTFOUND" CACHE PATH "RM data directory")
-	MESSAGE(WARNING "RM data not found " )
-endif(${RMDATA} MATCHES "RMDATA-NOTFOUND")
-get_filename_component(RMDATAD ${RMDATA} PATH)
-set(RMDATA_DIR ${RMDATAD} CACHE PATH "RM data directory")
+set(USE_WHIPPLE OFF CACHE BOOL "run whipple shield data")
+if(USE_WHIPPLE)
+	SET(DATASETS "${DATASETS} whipple")
+	set(USE_WHIPPLE_TIME OFF CACHE BOOL "run the whipple shield time series data")
+	find_file(WHIPPLEDATA NAMES Whipple_Shield.exo.300.000 PATHS /work/00401/pnav/workloads/Whipple300)
+	if(${WHIPPLEDATA} MATCHES "WHIPPLEDATA-NOTFOUND")
+		set(WHIPPLEDATA_DIR "WHIPPLEDATA_DIR-NOTFOUND" CACHE PATH "WHIPPLE data directory")
+		MESSAGE(WARNING "WHIPPLE data not found " )
+	endif(${WHIPPLEDATA} MATCHES "WHIPPLEDATA-NOTFOUND")
+	get_filename_component(WHIPPLEDATAD ${WHIPPLEDATA} PATH)
+	set(WHIPPLEDATA_DIR ${WHIPPLEDATAD} CACHE PATH "WHIPPLE data directory")
+endif(USE_WHIPPLE)
 
-find_file(FIUDATA NAMES rho_380x380x828_frame0010_subs00.nhdr PATHS /work/00401/pnav/workloads/fiu)
-if(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
-	set(FIUDATA_DIR "FIUDATA_DIR-NOTFOUND" CACHE PATH "FIU data directory")
-	MESSAGE(WARNING "FIU data not found " )
-endif(${FIUDATA} MATCHES "FIUDATA-NOTFOUND")
-get_filename_component(FIUDATAD ${FIUDATA} PATH)
-set(FIUDATA_DIR ${FIUDATAD} CACHE PATH "FIU data directory")
+set(USE_ENZO OFF CACHE BOOL "run enzo data")
+if(USE_ENZO)
+	SET(DATASETS "${DATASETS} enzo")
+	find_file(ENZODATA NAMES DD0174.cpu0000 PATHS /work/01891/adb/maverick/DD0174)
+	if(${ENZODATA} MATCHES "ENZODATA-NOTFOUND")
+		set(ENZODATA_DIR "ENZODATA_DIR_NOTFOUND" CACHE PATH "ENZO data directory")
+		MESSAGE(WARNING "ENZO data not found " )
+	endif(${ENZODATA} MATCHES "ENZODATA-NOTFOUND")
+	get_filename_component(ENZODATAD ${ENZODATA} PATH)
+	set(ENZODATA_DIR ${ENZODATAD} CACHE PATH "ENZO data directory")
+endif()
+#OTHER OPTIONS
 
-find_file(WHIPPLEDATA NAMES Whipple_Shield.exo.300.000 PATHS /work/00401/pnav/workloads/Whipple300)
-if(${WHIPPLEDATA} MATCHES "WHIPPLEDATA-NOTFOUND")
-	set(WHIPPLEDATA_DIR "WHIPPLEDATA_DIR-NOTFOUND" CACHE PATH "WHIPPLE data directory")
-	MESSAGE(WARNING "WHIPPLE data not found " )
-endif(${WHIPPLEDATA} MATCHES "WHIPPLEDATA-NOTFOUND")
-get_filename_component(WHIPPLEDATAD ${WHIPPLEDATA} PATH)
-set(WHIPPLEDATA_DIR ${WHIPPLEDATAD} CACHE PATH "WHIPPLE data directory")
-
-find_file(ENZODATA NAMES DD0174.cpu0000 PATHS /work/01891/adb/maverick/DD0174)
-if(${ENZODATA} MATCHES "ENZODATA-NOTFOUND")
-	set(ENZODATA_DIR "ENZODATA_DIR_NOTFOUND" CACHE PATH "ENZO data directory")
-	MESSAGE(WARNING "ENZO data not found " )
-endif(${ENZODATA} MATCHES "ENZODATA-NOTFOUND")
-get_filename_component(ENZODATAD ${ENZODATA} PATH)
-set(ENZODATA_DIR ${ENZODATAD} CACHE PATH "ENZO data directory")
-
-find_file(WRFDATA NAMES file.wrf PATHS /work/01891/adb/maverick)
-if(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
-	set(WRFDATA_DIR "WRFDATA_DIR-NOTFOUND" CACHE PATH "WRF data directory")
-	MESSAGE(WARNING "WRF data not found " )
-endif(${WRFDATA} MATCHES "WRFDATA-NOTFOUND")
-get_filename_component(WRFDATAD ${WRFDATA} PATH)
-set(WRFDATA_DIR ${WRFDATAD} CACHE PATH "WRF data directory")
-
-
-set(TURBULENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
-set(ENZODATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
+# set(ENZODATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
 
 #
 # set how mpi programs are launched. default is ibrun
-# Note: mpirun and ibrun should be in your path or this wont work. 
+# Note: mpirun and ibrun should be in your path or this wont work.
 #
 if(NOT MPI_COMMAND)
 	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
 endif(NOT MPI_COMMAND)
-
-set(ENV_COMMAND "" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
+set(MPI_LAUNCH_X ON CACHE BOOL "Job must launch X server")
+if(MPI_LAUNCH_X)
+	set(MPI_X_PROLOGUE "mpi_x_prologue" CACHE STRING "Prologue script to start X")
+	set(MPI_X_EPILOGUE "mpi_x_epilogue" CACHE STRING "Epilogue to close X")
+endif()
+set(MPI_ENV_COMMAND "module load remora swr ospray qt5 paraview-omesa" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
 #
 # if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
 # look in the directory where this file is for the hosts file used with mpi
 #
 if(${MPI_COMMAND} MATCHES "mpirun")
-	find_file(HOSTFILE NAMES hosts PATHS $CMAKE_CURRENT_LIST_DIR )
 	set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
 endif(${MPI_COMMAND} MATCHES "mpirun")
 
+set(MaxNumNodes "32" CACHE STRING "The max number of nodes to use")
+set(MaxNumProcs "16" CACHE STRING "The max number of mpi processes per nodes to use")
+set(MaxGeometryLevels "3" CACHE STRING "The geometry levels to use, ie 1 2 4 8.  Up to 10.  Dataset script specific.")
 
-set(NumNodes "1" CACHE STRING "The number of nodes to use")
-set(NumProcs "1" CACHE STRING "The number of mpi processes per nodes to use")
-set(GeometryLevels "1" CACHE STRING "The geometry levels to use, ie 1 2 4 8.  Up to 10.  Dataset script specific.")
+set (index 0)
+math(EXPR nodes "1")
+set (NumNodes "")
+while( (MaxNumNodes GREATER ${nodes}) OR (MaxNumNodes EQUAL ${nodes}) )
+	set(NumNodes "${NumNodes} ${nodes}")
+	math(EXPR index "${index}+1")
+	math(EXPR nodes "1 << ${index}")
+endwhile()
+
+set (index 0)
+set (NumProcs "")
+math(EXPR nodes "1")
+while( (MaxNumProcs GREATER ${nodes}) OR (MaxNumProcs EQUAL ${nodes}) )
+	set(NumProcs "${NumProcs} ${nodes}")
+	math(EXPR index "${index}+1")
+	math(EXPR nodes "1 << ${index}")
+endwhile()
+set (index 0)
+set (GeometryLevels "")
+while( (MaxGeometryLevels GREATER ${index}) OR (MaxGeometryLevels EQUAL ${index}) )
+	set(GeometryLevels "${GeometryLevels} ${index}")
+	math(EXPR index "${index}+1")
+endwhile()
 
 SET(PND \# CACHE INTERNAL STRING )
-FILE(REMOVE ${PROJECT_BINARY_DIR}/paths.sh)
-FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
-  "${PND}!/bin/bash"  \n
-  "SVB_DIR=" ${SVB_DIR}  \n
-  "output_DIR=" ${output_DIR}  \n
-  "ParaView_DIR=" ${ParaView_DIR}  \n
-  "ParaViewGL2_DIR=" ${ParaViewGL2_DIR}  \n
-  "pvOSPRay_DIR=" ${pvOSPRay_DIR}  \n
-  "pvVBO_DIR=" ${pvVBO_DIR}  \n
-  "GLuRay_PATH=" ${GLuRay_PATH}  \n 
-  "WRF_PLUGIN_PATH=" ${WRF_PLUGIN_PATH} \n
-  "GEODATA_DIR=" ${GEODATA_DIR} \n
-  "MOLDATA_DIR=" ${MOLDATA_DIR} \n
-  "WHIPPLEDATA_DIR=" ${WHIPPLEDATA_DIR} \n
-  "ENZODATA_DIR=" ${ENZODATA_DIR} \n
-  "WRFDATA_DIR=" ${WRFDATA_DIR} \n
-  "DNSDATA_DIR=" ${DNSDATA_DIR} \n
-  "FIUDATA_DIR=" ${FIUDATA_DIR} \n
-  "RMDATA_DIR=" ${RMDATA_DIR} \n
-  "TURBULENCEDATA_DIR=" ${TURBULENCEDATA_DIR} \n
-  "ACCOUNT=" ${ACCOUNT} \n
-  "SWR_LIB=" ${SWR_LIB} \n
-  "USE_SWR=" ${USE_SWR} \n
-  "USE_GPU=" ${USE_GPU} \n
-  "USE_GPU2=" ${USE_GPU} \n
-  "IMMEDIATEMODE=" ${IMMEDIATEMODE} \n
-  "USE_GLURAY=" ${USE_GLURAY} \n
-  "USE_VBO=" ${USE_VBO} \n
-  "USE_OSPRAY=" ${USE_OSPRAY} \n
-  "USE_OSPRAYAO=" ${USE_OSPRAYAO} \n
-  "USE_SWRVBO=" ${USE_SWRVBO} \n
-  "USE_TACHYON=" ${USE_TACHYON} \n
-  "LDAV_RUNS=" ${LDAV_RUNS} \n
-  "TACHYONBIN=" ${TACHYONBIN} \n
-  "TACHYONDATA=" ${TACHYONDATA} \n
-  "TACHYONDATA_DIR=" ${TACHYONDATA_DIR} \n
-  "USE_FIU_ANIMATED=" ${USE_FIU_ANIMATED} \n
-  "USE_FIU=" ${USE_FIU} \n
-  "USE_RM=" ${USE_RM} \n
-  "USE_RM_TIME=" ${USE_RM_TIME} \n
-  "USE_RM_ISOSWEEP="  ${USE_RM_ISOSWEEP} \n
-  "USE_RM_CLIPSWEEP="  ${USE_RM_CLIPSWEEP} \n
-  "USE_TURBULENCE="  ${USE_TURBULENCE} \n
-  "USE_DNS=" ${USE_DNS} \n
-  "USE_DNS_ISOSWEEP=" ${USE_DNS_ISOSWEEP} \n
-  "USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP} \n
-  "USE_MOLECULE=" ${USE_MOLECULE} \n
-  "USE_GEO=" ${USE_GEO} \n
-  "USE_WRF=" ${USE_WRF} \n
-  "USE_WHIPPLE_TIME=" ${USE_WHIPPLE_TIME} \n
-  "USE_WHIPPLE=" ${USE_WHIPPLE} \n
-  "GENERATE_IMAGES=" ${GENERATE_IMAGES} \n
-  "ROOT_IMAGE_DIR=" ${ROOT_IMAGE_DIR} \n
-  "MPI_COMMAND=" ${MPI_COMMAND} \n
-  "ENV_COMMAND=" ${ENV_COMMAND} \n
-  "HOSTFILE=" ${HOSTFILE} \n
-  "RANKS_PER_HOST=" ${RANKS_PER_HOST} \n
-  "NumNodes=\""${NumNodes}\"\n
-  "NumProcs=\""${NumProcs}\"\n
-  "GeometryLevels="${GeometryLevels}\n
-  )
-
-
+FILE(REMOVE ${SVB_DIR}/paths.sh)
+FILE(WRITE ${SVB_DIR}/paths.sh
+	"${PND}!/bin/bash"  \n
+	"################## BASE CONFIG #######################" \n
+	"SVB_DIR=" ${SVB_DIR}  \n
+	"output_DIR=" ${SVB_OUTPUT_DIR}  \n
+	"data_DIR=" ${SVB_DATA_DIR}  \n
+	"GENERATE_IMAGES=" ${GENERATE_IMAGES} \n
+	"ROOT_IMAGE_DIR=" ${SVB_IMAGE_DIR} \n
+	"RENDER_BACKEND=" ${RENDER_BACKEND} \n
+	"DATASETS=" ${DATASETS} \n
+	"NUMRUNS="${SVB_NUMBER_OF_RUNS} \n
+	"################## PARAVIEW CONFIG #######################" \n
+	"ParaView_DIR=" ${ParaView_DIR}  \n
+	"ParaViewGL2_DIR=" ${ParaViewGL2_DIR}  \n
+	"pvOSPRay_DIR=" ${pvOSPRay_DIR}  \n
+	"pvVBO_DIR=" ${pvVBO_DIR}  \n
+	"GLuRay_PATH=" ${GLuRay_PATH}  \n
+	"WRF_PLUGIN_PATH=" ${WRF_PLUGIN_PATH} \n
+	"################## MPI CONFIG #######################" \n
+	"ACCOUNT=" ${SUBMIT_ACCOUNT} \n
+	"PARTITION=" ${SUBMIT_PARTITION} \n
+	"MPI_COMMAND=" ${MPI_COMMAND} \n
+	"MPI_ENV_COMMAND=" ${MPI_ENV_COMMAND} \n
+	"MPI_LAUNCH_X=" ${MPI_LAUNCH_X} \n
+	"MPI_X_PROLOGUE=" ${MPI_X_PROLOGUE} \n
+	"MPI_X_EPILOGUE=" ${MPI_X_EPILOGUE} \n
+	"NumNodes="${NumNodes}\n
+	"NumProcs="${NumProcs}\n
+	"GeometryLevels="${GeometryLevels}\n
+	"################## renderer CONFIG #######################" \n
+	"ENABLE_BACKEND_SWR=" ${ENABLE_BACKEND_SWR} \n
+	"ENABLE_BACKEND_GPU=" ${ENABLE_BACKEND_GPU} \n
+	"ENABLE_BACKEND_GPU2=" ${ENABLE_BACKEND_GPU} \n
+	"ENABLE_BACKEND_GLURAY=" ${ENABLE_BACKEND_GLURAY} \n
+	"ENABLE_BACKEND_VBO=" ${ENABLE_BACKEND_VBO} \n
+	"ENABLE_BACKEND_OSPRAY=" ${ENABLE_BACKEND_OSPRAY} \n
+	"ENABLE_BACKEND_OSPRAYAO=" ${ENABLE_BACKEND_OSPRAYAO} \n
+	"ENABLE_BACKEND_SWRVBO=" ${ENABLE_BACKEND_SWRVBO} \n
+	"IMMEDIATEMODE=" ${IMMEDIATEMODE} \n
+	"################## FIU CONFIG #######################" \n
+	"USE_FIU=" ${USE_FIU} \n
+	"USE_FIU_ANIMATED=" ${USE_FIU_ANIMATED} \n
+	"FIUDATA_DIR=" ${FIUDATA_DIR} \n
+	"################## RM CONFIG #######################" \n
+	"USE_RM=" ${USE_RM} \n
+	"RMDATA_DIR=" ${RMDATA_DIR} \n
+	"USE_RM_TIME=" ${USE_RM_TIME} \n
+	"USE_RM_ISOSWEEP="  ${USE_RM_ISOSWEEP} \n
+	"USE_RM_CLIPSWEEP="  ${USE_RM_CLIPSWEEP} \n
+	"################## TURBULENCE CONFIG #######################" \n
+	"USE_TURBULENCE="  ${USE_TURBULENCE} \n
+	"TURBULENCEDATA_DIR=" ${TURBULENCEDATA_DIR} \n
+	"################## DNS CONFIG #######################" \n
+	"USE_DNS=" ${USE_DNS} \n
+	"DNSDATA_DIR=" ${DNSDATA_DIR} \n
+	"USE_DNS_ISOSWEEP=" ${USE_DNS_ISOSWEEP} \n
+	"USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP} \n
+	"################## GEO CONFIG #######################" \n
+	"USE_GEO=" ${USE_GEO} \n
+	"GEODATA_DIR=" ${GEODATA_DIR} \n
+	"################## WRF CONFIG #######################" \n
+	"USE_WRF=" ${USE_WRF} \n
+	"WRFDATA_DIR=" ${WRFDATA_DIR} \n
+	"################## WHIPPLE CONFIG #######################" \n
+	"USE_WHIPPLE=" ${USE_WHIPPLE} \n
+	"USE_WHIPPLE_TIME=" ${USE_WHIPPLE_TIME} \n
+	"WHIPPLEDATA_DIR=" ${WHIPPLEDATA_DIR} \n
+	"################## ENZO CONFIG #######################" \n
+	"ENZODATA_DIR=" ${ENZODATA_DIR} \n
+	"################## MOL CONFIG #######################" \n
+	"USE_MOLECULE=" ${USE_MOLECULE} \n
+	"MOLDATA_DIR=" ${MOLDATA_DIR} \n
+	"################## FIU CONFIG #######################" \n
+	"USE_TACHYON=" ${USE_TACHYON} \n
+	"TACHYONBIN=" ${TACHYONBIN} \n
+	"TACHYONDATA=" ${TACHYONDATA} \n
+	"TACHYONDATA_DIR=" ${TACHYONDATA_DIR} \n
+)

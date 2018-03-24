@@ -8,6 +8,9 @@ import sys
 import resource
 paraview.simple._DisableFirstRenderCameraReset()
 
+
+datasets=["fiu","wrf","geo","mol","whipple","enzo","rm","turbulence"]
+
 path_vars = dict()
 dir = os.path.dirname(__file__)
 filename = os.path.join(dir, 'paths.sh')
@@ -31,7 +34,7 @@ benchmark.maximize_logs()
 
 def PrintMemoryUsage():
    result = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-   
+
    print "Memory: " + str(float(result)/float(1024*1024)) + "GB"
    print "Page size: " + str(resource.getpagesize())
 
@@ -119,9 +122,9 @@ use_immediate = 0
 immediatemode = options.immediatemode
 num_runs = options.numruns
 if (plugin_vbo):
-    
+
     view = CreateView("VBOView")
-   
+
     view.ViewSize =  windowsize
     renderer="vbo"
 
@@ -138,7 +141,7 @@ if(plugin_gpu2):
 #Paraview is automatically loading ospray currently, the script will crash if you try to LoadPlugin when it is already loaded, this is why the LoadPlugin is commented out currently, we need to add a test to see if it is already loaded
 #adb: do this using dirs() and checking if any of the entried == pvOSPRAY
 if (plugin_osp):
-    
+
     try:
       LoadPlugin(str(path_vars["ParaViewGL2_DIR"]) + "/lib/libpvOSPRay.so", True)
     except:
@@ -146,11 +149,11 @@ if (plugin_osp):
       exit(0)
 
     print "loading ospray plugin"
-    
+
     print "loaded ospray plugin"
-    
+
     view = CreateView('OSPRayView')
-   
+
     view.ViewSize =  windowsize
     view.EnableProgressiveRefinement = 0
     if use_ao:
@@ -197,7 +200,7 @@ except:
     def svbSetup(geo, stage):
         ResetCamera()
     def svbRender():
-        Render() 
+        Render()
     def svbGetStagesSize():
         return 1;
 
@@ -275,27 +278,27 @@ for stage in range(numStages):
 
         for i in range(0,len(timings)):
             sum += float(timings[i])
-        
+
         avg = 0.0
-        
+
         if (len(timings) > 0):
             avg = sum/float(len(timings))
-        
+
         dev = 0.0
-        
+
         for i in range(0, len(timings) ):
             val = float(timings[i])-avg
             dev += val*val
-        
+
         if (len(timings) > 0):
             dev = dev/float(len(timings))
-        
+
         dev = math.sqrt(dev)
         total = 0.0
 
         if (len(timings) > 0):
             total = timings[len(timings)-1]-timings[0]
-        
+
         numFrames = len(timings)
         return {'avg':avg, 'dev':dev, 'total':sum, 'numFrames':numFrames}
 
@@ -311,7 +314,7 @@ for stage in range(numStages):
         #move the camera for static datasets
         #for dynamic and time series data I am setting frac to 0.1 so everything will be recorded in the still_out_times
         if animateCamera == False:
-            frac = 0.1    
+            frac = 0.1
         elif animateCamera == True:
             frac = float(i)/float(num_runs)
             print "frac: " + str(frac)
@@ -351,10 +354,10 @@ for stage in range(numStages):
         else:
             still_in_times.append(tt_render)
 
-   
+
         if save_images != "":
             file = save_images + 'd%s_r%s_t%d_%05d.jpg' % (source, renderer, geo, framecnt)
-    
+
             SaveScreenshot(file)
             print "saved image: " + file
             framecnt += 1
@@ -369,21 +372,21 @@ for stage in range(numStages):
     print pv_logs
 
     fps = float( num_runs ) / ( end_time - start_time );
-    
+
     print "fps: " + str( fps )
     print "times: "
     print times
 
-    
-    printTimings(times,            "overall render time" ) 
-    printTimings(still_out_times,  "still zoomed out"    ) 
+
+    printTimings(times,            "overall render time" )
+    printTimings(still_out_times,  "still zoomed out"    )
     printTimings(rotate_out_times, "rotate zoomed out"   )
     printTimings(zoom_times,       "zooming"             )
     printTimings(still_in_times,   "still zoomed in"     )
     printTimings(rotate_in_times,  "rotate zoomed in"    )
 
 
-    
+
     readerTime = -1.0
     filterTime = -1.0
     if pv_logs[0][0].get('reader') != None:
@@ -398,4 +401,3 @@ for stage in range(numStages):
     print "filter time " + str(tt_filter)
 
 view=GetActiveView()
-

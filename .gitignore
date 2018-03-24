@@ -3,3 +3,5 @@ paths.sh
 benchmarks*
 images/
 *.pyc
+paths.sh
+build
