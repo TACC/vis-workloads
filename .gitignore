@@ -2,3 +2,4 @@ CMakeCache.txt
 paths.sh
 benchmarks*
 images/
+*.pyc

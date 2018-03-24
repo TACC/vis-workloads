@@ -58,14 +58,14 @@ parser = argparse.ArgumentParser()
 # System queue/partition name
 parser.add_argument( '-a',
                      '--account',
-                     'A-ccvis',
-                     help = 'Queue/Partition to submit',
+                     default='A-ccvis',
+                     help = 'Accounting Project',
                      type = str )
 
 # System queue/partition name
 parser.add_argument( '-p',
                      '--partition',
-                     'development',
+                     default='development',
                      help = 'Queue/Partition to submit',
                      type = str )
 
@@ -119,7 +119,7 @@ print( 'setting queue to {}'.format( args.partition ) )
 queue_name =  args.partition;
 
 print( 'setting Account Name to {}'.format( args.account ) )
-queue_name =  args.account;
+account_name =  args.account;
 
 print( 'setting output directory to {}'.format( args.output_directory ) )
 output_directory = args.output_directory
@@ -139,12 +139,14 @@ x_server = args.x_server
 # if the bencmark directory does not exist, then create
 # it and its associated folders
 if not os.path.exists(output_directory):
-
     os.makedirs( output_directory )
 
-os.makedirs( output_directory + '/outs'        )
-os.makedirs( output_directory + '/submits'     )
-os.makedirs( output_directory + '/interactive' )
+if not os.path.exists(os.path.join(output_directory,"outs")):
+  os.makedirs(os.path.join(output_directory,"outs"))
+if not os.path.exists(os.path.join(output_directory,"submits")):
+  os.makedirs(os.path.join(output_directory,"submits"))
+if not os.path.exists(os.path.join(output_directory,"interactive")):
+  os.makedirs(os.path.join(output_directory,"interactive"))
 
 # if you choose to save images then create the images folder
 # if it does not exist, and set image_arguments
@@ -246,7 +248,6 @@ def process_benchmark( triangle, node, process ):
 
     # write out command to file to execute test
     file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, node, swr_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name ) )
-
     file_obj.write( 'date\n\n' )
 
     # if server is running, be sure to print out commands to kill vnc server
