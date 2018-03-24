@@ -41,7 +41,7 @@ if(len(datasets) ==0):
 
 
 x_parameter=""
-if(paths_vars['MPI_LAUNCH_X']=="ON"):
+if(path_vars['MPI_LAUNCH_X']=="OFF"):
     x_parameter=" -x"
 
 

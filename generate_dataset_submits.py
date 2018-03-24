@@ -224,7 +224,7 @@ def process_benchmark(triangle, node, process ):
 
     # set LD_LIBRARY_PATH and REMORA_PERIOD
     # file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
-    file_obj.write( 'REMORA_PERIOD=1\n\n' )
+    file_obj.write( '\nREMORA_PERIOD=1\n\n' )
 
     # set parameters based off renderer
     if renderer == 'swr':
@@ -259,7 +259,7 @@ def process_benchmark(triangle, node, process ):
 
     # append x server code to bath file
     if x_server:
-        x_file = open( os.getcwd() + path_vars['MPI_X_PROLOGUE'], 'r' )
+        x_file = open( os.path.join(os.getcwd(), path_vars['MPI_X_PROLOGUE']), 'r' )
         x_file_data = x_file.read()
         x_file.close()
         file_obj.write( x_file_data + '\n' )
@@ -270,7 +270,7 @@ def process_benchmark(triangle, node, process ):
 
     # if server is running, be sure to print out commands to kill vnc server
     if x_server:
-        x_file = open( os.getcwd() +  path_vars['MPI_X_EPILOGUE'], 'r' )
+        x_file = open( os.path.join(os.getcwd(),  path_vars['MPI_X_EPILOGUE']), 'r' )
         x_file_data = x_file.read()
         x_file.close()
         file_obj.write( x_file_data + '\n' )
