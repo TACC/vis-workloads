@@ -70,14 +70,14 @@ parser = argparse.ArgumentParser()
 # System queue/partition name
 parser.add_argument( '-a',
                      '--account',
-                     default='A-ccvis',
+                     default=account_name,
                      help = 'Accounting Project',
                      type = str )
 
 # System queue/partition name
 parser.add_argument( '-p',
                      '--partition',
-                     default='development',
+                     default=queue_name,
                      help = 'Queue/Partition to submit',
                      type = str )
 
