@@ -37,12 +37,12 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global reader
-  
+
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':0};
   valRanges = [0,200]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
- 
+
   if (geometryLevel == 0):
     isovals = [val]
   else:
@@ -50,7 +50,7 @@ def svbSetup(geometryLevel=1, stage=0):
     isovals = isovals[:geometryLevel]
   print "isosweep vals: " + str(isovals)
 
-  if (stage != 0):  
+  if (stage != 0):
     numCells = 0
     numPolys = 0
     numPoints = 0
@@ -66,10 +66,10 @@ def svbSetup(geometryLevel=1, stage=0):
     print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
     print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
     print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-    
+
     returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0, 'tt_filter':tt_filter};
     return returnVals;
- 
+
   numCells = 0
   numPolys = 0
   numPoints = 0
@@ -77,8 +77,8 @@ def svbSetup(geometryLevel=1, stage=0):
   #print(rm_data_dir+"/rm_0273.nhdr")
   filename = ""
   if (geometryLevel == 0):
-    filename = rm_data_dir+ '/ppmt273_256_256_256.nrrd' 
-    st_reader = time.time() 
+    filename = rm_data_dir+ '/ppmt273_256_256_256.nrrd'
+    st_reader = time.time()
     reader = NrrdReader( FileName=filename)
     reader.UpdatePipeline()
     et_reader = time.time()
@@ -94,7 +94,7 @@ def svbSetup(geometryLevel=1, stage=0):
   print "reading file: " + filename
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0202.xmf'])
-  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )  
+  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
   st_filter = time.time()
@@ -107,7 +107,7 @@ def svbSetup(geometryLevel=1, stage=0):
   Contour1.PointMergeMethod = 'Uniform Binning'
   Contour1.ComputeNormals = 1
   Contour1.ComputeScalars = 1
-  
+
   #just checking if Update will work here
   Contour1.UpdatePipeline()
   et_filter = time.time()
@@ -119,7 +119,7 @@ def svbSetup(geometryLevel=1, stage=0):
   imageFilePWF = GetOpacityTransferFunction('ImageFile')
   rep.ColorArrayName = ['POINTS','ImageFile']
   rep.SetRepresentationType('Surface')
-  
+
   renderView1 = GetActiveView()
   #displayProperties = GetDisplayProperties(Contour1, renderView1)
   #displayProperties.RescaleTransferFunctionToDataRange(True)
@@ -130,7 +130,7 @@ def svbSetup(geometryLevel=1, stage=0):
   renderView1.CameraParallelScale = 220.83647796503186
   renderView1.Background = [1,1,1]
   ResetCamera()
-  
+
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()

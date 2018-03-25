@@ -61,7 +61,7 @@ def createStreamlines(source, source2, t):
   RenderView1.CameraFocalPoint = [179.604, 186.099, 263.144]
   RenderView1.CameraClippingRange = [4.173792286478831, 4173.792286478831]
 
-  
+
   Tube1 = Tube()
 
   RenderView1.OrientationAxesVisibility = 0
@@ -89,10 +89,10 @@ def createStreamlines(source, source2, t):
 
   Tube1.UpdatePipeline()
   StreamTracer1.UpdatePipeline()
-  et_filter_streamline = time.time() 
+  et_filter_streamline = time.time()
   tt_filter_streamline = (et_filter_streamline-st_filter_streamline)
   DataRepresentation6 = Show()
-  
+
   #DataRepresentation6.ScaleFactor = 300.0
   DataRepresentation6.SelectionPointFieldDataArrayName = 'POINTS'
   DataRepresentation6.LookupTable = a3_ImageFile_PVLookupTable
@@ -150,7 +150,7 @@ def svbGetStagesSize():
   return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
-  
+
 
   global Contour1
   #readers
@@ -162,7 +162,7 @@ def svbSetup(geometryLevel=1, stage=0):
   numPoints = 0
 
 
-  if( stage ==0)
+  if(stage ==0):
     st_reader = time.time()
     u_380x380x828_frame0010_subs00_nhdr = NrrdReader( FileName=fiu_data_dir+"/u_380x380x828_frame0010_subs00.nhdr" )
 
@@ -173,7 +173,7 @@ def svbSetup(geometryLevel=1, stage=0):
     u_380x380x828_frame0010_subs00_nhdr.UpdatePipeline()
     et_reader = time.time()
     tt_reader = (et_reader - st_reader)
-   
+
 
   RenderView1 = GetRenderView()
 
@@ -189,7 +189,7 @@ def svbSetup(geometryLevel=1, stage=0):
     #numStreamlines = options.numStreamlines
   #except:
     #pass
-  
+
   numStreamlines = 1000
   useContour = True
   #if (geometryLevel == 0):
@@ -244,7 +244,7 @@ def svbSetup(geometryLevel=1, stage=0):
     streamlineResults[streamIndex]['cRepresentation'].Visibility = 1
     tt_filter_all = streamlineResults[streamIndex]['tt_filter_streamall']
     streamIndex+=1
-  
+
   print 'tt_filter_all: ' + str(tt_filter_all)
   AnimationScene1.AnimationTime = lerp
 
@@ -259,7 +259,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':tt_reader, 'tt_filter':tt_filter_all};
   return returnVals
-  
+
 
 def svbRender():
   Render()

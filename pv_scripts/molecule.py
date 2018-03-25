@@ -24,7 +24,7 @@ mol_data_dir =  path_vars["MOLDATA_DIR"]
 def svbSetup(geometryLevel=1, stage=0):
   print "in svbSetup"
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
   paraview.simple._DisableFirstRenderCameraReset()
 
@@ -39,7 +39,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   RenderView1 = GetRenderView()
   RenderView1.CenterOfRotation = [77.85100555419922, 193.92295455932617, 40.27460050582886]
-  
+
   DataRepresentation1 = Show()
   DataRepresentation1.ScaleFactor = 45.73679962158204
   DataRepresentation1.EdgeColor = [0.0, 0.0, 0.5000076295109483]
@@ -51,19 +51,19 @@ def svbSetup(geometryLevel=1, stage=0):
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
   numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-  
+
   print "about to load PDB"
   st_pdb_reader = time.time()
   fname = "\'"+mol_data_dir+"/1VRI.pdb"+"\'"
   #a4RHV_pdb = PDBReader( FileName=fname )
   a4RHV_pdb = PDBReader( FileName='/work/00401/pnav/workloads/molecule/1VRI.pdb')
-  
+
   a4RHV_pdb.UpdatePipeline()
   et_pdb_reader = time.time()
   tt_pdb_reader = (et_pdb_reader-st_pdb_reader)
 
   tt_reader = (tt_pdb_reader+tt_obj_reader)
-  
+
   DataRepresentation6 = Show()
   DataRepresentation6.EdgeColor = [0.0, 0.0, 0.5000076295109483]
   DataRepresentation6.SelectionPointFieldDataArrayName = 'rgb_colors'
@@ -91,7 +91,7 @@ def svbSetup(geometryLevel=1, stage=0):
   return returnVals
 
 def svbGetStagesSize():
-  return 1;
+  return 5;
 
 
 def svbRender():

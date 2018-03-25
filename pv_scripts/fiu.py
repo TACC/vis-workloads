@@ -26,13 +26,13 @@ print "fiu_data_dir:%s" %  fiu_data_dir
 
 
 def svbGetStagesSize():
-  return 1;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global u_380x380x828_frame0010_subs00_nhdr
   global rho_380x380x828_frame0010_subs00_nhdr
-   
+
   #try:
     #parser = PassThroughOptionParser()
     #parser.add_option("--numStreamlines", action="store", dest="numStreamlines",type="int",
@@ -40,7 +40,7 @@ def svbSetup(geometryLevel=1, stage=0):
     #(options, args) = parser.parse_args()
     #numStreamlines = options.numStreamlines
   #except   #pass
-  
+
   numStreamlines = 1000
   useContour = True
   #if (geometryLevel == 0):
@@ -77,7 +77,7 @@ def svbSetup(geometryLevel=1, stage=0):
     useContour = False
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
 
 
@@ -138,7 +138,7 @@ def svbSetup(geometryLevel=1, stage=0):
   a3_ImageFile_PiecewiseFunction = CreatePiecewiseFunction( Points=[0.0, 0.0, 0.5, 0.0, 1.0, 1.0, 0.5, 0.0] )
 
   StreamTracer1.SeedType.Radius = 60.0
-  
+
   StreamTracer1.UpdatePipeline()
   Tube1.UpdatePipeline()
   et_filter_streamline = time.time()
@@ -152,7 +152,7 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation3.LookupTable = a3_ImageFile_PVLookupTable
   #DataRepresentation3.ScaleFactor = 82.69024540111423
 
-  
+
   a3_ImageFile_PVLookupTable.ScalarOpacityFunction = a3_ImageFile_PiecewiseFunction
 
   RenderView1 = GetRenderView()
@@ -167,7 +167,7 @@ def svbSetup(geometryLevel=1, stage=0):
   print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  
+
   returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':tt_reader, 'tt_filter':tt_filter_streamline};
   if (useContour):
     st_filter_contour = time.time()

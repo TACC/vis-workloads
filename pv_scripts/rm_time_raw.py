@@ -23,7 +23,7 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 274;
+  return 1;
 
 
 AnimationScene1 = GetAnimationScene()
@@ -41,9 +41,9 @@ def svbSetup(geometryLevel=1, stage=0):
 
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
-  
+
   global AnimationScene1
   global timesteps
   if stage == 0:
@@ -62,7 +62,7 @@ def svbSetup(geometryLevel=1, stage=0):
           #timesteps = 273
           #AnimationScene1.EndTime = timesteps[len(timesteps)-1]
           AnimationScene1.NumberOfFrames = 273
-          AnimationScene1.PlayMode = 'Snap To TimeSteps' 
+          AnimationScene1.PlayMode = 'Snap To TimeSteps'
           #reader.FileRange = [0, 273]
           #reader.XMLFileName = 'Invalid result'
           #reader.FilePrefix = 'rm_data_dir+rm_0000.'
@@ -84,7 +84,7 @@ def svbSetup(geometryLevel=1, stage=0):
           DataRepresentation2.ScaleFactor = 25.5
           DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
           DataRepresentation2.SetRepresentationType('Surface')
-  
+
 
   #adj_time = (stage)
   print "START AnimationsScene1.AnimationTime %s:" %  AnimationScene1.AnimationTime
@@ -92,8 +92,8 @@ def svbSetup(geometryLevel=1, stage=0):
   AnimationScene1.AnimationTime = stage
   # update animation scene based on data timesteps
   AnimationScene1.UpdateAnimationUsingDataTimeSteps()
-  #AnimationScene1.GoToNext() 
-  print "END AnimationsScene1.AnimationTime %s:" %  AnimationScene1.AnimationTime 
+  #AnimationScene1.GoToNext()
+  print "END AnimationsScene1.AnimationTime %s:" %  AnimationScene1.AnimationTime
   renderView1 = GetActiveView()
   #displayProperties = GetDisplayProperties(Contour1, renderView1)
   #displayProperties.RescaleTransferFunctionToDataRange(True)
@@ -111,7 +111,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #print "numPoints: %.2f million " % (float(numPoints)/(1000*1000.0))
   #print "numCells: %.2f million " % (float(numCells)/(1000*1000.0))
   #print "numPolys: %.2f million " % (float(numPolys)/(1000*1000.0))
-  
+
   return returnVals
 
 def svbRender():

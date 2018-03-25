@@ -29,11 +29,11 @@ print "geo_data_dir:%s" %  geo_data_dir
 
 def svbSetup(geometryLevel=1, stage=0):
 	numCells = 0
-	numPolys = 0 
+	numPolys = 0
 	numPoints = 0
         returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
 	paraview.simple._DisableFirstRenderCameraReset()
-        
+
         st_reader = time.time()
         fname1 = "\'"+geo_data_dir+"/Top_Albian.obj"+"\'"
 	Top_Albian_obj = WavefrontOBJReader( FileName=fname1 )
@@ -86,7 +86,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-        
+
         fname5 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
 	Top_MTC_obj = WavefrontOBJReader( FileName=fname5 )
         et_reader = time.time()
@@ -107,7 +107,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
-        
+
 	SetActiveSource(Seafloor_zap_asc_obj)
         st_filter = time.time()
 	Transform1 = Transform( Transform="Transform" )
@@ -179,7 +179,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
 	SetActiveSource(Top_Albian_obj)
 	Transform4 = Transform( Transform="Transform" )
-        
+
 	Transform4.Transform = "Transform"
 
 	# toggle the 3D widget visibility.
@@ -252,7 +252,7 @@ def svbSetup(geometryLevel=1, stage=0):
         return returnVals
 
 def svbGetStagesSize():
-	return 1;
+	return 5;
 
 
 def svbRender():

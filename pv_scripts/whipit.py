@@ -5,7 +5,7 @@ try: paraview.simple
 except: from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
-# WHIPple ITeration script 
+# WHIPple ITeration script
 #read in paths from the environment variables bash script generate by cmake
 dir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)))
 pathsfile = os.path.join(dir,'paths.sh')
@@ -31,11 +31,11 @@ def svbSetup(geometryLevel=1,stage=0):
 
 	""" Specify the dataset here. Check to see if it exists
 	 (these things have a way of changing places) Check to
-	 see if we have access and open it with the Exodus 
-	 reader if we do. 
-	
-	 If all is well do the initial file open read and setup. 
-	 All the svbSetup should do is set the AnimationTime 
+	 see if we have access and open it with the Exodus
+	 reader if we do.
+
+	 If all is well do the initial file open read and setup.
+	 All the svbSetup should do is set the AnimationTime
 	 that corresponds to the particular stage/timestep and render
 	"""
 	print "CALL svbSETUP"
@@ -53,15 +53,15 @@ def svbSetup(geometryLevel=1,stage=0):
 	else:
 		print "Dataset %s does not exist\n" % datasetpath
 		sys.exit()
-        
+
         et_reader = time.time()
         tt_reader = time.time()
-	global AnimationScene1 
+	global AnimationScene1
 	global timesteps
         global tt_filter
         returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':False, 'tt_reader':0.0, 'tt_filter':0.0};
-        
-        
+
+
 	if stage == 0: #pipeline setup
 		timesteps = Whipple_Shield_exo_300_010.TimestepValues
 		AnimationScene1.EndTime = timesteps[len(timesteps)-1]
@@ -75,38 +75,13 @@ def svbSetup(geometryLevel=1,stage=0):
 		Whipple_Shield_exo_300_010.FilePattern = '%s%03i'
 
 
-#		RenderView1 = GetRenderView()
-#		RenderView1.CenterOfRotation = [0.0, 0.0, 0.018435800448060036]
-
 		Whipple_Shield_exo_300_010.NodeSetArrayStatus = []
 		Whipple_Shield_exo_300_010.ElementVariables = ['VOID_FRC', 'VOLFRC1', 'VOLFRC2', 'DENSITY']
 		Whipple_Shield_exo_300_010.ElementBlocks = ['Unnamed block ID: 1 Type: HEX']
 
-#		DataRepresentation1 = Show()
-#		DataRepresentation1.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-#		DataRepresentation1.SelectionPointFieldDataArrayName = 'GlobalNodeId'
-#		DataRepresentation1.SelectionCellFieldDataArrayName = 'DENSITY'
-#		DataRepresentation1.ScalarOpacityUnitDistance = 0.0002821527718911672
-#		DataRepresentation1.ExtractedBlockIndex = 2
-#		DataRepresentation1.ScaleFactor = 0.005079999938607216
-
-#		RenderView1.CameraPosition = [0.0, 0.0, 0.18813575352296963]
-#		RenderView1.CameraFocalPoint = [0.0, 0.0, 0.018435800448060036]
-#		RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
-#		RenderView1.CameraParallelScale = 0.043921579808790676
-
 		CellDatatoPointData1 = CellDatatoPointData()
 
-#		DataRepresentation2 = Show()
-#		DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
-#		DataRepresentation2.SelectionPointFieldDataArrayName = 'DENSITY'
-#		DataRepresentation2.SelectionCellFieldDataArrayName = 'DENSITY'
-#		DataRepresentation2.ScalarOpacityUnitDistance = 0.0002821527718911672
-#		DataRepresentation2.ExtractedBlockIndex = 2
-#		DataRepresentation2.ScaleFactor = 0.005079999938607216
-
-#		DataRepresentation1.Visibility = 0
-                st_filter1 = time.time()
+        st_filter1 = time.time()
 		Contour1 = Contour(Input=Whipple_Shield_exo_300_010)
 
 		Contour1.PointMergeMethod = "Uniform Binning"
@@ -118,7 +93,7 @@ def svbSetup(geometryLevel=1,stage=0):
                 Contour1.UpdatePipeline()
                 et_filter1 = time.time()
                 tt_filter1 = (et_filter1 - st_filter1)
-                    
+
 
 		DataRepresentation3 = Show()
 		#DataRepresentation3.ScaleFactor = 0.005079999938607216
@@ -142,7 +117,7 @@ def svbSetup(geometryLevel=1,stage=0):
                 Contour2.UpdatePipeline()
                 et_filter2 = time.time()
                 tt_filter2 = (et_filter2 - st_filter2)
-                
+
                 tt_filter = tt_filter1 + tt_filter2
 		DataRepresentation4 = Show()
 		#DataRepresentation4.ScaleFactor = 0.005079999938607216
@@ -173,12 +148,12 @@ def svbSetup(geometryLevel=1,stage=0):
 
 
 # this function returns the number of time steps.
-# Stages are used for time steps in this script. 
+# Stages are used for time steps in this script.
 # The svbSetup function uses the stage to indicate
-# what timestep to render. 
+# what timestep to render.
 def svbGetStagesSize():
 	global timesteps
-	return 40
+	return 5
 	#uncomment next line to do the whole time series
 	#return len(timesteps);
 

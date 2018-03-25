@@ -29,28 +29,39 @@ AnimationScene1 = GetAnimationScene()
 timesteps = []
 def svbSetup(geometryLevel=1,stage=0):
 
-	wrfout_d01_20100623_2300 = WRFReader( FileNames=['/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:00.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:03.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:06.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:09.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:12.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:15.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:18.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:21.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:24.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:27.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:30.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:33.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:36.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:39.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:42.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:45.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:48.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:51.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:54.wrf', '/work/01891/adb/wrf/wrfout_d01_2010-06-23_23:00:57.wrf'] )
-
-
+    wrfdata=path_vars['WRFDATA_DIR']
+    ## Previous location : /work/01891/adb/wrf/
+	wrfout_d01_20100623_2300 = WRFReader( FileNames=[
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:00.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:03.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:06.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:09.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:12.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:15.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:18.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:21.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:24.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:27.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:30.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:33.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:36.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:39.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:42.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:45.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:48.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:51.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:54.wrf'),
+        os.path.join(wrfdata,'wrfout_d01_2010-06-23_23:00:57.wrf')] )
 
 	global AnimationScene1
         global timestep
         if stage == 0: #pipeline setup
                 #timesteps = wrfout_d01_2010-06-23_23:00:00.TimestepValues
-                timestep = 0 
+                timestep = 0
                 AnimationScene1 = GetAnimationScene()
 		AnimationScene1.EndTime = 19.0
                 #AnimationScene1.EndTime = timesteps[len(timesteps)-1]
                 AnimationScene1.PlayMode = 'Snap To TimeSteps'
-		
-               
-
-
-
-
-
-
-
 
 
 		RenderView1 = GetRenderView()
@@ -158,24 +169,17 @@ def svbSetup(geometryLevel=1,stage=0):
 
 	#AnimationScene1.AnimationTime = timesteps[stage]
         AnimationScene1.AnimationTime = stage
-	RenderView1 = GetRenderView()		
+	RenderView1 = GetRenderView()
         RenderView1.CameraPosition = [922139.625, 4643921.75, 977019.3275101203]
 	RenderView1.CameraFocalPoint = [922139.625, 4643921.75, 10605.15625]
 	RenderView1.CameraClippingRange = [935645.7686100191, 1007476.3002352722]
 	RenderView1.CenterOfRotation = [922139.625, 4643921.75, 10605.15625]
 	RenderView1.CameraParallelScale = 252662.22124811474
 
-# what timestep to render. 
+# what timestep to render.
 def svbGetStagesSize():
         global timesteps
-        return 19
-        #uncomment next line to do the whole time series
-        #return len(timesteps);
+        return 5
 
-#def svbSetup(geometryLevel=1, stage=0):
-#       global AnimationScene1
-#       global timesteps
-#       AnimationScene1.AnimationTime = timesteps[stage]
-#       Render()
 def svbRender():
         Render()

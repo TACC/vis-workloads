@@ -5,14 +5,14 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 3;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global reader
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
   print"hap"
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
@@ -29,7 +29,7 @@ def svbSetup(geometryLevel=1, stage=0):
   DataRepresentation2 = Show()
   DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  
+
   #ResetCamera()
   #cam = GetActiveCamera()
   #cam.Roll(90)

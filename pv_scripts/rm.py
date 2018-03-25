@@ -32,7 +32,7 @@ def drange(start,stop,step):
 
 
 def svbGetStagesSize():
-  return 1;
+  return 5;
 
 def svbSetup(geometryLevel=1, stage=0):
   ## get active view
@@ -72,7 +72,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   global Contour1
   global reader
-  
+
   numCells = 0
   numPolys = 0
   numPoints = 0
@@ -83,7 +83,7 @@ def svbSetup(geometryLevel=1, stage=0):
   valRanges = [27,150]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
- 
+
   if (geometryLevel == 0):
     isovals = [val]
   else:
@@ -96,8 +96,8 @@ def svbSetup(geometryLevel=1, stage=0):
   #print(rm_data_dir+"/rm_0273.nhdr")
   filename = ""
   if (geometryLevel == 0):
-    filename = rm_data_dir+ '/ppmt273_256_256_256.nrrd' 
-    st_reader = time.time() 
+    filename = rm_data_dir+ '/ppmt273_256_256_256.nrrd'
+    st_reader = time.time()
     reader = NrrdReader( FileName=filename)
     reader.UpdatePipeline()
     et_reader = time.time()
@@ -108,7 +108,7 @@ def svbSetup(geometryLevel=1, stage=0):
     print "reading file: " + filename
     st_reader = time.time()
     reader = XDMFReader(FileNames=[filename])
-    #filename = '/work/01336/carson/data/ppmt273_256_256_256.nrrd' 
+    #filename = '/work/01336/carson/data/ppmt273_256_256_256.nrrd'
     #reader = NrrdReader(FileName=filename)
     #reader = NrrdReader( FileName='/work/01336/carson/intelTACC/data/rm/unblock/rm_0202.nrrd' )
     reader.UpdatePipeline()
@@ -118,7 +118,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   # reader = NrrdReader( FileName=rm_data_dir+ '/rm_0273.nhdr' )
   # reader = XDMFReader(FileNames=[rm_data_dir + '/rm_0273.xmf'])
-  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )  
+  # reader = NrrdReader( FileName=rm_data_dir+ '/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
 
   st_filter = time.time()
@@ -131,7 +131,7 @@ def svbSetup(geometryLevel=1, stage=0):
   Contour1.PointMergeMethod = 'Uniform Binning'
   Contour1.ComputeNormals = int(useNormals)
   Contour1.ComputeScalars = 0
-  
+
   #just checking if Update will work here
   Contour1.UpdatePipeline()
   et_filter = time.time()
@@ -145,11 +145,11 @@ def svbSetup(geometryLevel=1, stage=0):
   rep.ColorArrayName = ['POINTS','ImageFile']
   rep.SetRepresentationType('Surface')
   rep.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
-  
+
   renderView1 = GetActiveView()
   renderView1.LODThreshold = 1000000000000
   #LODResolution=0 implies lowest level1 should max level of LOD
-  UseOutlineForLODRendering = 0 #when set to true ovverrides LOD REsolution  
+  UseOutlineForLODRendering = 0 #when set to true ovverrides LOD REsolution
 
   #displayProperties = GetDisplayProperties(Contour1, renderView1)
   #displayProperties.RescaleTransferFunctionToDataRange(True)
@@ -213,4 +213,3 @@ def svbSetup(geometryLevel=1, stage=0):
 
 def svbRender():
   Render()
-
