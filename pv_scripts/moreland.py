@@ -45,7 +45,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     RenderView1.CameraViewUp = [0.0012887685077927545, 0.9998848349441063, 0.01512137310335118]
     RenderView1.CameraPosition = [73.8108220673545, -10.152803028258734, 665.0526144935272]
-    RenderView1.CameraClippingRange = [439.7902989844048, 959.6231919053153]
+    #RenderView1.CameraClippingRange = [439.7902989844048, 959.6231919053153]
     RenderView1.CameraParallelScale = 173.20508075688772
 
     DataRepresentation1.Opacity = 1.0
@@ -97,7 +97,7 @@ def svbSetup(geometryLevel=1, stage=0):
     RenderView1 = GetRenderView()
     RenderView1.CameraViewUp = [0.0012887685077927517, 0.9998848349441063, 0.015121373103351182]
     RenderView1.CameraPosition = [85.10984187955833, -10.14693085117321, 663.7013270423705]
-    RenderView1.CameraClippingRange = [436.876425684926, 963.1951020489158]
+    #RenderView1.CameraClippingRange = [436.876425684926, 963.1951020489158]
 
     a3_cellNormals_PVLookupTable = GetLookupTableForArray( "cellNormals", 3, RGBPoints=[-0.9999977350234985, 0.23, 0.299, 0.754, -5.206577412586455e-05, 0.865, 0.865, 0.865, 0.9998936057090759, 0.706, 0.016, 0.15], VectorMode='Component', NanColor=[0.25, 0.0, 0.0], ColorSpace='Diverging', ScalarRangeInitialized=1.0 )
 
@@ -122,11 +122,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-    RenderView1.CameraClippingRange = [387.39265521589584, 1025.484973920735]
+    #RenderView1.CameraClippingRange = [387.39265521589584, 1025.484973920735]
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [436.876425684926, 963.1951020489158]
+    #RenderView1.CameraClippingRange = [436.876425684926, 963.1951020489158]
 
     DataRepresentation3 = Show()
     DataRepresentation3.Opacity = 1.0
@@ -141,7 +141,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     RenderView1.CameraViewUp = [0.003983775461067583, 0.9995403728524186, 0.030052829669162843]
     RenderView1.CameraPosition = [152.24662605854266, -20.19076654221791, 651.3519745179975]
-    RenderView1.CameraClippingRange = [429.0314132914365, 947.2168901127079]
+    #RenderView1.CameraClippingRange = [429.0314132914365, 947.2168901127079]
     ResetCamera()
     a3_cellNormals_PVLookupTable = GetLookupTableForArray( "cellNormals", 3, RGBPoints=[-0.9999977350234985, 0.23, 0.299, 0.754, -5.206577412586455e-05, 0.865, 0.865, 0.865, 0.9998936057090759, 0.706, 0.016, 0.15], VectorMode='Component', NanColor=[0.25, 0.0, 0.0], ColorSpace='Diverging', ScalarRangeInitialized=1.0 )
 
@@ -234,7 +234,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     RenderView1.CameraPosition = [0.0, 0.0, 0.18813575352296963]
     RenderView1.CameraFocalPoint = [0.0, 0.0, 0.018435800448060036]
-    RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
+    #RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
     RenderView1.CameraParallelScale = 0.043921579808790676
 
     # Contour1 = Contour( PointMergeMethod="Uniform Binning" )
@@ -289,7 +289,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     RenderView1.CameraViewUp = [-0.28226359121893679, 0.79763654762218528, -0.53301332344468688]
     RenderView1.CameraPosition = [-0.083261624296263742, -0.10139085621914616, -0.089200021973301097]
-    RenderView1.CameraClippingRange = [0.088706156398575015, 0.2548696042949255]
+    #RenderView1.CameraClippingRange = [0.088706156398575015, 0.2548696042949255]
     # return
 
 
@@ -303,11 +303,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # # toggle the 3D widget visibility.
     # active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-    # RenderView1.CameraClippingRange = [0.10727958993603862, 0.24868365525694414]
+    # #RenderView1.CameraClippingRange = [0.10727958993603862, 0.24868365525694414]
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
+    #RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
 
     Clip1.Scalars = ['POINTS', 'VOLFRC2']
     Clip1.ClipType = "Scalar"
@@ -323,7 +323,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # # DataRepresentation2.Visibility = 0
 
-    # RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
+    # #RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
 
     Clip2 = Clip( ClipType="Plane" )
 
@@ -334,11 +334,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # # toggle the 3D widget visibility.
     # active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-    # RenderView1.CameraClippingRange = [0.14545272476588764, 0.22620077349671941]
+    # #RenderView1.CameraClippingRange = [0.14545272476588764, 0.22620077349671941]
 
     # # toggle the 3D widget visibility.
     # active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
+    #RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
 
     Clip2.InsideOut = 1
     Clip2.ClipType.Normal = [0.0, 1.0, 0.0]
@@ -389,7 +389,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     RenderView1.CameraPosition = [0.0, 0.0, 0.18813575352296963]
     RenderView1.CameraFocalPoint = [0.0, 0.0, 0.018435800448060036]
-    RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
+    #RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
     RenderView1.CameraParallelScale = 0.043921579808790676
 
     CellDatatoPointData1 = CellDatatoPointData()
@@ -426,11 +426,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-    RenderView1.CameraClippingRange = [0.10727958993603862, 0.24868365525694414]
+    #RenderView1.CameraClippingRange = [0.10727958993603862, 0.24868365525694414]
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
+    #RenderView1.CameraClippingRange = [0.11770729481791534, 0.23555732428522624]
 
     Clip1.Scalars = ['POINTS', 'VOLFRC2']
     Clip1.ClipType = "Scalar"
@@ -446,7 +446,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
     DataRepresentation2.Visibility = 0
 
-    RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
+    #RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
 
     Clip2 = Clip( ClipType="Plane" )
 
@@ -457,11 +457,11 @@ def svbSetup(geometryLevel=1, stage=0):
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-    RenderView1.CameraClippingRange = [0.14545272476588764, 0.22620077349671941]
+    #RenderView1.CameraClippingRange = [0.14545272476588764, 0.22620077349671941]
 
     # toggle the 3D widget visibility.
     active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-    RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
+    #RenderView1.CameraClippingRange = [0.15140449219932237, 0.21870872559452276]
 
     Clip2.InsideOut = 1
     Clip2.ClipType.Normal = [0.0, 1.0, 0.0]
@@ -500,7 +500,7 @@ def svbSetup(geometryLevel=1, stage=0):
     DataRepresentation5.LookupTable = a1_PRESSURE_PVLookupTable
     DataRepresentation5.Visibility = 0
 
-    RenderView1.CameraClippingRange = [0.002091118926200427, 2.0911189262004268]
+    #RenderView1.CameraClippingRange = [0.002091118926200427, 2.0911189262004268]
 
     # AnimationScene1.AnimationTime = 2.0010922980873147e-06
 

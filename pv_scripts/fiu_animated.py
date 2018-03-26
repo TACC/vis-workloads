@@ -59,13 +59,13 @@ def createStreamlines(source, source2, t):
   RenderView1.CameraViewUp = [-0.6976752257395223, 0.7157372315836574, 0.031136710074581617]
   RenderView1.CameraPosition = [198.095, 180.662, 902.466]
   RenderView1.CameraFocalPoint = [179.604, 186.099, 263.144]
-  RenderView1.CameraClippingRange = [4.173792286478831, 4173.792286478831]
+  #RenderView1.CameraClippingRange = [4.173792286478831, 4173.792286478831]
 
 
   Tube1 = Tube()
 
   RenderView1.OrientationAxesVisibility = 0
-  RenderView1.CameraClippingRange = [1061.9316971233097, 2968.2226978297904]
+  #RenderView1.CameraClippingRange = [1061.9316971233097, 2968.2226978297904]
 
   Tube1.Scalars = ['POINTS', 'AngularVelocity']
   Tube1.Vectors = ['POINTS', 'Normals']
@@ -79,7 +79,7 @@ def createStreamlines(source, source2, t):
   a3_ImageFile_PVLookupTable.RGBPoints = [0.0, 0.133333333333333, 0.254901960784314, 0.407843137254902, 0.005595855680303297, 0.247058823529412, 0.407843137254902, 0.854901960784314, 0.010346471686185769, 1.0, 1.0, 1.0, 0.01929037946667726, 1.0, 1.0, 1.0]
 
 
-  RenderView1.CameraClippingRange = [1059.365355735317, 2971.4323511683565]
+  #RenderView1.CameraClippingRange = [1059.365355735317, 2971.4323511683565]
 
 
   a3_ImageFile_PVLookupTable.NanColor = [0.2500038147554742, 0.0, 0.0]

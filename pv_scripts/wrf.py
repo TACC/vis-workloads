@@ -79,7 +79,7 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		RenderView1.CameraPosition = [920107.625, 4659676.5, 780890.2297729854]
 		RenderView1.CameraFocalPoint = [920107.625, 4659676.5, 10687.688659667969]
-		RenderView1.CameraClippingRange = [741560.4942599236, 808114.7519500491]
+		#RenderView1.CameraClippingRange = [741560.4942599236, 808114.7519500491]
 		RenderView1.CameraParallelScale = 201364.0638101263
 
 		Contour1 = Contour( PointMergeMethod="Uniform Binning" )
@@ -113,7 +113,7 @@ def svbSetup(geometryLevel=1,stage=0):
 		a1_QRAIN_PVLookupTable.ColorSpace = 'RGB'
 		a1_QRAIN_PVLookupTable.LockScalarRange = 1
 
-		RenderView1.CameraClippingRange = [741560.3076220452, 808115.408915381]
+		#RenderView1.CameraClippingRange = [741560.3076220452, 808115.408915381]
 
 		a1_QRAIN_PiecewiseFunction.Points = [0.0001, 0.0, 0.5, 0.0, 0.01, 1.0, 0.5, 0.0]
 
@@ -126,11 +126,11 @@ def svbSetup(geometryLevel=1,stage=0):
 
 		# toggle the 3D widget visibility.
 		active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-		RenderView1.CameraClippingRange = [546767.8552096306, 1065573.1512273927]
+		#RenderView1.CameraClippingRange = [546767.8552096306, 1065573.1512273927]
 
 		# toggle the 3D widget visibility.
 		active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
-		RenderView1.CameraClippingRange = [741560.3076220452, 808115.408915381]
+		#RenderView1.CameraClippingRange = [741560.3076220452, 808115.408915381]
 
 		Clip1.ClipType.Origin = [921181.4375, 4641210.0, 1980.0]
 		Clip1.ClipType.Normal = [0.0, 0.0, -1.0]
@@ -162,7 +162,7 @@ def svbSetup(geometryLevel=1,stage=0):
 		DataRepresentation4.BackfaceDiffuseColor = [0.0, 0.0, 0.0]
 		DataRepresentation4.ScaleFactor = 31734.362500000003
 
-		RenderView1.CameraClippingRange = [741477.9618502556, 808405.2660320802]
+		#RenderView1.CameraClippingRange = [741477.9618502556, 808405.2660320802]
 
 		DataRepresentation4.Position = [500000.0, 0.0, 0.0]
 		DataRepresentation4.Texture = []
@@ -172,7 +172,7 @@ def svbSetup(geometryLevel=1,stage=0):
 	RenderView1 = GetRenderView()
         RenderView1.CameraPosition = [922139.625, 4643921.75, 977019.3275101203]
 	RenderView1.CameraFocalPoint = [922139.625, 4643921.75, 10605.15625]
-	RenderView1.CameraClippingRange = [935645.7686100191, 1007476.3002352722]
+	#RenderView1.CameraClippingRange = [935645.7686100191, 1007476.3002352722]
 	RenderView1.CenterOfRotation = [922139.625, 4643921.75, 10605.15625]
 	RenderView1.CameraParallelScale = 252662.22124811474
 

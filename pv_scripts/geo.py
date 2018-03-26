@@ -44,7 +44,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	DataRepresentation2.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 
 	RenderView1.CameraFocalPoint = [311041.546875, 3514944.25, 4050.0]
-	RenderView1.CameraClippingRange = [66132.27016710148, 154040.97004230513]
+	#RenderView1.CameraClippingRange = [66132.27016710148, 154040.97004230513]
 	RenderView1.CameraPosition = [328631.4299478206, 3427661.9289184036, 59588.36001851113]
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
@@ -58,7 +58,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	DataRepresentation3.ScaleFactor = 3493.5687500000004
 	DataRepresentation3.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 
-	RenderView1.CameraClippingRange = [64530.62887441108, 155259.5969791027]
+	#RenderView1.CameraClippingRange = [64530.62887441108, 155259.5969791027]
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -71,7 +71,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	DataRepresentation4.ScaleFactor = 4129.846875
 	DataRepresentation4.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 
-	RenderView1.CameraClippingRange = [64410.7310588127, 155587.59056582034]
+	#RenderView1.CameraClippingRange = [64410.7310588127, 155587.59056582034]
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -82,7 +82,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	DataRepresentation5.ScaleFactor = 5525.181250000001
 	DataRepresentation5.EdgeColor = [0.0, 0.0, 0.5000076295109483]
 
-	RenderView1.CameraClippingRange = [51508.49633040225, 163055.0999913982]
+	#RenderView1.CameraClippingRange = [51508.49633040225, 163055.0999913982]
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
@@ -128,7 +128,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
 	DataRepresentation5.Visibility = 0
 
-	RenderView1.CameraClippingRange = [50450.00418731889, 166780.99233505165]
+	#RenderView1.CameraClippingRange = [50450.00418731889, 166780.99233505165]
 
 	DataRepresentation7.DiffuseColor = [1.0, 0.7843137254901961, 0.5372549019607843]
 
@@ -162,7 +162,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'ShowWidget')
-	RenderView1.CameraClippingRange = [46507.12095433405, 168752.43395154408]
+	#RenderView1.CameraClippingRange = [46507.12095433405, 168752.43395154408]
 
 	# toggle the 3D widget visibility.
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
@@ -198,27 +198,27 @@ def svbSetup(geometryLevel=1, stage=0):
 	active_objects.source.SMProxy.InvokeEvent('UserEvent', 'HideWidget')
 	Transform3.Transform.Translate = [0.0, 0.0, 2000.0]
 
-	RenderView1.CameraClippingRange = [48758.99243982868, 167626.49820879675]
+	#RenderView1.CameraClippingRange = [48758.99243982868, 167626.49820879675]
 
 	Transform4.Transform.Translate = [0.0, 0.0, 6000.0]
 
-	RenderView1.CameraClippingRange = [47181.83914663448, 168415.07485539385]
+	#RenderView1.CameraClippingRange = [47181.83914663448, 168415.07485539385]
 
 	Transform3.Transform.Translate = [0.0, 0.0, 3000.0]
 
 	Transform4.Transform.Translate = [0.0, 0.0, 9000.0]
 
-	RenderView1.CameraClippingRange = [44816.109206843845, 169597.93982528918]
+	#RenderView1.CameraClippingRange = [44816.109206843845, 169597.93982528918]
 
 	Transform2.Transform.Translate = [0.0, 0.0, -6000.0]
 
-	RenderView1.CameraClippingRange = [44577.90163585609, 170436.43047516607]
+	#RenderView1.CameraClippingRange = [44577.90163585609, 170436.43047516607]
 
 	Transform2.Transform.Translate = [0.0, 0.0, -8000.0]
 
 	RenderView1.CameraViewUp = [0.0, 0.0, 1.0]
 	RenderView1.CameraPosition = [317777.46875, 3369926.9481848134, 4338.0]
-	RenderView1.CameraClippingRange = [96496.28879703477, 198458.75384241441]
+	#RenderView1.CameraClippingRange = [96496.28879703477, 198458.75384241441]
 	RenderView1.InteractionMode = 3
 	RenderView1.CameraFocalPoint = [317777.46875, 3511412.375, 4338.0]
 	RenderView1.CameraParallelScale = 36619.123064229214
@@ -238,7 +238,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
 	RenderView1.CameraViewUp = [0.3401946549046027, 0.2820674051694079, 0.8970538310019835]
 	RenderView1.CameraPosition = [256948.26399729348, 3429270.222812952, 50494.51975791374]
-	RenderView1.CameraClippingRange = [40247.273637994265, 203394.3616118409]
+	#RenderView1.CameraClippingRange = [40247.273637994265, 203394.3616118409]
 	RenderView1.InteractionMode = '3D'
 	RenderView1.CameraFocalPoint = [318063.7046413446, 3510067.578090641, 1911.6531775491044]
 	RenderView1.CameraParallelScale = 37058.23649598536

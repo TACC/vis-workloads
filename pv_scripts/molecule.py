@@ -46,7 +46,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   RenderView1.CameraPosition = [77.85100555419922, 193.92295455932617, 1045.196735251777]
   RenderView1.CameraFocalPoint = [77.85100555419922, 193.92295455932617, 40.27460050582886]
-  RenderView1.CameraClippingRange = [888.7225317046486, 1153.617427140539]
+  #RenderView1.CameraClippingRange = [888.7225317046486, 1153.617427140539]
   RenderView1.CameraParallelScale = 260.092987317333
   numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
   numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
