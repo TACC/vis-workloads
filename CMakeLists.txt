@@ -18,7 +18,7 @@
 #* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #**********************************************************************************/
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(svb)
 
@@ -311,8 +311,8 @@ while( (MaxGeometryLevels GREATER ${index}) OR (MaxGeometryLevels EQUAL ${index}
 	math(EXPR index "${index}+1")
 endwhile()
 
-SET(PND \# CACHE INTERNAL STRING )
-FILE(REMOVE ${SVB_DIR}/paths.sh)
+#SET(PND \# CACHE INTERNAL STRING )
+#FILE(REMOVE ${SVB_DIR}/paths.sh)
 FILE(WRITE ${SVB_DIR}/paths.sh
 	"${PND}!/bin/bash"  \n
 	"################## BASE CONFIG #######################" \n
