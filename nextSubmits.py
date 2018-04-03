@@ -45,9 +45,16 @@ parser.add_argument( '-r',
                      default=False,
                      help = 'run x server (default is true)',
                      action = 'store_true' )
+parser.add_argument( '-R',
+                     '--reservation',
+                     default='none',
+                     help = 'run x server (default is true)',
+                     action = 'store' )
 
 # parse arguments passed through command-line
 args = parser.parse_args()
+
+reservation = args.reservation;
 
 submission_limit = args.limit;
 start_submission = 0;
@@ -79,10 +86,16 @@ if(total_submits !=-1 and total_submits != len(matches)):
 
 end_submission = min(end_submission,len(matches))
 
+sub_reservation = ""
+if(reservation != "none"):
+    sub_reservation = "--reservation {} ".format(reservation)
+
+
 for i in range(start_submission,end_submission):
     print("Submitting : {}".format(matches[i]))
 
-    p = subprocess.Popen("sbatch {}".format(matches[i]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print("sbatch {}{}".format(sub_reservation,matches[i]))
+    p = subprocess.Popen("sbatch {}{}".format(sub_reservation,matches[i]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = p.communicate()
     if(len(stdout) > 0):
         print("Out: {}".format(stdout))
@@ -90,7 +103,7 @@ for i in range(start_submission,end_submission):
         print("Err: {}".format(stderr))
         exit()
 
-    # result_call = os.popen(.read()
+    #result_call = os.popen(.read()
 
 if( len(matches) <= submission_limit):
     exit()

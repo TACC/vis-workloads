@@ -161,6 +161,7 @@ def svbSetup(geometryLevel=1, stage=0):
   numPolys = 0
   numPoints = 0
 
+  tt_reader = 0
 
   if(stage ==0):
     st_reader = time.time()
@@ -179,7 +180,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   AnimationScene1 = GetAnimationScene()
 
-  AnimationScene1.Caching = 0
+  #AnimationScene1.Caching = 0
 
   #try:
     #parser = PassThroughOptionParser()

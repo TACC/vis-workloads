@@ -225,6 +225,7 @@ def process_benchmark(triangle, node, process ):
     # file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
     file_obj.write( '\nREMORA_PERIOD=1\n\n' )
 
+    threads_pp = 48 / int(process)
     # set parameters based off renderer
     if renderer == 'swr':
 
@@ -235,7 +236,7 @@ def process_benchmark(triangle, node, process ):
 
             pre_args = 'DISPLAY=:1.0'
 
-        swr_cmd  = 'swr -p {}'.format( process )
+        swr_cmd  = 'swr -t {}'.format( threads_pp )
         pv_plugin_flag = '--swr'
 
     elif renderer == 'llvmpipe':
@@ -247,7 +248,7 @@ def process_benchmark(triangle, node, process ):
 
             pre_args = 'DISPLAY=:1.0'
 
-        swr_cmd  = '{}/llvmpipe -p {}'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"), process  )
+        swr_cmd  = '{}/llvmpipe -t {}'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"), threads_pp  )
         pv_plugin_flag = '--swr'
 
     elif renderer == 'ospray':
