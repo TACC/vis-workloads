@@ -19,6 +19,7 @@
 #   limitations under the License.
 #
 #
+# SVBench: Scientific Visualization Benchmarking Suite is funded in part by an Intel Cooperation award
 #   ======================================================================================= */
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
