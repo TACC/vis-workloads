@@ -1,3 +1,26 @@
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+#   ======================================================================================= */
+
 try: paraview.simple
 except: from paraview.simple import *
 import os
@@ -49,7 +72,7 @@ def svbSetup(geometryLevel=1, stage=0):
   valRanges = [-0.03,0.8]
   valRange = valRanges[1]-valRanges[0]
   val = (float(stage+.5)/float(svbGetStagesSize()))*valRange+valRanges[0]
- 
+
   if (geometryLevel == 0):
     isovals = [val]
   else:
@@ -58,11 +81,11 @@ def svbSetup(geometryLevel=1, stage=0):
   print "isosweep vals: " + str(isovals)
   tt_filter=0
   tt_reader=0
-  if (stage != 0):  
+  if (stage != 0):
     numCells = 0
     numPolys = 0
     numPoints = 0
-    tt_filter=0 
+    tt_filter=0
     #ResetCamera()
     st_filter = time.time()
     Contour1.Isosurfaces = isovals
@@ -81,23 +104,23 @@ def svbSetup(geometryLevel=1, stage=0):
     return returnVals;
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
 
-  st_reader = time.time() 
+  st_reader = time.time()
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
-  # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])  
+  # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])
   reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
   reader.PointArrayStatus = ['dataset0']
   reader.GridStatus = ['Grid_2']
   reader.UpdatePipeline()
   et_reader = time.time()
   tt_reader = et_reader - st_reader
-  st_filter = time.time() 
+  st_filter = time.time()
   Contour1 = Contour(Input=reader)
-   
+
   Contour1.PointMergeMethod = "Uniform Binning"
   Contour1.ContourBy = ['POINTS', 'dataset0']
   #data range for smaller 32 is -.0299 to 1.268
@@ -117,9 +140,9 @@ def svbSetup(geometryLevel=1, stage=0):
   rep.SetRepresentationType('Surface')
   rep.ColorArrayName = ['POINTS','dataset0']
   #DataRepresentation2.ColorArrayName = ['POINTS', '']
-  
+
   ResetCamera()
-  renderView1 = GetActiveView()  
+  renderView1 = GetActiveView()
   renderView1.Background = [1,1,1]
   renderView1.CameraPosition = [5630.224162601005, -6026.47810866812, 6733.205518587123]
   renderView1.CameraFocalPoint = [336.5950056411767, 3593.3184025734727, 534.8053287858077]

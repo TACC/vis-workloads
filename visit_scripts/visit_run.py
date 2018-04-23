@@ -1,4 +1,27 @@
 #!/usr/bin/python
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+#   ======================================================================================= */
+
 from optparse import OptionParser
 #import Numeric
 import time
@@ -103,7 +126,7 @@ SetRenderingAttributes(ra)
 #
 #  VISIT is rendering twice for each draw call!
 #
-#num_runs /= 2;  
+#num_runs /= 2;
 
 print GetLocalHostName()
 if use_manta: print "using Manta rendering %d threads" % options.threads
@@ -115,19 +138,19 @@ print "windowsize = " + str(windowsize)
 manta_plugin =       "/home/01336/carson/ParaView_3_11_IceT/build/bin/libMantaView.so"
 genericview_plugin = "/home/01336/carson/GenericViewPlugin/build/libGenericView.so"
 daughtonisos = {1: [0.616],
-                2: [0.622, 0.614], 
+                2: [0.622, 0.614],
                 4: [0.612, 0.616],
                 8: [0.454 , 0.624],
                 16:[0.416 , 0.476],
-                32:[0.478 , 0.602], 
-                64:[0.538 , 0.506], 
+                32:[0.478 , 0.602],
+                64:[0.538 , 0.506],
                 128:[0.578 , 0.612],
                 256:[0.558 , 0.602],
                 512:[0.56  , 0.552] }
 
 sixteenmillion=[35, 36, 43, 144, 145, 146, 148, 149, 150, 151, 152, 153, 154, 155, 156, 158, 159, 160, 161, 162, 163, 164, 167, 168, 169, 170, 173]
 #waveisos = { 0:[54.4],
-#             1:[36,66,115,120], 
+#             1:[36,66,115,120],
 #             2:[35,57,102,111,129,153],
 #             4:[34,45,50,130,149,150,153,156,159],
 #             8:[159,156,153,152,150,147,144,141,138,135,131,127,86,47,40,37,36,35],
@@ -162,8 +185,8 @@ if source == "randomtriangles":
   print "doing random triangles plot now..."
   plot = AddPlot("Pseudocolor", "mesh_quality/area", 1,1)
   print "... added."
-  
-  #TS = TriangleSource()  
+
+  #TS = TriangleSource()
   #TS.Triangles = triangles * 1000000
   #TS.Fuzziness = 0.0
   #dr = Show()
@@ -262,7 +285,7 @@ elif source == "wavelet":
 
 
   DrawPlots()
-  
+
   View3DAtts = View3DAttributes()
 #  View3DAtts.viewNormal = (0.361, -0.028, 0.932)
   View3DAtts.viewNormal = (0.426, 0.0253, 0.904)
@@ -321,7 +344,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
 
     print "opening file: " + str(file)
     OpenDatabase(file, 0)
-  
+
     #dr2 = Show()
     #dr2.Representation = 'Outline'
 
@@ -362,7 +385,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
     isovaluesTuple = tuple(isovalues)
     #for i in range(0, len(isovalues)):
     #  isovaluesTuple += (isovalues[i])
-  
+
     plot = AddPlot("Contour", "ImageFile", 0, 1)
     #plot = AddPlot("Contour", "ImageFile", 1,1)
     ca = ContourAttributes()
@@ -416,7 +439,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
         ta.translateZ = zoffset
         ta.transformVectors = 0
         SetOperatorOptions(ta, plotNum)
-  
+
 
         #dat = "localhost:/scratch/01336/carson/ppmt273_crop000.vti"
         #OpenDatabase(dat, 0)
@@ -426,7 +449,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
         # subset.SampleRateI = 2
         # SetActiveSource(subset)
 
-      
+
         #dr2 = Show()
         #dr2.Representation = 'Outline'
 
@@ -438,7 +461,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
         #Contour1.ComputeNormals = 0
         #SetActiveSource(Contour1)
         #dr3 = Show()
-        
+
         isovalues = [27]
 
         if weakscale == 2:
@@ -466,7 +489,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
         isovaluesTuple = (27)
         #for i in range(0, len(isovalues)):
         #  isovaluesTuple += (isovalues[i])
-      
+
         #plot = AddPlot("Contour", "ImageFile", 1,1)
         ca = ContourAttributes()
         ca.defaultPalette.GetControlPoints(0).colors = (255, 0.71372549019607845*255, 0.21568627450980393*255, 255)
@@ -554,7 +577,7 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
     isovaluesTuple = tuple(isovalues)
     #for i in range(0, len(isovalues)):
     #  isovaluesTuple += (isovalues[i])
-  
+
     plot = AddPlot("Contour", "ImageFile", 0, 1)
     #plot = AddPlot("Contour", "ImageFile", 1,1)
     ca = ContourAttributes()
@@ -571,13 +594,13 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
     ca.contourPercent = ()
     SetPlotOptions(ca)
     ca.colorTableName = "gold"
-  
+
     #SetActivePlots((0,1))
     DrawPlots()
     print "all plots:"
     ListPlots()
 
-    
+
     #if source == "rm_zoomed_in":
     #for i in range (0, 27):
     #  dat1 = "localhost:/scratch/01336/carson/data/rm_zoomed_out_64split__"+ str(i) + ".vtu"
@@ -636,14 +659,14 @@ elif source == "rm_zoomed_in" or source == "rm_zoomed_out" or source == "rm_zoom
        yoffset = y*1024;
        zoffset = z*960;
        DataRepresentation1.Position = [xoffset,yoffset,zoffset]
-     
+
     Show()
-    
+
     if source == "rm_zoomed_in" or source == "rm_zoomed_out":
       reader = PLYReader( FileName=['/scratch/01336/carson/rm_1iso.ply'] )
     else:
       reader = PLYReader( FileName=['/scratch/01336/carson/rm_6iso.ply'] )
-    
+
     RenderView1 = GetRenderView()
     if source == "rm_zoomed_out" or source == "rm_zoomed_out6":
       RenderView1.CameraViewUp = [-0.67143087325620165, -0.38502986177985904, -0.63319237833078612]
@@ -678,7 +701,7 @@ elif source == "boeing":
    objs = os.listdir(dirstring)
    for objfile in objs:
     filename = '/scratch/01336/carson/boeing/Sub1/' + objfile
-    obj = WavefrontOBJReader( FileName=filename )   
+    obj = WavefrontOBJReader( FileName=filename )
     SetActiveSource(obj)
     DataRepresentation1 = Show()
     DataRepresentation1.DiffuseColor = [1.0, 0.71372549019607845, 0.21568627450980393]
@@ -869,7 +892,7 @@ def carson_default(num):
 	         #p.printerName = "a"
 	         #SetPrinterAttributes(p)
 	         #PrintWindow()
-	
+
           et = time.time()
           tt = (et-st)
           print "frame Render: " + str(tt)

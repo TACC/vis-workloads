@@ -1,3 +1,26 @@
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+#   ======================================================================================= */
+
 try: paraview.simple
 except: from paraview.simple import *
 import os
@@ -26,9 +49,9 @@ def svbGetStagesSize():
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1
   global reader
-  
+
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
   st_reader = time.time()
   print("rm_data_dir: "+rm_data_dir)
@@ -49,11 +72,11 @@ def svbSetup(geometryLevel=1, stage=0):
     Contour1.ComputeNormals = 1
     Contour1.Update()
     et_filter = time.time()
-    tt_filter = (et_filter-st_filter) 
+    tt_filter = (et_filter-st_filter)
     DataRepresentation2 = Show()
     #DataRepresentation2.ScaleFactor = 25.5
     DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-  
+
   if geometryLevel < 0:
     #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
     #reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
@@ -63,7 +86,7 @@ def svbSetup(geometryLevel=1, stage=0):
     et_reader = time.time()
     tt_reader = (et_reader - st_reader)
     st_filter = time.time()
-    Contour1 = Contour(Input=reader) 
+    Contour1 = Contour(Input=reader)
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
     Contour1.PointMergeMethod = "Uniform Binning"
     Contour1.ContourBy = ['POINTS', 'ImageFile']
@@ -76,7 +99,7 @@ def svbSetup(geometryLevel=1, stage=0):
     DataRepresentation2 = Show()
     #DataRepresentation2.ScaleFactor = 25.5
     DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
-    
+
   else:
     #ppmt273_nrrd = NrrdReader( FileName='/scratch/01336/carson/intelTACC/rm/ppmt273.nrrd' )
     def computeFileName(x):
@@ -92,7 +115,7 @@ def svbSetup(geometryLevel=1, stage=0):
     fileName = computeFileName(geometryLevel)
     print(fileName)
     # name = '/scratch/01336/carson/intelTACC/rm/rm.xmf'
-    st_reader = time.time()   
+    st_reader = time.time()
     rm_xmf = XDMFReader( FileNames=[rm_data_dir+"-unblocked/"+fileName] )
     et_reader = time.time()
     tt_reader = (et_reader - st_reader)
@@ -121,7 +144,7 @@ def svbSetup(geometryLevel=1, stage=0):
     # DataRepresentation2.ScaleFactor = 204.70000000000002
 
     RenderView2.CameraClippingRange = [4733.166751461594, 9213.860962357088]
-    
+
     st_filter = time.time()
     Contour1 = Contour( PointMergeMethod="Uniform Binning" )
 
@@ -138,7 +161,7 @@ def svbSetup(geometryLevel=1, stage=0):
       Contour1.Isosurfaces = [22,27.0,33,56]
     if (geometryLevel == 10):
       Contour1.Isosurfaces = [18,22,27.0,33,56]
-    
+
     Contour1.UpdatePipeline()
     et_filter = time.time()
     tt_filter = (et_filter - st_filter)

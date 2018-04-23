@@ -1,3 +1,26 @@
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+#   ======================================================================================= */
+
 try: paraview.simple
 except: from paraview.simple import *
 import os
@@ -40,19 +63,19 @@ def svbSetup(geometryLevel=1, stage=0):
   returnVals = {'azimuth':0, 'dolly':0, 'animateCamera':True, 'tt_reader':0.0, 'tt_filter':0.0};
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
 
-  st_reader = time.time() 
+  st_reader = time.time()
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
-  # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])  
+  # reader = XDMFReader(FileNames=[data_dir + '/u_0032_pv.xmf'])
   numFiles=geometryLevel
   #name=dns_data_dir+"u_10000.xdmf"
   #name = dns_data_dir+"/u_yz_"+str(numFiles*128)+'.xmf'
   name = data_dir+"/u_"+str(numFiles*256)+'_pv.xmf'
-  
+
 
   #reader = XDMFReader(FileNames=[data_dir + '/u_1024_pv.xmf'])
   reader = XDMFReader(FileNames=[name])
@@ -101,7 +124,7 @@ def svbSetup(geometryLevel=1, stage=0):
   tt_filter = (et_filter - st_filter)
 
   ResetCamera()
-  renderView1 = GetActiveView()  
+  renderView1 = GetActiveView()
   renderView1.Background = [1,1,1]
   renderView1.CameraPosition = [-6051.988379672283, 17509.711278215327, -1388.3905660065536]
   renderView1.CameraFocalPoint = [63.50000000000163, 3839.5000000000027, 767.4999999999978]
