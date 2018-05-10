@@ -208,7 +208,3 @@ def svbSetup(geometryLevel=1, stage=0):
 
 def svbRender():
   Render()
-
-
-svbSetup()
-svbRender()
