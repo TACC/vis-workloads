@@ -2,17 +2,17 @@
 #*                     Copyright (c) 2013-2015 Carson Brownlee
 #*         Texas Advanced Computing Center, University of Texas at Austin
 #*                       All rights reserved
-#* 
+#*
 #*       This library is free software; you can redistribute it and/or
 #* modify it under the terms of the GNU Lesser General Public
 #* License as published by the Free Software Foundation; either
 #* version 2.1 of the License, or (at your option) any later version.
-#* 
+#*
 #* This library is distributed in the hope that it will be useful,
 #* but WITHOUT ANY WARRANTY; without even the implied warranty of
 #* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 #* Lesser General Public License for more details.
-#* 
+#*
 #* You should have received a copy of the GNU Lesser General Public
 #* License along with this library; if not, write to the Free Software
 #* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
@@ -32,7 +32,7 @@ SET(SVB_DIR ${PROJECT_SOURCE_DIR} CACHE STRING "root SVB directory")
 SET(output_DIR ${PROJECT_SOURCE_DIR}/benchmarks CACHE STRING "output directory")
 
 # place. if not do something like module load paraview to get the paths
-# correctly set. If paraview is not found nothing will run. 
+# correctly set. If paraview is not found nothing will run.
 #
 find_file(PV_FINDO NAMES pvbatch pvpython)  #CARSON TODO: be able to use pvpython or pvbatch
 if(${PV_FINDO} MATCHES "PV_FINDO-NOTFOUND")
@@ -59,7 +59,7 @@ SET(WRF_PLUGIN_PATH ${WRF_PLUGIN_PATH} CACHE STRING "WRF PLUGIN")
 
 
 #
-# find the gluray stuff. 
+# find the gluray stuff.
 #
 find_file(GLURAY_FIND NAMES gluray)
 if(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
@@ -98,6 +98,7 @@ set(USE_RM_ISOSWEEP OFF CACHE BOOL "run the rm isosweep data")
 set(USE_RM_CLIPSWEEP OFF CACHE BOOL "run the dns isosweep data")
 set(USE_TURBULENCE OFF CACHE BOOL "run the turbulence data")
 set(USE_DNS OFF CACHE BOOL "run the dns data")
+set(USE_DNS_VOL OFF CACHE BOOL "run the dns data vol")
 set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
 set(USE_DNS_ISOSWEEP OFF CACHE BOOL "run the dns isosweep data")
 set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
@@ -187,7 +188,7 @@ set(ENZODATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data direc
 
 #
 # set how mpi programs are launched. default is ibrun
-# Note: mpirun and ibrun should be in your path or this wont work. 
+# Note: mpirun and ibrun should be in your path or this wont work.
 #
 if(NOT MPI_COMMAND)
 	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
@@ -218,7 +219,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "ParaViewGL2_DIR=" ${ParaViewGL2_DIR}  \n
   "pvOSPRay_DIR=" ${pvOSPRay_DIR}  \n
   "pvVBO_DIR=" ${pvVBO_DIR}  \n
-  "GLuRay_PATH=" ${GLuRay_PATH}  \n 
+  "GLuRay_PATH=" ${GLuRay_PATH}  \n
   "WRF_PLUGIN_PATH=" ${WRF_PLUGIN_PATH} \n
   "GEODATA_DIR=" ${GEODATA_DIR} \n
   "MOLDATA_DIR=" ${MOLDATA_DIR} \n
@@ -233,7 +234,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "SWR_LIB=" ${SWR_LIB} \n
   "USE_SWR=" ${USE_SWR} \n
   "USE_GPU=" ${USE_GPU} \n
-  "USE_GPU2=" ${USE_GPU} \n
+  "USE_GPU2=" ${USE_GPU2} \n
   "IMMEDIATEMODE=" ${IMMEDIATEMODE} \n
   "USE_GLURAY=" ${USE_GLURAY} \n
   "USE_VBO=" ${USE_VBO} \n
@@ -253,6 +254,7 @@ FILE(WRITE ${PROJECT_BINARY_DIR}/paths.sh
   "USE_RM_CLIPSWEEP="  ${USE_RM_CLIPSWEEP} \n
   "USE_TURBULENCE="  ${USE_TURBULENCE} \n
   "USE_DNS=" ${USE_DNS} \n
+  "USE_DNS_VOL=" ${USE_DNS_VOL} \n
   "USE_DNS_ISOSWEEP=" ${USE_DNS_ISOSWEEP} \n
   "USE_DNS_CLIPSWEEP=" ${USE_DNS_CLIPSWEEP} \n
   "USE_MOLECULE=" ${USE_MOLECULE} \n

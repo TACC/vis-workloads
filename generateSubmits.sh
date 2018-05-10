@@ -33,6 +33,7 @@ function processBench {
        NAME=d${dataSource}_r${renderer}_t${tri}_N${node}_n${proc}
     fi
     FILE=${DIR}/submits/submit_${NAME}.sh
+    echo "creating submit file: " ${FILE}
     echo "${PND}!/bin/bash " >${FILE}
     echo "#SBATCH -J ${NAME} " >> ${FILE} #echo "#$ -q normal " >> ${FILE}
     # echo "#SBATCH -N ${node}"  >> ${FILE}
@@ -59,12 +60,12 @@ function processBench {
     fi
 
     IMG_FLAG=""
-     
+
 
     if [ ${GENERATE_IMAGES} == "ON" ]; then
           IMG_FLAG="--save_images -i ${IMAGE_DIR}/images/"
     fi
-    
+
     #if [ $dataSource == "fiu" ]; then
     #      NUM_RUNS=10
     #elif [ $dataSource == "rm" ]; then
@@ -79,7 +80,7 @@ function processBench {
     #      NUM_RUNS=10
     #elif [ $dataSource == "molecule" ]; then
     #      NUM_RUNS=10
-    #fi    
+    #fi
 
     echo "#SBATCH -p $queue " >> ${FILE}
     echo "#SBATCH -A $account " >> ${FILE}
@@ -125,12 +126,12 @@ function processBench {
       PV_PLUGIN_FLAG="--vbo"
     fi
     echo "date" >> ${FILE}
-    #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch 
+    #PARAVIEW=/work/01336/carson/ParaView/ParaView-v4.1.0/buildICC/bin/pvbatch
     #PARAVIEW=pvbatch
     #echo "module load qt" >> ${FILE}
     #echo "module load paraview/4.3.1" >> ${FILE}
     #PARAVIEW=pvbatch
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE} 
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/work/01336/carson/intelTACC/opt/maverick/lib' >> ${FILE}
     if [ $renderer == "ospray" -o $renderer == "osprayao" ]; then
         #echo "module load pvospray/1.0.2" >> ${FILE}
         #ENV_FLAGS="${ENV_FLAGS} PV_PLUGIN_PATH=$pvOSPRay_DIR"
@@ -166,8 +167,8 @@ function processBench {
          echo 'export LD_LIBRARY_PATH=/home/01249/gda/plugins/proj-4.9.1/src/.libs:$LD_LIBRARY_PATH' >> ${FILE}
          echo 'export DISPLAY=:1' >> ${FILE}
          echo 'module load netcdf' >> ${FILE}
-     fi      
-    
+     fi
+
     if [ $renderer == "swr" ]; then
     DL_FLAG=""
     #    echo "export LD_PRELOAD=${SWR_CMD}" >> ${FILE}
@@ -338,13 +339,18 @@ fi
 echo ${dataSources[*]}
 set -x
 
+echo "tris ${tris[@]}"
+echo "nodes ${nodes[@]}"
+echo "procs ${procs[@]}"
+echo "renderers ${renderers[@]}"
+echo "dataSources ${dataSources[@]}"
 
 for tri in "${tris[@]}";
 do
   for node in "${nodes[@]}";
   do
     for proc in "${procs[@]}";
-    do 
+    do
       for renderer in "${renderers[@]}";
       do
         for data in "${dataSources[@]}";
@@ -392,7 +398,7 @@ done
 
 if [ ${USE_TACHYON} == "ON" ]; then
 
-     nodes=( 1 2 4 8 16 32)     
+     nodes=( 1 2 4 8 16 32)
      mkdir  $DIR/tachyon
       for node in "${nodes[@]}";
  	 do
