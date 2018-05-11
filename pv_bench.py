@@ -52,7 +52,7 @@ def WarmupRender():
       warmup_et = time.time()
       warmup_tt = (warmup_et-warmup_st)
       print "warmup frame Render: " + str(warmup_tt)
-    
+
 
 #parse the command line arguments to pv_bench.py
 from optparse import (OptionParser,BadOptionError,AmbiguousOptionError)
@@ -184,7 +184,7 @@ try:
  svbSetup = import_from(source, "svbSetup")
  print "finished svbSetup"
 
- 
+
 
 
  svbRender = import_from(source, "svbRender")
@@ -198,7 +198,7 @@ except:
  def svbSetup(geo, stage):
   ResetCamera()
  def svbRender():
-   Render() 
+   Render()
  def svbGetStagesSize():
   return 1;
 
@@ -267,7 +267,7 @@ for stage in range(numStages):
   rotate_in_times = []
   still_in_times = []
 
-  
+
   #finds the average and std deviation when there are multiple runs
   def parseTimings(timings):
     sum = 0.0
@@ -317,7 +317,7 @@ for stage in range(numStages):
           cam.Azimuth(azimuth/(float(num_runs)/5.0))
         else:
           pass
-        
+
     #start time
     st_render = time.time()
     svbRender()
@@ -362,9 +362,9 @@ for stage in range(numStages):
   print "times: "
   print times
   #results = parseTimings(times)
-  
-  printTimings(times, "overall render time") 
-  printTimings(still_out_times, "still zoomed out") 
+
+  printTimings(times, "overall render time")
+  printTimings(still_out_times, "still zoomed out")
   printTimings(rotate_out_times, "rotate zoomed out")
   printTimings(zoom_times, "zooming")
   printTimings(still_in_times, "still zoomed in")

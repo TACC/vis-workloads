@@ -3,6 +3,7 @@
 # Read the config file to set paths.
 #
 . ./paths.sh
+echo "paraview dir: " $ParaView_DIR
 DIR=$output_DIR
 IMAGE_DIR=$ROOT_IMAGE_DIR
 
@@ -177,7 +178,11 @@ function processBench {
         MPI_CMD="$MPI_COMMAND -n  $(( ${node} * ${proc} )) -o 0"
     elif [ $MPI_COMMAND == "mpirun" ]; then
 	PRE_CMD=""
-        MPI_CMD="$MPI_COMMAND -np $[node] -hostfile ${HOSTFILE} -perhost ${RANKS_PER_HOST}"
+    HOSTFILE_CMD=""
+    if [ ${HOSTFILE} != "HOSTFILE-NOTFOUND" ]; then
+     HOSTFILE_CMD="-hostfile ${HOSTFILE}"
+    fi
+        MPI_CMD="$MPI_COMMAND -np $[node] ${HOSTFILE_CMD} -perhost ${RANKS_PER_HOST}"
     fi
      echo "${ENV_FLAGS} ${PRE_CMD} ${MPI_CMD}  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1024x1024  ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
      #echo "$PRE_CMD ibrun -n ${node} -o 0  ${SWR_CMD} ${GLURAY_CMD} ${PARAVIEW} ${SVB_DIR}/pv_bench.py  ${PV_PLUGIN_FLAG} -w 1920x1080  ${IMG_FLAG} --geoLevel $tri --numruns ${NUM_RUNS} --source ${dataSource} ${DL_FLAG} " >> ${FILE}
