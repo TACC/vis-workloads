@@ -274,7 +274,7 @@ if(MPI_LAUNCH_X)
 	set(MPI_X_PROLOGUE "${SVB_DIR}/X/mpi_x_prologue" CACHE FILE "Prologue script to start X")
 	set(MPI_X_EPILOGUE "${SVB_DIR}/X/mpi_x_epilogue" CACHE FILE "Epilogue to close X")
 endif()
-set(MPI_ENV_COMMAND "module load remora swr ospray qt5 paraview-omesa" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
+set(MPI_ENV_COMMAND "module load remora swr ospray qt5 paraview-osmesa/5.4.1" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
 #
 # if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
 # look in the directory where this file is for the hosts file used with mpi

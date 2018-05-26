@@ -215,10 +215,11 @@ def process_benchmark(triangle, node, process ):
     file_obj.write( 'date\n\n' )
 
     # write default modules to load for bash file
-    # file_obj.write( 'module load remora\n' )
-    # file_obj.write( 'module load swr\n' )
-    # file_obj.write( 'module load qt5\n' )
-    # file_obj.write( 'module load paraview-omesa\n\n' )
+    #file_obj.write( 'module load remora\n' )
+    #file_obj.write( 'module use /work/01206/jbarbosa/stampede2/rpminstall/modulefiles\n' )
+    #file_obj.write( 'module load swr\n' )
+    #file_obj.write( 'module load qt5\n' )
+    #file_obj.write( 'module load paraview-omesa\n\n' )
     file_obj.write(path_vars['MPI_ENV_COMMAND'])
 
     # set LD_LIBRARY_PATH and REMORA_PERIOD
