@@ -1,3 +1,27 @@
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+#   SVBench: Scientific Visualization Benchmarking Suite is funded in part by an Intel Cooperation award
+#   ======================================================================================= */
+
 try: paraview.simple
 except: from paraview.simple import *
 import os
@@ -46,7 +70,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #clipRange = clipRanges[1]-clipRanges[0]
   #clipVal = (float(stage)/float(svbGetStagesSize()))*clipRange+clipRanges[0]
 
-  if (stage != 0):  
+  if (stage != 0):
     #ResetCamera()
     numCells = 0
     numPolys = 0
@@ -68,9 +92,9 @@ def svbSetup(geometryLevel=1, stage=0):
 
 
   numCells = 0
-  numPolys = 0 
+  numPolys = 0
   numPoints = 0
-  
+
   #ppmt273_256_256_256_nrrd = NrrdReader( FileName='/scratch/01336/carson/data/RM/ppmt273_256_256_256.nrrd' )
   # reader = NrrdReader( FileName='/work/03108/awasim/workloads/rm-unblocked/rm_0273.nhdr')
   # reader = XdmfReader( FileName='/work/00401/pnav/workloads/dns/u_0035_pv.xmf')
@@ -122,7 +146,7 @@ def svbSetup(geometryLevel=1, stage=0):
   #DataRepresentation2.ScaleFactor = 25.5
   DataRepresentation2.SelectionPointFieldDataArrayName = 'Normals'
   DataRepresentation2.SetRepresentationType('Surface')
-  
+
   #ResetCamera()
   renderView1 = GetActiveView()
   renderView1.Background = [1,1,1]

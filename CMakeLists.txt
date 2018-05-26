@@ -1,22 +1,26 @@
-#/**********************************************************************************
-#*                     Copyright (c) 2013-2015 Carson Brownlee
-#*         Texas Advanced Computing Center, University of Texas at Austin
-#*                       All rights reserved
-#*
-#*       This library is free software; you can redistribute it and/or
-#* modify it under the terms of the GNU Lesser General Public
-#* License as published by the Free Software Foundation; either
-#* version 2.1 of the License, or (at your option) any later version.
-#*
-#* This library is distributed in the hope that it will be useful,
-#* but WITHOUT ANY WARRANTY; without even the implied warranty of
-#* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-#* Lesser General Public License for more details.
-#*
-#* You should have received a copy of the GNU Lesser General Public
-#* License along with this library; if not, write to the Free Software
-#* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-#**********************************************************************************/
+#/* =======================================================================================
+#   This file is released as part of SVBench: Scientific Visualization Benchmarking Suite
+#	 https://github.com/TACC/vis-workloads
+#
+#   Copyright 2013-2015 Texas Advanced Computing Center, The University of Texas at Austin
+#   All rights reserved.
+#
+#   Licensed under the BSD 3-Clause License, (the "License"); you may not use this file
+#   except in compliance with the License.
+#   A copy of the License is included with this software in the file LICENSE.
+#   If your copy does not contain the License, you may obtain a copy of the License at:
+#
+#       http://opensource.org/licenses/BSD-3-Clause
+#
+#   Unless required by applicable law or agreed to in writing, software distributed under
+#   the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#   KIND, either express or implied.
+#   See the License for the specific language governing permissions and limitations under
+#   limitations under the License.
+#
+#
+# SVBench: Scientific Visualization Benchmarking Suite is funded in part by an Intel Cooperation award
+#   ======================================================================================= */
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
