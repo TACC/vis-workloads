@@ -77,66 +77,64 @@ endif()
 #
 # set the accounting info. What account do I charge this to
 #
-set(SUBMIT_ACCOUNT A-ccvis CACHE STRING "account to charge to")
-set(SUBMIT_PARTITION skx-normal CACHE STRING "Cluster partition")
+OPTION(SUBMIT_SLURM ON "Use slurm jobs")
+if(SUBMIT_SLURM)
+	set(SUBMIT_ACCOUNT A-ccvis CACHE STRING "account to charge to")
+	set(SUBMIT_PARTITION skx-normal CACHE STRING "Cluster partition")
+endif()
+OPTION(CLOUD_ENVIROMENT OFF "Cloud Environment")
+OPTION(DISPLAY_ENVIROMENT OFF "Use X environment")
+if(DISPLAY_ENVIROMENT)
+	set(DISPLAY_ENVIROMENT_DISPLAY ":0" CACHE STRING "")
+	set(DISPLAY_ENVIROMENT_VGLRUN OFF CACHE BOOL "")
+endif()
+
 #
 # set the renderer and dataSources. Setting to ON includes the
 # renderer or dataSource in the batch scripts collection.
 #
+
+
 SET(RENDER_BACKEND "")
-set(ENABLE_BACKEND_SWR OFF CACHE BOOL "use swr renderer")
+OPTION(ENABLE_BACKEND_SWR OFF "use swr renderer")
 if(ENABLE_BACKEND_SWR)
 	set(RENDER_BACKEND "${RENDER_BACKEND} swr")
 endif()
-set(ENABLE_BACKEND_LLVMPIPE OFF CACHE BOOL "use llvmpipe renderer")
+OPTION(ENABLE_BACKEND_LLVMPIPE OFF "use llvmpipe renderer")
 if(ENABLE_BACKEND_LLVMPIPE)
 	set(RENDER_BACKEND "${RENDER_BACKEND} llvmpipe")
 endif()
-set(ENABLE_BACKEND_MESA OFF CACHE BOOL "use llvmpipe renderer")
-if(ENABLE_BACKEND_MESA)
-	set(RENDER_BACKEND "${RENDER_BACKEND} mesa")
-endif()
-set(ENABLE_BACKEND_GPU OFF CACHE BOOL "use gpu renderer")
+OPTION(ENABLE_BACKEND_GPU OFF "use gpu renderer")
 if(ENABLE_BACKEND_GPU)
 	set(RENDER_BACKEND "${RENDER_BACKEND} gpu")
 endif()
-set(ENABLE_BACKEND_GPU2 OFF CACHE BOOL "use gpu opengl2 renderer")
-if(ENABLE_BACKEND_GPU2)
-	set(RENDER_BACKEND "${RENDER_BACKEND} gpu2")
-endif()
-set(IMMEDIATEMODE OFF CACHE BOOL "use immediatemode for gpu renderer")
-set(ENABLE_BACKEND_GLURAY OFF CACHE BOOL "use gluray renderer")
-if(ENABLE_BACKEND_GLURAY)
-	set(RENDER_BACKEND "${RENDER_BACKEND} gluray")
-	find_file(GLURAY_FIND NAMES gluray)
-	if(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
-		MESSAGE(WARNING "Gluray not found " )
-	endif(${GLURAY_FIND} MATCHES "GLURAY_FIND-NOTFOUND")
-	SET(GLuRay_PATH ${GLURAY_FIND} CACHE STRING "root SVB directory")
-endif()
-set(ENABLE_BACKEND_VBO OFF CACHE BOOL "use vbo renderer")
+OPTION(IMMEDIATEMODE OFF "use immediatemode for gpu renderer")
+
+OPTION(ENABLE_BACKEND_VBO OFF "use vbo renderer")
 if(ENABLE_BACKEND_VBO)
 	set(RENDER_BACKEND "${RENDER_BACKEND} vbo")
 endif()
-set(ENABLE_BACKEND_OSPRAY OFF CACHE BOOL "use ospray renderer")
+
+OPTION(ENABLE_BACKEND_OSPRAY OFF "use ospray renderer")
 if(ENABLE_BACKEND_OSPRAY)
 	set(RENDER_BACKEND "${RENDER_BACKEND} ospray")
 	set(ENABLE_BACKEND_OSPRAYAO OFF CACHE BOOL "use ospray renderer with ao")
 endif()
-set(ENABLE_BACKEND_SWRVBO OFF CACHE BOOL "use swrvbo renderer")
+
+OPTION(ENABLE_BACKEND_SWRVBO OFF "use swrvbo renderer")
 if(ENABLE_BACKEND_SWRVBO)
 	set(RENDER_BACKEND "${RENDER_BACKEND} swrvbo")
 endif()
 
 #temp hide some backends
-mark_as_advanced(ENABLE_BACKEND_GLURAY)
-mark_as_advanced(ENABLE_BACKEND_GPU) #TODO: Hide this only if the cluster does not have gpus
-mark_as_advanced(ENABLE_BACKEND_GPU2)  #TODO: Hide this only if the cluster does not have gpus
+#mark_as_advanced(ENABLE_BACKEND_GLURAY)
+#mark_as_advanced(ENABLE_BACKEND_GPU) #TODO: Hide this only if the cluster does not have gpus
+#mark_as_advanced(ENABLE_BACKEND_GPU2)  #TODO: Hide this only if the cluster does not have gpus
 
 SET(DATASETS "")
 
 # DATA
-set(USE_FIU OFF CACHE BOOL "run fiu data")
+OPTION(USE_FIU OFF "run fiu data")
 if(USE_FIU)
 	SET(DATASETS "${DATASETS} fiu")
 	set(USE_FIU_ANIMATED OFF CACHE BOOL "run fiu animated data")
@@ -152,7 +150,7 @@ if(USE_FIU)
 endif()
 
 
-set(USE_RM OFF CACHE BOOL "run the rm data")
+OPTION(USE_RM OFF "run the rm data")
 if(USE_RM)
 	SET(DATASETS "${DATASETS} rm")
 	set(USE_RM_TIME OFF CACHE BOOL "run the rm time series data")
@@ -175,14 +173,14 @@ if(USE_RM)
 	set(RMDATA_DIR ${RMDATAD_DIR} CACHE PATH "RM data directory")
 endif()
 
-set(USE_TURBULENCE OFF CACHE BOOL "run the turbulence data")
+OPTION(USE_TURBULENCE OFF "run the turbulence data")
 if(USE_TURBULENCE)
 	SET(DATASETS "${DATASETS} turbulence")
 	set(TURBULENCEDATA_DIR "TURBULENCEDATA_DIR-NOTFOUND" CACHE PATH "turbulence data directory")
 endif()
 
 
-set(USE_DNS OFF CACHE BOOL "run the dns data")
+OPTION(USE_DNS OFF "run the dns data")
 if(USE_DNS)
 	SET(DATASETS "${DATASETS} dns")
 	set(USE_DNS_CLIPSWEEP OFF CACHE BOOL "run the dns clipsweep data")
@@ -201,7 +199,7 @@ if(USE_DNS)
 	set(DNSDATA_DIR ${DNSDATA_DIR} CACHE PATH "DNS data directory")
 endif()
 
-set(USE_MOLECULE OFF CACHE BOOL "run the pv molecule data")
+OPTION(USE_MOLECULE OFF "run the pv molecule data")
 if(USE_MOLECULE)
 	SET(DATASETS "${DATASETS} molecule")
 	find_file(MOLDATA_DIR NAMES 1VRI.pdb PATHS ${SVB_DATA_DIR})
@@ -213,7 +211,7 @@ if(USE_MOLECULE)
 endif()
 
 
-set(USE_GEO OFF CACHE BOOL "run the geo data")
+OPTION(USE_GEO OFF "run the geo data")
 if (USE_GEO)
 	SET(DATASETS "${DATASETS} geo")
 	find_file(GEODATA_DIR NAMES Top_Albian.obj PATHS ${SVB_DATA_DIR})
@@ -225,7 +223,7 @@ if (USE_GEO)
 endif (USE_GEO)
 
 
-set(USE_WRF OFF CACHE BOOL "run the wrf data")
+OPTION(USE_WRF OFF "run the wrf data")
 if(USE_WRF)
 	#
 	#wrf plugin
@@ -240,7 +238,7 @@ if(USE_WRF)
 	set(WRFDATA_DIR ${WRFDATA_DIR} CACHE PATH "WRF data directory")
 endif()
 
-set(USE_WHIPPLE OFF CACHE BOOL "run whipple shield data")
+OPTION(USE_WHIPPLE OFF "run whipple shield data")
 if(USE_WHIPPLE)
 	SET(DATASETS "${DATASETS} whipple")
 	set(USE_WHIPPLE_TIME OFF CACHE BOOL "run the whipple shield time series data")
@@ -252,7 +250,7 @@ if(USE_WHIPPLE)
 	set(WHIPPLEDATA_DIR ${WHIPPLEDATA_DIR} CACHE PATH "WHIPPLE data directory")
 endif(USE_WHIPPLE)
 
-set(USE_ENZO OFF CACHE BOOL "run enzo data")
+OPTION(USE_ENZO OFF "run enzo data")
 if(USE_ENZO)
 	SET(DATASETS "${DATASETS} enzo")
 	find_file(ENZODATA_DIR NAMES DD0174.cpu0000 PATHS ${SVB_DATA_DIR})
@@ -270,50 +268,60 @@ endif()
 # set how mpi programs are launched. default is ibrun
 # Note: mpirun and ibrun should be in your path or this wont work.
 #
-if(NOT MPI_COMMAND)
-	set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
-endif(NOT MPI_COMMAND)
-set(MPI_LAUNCH_X ON CACHE BOOL "Job must launch X server")
-if(MPI_LAUNCH_X)
-	set(MPI_X_PROLOGUE "${SVB_DIR}/X/mpi_x_prologue" CACHE FILE "Prologue script to start X")
-	set(MPI_X_EPILOGUE "${SVB_DIR}/X/mpi_x_epilogue" CACHE FILE "Epilogue to close X")
-endif()
-set(MPI_ENV_COMMAND "module load remora swr ospray qt5 paraview-osmesa/5.4.1" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
-#
-# if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
-# look in the directory where this file is for the hosts file used with mpi
-#
-if(${MPI_COMMAND} MATCHES "mpirun")
-	set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
-endif(${MPI_COMMAND} MATCHES "mpirun")
 
-set(MaxNumNodes "32" CACHE STRING "The max number of nodes to use")
-set(MaxNumProcs "16" CACHE STRING "The max number of mpi processes per nodes to use")
+
 set(MaxGeometryLevels "3" CACHE STRING "The geometry levels to use, ie 1 2 4 8.  Up to 10.  Dataset script specific.")
-
-set (index 0)
-math(EXPR nodes "1")
-set (NumNodes "")
-while( (MaxNumNodes GREATER ${nodes}) OR (MaxNumNodes EQUAL ${nodes}) )
-	set(NumNodes "${NumNodes} ${nodes}")
-	math(EXPR index "${index}+1")
-	math(EXPR nodes "1 << ${index}")
-endwhile()
-
-set (index 0)
-set (NumProcs "")
-math(EXPR nodes "1")
-while( (MaxNumProcs GREATER ${nodes}) OR (MaxNumProcs EQUAL ${nodes}) )
-	set(NumProcs "${NumProcs} ${nodes}")
-	math(EXPR index "${index}+1")
-	math(EXPR nodes "1 << ${index}")
-endwhile()
 set (index 0)
 set (GeometryLevels "")
 while( (MaxGeometryLevels GREATER ${index}) OR (MaxGeometryLevels EQUAL ${index}) )
 	set(GeometryLevels "${GeometryLevels} ${index}")
 	math(EXPR index "${index}+1")
 endwhile()
+
+
+OPTION(MPI_ENABLE OFF "Use MPI")
+
+
+if(MPI_ENABLE)
+	if(NOT MPI_COMMAND)
+		set(MPI_COMMAND "ibrun" CACHE STRING "Command used to launch mpi jobs: ibrun, mpirun")
+	endif(NOT MPI_COMMAND)
+
+	set(MPI_LAUNCH_X ON CACHE BOOL "Job must launch X server")
+	if(MPI_LAUNCH_X)
+		set(MPI_X_PROLOGUE "${SVB_DIR}/X/mpi_x_prologue" CACHE FILE "Prologue script to start X")
+		set(MPI_X_EPILOGUE "${SVB_DIR}/X/mpi_x_epilogue" CACHE FILE "Epilogue to close X")
+	endif()
+	set(MPI_ENV_COMMAND "module load remora swr ospray qt5 paraview-osmesa/5.4.1" CACHE STRING "Command used to settup env for each run, ie DISPLAY=:0.0")
+	#
+	# if mpi uses mpirun look for a hostfile, set the ranks per node. -hostfile  <hosts >  -perhost <ranks-per-host>
+	# look in the directory where this file is for the hosts file used with mpi
+	#
+	if(${MPI_COMMAND} MATCHES "mpirun")
+		set(RANKS_PER_HOST "1" CACHE STRING "number of mpi ranks to start per node")
+	endif(${MPI_COMMAND} MATCHES "mpirun")
+
+	set(MaxNumNodes "32" CACHE STRING "The max number of nodes to use")
+	set(MaxNumProcs "16" CACHE STRING "The max number of mpi processes per nodes to use")
+
+	set (index 0)
+	math(EXPR nodes "1")
+	set (NumNodes "")
+	while( (MaxNumNodes GREATER ${nodes}) OR (MaxNumNodes EQUAL ${nodes}) )
+		set(NumNodes "${NumNodes} ${nodes}")
+		math(EXPR index "${index}+1")
+		math(EXPR nodes "1 << ${index}")
+	endwhile()
+
+	set (index 0)
+	set (NumProcs "")
+	math(EXPR nodes "1")
+	while( (MaxNumProcs GREATER ${nodes}) OR (MaxNumProcs EQUAL ${nodes}) )
+		set(NumProcs "${NumProcs} ${nodes}")
+		math(EXPR index "${index}+1")
+		math(EXPR nodes "1 << ${index}")
+	endwhile()
+endif()
 
 #SET(PND \# CACHE INTERNAL STRING )
 #FILE(REMOVE ${SVB_DIR}/paths.sh)
@@ -335,9 +343,18 @@ FILE(WRITE ${SVB_DIR}/paths.sh
 	"pvVBO_DIR=" ${pvVBO_DIR}  \n
 	"GLuRay_PATH=" ${GLuRay_PATH}  \n
 	"WRF_PLUGIN_PATH=" ${WRF_PLUGIN_PATH} \n
+	"################## CLOUD CONFIG #######################" \n
+	"CLOUD_ENVIROMENT=" ${CLOUD_ENVIROMENT} \n
+	"################## DISPLAY CONFIG #######################" \n
+	"DISPLAY_ENVIROMENT=" ${DISPLAY_ENVIROMENT} \n
+	"DISPLAY_ENVIROMENT_DISPLAY=" ${DISPLAY_ENVIROMENT_DISPLAY} \n
+	"DISPLAY_ENVIROMENT_VGLRUN=" ${DISPLAY_ENVIROMENT_VGLRUN} \n
+	"################## SLURM CONFIG #######################" \n
+	"SUBMIT_SLURM=" ${SUBMIT_SLURM} \n
+	"SUBMIT_ACCOUNT=" ${SUBMIT_ACCOUNT} \n
+	"SUBMIT_PARTITION=" ${SUBMIT_PARTITION} \n
 	"################## MPI CONFIG #######################" \n
-	"ACCOUNT=" ${SUBMIT_ACCOUNT} \n
-	"PARTITION=" ${SUBMIT_PARTITION} \n
+	"MPI_ENABLE=" ${MPI_ENABLE} \n
 	"MPI_COMMAND=" ${MPI_COMMAND} \n
 	"MPI_ENV_COMMAND=" ${MPI_ENV_COMMAND} \n
 	"MPI_LAUNCH_X=" ${MPI_LAUNCH_X} \n

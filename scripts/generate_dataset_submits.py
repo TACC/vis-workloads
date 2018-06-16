@@ -72,22 +72,30 @@ global pv_plugin_flag
 # name of dataset used for tests
 data_name = ''
 
+use_slurm = path_vars["SUBMIT_SLURM"] == "ON"
 # account name to use for submitting tests as jobs
-account_name = path_vars['ACCOUNT']
+account_name = path_vars['SUBMIT_ACCOUNT']
 # queue to submit jobs
-queue_name   = path_vars['PARTITION']
-
+queue_name   = path_vars['SUBMIT_PARTITION']
 # number of runs to perform for each job
+
+use_mpi = (path_vars["MPI_ENABLE"] == "ON")
+mpi_command = path_vars['MPI_COMMAND']
 num_runs = int(path_vars['NUMRUNS'])
 
+cloud_env = (path_vars["CLOUD_ENVIROMENT"] == "ON")
+
+display_env = (path_vars["DISPLAY_ENVIROMENT"] == "ON")
+display_vglrun = (path_vars["DISPLAY_ENVIROMENT_VGLRUN"] == "ON")
+display_env_display = path_vars["DISPLAY_ENVIROMENT_DISPLAY"]
 # pre-arguments flag
 global pre_args
 
 # swr command to pass if using swr
-# workaround where swr_cmd is not defined if global
+# workaround where gl_wrapper_cmd is not defined if global
 # is not prepended since it is looking for a local scope in the
 # process_benchmark function
-global swr_cmd
+global gl_wrapper_cmd
 
 # argument parser for command line arguments
 parser = argparse.ArgumentParser()
@@ -152,15 +160,14 @@ parser.add_argument( '-x',
 # parse arguments passed through command-line
 args = parser.parse_args()
 
-# set variables based off passed in command line arguments
-print( 'setting queue to {}'.format( args.partition ) )
-queue_name =  args.partition;
-
-print( 'setting Account Name to {}'.format( args.account ) )
-account_name =  args.account;
-
-print( 'setting output directory to {}'.format( args.output_directory ) )
-output_directory = args.output_directory
+if(use_slurm):
+    # set variables based off passed in command line arguments
+    print( 'setting queue to {}'.format( args.partition ) )
+    queue_name =  args.partition;
+    print( 'setting Account Name to {}'.format( args.account ) )
+    account_name =  args.account;
+    print( 'setting output directory to {}'.format( args.output_directory ) )
+    output_directory = args.output_directory
 
 print( 'setting renderer to {}'.format( args.renderer ) )
 renderer = args.renderer
@@ -197,9 +204,7 @@ if save_images:
 # main function used to process information to create bash
 # benchmark script
 def process_benchmark(triangle, node, process ):
-
     subfolder = os.path.join(data_name,renderer)
-
     outputdir = os.path.join(output_directory,os.path.join(subfolder,"outs"))
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)
@@ -213,74 +218,78 @@ def process_benchmark(triangle, node, process ):
         os.makedirs(interactivedir)
 
                 # workaround for now
-    swr_cmd = ''
+    gl_wrapper_cmd = ''
     pv_plugin_flag = ''
     pre_args = ''
 
     # name of job to be used in bash script and file name
     job_name = 'd{0}_r{1}_t{2}_N{3}_n{4}'.format( data_name, renderer, triangle, node, process )
     # file name for bash job
-    file_name = 'submit_' + job_name + '.sh'
+    file_name = ""
+    if(use_slurm):
+        file_name = 'submit_' + job_name + '.sh'
+    else:
+        file_name = 'exec_' + job_name + '.sh'
     # path to output file for bash job
     output_name = os.path.join(outputdir,"{}.out".format(job_name))
     # create and open bash file
     file_obj = open(os.path.join(submitsdir,file_name), 'w' )
-
     # write the appropriate header information
     file_obj.write( '#!/bin/bash\n' )
-    file_obj.write( '#SBATCH -J {}\n'.format( job_name ) )
-    file_obj.write( '#SBATCH -N {}\n'.format( node ) )
-    file_obj.write( '#SBATCH -n {}\n'.format( int(node) * int(process) ) )
-    file_obj.write( '#SBATCH -p {}\n'.format( queue_name ) )
-    file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
-    file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
-    file_obj.write( '#SBATCH -t {}\n\n'.format( '02:00:00' ) )
 
-    # file_obj.write( 'set -x\n' )
-    file_obj.write( 'date\n\n' )
+    if(use_slurm):
+        file_obj.write( '#SBATCH -J {}\n'.format( job_name ) )
+        file_obj.write( '#SBATCH -N {}\n'.format( node ) )
+        file_obj.write( '#SBATCH -n {}\n'.format( int(node) * int(process) ) )
+        file_obj.write( '#SBATCH -p {}\n'.format( queue_name ) )
+        file_obj.write( '#SBATCH -A {}\n'.format( account_name ) )
+        file_obj.write( '#SBATCH -o {}\n'.format( output_name ) )
+        file_obj.write( '#SBATCH -t {}\n\n'.format( '02:00:00' ) )
+        # file_obj.write( 'set -x\n' )
+        file_obj.write( 'date\n\n' )
+        file_obj.write( '\nREMORA_PERIOD=1\n\n' )
 
-    # write default modules to load for bash file
-    #file_obj.write( 'module load remora\n' )
-    #file_obj.write( 'module use /work/01206/jbarbosa/stampede2/rpminstall/modulefiles\n' )
-    #file_obj.write( 'module load swr\n' )
-    #file_obj.write( 'module load qt5\n' )
-    #file_obj.write( 'module load paraview-omesa\n\n' )
-    file_obj.write(path_vars['MPI_ENV_COMMAND'])
+    if(use_mpi):
+        file_obj.write(path_vars['MPI_ENV_COMMAND'])
 
-    # set LD_LIBRARY_PATH and REMORA_PERIOD
-    # file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_PARAVIEW_LIB\n' )
-    file_obj.write( '\nREMORA_PERIOD=1\n\n' )
-
-    threads_pp = 48 / int(process)
     # set parameters based off renderer
     if renderer == 'swr':
-
-        # file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-
-        # if x server is not set, then set display environment variable
-        if not x_server:
-
-            pre_args = 'DISPLAY=:1.0'
-
-        swr_cmd  = 'swr -t {}'.format( threads_pp )
+        gl_wrapper_cmd  = 'swr'
         pv_plugin_flag = '--swr'
+    # set parameters based off renderer
+    elif renderer == 'gpu':
+        gl_wrapper_cmd  = ''
 
+        if (display_env):
+            if(display_vglrun):
+                gl_wrapper_cmd = 'vglrun'
+            else:
+                gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
+
+        pv_plugin_flag = '--gpu2'
+    # set parameters based off renderer
+    elif renderer == 'vbo':
+        gl_wrapper_cmd  = ''
+        if (display_env):
+            if(display_vglrun):
+                gl_wrapper_cmd = 'vglrun'
+            else:
+                gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
+        pv_plugin_flag = '--vbo'
     elif renderer == 'llvmpipe':
-
-        # file_obj.write( 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TACC_SWR_LIB\n\n' )
-
-        # if x server is not set, then set display environment variable
-        if not x_server:
-
-            pre_args = 'DISPLAY=:1.0'
-
-        swr_cmd  = '{}/llvmpipe -t {}'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"), threads_pp  )
-        pv_plugin_flag = '--swr'
-
+        gl_wrapper_cmd  = '{}/llvmpipe -t {}'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"), threads_pp  )
+        pv_plugin_flag = '--llvmpipe'
     elif renderer == 'ospray':
+        if(use_slurm):
+            file_obj.write( 'module load ospray\n\n' )
 
-        file_obj.write( 'module load ospray\n\n' )
-        pre_args = 'remora'
+        gl_wrapper_cmd  = ''
+        if (display_env):
+            if(display_vglrun):
+                gl_wrapper_cmd = 'vglrun'
+            else:
+                gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
+
         pv_plugin_flag = '--osp'
 
     # append x server code to bath file
@@ -291,7 +300,11 @@ def process_benchmark(triangle, node, process ):
         file_obj.write( x_file_data + '\n' )
 
     # write out command to file to execute test
-    file_obj.write( '{} ibrun -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, (int(node) * int(process)), swr_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name ) )
+    if use_mpi:
+        file_obj.write( '{} {} -n {} -o 0 {} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} \n\n'.format( pre_args, mpi_command, (int(node) * int(process)), gl_wrapper_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name ) )
+    else:
+        file_obj.write( '{} pvbatch {} {} -w 1024x1024 {} --geoLevel {} --numruns {} --source {} > {}\n\n'.format(gl_wrapper_cmd, pv_bench_path , pv_plugin_flag, image_arguments, triangle, num_runs, data_name , output_name) )
+
     file_obj.write( 'date\n\n' )
 
     # if server is running, be sure to print out commands to kill vnc server
@@ -311,6 +324,9 @@ def process_benchmark(triangle, node, process ):
 # the parameters to process_benchmark
 
 for triangle in triangles_count:
-    for node in nodes_count:
-        for process in processes_count:
-            process_benchmark( triangle, node, process )
+    if(use_mpi):
+        for node in nodes_count:
+            for process in processes_count:
+                process_benchmark( triangle, node, process )
+    else:
+        process_benchmark(triangle, 1, 1)

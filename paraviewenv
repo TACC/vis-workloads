@@ -1,0 +1,27 @@
+
+
+export PARAVIEWPATH=/Applications/ParaView-5.4.1.app/Contents
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo ${machine}
+
+export PATH=$PATH:$PARAVIEWPATH/bin
+#Linux
+if [[ $machine == "Linux" ]]; then
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PARAVIEWPATH/lib
+  export PYTHONHOME=$PARAVIEWPATH/bin
+  export PYTHONPATH=$PARAVIEWPATH/lib/python2.7:$PARAVIEWPATH/lib/python2.7/site-packages
+fi
+
+if [[ $machine == "Mac" ]]; then
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$PARAVIEWPATH/Libraries
+  export PYTHONHOME=$PARAVIEWPATH/bin
+  export PYTHONPATH=$PARAVIEWPATH/Python
+fi

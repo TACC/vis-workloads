@@ -54,6 +54,8 @@ with open(pathsfile) as f:
 renders = path_vars['RENDER_BACKEND'].split()
 datasets = path_vars['DATASETS'].split()
 
+print(path_vars['RENDER_BACKEND'])
+
 if(len(renders) ==0):
     print("Renderes are missing, please rerun ccmake to choose/configure renderes.")
     exit()

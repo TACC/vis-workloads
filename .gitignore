@@ -5,3 +5,4 @@ images/
 *.pyc
 paths.sh
 build
+data
