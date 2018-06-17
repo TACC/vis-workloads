@@ -254,7 +254,10 @@ def process_benchmark(triangle, node, process ):
 
     # set parameters based off renderer
     if renderer == 'swr':
-        gl_wrapper_cmd  = 'swr'
+        if (display_env):
+            gl_wrapper_cmd = 'swr'
+        else:
+            gl_wrapper_cmd = 'DISPLAY={} swr'.format(display_env_display)
         pv_plugin_flag = '--swr'
     # set parameters based off renderer
     elif renderer == 'gpu':
@@ -277,7 +280,10 @@ def process_benchmark(triangle, node, process ):
                 gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
         pv_plugin_flag = '--vbo'
     elif renderer == 'llvmpipe':
-        gl_wrapper_cmd  = '{}/llvmpipe'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe")  )
+        if (display_env):
+            gl_wrapper_cmd = 'swr'
+        else:
+            gl_wrapper_cmd = 'DISPLAY={} {}/llvmpipe'.format(display_env_display,os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"))
         pv_plugin_flag = '--llvmpipe'
     elif renderer == 'ospray':
         if(use_slurm):
