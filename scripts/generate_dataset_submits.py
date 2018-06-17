@@ -283,7 +283,7 @@ def process_benchmark(triangle, node, process ):
         if (not display_env):
             gl_wrapper_cmd = 'swr'
         else:
-            gl_wrapper_cmd = 'DISPLAY={} {}'.format(display_env_display,os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"))
+            gl_wrapper_cmd = 'DISPLAY={} {}'.format(display_env_display,os.path.join(os.path.join(path_vars['SVB_DIR'],"scripts"),"llvmpipe"))
         pv_plugin_flag = '--llvmpipe'
     elif renderer == 'ospray':
         if(use_slurm):
