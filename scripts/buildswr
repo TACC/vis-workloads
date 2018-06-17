@@ -1,0 +1,175 @@
+#!/bin/bash
+major_version=18
+minor_version=0
+micro_version=2
+
+pkg_version="$major_version.$minor_version.$micro_version"
+
+
+BUILD_LLVM=0
+BUILD_X=0
+BUILD_SWR=0
+
+while getopts ":lxs" opt; do
+	case $opt in
+	l)
+		echo "Build llvm"
+		BUILD_LLVM=1
+		;;
+	x)
+		echo "Build X libs"
+		BUILD_X=1
+		;;
+	s)
+		echo "Build swr"
+		BUILD_SWR=1
+		;;
+	esac
+done
+
+INSTALL_DIR="local"
+BUILD_ROOT=`pwd`
+
+
+  mkdir -p $BUILD_ROOT/$INSTALL_DIR
+  mkdir -p $BUILD_ROOT/$INSTALL_DIR/bin
+  mkdir -p $BUILD_ROOT/$INSTALL_DIR/lib
+  mkdir -p $BUILD_ROOT/$INSTALL_DIR/include
+
+  WORK_DIR=$BUILD_ROOT/build
+  mkdir -p $WORK_DIR
+  WORK_INSTALL_DIR=$BUILD_ROOT/$INSTALL_DIR
+  #WORK_INSTALL_DIR=/work/01206/jbarbosa/stampede2/rpminstall/swr/17.2.5
+
+
+  export LLVM_BUILD_DIR=${WORK_DIR}/llvm-5.0
+  export LLVM_WORK_INSTALL_DIR=${WORK_INSTALL_DIR}
+
+  export CC=gcc
+  export CXX=g++ 
+
+
+if [[ $BUILD_LLVM == 1 ]]; then
+  cd $WORK_DIR
+  mkdir -p $LLVM_BUILD_DIR && cd $LLVM_BUILD_DIR
+  #wget -c -N http://www.llvm.org/releases/3.9.1/llvm-3.9.1.src.tar.xz
+  #tar xf llvm-3.9.1.src.tar.xz && mv llvm-3.9.1.src src
+
+
+  version=5.0.1
+  #bases="llvm-${version}.src cfe-${version}.src compiler-rt-${version}.src"
+  bases="llvm-${version}.src "
+  #bases="${bases} libcxx-${version}.src libcxxabi-${version}.src"
+  #bases="${bases} libunwind-${version}.src lld-${version}.src lldb-${version}.src"              \
+  bases="${bases} libunwind-${version}.src"             \
+  #bases="${bases} openmp-${version}.src polly-${version}.src"
+  #bases="${bases} clang-tools-extra-${version}.src"
+
+# "test-suite-${version}.src" is not included because reasons.  It's easy enough
+# to add if you want it.
+
+    for base in ${bases}
+    do
+      wget -t inf -c http://llvm.org/releases/${version}/${base}.tar.xz
+      tar xf ${base}.tar.xz
+    done
+
+    llvm_root=llvm-${version}.src
+#  mv -v cfe-${version}.src ${llvm_root}/tools/clang
+#    mv -v clang-tools-extra-${version}.src ${llvm_root}/tools/clang/tools/extra
+#    mv -v compiler-rt-${version}.src ${llvm_root}/projects/compiler-rt
+#    mv -v libcxx-${version}.src ${llvm_root}/projects/libcxx
+#    mv -v libcxxabi-${version}.src ${llvm_root}/projects/libcxxabi
+    mv -v libunwind-${version}.src ${llvm_root}/projects/libunwind
+#    mv -v lld-${version}.src ${llvm_root}/tools/lld
+#    mv -v lldb-${version}.src ${llvm_root}/tools/lldb
+#    mv -v openmp-${version}.src ${llvm_root}/projects/openmp
+#    mv -v polly-${version}.src ${llvm_root}/tools/polly
+
+    mkdir ${llvm_root}/build
+    cd ${llvm_root}/build
+    cmake .. \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_COMPILER=$CC \
+      -DCMAKE_CXX_COMPILER=$CXX \
+      -DLLVM_ENABLE_RTTI=ON \
+      -DLLVM_ENABLE_TERMINFO=OFF \
+      -DLLVM_TARGETS_TO_BUILD=X86 \
+      -DLLVM_LINK_LLVM_DYLIB=ON \
+      -DLLVM_TARGETS_TO_BUILD:STRING=X86            \
+      -DCMAKE_INSTALL_PREFIX=${WORK_INSTALL_DIR} \
+      -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,$GCC_LIB64 -L$GCC_LIB64"
+
+
+  make -j8 && make install
+fi
+
+
+if [[ $BUILD_X == 1 ]]; then
+  cd ${WORK_DIR}
+  wget https://xcb.freedesktop.org/dist/libpthread-stubs-0.4.tar.bz2
+  tar xjf libpthread-stubs-0.4.tar.bz2
+  cd libpthread-stubs-0.4
+  ./configure --prefix=${WORK_INSTALL_DIR}
+  make
+  make install
+
+
+  cd ${WORK_DIR}
+  wget -c https://dri.freedesktop.org/libdrm/libdrm-2.4.81.tar.bz2
+  tar xjf libdrm-2.4.81.tar.bz2
+  cd libdrm-2.4.81
+  ./configure --prefix=${WORK_INSTALL_DIR} \
+	--disable-silent-rules \
+	--disable-dependency-tracking \
+	--disable-cairo-tests \
+	--disable-radeon \
+  	--disable-amdgpu \
+  	--disable-nouveau \
+  	--disable-vmwgfx \
+	--enable-intel
+  make
+  make install
+fi
+
+export PATH=${WORK_INSTALL_DIR}/bin:$PATH
+export LD_LIBRARY_PATH=${WORK_INSTALL_DIR}/lib:${WORK_INSTALL_DIR}/lib64:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${WORK_INSTALL_DIR}/lib/pkgconfig
+export LDFLAG="-Wl,-rpath,$GCC_LIB64 -L$GCC_LIB64"
+
+
+echo `which llvm-config`
+
+#read -n1 -r -p "Press any key to continue..." key
+
+if [[ $BUILD_SWR == 1 ]]; then
+
+  #module load gcc/7.1.0
+
+  cd ${WORK_DIR}
+  mkdir -p ${WORK_DIR}/openswr-mesa && cd ${WORK_DIR}/openswr-mesa
+  wget -c -N https://mesa.freedesktop.org/archive/mesa-$pkg_version.tar.gz
+  tar xzf mesa-$pkg_version.tar.gz
+  cd mesa-$pkg_version
+
+  ./autogen.sh \
+   --enable-xlib-glx \
+   --enable-llvm \
+   --enable-shared-glapi \
+   --enable-gallium-osmesa \
+   --enable-texture-float \
+   --disable-gbm \
+   --disable-dri \
+   --disable-egl \
+   --disable-xvmc \
+   --enable-gallium-omesa \
+   --enable-llvm-shared-libs \
+   --with-gallium-drivers=swrast,swr \
+   --with-swr-archs=avx,avx2,knl,skx \
+   --prefix=${WORK_INSTALL_DIR}
+
+#   --with-swr-archs=avx,avx2,knl \
+#   --with-swr-archs=avx,avx2,knl,skx \
+  make -j8
+  make install
+fi
