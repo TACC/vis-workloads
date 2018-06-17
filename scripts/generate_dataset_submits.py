@@ -277,7 +277,7 @@ def process_benchmark(triangle, node, process ):
                 gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
         pv_plugin_flag = '--vbo'
     elif renderer == 'llvmpipe':
-        gl_wrapper_cmd  = '{}/llvmpipe -t {}'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"), threads_pp  )
+        gl_wrapper_cmd  = '{}/llvmpipe'.format( os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe")  )
         pv_plugin_flag = '--llvmpipe'
     elif renderer == 'ospray':
         if(use_slurm):

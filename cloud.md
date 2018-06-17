@@ -48,7 +48,7 @@ sshfs -o ro <username>@data.tacc.utexas.edu:/corral-repl/tacc/vis_data/benchmark
 Edit paraviewenv and change PARAVIEWPATH
 
 ```
-source paraviewenv
+source ~/vis-workloads/scripts/paraviewenv
 mkdir build
 ccmake ..
 ```
@@ -68,6 +68,12 @@ Edit buildswr to match instance architecture. Search line:
 
 ```
 ./buildswr -ls
+
+cd local/bin
+cp ~/vis-workloads/scripts/llvmpipe .
+cp ~/vis-workloads/scripts/swr .
+chmod 755 llvmpipe
+chmod 755 swr
 ```
 
 ### Enable swr
