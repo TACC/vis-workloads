@@ -5,9 +5,7 @@ micro_version=2
 
 pkg_version="$major_version.$minor_version.$micro_version"
 
-
 BUILD_LLVM=0
-BUILD_X=0
 BUILD_SWR=0
 
 while getopts ":lxs" opt; do
@@ -15,10 +13,6 @@ while getopts ":lxs" opt; do
 	l)
 		echo "Build llvm"
 		BUILD_LLVM=1
-		;;
-	x)
-		echo "Build X libs"
-		BUILD_X=1
 		;;
 	s)
 		echo "Build swr"
@@ -46,7 +40,7 @@ BUILD_ROOT=`pwd`
   export LLVM_WORK_INSTALL_DIR=${WORK_INSTALL_DIR}
 
   export CC=gcc
-  export CXX=g++ 
+  export CXX=g++
 
 
 if [[ $BUILD_LLVM == 1 ]]; then
@@ -97,46 +91,15 @@ if [[ $BUILD_LLVM == 1 ]]; then
       -DLLVM_TARGETS_TO_BUILD=X86 \
       -DLLVM_LINK_LLVM_DYLIB=ON \
       -DLLVM_TARGETS_TO_BUILD:STRING=X86            \
-      -DCMAKE_INSTALL_PREFIX=${WORK_INSTALL_DIR} \
-      -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,$GCC_LIB64 -L$GCC_LIB64"
+      -DCMAKE_INSTALL_PREFIX=${WORK_INSTALL_DIR}
 
 
   make -j8 && make install
 fi
 
-
-if [[ $BUILD_X == 1 ]]; then
-  cd ${WORK_DIR}
-  wget https://xcb.freedesktop.org/dist/libpthread-stubs-0.4.tar.bz2
-  tar xjf libpthread-stubs-0.4.tar.bz2
-  cd libpthread-stubs-0.4
-  ./configure --prefix=${WORK_INSTALL_DIR}
-  make
-  make install
-
-
-  cd ${WORK_DIR}
-  wget -c https://dri.freedesktop.org/libdrm/libdrm-2.4.81.tar.bz2
-  tar xjf libdrm-2.4.81.tar.bz2
-  cd libdrm-2.4.81
-  ./configure --prefix=${WORK_INSTALL_DIR} \
-	--disable-silent-rules \
-	--disable-dependency-tracking \
-	--disable-cairo-tests \
-	--disable-radeon \
-  	--disable-amdgpu \
-  	--disable-nouveau \
-  	--disable-vmwgfx \
-	--enable-intel
-  make
-  make install
-fi
-
 export PATH=${WORK_INSTALL_DIR}/bin:$PATH
 export LD_LIBRARY_PATH=${WORK_INSTALL_DIR}/lib:${WORK_INSTALL_DIR}/lib64:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${WORK_INSTALL_DIR}/lib/pkgconfig
-export LDFLAG="-Wl,-rpath,$GCC_LIB64 -L$GCC_LIB64"
-
 
 echo `which llvm-config`
 

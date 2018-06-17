@@ -1,6 +1,6 @@
 
 
-export PARAVIEWPATH=/Applications/ParaView-5.4.1.app/Contents
+export PARAVIEWPATH=$HOME/paraview
 
 unameOut="$(uname -s)"
 case "${unameOut}" in

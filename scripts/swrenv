@@ -1,0 +1,4 @@
+export SWRPATH=$HOME/swr/local
+
+export PATH=$HOME/swr/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/swr/local/lib:$LD_LIBRARY_PATH
