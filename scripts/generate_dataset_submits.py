@@ -254,7 +254,7 @@ def process_benchmark(triangle, node, process ):
 
     # set parameters based off renderer
     if renderer == 'swr':
-        if (display_env):
+        if (not display_env):
             gl_wrapper_cmd = 'swr'
         else:
             gl_wrapper_cmd = 'DISPLAY={} swr'.format(display_env_display)
@@ -280,7 +280,7 @@ def process_benchmark(triangle, node, process ):
                 gl_wrapper_cmd = 'DISPLAY={}'.format(display_env_display)
         pv_plugin_flag = '--vbo'
     elif renderer == 'llvmpipe':
-        if (display_env):
+        if (not display_env):
             gl_wrapper_cmd = 'swr'
         else:
             gl_wrapper_cmd = 'DISPLAY={} {}/llvmpipe'.format(display_env_display,os.path.join(os.path.join(path_vars['SVB_DIR'],"scritps"),"llvmpipe"))
