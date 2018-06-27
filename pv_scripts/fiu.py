@@ -50,7 +50,7 @@ print "fiu_data_dir:%s" %  fiu_data_dir
 
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1

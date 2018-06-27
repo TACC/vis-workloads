@@ -51,7 +51,7 @@ valRanges = [1,7679.0]
 valRange = valRanges[1]-valRanges[0]
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   val = (float(stage+.5)/float(svbGetStagesSize()))*float(valRange) + float(valRanges[0])

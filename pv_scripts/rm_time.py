@@ -48,7 +48,7 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 
 AnimationScene1 = GetAnimationScene()

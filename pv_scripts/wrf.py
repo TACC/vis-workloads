@@ -203,7 +203,7 @@ def svbSetup(geometryLevel=1,stage=0):
 # what timestep to render.
 def svbGetStagesSize():
     global timesteps
-    return 5
+    return 1
 
 def svbRender():
     Render()

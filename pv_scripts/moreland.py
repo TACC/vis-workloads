@@ -27,7 +27,7 @@ except: from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 Wavelet1 = Wavelet()
 global DataRepresentation1

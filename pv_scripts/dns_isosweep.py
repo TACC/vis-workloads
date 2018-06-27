@@ -57,7 +57,7 @@ global Contour1
 global reader
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   global Contour1

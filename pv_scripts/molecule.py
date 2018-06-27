@@ -115,7 +115,7 @@ def svbSetup(geometryLevel=1, stage=0):
   return returnVals
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 
 def svbRender():

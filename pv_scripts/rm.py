@@ -56,7 +56,7 @@ def drange(start,stop,step):
 
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   ## get active view

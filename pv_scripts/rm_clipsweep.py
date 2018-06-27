@@ -52,7 +52,7 @@ valRange = valRanges[1]-valRanges[0]
 #global reader
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
   #global Clip1

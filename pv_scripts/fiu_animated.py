@@ -171,7 +171,7 @@ def createStreamlines(source, source2, t):
 
 
 def svbGetStagesSize():
-  return 5;
+  return 1;
 
 def svbSetup(geometryLevel=1, stage=0):
 
