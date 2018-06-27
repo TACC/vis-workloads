@@ -57,7 +57,7 @@ def svbSetup(geometryLevel=1, stage=0):
   st_obj_reader = time.time()
   fname = mol_data_dir+"/bacteriaphage_ribbons.obj"
   #a4RHV_ribbons_obj = WavefrontOBJReader( FileName=fname )
-  a4RHV_ribbons_obj = WavefrontOBJReader( FileName='/work/00401/pnav/workloads/molecule/bacteriaphage_ribbons.obj')
+  a4RHV_ribbons_obj = WavefrontOBJReader( FileName=mol_data_dir+'/bacteriaphage_ribbons.obj')
   et_obj_reader = time.time()
   tt_obj_reader = (et_obj_reader-st_obj_reader)
 
@@ -80,7 +80,7 @@ def svbSetup(geometryLevel=1, stage=0):
   st_pdb_reader = time.time()
   fname = mol_data_dir+"/1VRI.pdb"
   #a4RHV_pdb = PDBReader( FileName=fname )
-  a4RHV_pdb = PDBReader( FileName='/work/00401/pnav/workloads/molecule/1VRI.pdb')
+  a4RHV_pdb = PDBReader( FileName=mol_data_dir+'/molecule/1VRI.pdb')
 
   a4RHV_pdb.UpdatePipeline()
   et_pdb_reader = time.time()
