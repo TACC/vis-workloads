@@ -88,7 +88,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
 
-        fname3 = geo_data_dir+"/Base_MTC_large.obj"
+        fname3 = geo_data_dir+"/Base_MTC.obj"
 	Base_MTC_obj = WavefrontOBJReader( FileName=fname3 )
 
 	DataRepresentation4 = Show()
@@ -99,7 +99,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
- 	fname4 = geo_data_dir+"/Seafloor_zap_asc.obj"
+ 	fname4 = geo_data_dir+"/Seafloor_zap.asc.obj"
 	Seafloor_zap_asc_obj = WavefrontOBJReader( FileName=fname4 )
 
 	DataRepresentation5 = Show()

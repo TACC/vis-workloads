@@ -112,7 +112,7 @@ for i in range(start_submission,end_submission):
         print("Out: {}".format(stdout))
     if(len(stderr) > 0):
         print("Err: {}".format(stderr))
-        exit()
+        #exit()
 
 if( len(matches) <= submission_limit):
     exit()
