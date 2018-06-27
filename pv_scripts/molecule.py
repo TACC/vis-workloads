@@ -55,7 +55,7 @@ def svbSetup(geometryLevel=1, stage=0):
   returnVals = {'azimuth':90, 'dolly':2, 'animateCamera':True, 'tt_reader':0, 'tt_filter':0};
   print "about to load OBJ"
   st_obj_reader = time.time()
-  fname = "\'"+mol_data_dir+"/bacteriaphage_ribbons.obj"+"\'"
+  fname = mol_data_dir+"/bacteriaphage_ribbons.obj"
   #a4RHV_ribbons_obj = WavefrontOBJReader( FileName=fname )
   a4RHV_ribbons_obj = WavefrontOBJReader( FileName='/work/00401/pnav/workloads/molecule/bacteriaphage_ribbons.obj')
   et_obj_reader = time.time()
@@ -78,7 +78,7 @@ def svbSetup(geometryLevel=1, stage=0):
 
   print "about to load PDB"
   st_pdb_reader = time.time()
-  fname = "\'"+mol_data_dir+"/1VRI.pdb"+"\'"
+  fname = mol_data_dir+"/1VRI.pdb"
   #a4RHV_pdb = PDBReader( FileName=fname )
   a4RHV_pdb = PDBReader( FileName='/work/00401/pnav/workloads/molecule/1VRI.pdb')
 

@@ -59,7 +59,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	paraview.simple._DisableFirstRenderCameraReset()
 
         st_reader = time.time()
-        fname1 = "\'"+geo_data_dir+"/Top_Albian.obj"+"\'"
+        fname1 = geo_data_dir+"/Top_Albian.obj"
 	Top_Albian_obj = WavefrontOBJReader( FileName=fname1 )
 	RenderView1 = GetRenderView()
 
@@ -75,7 +75,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
 
-        fname2 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
+        fname2 = geo_data_dir+"/Basement.obj"
 	Basement_obj = WavefrontOBJReader( FileName=fname2 )
 
 	DataRepresentation3 = Show()
@@ -88,7 +88,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
 
-        fname3 = "\'"+geo_data_dir+"/Base_MTC_large.obj"+"\'"
+        fname3 = geo_data_dir+"/Base_MTC_large.obj"
 	Base_MTC_obj = WavefrontOBJReader( FileName=fname3 )
 
 	DataRepresentation4 = Show()
@@ -99,7 +99,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numCells += GetActiveSource().GetDataInformation().GetNumberOfCells()
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
- 	fname4 = "\'"+geo_data_dir+"/Seafloor_zap_asc.obj"+"\'"
+ 	fname4 = geo_data_dir+"/Seafloor_zap_asc.obj"
 	Seafloor_zap_asc_obj = WavefrontOBJReader( FileName=fname4 )
 
 	DataRepresentation5 = Show()
@@ -111,7 +111,7 @@ def svbSetup(geometryLevel=1, stage=0):
 	numPoints += GetActiveSource().GetDataInformation().GetNumberOfPoints()
 	numPolys += GetActiveSource().GetDataInformation().GetPolygonCount()
 
-        fname5 = "\'"+geo_data_dir+"/Basement.obj"+"\'"
+        fname5 = geo_data_dir+"/Basement.obj"
 	Top_MTC_obj = WavefrontOBJReader( FileName=fname5 )
         et_reader = time.time()
         tt_reader = (et_reader-st_reader)
@@ -276,7 +276,7 @@ def svbSetup(geometryLevel=1, stage=0):
         return returnVals
 
 def svbGetStagesSize():
-	return 5;
+	return 1;
 
 
 def svbRender():
