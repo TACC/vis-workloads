@@ -51,12 +51,25 @@ One of the motivating factors in the design of this benchmark suite was to chara
 </p>
 
 <p>
-<h2>
-<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Desricption of Datasets: </h2>
+<h3>
+<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Desricption of Datasets: </h3>
 
 <h3>
 <a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNS</h3>
-Turbulent Channel Flow: Wall bounded turbulent flow channel flow computed by direct numerical simulation (DNS), meaning, the fluid flow equations are solved without subgrid modeling.  Almost a quarter of global energy consumption is expended on transportation through air or water or fluid being transported through ducts, and this energy is dissipated primarily in turbulence.  This model of wall-bounded turbulence will help inform the development of new efficient designs of turbulent fluid systems.  Each geometry level has a corresponding triangle count in the millions: 69.88, 142.38, 210.33, 276.36, 343.79, 413.39, 485.66, 558.72</p>
+Turbulent Channel Flow: Wall bounded turbulent flow channel flow computed by direct numerical simulation (DNS), meaning, the fluid flow equations are solved without subgrid modeling.  Almost a quarter of global energy consumption is expended on transportation through air or water or fluid being transported through ducts, and this energy is dissipated primarily in turbulence.  This model of wall-bounded turbulence will help inform the development of new efficient designs of turbulent fluid systems.  Each geometry level has a corresponding triangle count in the millions: 69.88, 142.38, 210.33, 276.36, 343.79, 413.39, 485.66, 558.72
+
+Contact: Robert Moser,  rmoser@ices.utexas.edu
+References: `Petascale direct numerical simulation of turbulent channel flow' Myoungkyu Lee, Nicholas Malaya, Robert D. Moser, proceedings SC13 
+
+
+<h3>
+<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geo</h3>
+
+Morrocan Safi Haute Mer Seismic Survey Horizons.  These are horizons are extracted from a volume of seismic data measured from a 1064 sq km seismic survey acquired in the Safi Haute Mer area.  The 5 horizons representing features in geologic time, from newest to oldest: Seafloor, Top Albian, Top_MTC and Base_MTC (Mass Transport Deposits),  and Basement, were exported from the Geoscience specialty software: Landmarks DecisionSpace as 3D points.  Each layer had 4-6 million points and a surface was created using the ball-pivoting surface reconstruction algorithm in the opensource software MeshLab to yield surfaces of 8-10 million triangles per horizon.  These surfaces were converted to OBJs before reading the files into Paraview where they were subsequently colored to highlight the geographic features.
+
+Contact: Dallas Dunlop dallas.dunlap@beg.utexas.edu
+References: Seismic geomorphology of the Safi Haute Mer exploration block, offshore Morocco Atlantic Margin.  D. Dunlop MS thesis. UT Austin, 2013
+
 </p>
   </body>
 </html>
