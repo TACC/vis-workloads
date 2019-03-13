@@ -61,6 +61,14 @@ Turbulent Channel Flow: Wall bounded turbulent flow channel flow computed by dir
 Contact: Robert Moser,  rmoser@ices.utexas.edu
 References: `Petascale direct numerical simulation of turbulent channel flow' Myoungkyu Lee, Nicholas Malaya, Robert D. Moser, proceedings SC13 
 
+<h3>
+<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>RM</h3>
+This simulation is from a very high resolution 3-D simulation of the Richtmyer\--Meshkov instability and turbulent mixing. Richtmyer\--Meshkov instability occurs when two fluids of different density are accelerated. Normally this is by the passage of a shock wave. Small amplitude perturbations cause an instability which initially grow linearly with time.  The ability to run at very high resolution is required for the simulation to accurately represent the interaction of the various length scales, and consequently, the reactivity of the intermixing species.\\
+Currently all levels have 316.36 million triangles.
+
+Contact: Mark Duchaineau duchaineau@llnl.gov
+References: `Very High Resolution Simulation of Compressible Turbulence on the IBM-SP System' A. A. Mirin, R. H. Cohen, B. C. Curtis, W. P. Dannevik et al  LLNL tech report UCRL-JC-134237, proceedings SC99
+
 
 <h3>
 <a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geo</h3>
@@ -71,5 +79,25 @@ Contact: Dallas Dunlop dallas.dunlap@beg.utexas.edu
 References: Seismic geomorphology of the Safi Haute Mer exploration block, offshore Morocco Atlantic Margin.  D. Dunlop MS thesis. UT Austin, 2013
 
 </p>
+
+<h3>
+<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geo</h3>
+
+Morrocan Safi Haute Mer Seismic Survey Horizons.  These are horizons are extracted from a volume of seismic data measured from a 1064 sq km seismic survey acquired in the Safi Haute Mer area.  The 5 horizons representing features in geologic time, from newest to oldest: Seafloor, Top Albian, Top_MTC and Base_MTC (Mass Transport Deposits),  and Basement, were exported from the Geoscience specialty software: Landmarks DecisionSpace as 3D points.  Each layer had 4-6 million points and a surface was created using the ball-pivoting surface reconstruction algorithm in the opensource software MeshLab to yield surfaces of 8-10 million triangles per horizon.  These surfaces were converted to OBJs before reading the files into Paraview where they were subsequently colored to highlight the geographic features.
+
+Contact: Dallas Dunlop dallas.dunlap@beg.utexas.edu
+References: Seismic geomorphology of the Safi Haute Mer exploration block, offshore Morocco Atlantic Margin.  D. Dunlop MS thesis. UT Austin, 2013
+
+
+<h3>
+<a id ="svbench-scientific-visualization-benchmarking-suite" class="anchor" href="#svbench-scientific-visualization-benchmarking-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Molecule</h3>
+
+A bacteriophage is a virus that infects a bacterium host and are widely distributed in nature. Sea water is one of the densest natural sources for phages and other viruses.  They are seen as a possible therapy against drug resistant strains of many bacteria, and as such the overall shape of the macromolecular assembly is significant. This particular structure (PDB ID 1VRI)  is the largest structure in the PDB (150,720 atoms).  The ribbon and surface of this structure was computed using VMD and exported as an OBJ for import into Paraview (Paraview does not represent protein secondary structure).  This was designed as an example that could be used as a reference in Paraview and will be compared to the VMD Tachyon renderer in phase 2.
+Contact: 1VRI.pdb openly available from the Protein Data Bank
+References: `Construction and 3-D computer modeling of connector arrays with tetragonal to decagonal transition induced by pRNA of phi29 DNA-packaging motor.' Y.Y.Guo, F.Blocker, F.Xiao, P.Guo
+
+
+</p>
+
   </body>
 </html>
